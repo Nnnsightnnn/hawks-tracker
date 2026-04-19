@@ -1,7 +1,7 @@
-// ─── Atlanta Hawks Player Data (2025-26 Season · Updated Apr 18, 2026) ───────
+// ─── Atlanta Hawks Player Data (2025-26 Season · Updated Apr 19, 2026) ───────
 // Single source of truth for roster, games, digest, and RSS feeds.
 // Season context: 46-36 regular season, Southeast Division champs, 6-seed in East.
-// Playoffs Round 1 vs NY Knicks begins tonight (Apr 18, 2026) at MSG.
+// Playoffs Round 1 vs NY Knicks: NYK leads 1-0 after 113-102 Game 1 win at MSG (Apr 18).
 
 // Statuses: "active" | "day-to-day" | "questionable" | "doubtful" | "out" | "suspended"
 // injuryNote: short description shown on card when not active
@@ -300,17 +300,18 @@ export const TEAM_LOGOS = {
 export const NEXT_GAME = {
   opponent: "New York Knicks",
   shortName: "NYK",
-  home: false,                                  // Game 1 at Madison Square Garden (Knicks are higher seed)
-  date: "2026-04-18T18:00:00-04:00",
+  home: false,                                  // Game 2 at Madison Square Garden (Knicks are higher seed)
+  date: "2026-04-20T20:00:00-04:00",
   competition: "PLAYOFFS",
   venue: "Madison Square Garden",
-  broadcast: "Prime Video",
-  seriesContext: "Round 1 · Game 1 · Series tied 0-0",
+  broadcast: "NBC",
+  seriesContext: "Round 1 · Game 2 · NYK leads 1-0",
 };
 
 // ─── Game Results (2025-26 regular season · last 16 games) ─────────────────
 // result: "W" | "L"; score format "ATL-OPP"
 export const RESULTS = [
+  { date: "2026-04-18", opponent: "New York Knicks",      home: false, score: "102-113", competition: "PLAYOFFS", result: "L", topScorers: "R1G1 · McCollum 26, Johnson 23, Daniels 9-9-11" },
   { date: "2026-04-12", opponent: "Miami Heat",           home: true,  score: "117-143", competition: "REG", result: "L", topScorers: "Johnson 24" },
   { date: "2026-04-10", opponent: "Cleveland Cavaliers",  home: true,  score: "124-102", competition: "REG", result: "W", topScorers: "Johnson 28, NAW 22 — clinched SE Division" },
   { date: "2026-04-08", opponent: "Cleveland Cavaliers",  home: false, score: "116-122", competition: "REG", result: "L", topScorers: "Johnson 26" },
@@ -338,10 +339,9 @@ export const PLAYOFF_SERIES = {
   seed: 6,
   opponentSeed: 3,
   wins: 0,
-  losses: 0,
+  losses: 1,
   games: [
-    // populated as the series progresses
-    { game: 1, date: "2026-04-18", home: false, score: null, result: null, venue: "Madison Square Garden", broadcast: "Prime Video" },
+    { game: 1, date: "2026-04-18", home: false, score: "102-113", result: "L", venue: "Madison Square Garden", broadcast: "Prime Video" },
     { game: 2, date: "2026-04-20", home: false, score: null, result: null, venue: "Madison Square Garden", broadcast: "NBC" },
     { game: 3, date: "2026-04-23", home: true,  score: null, result: null, venue: "State Farm Arena", broadcast: "Prime Video" },
     { game: 4, date: "2026-04-25", home: true,  score: null, result: null, venue: "State Farm Arena", broadcast: "NBC" },
@@ -362,88 +362,96 @@ export const EAST_STANDINGS = [
 
 // ─── AI News Digest (generated from live web search) ───────────────────────
 export const NEWS_DIGEST = {
-  generatedAt: "2026-04-18T18:00:00Z",
+  generatedAt: "2026-04-19T14:00:00Z",
   summary:
-    "Game 1 tips TONIGHT at 6 PM ET at Madison Square Garden on Prime Video — the Hawks' first playoff game since 2023 and Jalen Johnson's postseason debut. Atlanta's Game 1 starting five was confirmed pre-game (SI, Apr 18): CJ McCollum, Nickeil Alexander-Walker, Dyson Daniels, Jalen Johnson, Onyeka Okongwu — the +25 net-rating group that has powered the 20-6 post-All-Star surge. Injury report is essentially clean: only Jock Landale (right high-ankle sprain) is ruled out; Johnson, NAW, Okongwu, and Kispert all cleared after sitting the regular-season finale. Knicks are 6.5-point favorites (DraftKings) and won the regular-season series 2-1, both wins by three. The bigger storyline hanging over this run: Quin Snyder's contract — he's in the final year of his deal and HoopsHype reported Apr 12 that Atlanta and Snyder are exploring an extension. Zaccharie Risacher, last year's No. 1 pick, was a healthy scratch on his 21st birthday Wednesday; Corey Kispert has absorbed his rotation minutes. Series is 3-6 in the East: Knicks 53-29, Hawks 46-36.",
+    "Hawks drop Game 1 at MSG, 113-102, and trail the Knicks 1-0 heading into Monday's Game 2 (8 PM ET, NBC). Jalen Brunson (28) and Karl-Anthony Towns (25 points on 10-of-10 FT, 19 in the second half) torched Atlanta after a 19-point third quarter buried the visitors. CJ McCollum led the Hawks with 26, Jalen Johnson added 23 in his playoff debut, and Dyson Daniels stuffed the sheet with 9 points, 9 rebounds, 11 assists and 3 steals — but Atlanta shot just 38% from three and was badly outshot at the line (Snyder, postgame: \"They shoot 35 free throws and we shoot what, 15?\"). Zaccharie Risacher got just two first-quarter minutes and sat the rest of the way; Corey Kispert kept his rotation spot. Injury report stayed clean for the series — only Jock Landale (right high-ankle sprain) is out. Adjustments needed for Game 2: containing the Towns-Brunson mismatch pick-and-roll, trimming the reaches that fueled the FT gap, and getting secondary shot creation from Kuminga and Hield off the bench.",
   keyTopics: [
     {
-      title: "Starting 5 Confirmed: McCollum, NAW, Daniels, Johnson, Okongwu",
+      title: "Game 1 Recap: Knicks 113, Hawks 102 — Third-Quarter Collapse",
       detail:
-        "Atlanta's pre-game announcement (SI Hawks On SI, Apr 18) locks in the Game 1 starting five as CJ McCollum, Nickeil Alexander-Walker, Dyson Daniels, Jalen Johnson, and Onyeka Okongwu — the unit that posted a +25 net rating over 139 possessions since McCollum joined at the trade deadline. No lineup changes for the playoffs.",
-      category: "rotation",
-    },
-    {
-      title: "Game 1 Tonight: Hawks at Knicks, 6 PM ET on Prime Video",
-      detail:
-        "First-round Game 1 tips at Madison Square Garden tonight (Apr 18) at 6 PM ET on Prime Video. Knicks opened as 6.5-point favorites on DraftKings. Game 2 follows Monday Apr 20 at 8 PM on NBC — the NBA compressed the turnaround by one day from the original schedule. Games 3 and 4 shift to State Farm Arena on Apr 23 (Prime) and Apr 25 (NBC).",
+        "New York won Saturday's opener at Madison Square Garden 113-102 behind Brunson's 28 and Towns' 25 (19 in the second half). Atlanta was outscored in a decisive third quarter (19 points, 2-9 from three) and shot 48% from deep to the Knicks' back end of 37.8%. The Hawks hung around in the fourth but never drew closer than six. Series: NYK leads 1-0.",
       category: "games",
     },
     {
-      title: "Injury Report: Only Landale Out — Everyone Else Cleared",
+      title: "Dyson Daniels' Playoff Debut Stat Line: 9-9-11-3",
       detail:
-        "Hawks' final pre-series injury report (Apr 17) has Jock Landale out with a right high-ankle sprain, re-evaluated in two weeks — a return this round looks unlikely. Johnson (rest), Okongwu (finger), Alexander-Walker, Kuminga (knee), and Vincent (knee) are all off the report after being held out of the regular-season finale.",
+        "Daniels nearly triple-doubled in his first career playoff game — 9 points, 9 rebounds, 11 assists, 3 steals (ESPN box, Apr 18). He was the lone Hawk to finish plus on the night outside McCollum and remains the team's defensive fulcrum as NY's perimeter looks to attack Johnson and McCollum.",
+      category: "rotation",
+    },
+    {
+      title: "McCollum 26, Johnson 23 in Playoff Debut",
+      detail:
+        "CJ McCollum led Atlanta with 26 on 11-of-20 shooting in his first playoff appearance as a Hawk. Jalen Johnson added 23 in his postseason debut, including 8 in the first quarter before Knicks defenders swarmed to slow him. Atlanta's other starters combined for 26.",
+      category: "games",
+    },
+    {
+      title: "Snyder Calls Out Free-Throw Gap: 35 vs. 15",
+      detail:
+        "Postgame, Quin Snyder was blunt about the foul discrepancy (Kevin Chouinard, Apr 18): \"They shoot 35 free throws and we shoot what, 15? That is a big discrepancy that we need to take care of. Some of them were unnecessary where we just reached. You've got to be more disciplined.\" Towns went 10-of-10 at the line by himself.",
+      category: "rotation",
+    },
+    {
+      title: "Towns Mismatch Became the Game",
+      detail:
+        "Snyder admitted after Game 1 (Yahoo, Apr 18) that defending KAT was \"pick your poison.\" Towns had just 6 at halftime but Atlanta could not prevent him getting to his spots — and the foul line — in the second half. Bracing the Okongwu/Kuminga rotation for KAT without giving up corner threes is the biggest Game 2 chalkboard item.",
+      category: "rotation",
+    },
+    {
+      title: "Risacher Benched Again: Just 2 First-Quarter Minutes",
+      detail:
+        "Zaccharie Risacher played two minutes in the first quarter and sat the rest of the way (Heavy, Apr 18), continuing a stretch that began with a DNP-CD on his 21st birthday vs. Cleveland. Snyder has ridden with Kispert as the wing reserve; it would take a blowout or Game 3 adjustments for the No. 1 overall pick to see playoff minutes again.",
+      category: "rotation",
+    },
+    {
+      title: "Game 2 Monday Night, 8 PM ET on NBC",
+      detail:
+        "Game 2 tips Monday Apr 20 at 8 PM ET at Madison Square Garden on NBC. Game 3 shifts to State Farm Arena on Apr 23 (Prime Video); Game 4 on Apr 25 (NBC). Atlanta faces a must-win if it wants to avoid going home down 2-0 to the 53-win Knicks.",
+      category: "games",
+    },
+    {
+      title: "Injury Report: Only Landale Out Heading Into Game 2",
+      detail:
+        "Hawks injury picture is unchanged from the pre-series report: Jock Landale (right high-ankle sprain) re-evaluated in two weeks and essentially ruled out for Round 1. Johnson, NAW, Okongwu, Kuminga and Vincent came out of Game 1 clean per postgame reports.",
       category: "injuries",
     },
     {
-      title: "Knicks Won Regular-Season Series 2-1, Both Wins by 3",
+      title: "Knicks' Bench Edge: Hart's 14 Boards, Robinson's Possessions",
       detail:
-        "New York took the season series 2-1, with each Knicks win decided by three points (128-125 OT in Dec, 108-105 in Apr after CJ McCollum's half-court buzzer shot was waved off on review). Atlanta's lone win came Jan 2 in New York, 111-99. Johnson averaged 19.7 / 10 / 9.3 in those three meetings on 44.9% shooting.",
+        "Josh Hart had 10 points and 14 rebounds — half of them offensive — and Mitchell Robinson's second-chance work gave NY 4-5 extra possessions, a theme the NBA preview flagged as Atlanta's biggest series-long vulnerability. Hawks were out-rebounded 45-40.",
       category: "games",
     },
     {
-      title: "Hawks Piped MSG Crowd Audio Into Practice",
+      title: "Snyder Extension Talks Still Open",
       detail:
-        "CJ McCollum told reporters this week (Apr 17) that the Hawks simulated Madison Square Garden's organ and crowd noise during practice: \"It was like Madison Square Garden in Atlanta today.\" The unorthodox prep is aimed at a young roster's first playoff road environment.",
+        "Quin Snyder remains in the final year of his 5-year deal and HoopsHype (Apr 12) reported extension talks are active. A deep playoff run would accelerate the conversation; a quick exit here probably wouldn't derail it given Snyder's Coach of the Month win and 20-6 post-ASG record.",
       category: "general",
     },
     {
-      title: "Risacher Benched: Kispert Taking His Rotation Minutes",
+      title: "Trae Young Trade Gets Its First Playoff Verdict",
       detail:
-        "Zaccharie Risacher — last year's No. 1 overall pick — was a healthy DNP-CD on his 21st birthday Wednesday's 122-116 loss to Cleveland, his first career scratch. Snyder has leaned on Corey Kispert for shooting and spacing instead: \"We only have so many guys… so people just get squeezed.\" Risacher is likely to stay out of the Game 1 rotation.",
-      category: "rotation",
-    },
-    {
-      title: "Snyder Extension Talks Ongoing (HoopsHype, Apr 12)",
-      detail:
-        "Quin Snyder is in the final year of the 5-year deal he signed in Feb 2023, and both sides are exploring an extension per HoopsHype (Apr 12). Snyder earned his fifth career Coach of the Month award this month, hit his 500th career win Mar 28, and steered Atlanta to a 20-6 post-All-Star run (3rd-best NBA record in that span).",
-      category: "general",
-    },
-    {
-      title: "Johnson's Historic Line: Only 5th Player Ever With 22/10/7",
-      detail:
-        "Jalen Johnson finished the regular season at 22.5 / 10.3 / 7.9 — the 5th player in NBA history to average at least 22 / 10 / 7, joining Oscar Robertson, Wilt Chamberlain, Jokić, and Westbrook. First-time All-Star (Feb 2026), Eastern Conference Player of the Month for March, and tonight makes his postseason debut.",
-      category: "general",
-    },
-    {
-      title: "Trae Young Trade Faces Its First Playoff Test",
-      detail:
-        "The Jan 7, 2026 deal that sent Trae Young to Washington for CJ McCollum and Corey Kispert gets judged tonight. McCollum has started 39 of 42 games in Atlanta (18.7 PPG) and hit 50% from three over the final four games of the regular season. Young joined the Wizards; the new Hawks backcourt of Daniels/NAW alongside McCollum defines this era.",
+        "The January deal that moved Trae Young to Washington for McCollum and Kispert has Game 1 on the scoreboard: McCollum 26 in 38 minutes, Kispert logged bench minutes with limited opportunity. Atlanta's new-look backcourt held up offensively; the series-long referendum is now on defense.",
       category: "trades",
     },
     {
-      title: "McCollum a Key X-Factor vs. Knicks' 3-Point Defense",
+      title: "Johnson's Historic 22/10/7 Season Meets Playoff Reality",
       detail:
-        "New York ranks in the bottom third of the NBA in 3-point percentage conceded, which analysts (Yardbarker, SI) flag as a key advantage for McCollum and Kispert. McCollum averaged 3.3 triples on 50% shooting across Atlanta's final four games, hitting three in the Apr 6 loss to New York.",
-      category: "rotation",
-    },
-    {
-      title: "20-6 Post-All-Star Run Got Atlanta Here",
-      detail:
-        "The Hawks were 26-30 at the trade deadline with chatter already swirling. They finished 20-6 after the All-Star break — 3rd-best NBA record in that span — on the back of an 11-game winning streak that clinched the Southeast Division on April 10 (124-102 over Cleveland), the franchise's first division title since 2014-15.",
-      category: "games",
+        "Jalen Johnson's 22.5/10.3/7.9 regular-season line made him the 5th player ever to average at least 22/10/7 (joining Oscar Robertson, Wilt, Jokić, Westbrook). Game 1 showed NY will load up to take the ball out of his hands — 23 on moderate efficiency is a starting point, not a ceiling, if he can read the help faster in Game 2.",
+      category: "general",
     },
   ],
   sources: [
-    "AJC",
-    "NBA.com",
     "ESPN",
+    "NBA.com",
     "SI Hawks On SI",
     "Peachtree Hoops",
+    "Yahoo Sports",
+    "FOX 5 New York",
+    "Heavy Sports",
     "HoopsHype",
     "Hoops Rumors",
-    "Heavy Sports",
+    "AJC",
+    "Kevin Chouinard (X)",
     "Soaring Down South",
-    "Yahoo Sports",
     "DraftKings Network",
   ],
 };
