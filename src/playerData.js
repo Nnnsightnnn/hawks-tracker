@@ -9,7 +9,7 @@
 export const PLAYERS = [
   // ── Starters ─────────────────────────────────────────────────────────────
   {
-    id: 1, name: "Jalen Johnson", number: 1, position: "SF", nationality: "🇺🇸 USA", age: 23,
+    id: 1, name: "Jalen Johnson", number: 1, position: "SF", nationality: "🇺🇸 USA", age: 23, playoffStarter: true,
     gamesPlayed: 74, gamesStarted: 72, minutesPerGame: 34.6,
     pointsPerGame: 22.5, reboundsPerGame: 10.3, assistsPerGame: 7.9,
     stealsPerGame: 1.4, blocksPerGame: 0.8, turnoversPerGame: 3.1,
@@ -26,7 +26,7 @@ export const PLAYERS = [
     ],
   },
   {
-    id: 2, name: "Dyson Daniels", number: 5, position: "SG", nationality: "🇦🇺 Australia", age: 22,
+    id: 2, name: "Dyson Daniels", number: 5, position: "SG", nationality: "🇦🇺 Australia", age: 22, playoffStarter: true,
     gamesPlayed: 80, gamesStarted: 76, minutesPerGame: 33.1,
     pointsPerGame: 15.2, reboundsPerGame: 5.8, assistsPerGame: 5.6,
     stealsPerGame: 3.1, blocksPerGame: 0.6, turnoversPerGame: 2.2,
@@ -44,7 +44,7 @@ export const PLAYERS = [
     ],
   },
   {
-    id: 3, name: "Nickeil Alexander-Walker", number: 7, position: "SG", nationality: "🇨🇦 Canada", age: 27,
+    id: 3, name: "Nickeil Alexander-Walker", number: 7, position: "SG", nationality: "🇨🇦 Canada", age: 27, playoffStarter: true,
     gamesPlayed: 78, gamesStarted: 71, minutesPerGame: 31.4,
     pointsPerGame: 20.8, reboundsPerGame: 4.1, assistsPerGame: 3.8,
     stealsPerGame: 1.5, blocksPerGame: 0.4, turnoversPerGame: 1.8,
@@ -64,7 +64,7 @@ export const PLAYERS = [
     ],
   },
   {
-    id: 4, name: "CJ McCollum", number: 3, position: "PG", nationality: "🇺🇸 USA", age: 34,
+    id: 4, name: "CJ McCollum", number: 3, position: "PG", nationality: "🇺🇸 USA", age: 34, playoffStarter: true,
     gamesPlayed: 42, gamesStarted: 39, minutesPerGame: 31.8,
     pointsPerGame: 18.7, reboundsPerGame: 3.6, assistsPerGame: 4.9,
     stealsPerGame: 1.0, blocksPerGame: 0.3, turnoversPerGame: 2.1,
@@ -83,7 +83,7 @@ export const PLAYERS = [
     ],
   },
   {
-    id: 5, name: "Onyeka Okongwu", number: 17, position: "C", nationality: "🇺🇸 USA", age: 25,
+    id: 5, name: "Onyeka Okongwu", number: 17, position: "C", nationality: "🇺🇸 USA", age: 25, playoffStarter: true,
     gamesPlayed: 76, gamesStarted: 63, minutesPerGame: 28.4,
     pointsPerGame: 14.8, reboundsPerGame: 8.6, assistsPerGame: 1.7,
     stealsPerGame: 0.9, blocksPerGame: 1.4, turnoversPerGame: 1.5,

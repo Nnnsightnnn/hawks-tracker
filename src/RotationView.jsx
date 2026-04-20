@@ -206,12 +206,18 @@ export default function RotationView({ players, nextGame }) {
     const available = players.filter((p) => isAvailable(p.status));
     const unavail = players.filter((p) => !isAvailable(p.status));
 
-    // Top 5 by gamesStarted (tiebreak: minutes per game) are starters
-    const sortedByStarts = [...available].sort((a, b) => {
-      if (b.gamesStarted !== a.gamesStarted) return b.gamesStarted - a.gamesStarted;
-      return b.minutesPerGame - a.minutesPerGame;
-    });
-    const start = sortedByStarts.slice(0, 5);
+    // Use playoffStarter flag if set; otherwise fall back to gamesStarted
+    const hasPlayoffFlags = available.some((p) => p.playoffStarter);
+    let start;
+    if (hasPlayoffFlags) {
+      start = available.filter((p) => p.playoffStarter);
+    } else {
+      const sortedByStarts = [...available].sort((a, b) => {
+        if (b.gamesStarted !== a.gamesStarted) return b.gamesStarted - a.gamesStarted;
+        return b.minutesPerGame - a.minutesPerGame;
+      });
+      start = sortedByStarts.slice(0, 5);
+    }
     const startIds = new Set(start.map((p) => p.id));
 
     // Split remaining available players into Key Rotation (playoff minutes > 0) and DNP
