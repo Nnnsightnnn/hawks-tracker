@@ -109,8 +109,9 @@ export const PLAYERS = [
     stealsPerGame: 0.9, blocksPerGame: 0.5, turnoversPerGame: 1.3,
     fieldGoalPct: 44.6, threePointPct: 37.2, freeThrowPct: 74.8,
     trueShootingPct: 55.4, plusMinus: 1.6,
-    form: 7.2, status: "active", injuryNote: null,
-    playoffStats: { gamesPlayed: 1, minutesPerGame: 12, pointsPerGame: 0, reboundsPerGame: 1, assistsPerGame: 0 },
+    form: 5.8, status: "active", injuryNote: null,
+    recentNotes: "Only 2 min in Game 1 (0-3 FG, 4 reb), then sat. Snyder riding Kispert as wing reserve — playoff role minimal for now.",
+    playoffStats: { gamesPlayed: 1, minutesPerGame: 2, pointsPerGame: 0, reboundsPerGame: 4, assistsPerGame: 0 },
     image: "https://cdn.nba.com/headshots/nba/latest/1040x760/1642258.png",
     physical: { height: 80, weight: 204 },
     career: [
@@ -125,8 +126,9 @@ export const PLAYERS = [
     stealsPerGame: 0.7, blocksPerGame: 0.5, turnoversPerGame: 1.9,
     fieldGoalPct: 47.2, threePointPct: 33.6, freeThrowPct: 70.1,
     trueShootingPct: 55.1, plusMinus: 2.4,
-    form: 7.3, status: "active", injuryNote: null,
-    playoffStats: { gamesPlayed: 1, minutesPerGame: 27, pointsPerGame: 4, reboundsPerGame: 3, assistsPerGame: 1 },
+    form: 6.8, status: "active", injuryNote: null,
+    recentNotes: "8 pts (3-7 FG, 0-2 3P) in 27 min off the bench in Game 1. Needs more secondary creation if Hawks are going to take pressure off starters.",
+    playoffStats: { gamesPlayed: 1, minutesPerGame: 27, pointsPerGame: 8, reboundsPerGame: 4, assistsPerGame: 1 },
     image: "https://cdn.nba.com/headshots/nba/latest/1040x760/1630228.png",
     physical: { height: 79, weight: 225 },
     career: [
@@ -197,6 +199,7 @@ export const PLAYERS = [
     fieldGoalPct: 52.1, threePointPct: 30.4, freeThrowPct: 68.2,
     trueShootingPct: 56.8, plusMinus: 0.2,
     form: 6.6, status: "active", injuryNote: null,
+    recentNotes: "Backup center in Game 1 (21 min, 2 pts, 4 reb). Role may grow in Game 2 if Okongwu can't go.",
     playoffStats: { gamesPlayed: 1, minutesPerGame: 21, pointsPerGame: 2, reboundsPerGame: 4, assistsPerGame: 0 },
     image: "https://cdn.nba.com/headshots/nba/latest/1040x760/1641793.png",
     physical: { height: 83, weight: 210 },
@@ -245,6 +248,7 @@ export const PLAYERS = [
     fieldGoalPct: 58.2, threePointPct: 0, freeThrowPct: 70.8,
     trueShootingPct: 61.4, plusMinus: -0.9,
     form: 6.0, status: "active", injuryNote: null,
+    recentNotes: "DNP in Game 1. On standby if Okongwu misses Game 2 — Gueye is next in line but Bradley provides emergency size.",
     playoffStats: { gamesPlayed: 0, minutesPerGame: 0, pointsPerGame: 0, reboundsPerGame: 0, assistsPerGame: 0 },
     image: "https://cdn.nba.com/headshots/nba/latest/1040x760/1628396.png",
     physical: { height: 82, weight: 248 },
@@ -384,96 +388,96 @@ export const EAST_STANDINGS = [
 
 // ─── AI News Digest (generated from live web search) ───────────────────────
 export const NEWS_DIGEST = {
-  generatedAt: "2026-04-19T14:00:00Z",
+  generatedAt: "2026-04-20T12:15:00Z",
   summary:
-    "Hawks drop Game 1 at MSG, 113-102, and trail the Knicks 1-0 heading into Monday's Game 2 (8 PM ET, NBC). Jalen Brunson (28) and Karl-Anthony Towns (25 points on 10-of-10 FT, 19 in the second half) torched Atlanta after a 19-point third quarter buried the visitors. CJ McCollum led the Hawks with 26, Jalen Johnson added 23 in his playoff debut, and Dyson Daniels stuffed the sheet with 9 points, 9 rebounds, 11 assists and 3 steals — but Atlanta shot just 38% from three and was badly outshot at the line (Snyder, postgame: \"They shoot 35 free throws and we shoot what, 15?\"). Zaccharie Risacher got just two first-quarter minutes and sat the rest of the way; Corey Kispert kept his rotation spot. Injury report stayed clean for the series — only Jock Landale (right high-ankle sprain) is out. Adjustments needed for Game 2: containing the Towns-Brunson mismatch pick-and-roll, trimming the reaches that fueled the FT gap, and getting secondary shot creation from Kuminga and Hield off the bench.",
+    "Onyeka Okongwu is questionable for tonight's Game 2 with right knee inflammation — the starting C popped up on the Hawks' injury report overnight (Yahoo/FanDuel, Apr 19), and he's the player Atlanta most needs to check Karl-Anthony Towns after Landale was lost for the round. Game 2 tips at 8 PM ET on NBC from Madison Square Garden, with the Hawks already trailing 0-1 after Saturday's 113-102 Game 1 loss. Atlanta is a historically daunting 3-38 when dropping the series opener and 0-21 when falling into an 0-2 hole — a true must-have night. Snyder's to-do list after Game 1: contain the Towns-Brunson two-man game that ignited a 19-point third-quarter Knicks run, close the 35-to-15 free-throw gap he called out postgame, and get more from a bench that generated only 13 points outside Kuminga's 8. If Okongwu is scratched, Mouhamed Gueye steps up as the emergency KAT defender with Tony Bradley next in line; oddsmakers have the Hawks +5.5 (FanDuel, Apr 20).",
   keyTopics: [
     {
-      title: "Game 1 Recap: Knicks 113, Hawks 102 — Third-Quarter Collapse",
+      title: "Okongwu Questionable for Game 2 with Right Knee Inflammation",
       detail:
-        "New York won Saturday's opener at Madison Square Garden 113-102 behind Brunson's 28 and Towns' 25 (19 in the second half). Atlanta was outscored in a decisive third quarter (19 points, 2-9 from three) and shot 48% from deep to the Knicks' back end of 37.8%. The Hawks hung around in the fourth but never drew closer than six. Series: NYK leads 1-0.",
-      category: "games",
-    },
-    {
-      title: "Dyson Daniels' Playoff Debut Stat Line: 9-9-11-3",
-      detail:
-        "Daniels nearly triple-doubled in his first career playoff game — 9 points, 9 rebounds, 11 assists, 3 steals (ESPN box, Apr 18). He was the lone Hawk to finish plus on the night outside McCollum and remains the team's defensive fulcrum as NY's perimeter looks to attack Johnson and McCollum.",
-      category: "rotation",
-    },
-    {
-      title: "McCollum 26, Johnson 23 in Playoff Debut",
-      detail:
-        "CJ McCollum led Atlanta with 26 on 11-of-20 shooting in his first playoff appearance as a Hawk. Jalen Johnson added 23 in his postseason debut, including 8 in the first quarter before Knicks defenders swarmed to slow him. Atlanta's other starters combined for 26.",
-      category: "games",
-    },
-    {
-      title: "Snyder Calls Out Free-Throw Gap: 35 vs. 15",
-      detail:
-        "Postgame, Quin Snyder was blunt about the foul discrepancy (Kevin Chouinard, Apr 18): \"They shoot 35 free throws and we shoot what, 15? That is a big discrepancy that we need to take care of. Some of them were unnecessary where we just reached. You've got to be more disciplined.\" Towns went 10-of-10 at the line by himself.",
-      category: "rotation",
-    },
-    {
-      title: "Towns Mismatch Became the Game",
-      detail:
-        "Snyder admitted after Game 1 (Yahoo, Apr 18) that defending KAT was \"pick your poison.\" Towns had just 6 at halftime but Atlanta could not prevent him getting to his spots — and the foul line — in the second half. Bracing the Okongwu/Kuminga rotation for KAT without giving up corner threes is the biggest Game 2 chalkboard item.",
-      category: "rotation",
-    },
-    {
-      title: "Risacher Benched Again: Just 2 First-Quarter Minutes",
-      detail:
-        "Zaccharie Risacher played two minutes in the first quarter and sat the rest of the way (Heavy, Apr 18), continuing a stretch that began with a DNP-CD on his 21st birthday vs. Cleveland. Snyder has ridden with Kispert as the wing reserve; it would take a blowout or Game 3 adjustments for the No. 1 overall pick to see playoff minutes again.",
-      category: "rotation",
-    },
-    {
-      title: "Game 2 Monday Night, 8 PM ET on NBC",
-      detail:
-        "Game 2 tips Monday Apr 20 at 8 PM ET at Madison Square Garden on NBC. Game 3 shifts to State Farm Arena on Apr 23 (Prime Video); Game 4 on Apr 25 (NBC). Atlanta faces a must-win if it wants to avoid going home down 2-0 to the 53-win Knicks.",
-      category: "games",
-    },
-    {
-      title: "Injury Report: Only Landale Out Heading Into Game 2",
-      detail:
-        "Hawks injury picture is unchanged from the pre-series report: Jock Landale (right high-ankle sprain) re-evaluated in two weeks and essentially ruled out for Round 1. Johnson, NAW, Okongwu, Kuminga and Vincent came out of Game 1 clean per postgame reports.",
+        "Onyeka Okongwu (right knee inflammation) popped up on Atlanta's Game 2 injury report overnight (Yahoo Sports/FanDuel, Apr 19) and is listed as questionable. He had 19 and 8 in Game 1 and is the team's only rotation-level KAT defender with Landale out. If ruled out, Mouhamed Gueye draws the start and Tony Bradley — DNP in Game 1 — becomes the next big.",
       category: "injuries",
     },
     {
-      title: "Knicks' Bench Edge: Hart's 14 Boards, Robinson's Possessions",
+      title: "Game 2 Tonight at 8 PM ET on NBC — Hawks +5.5",
       detail:
-        "Josh Hart had 10 points and 14 rebounds — half of them offensive — and Mitchell Robinson's second-chance work gave NY 4-5 extra possessions, a theme the NBA preview flagged as Atlanta's biggest series-long vulnerability. Hawks were out-rebounded 45-40.",
+        "Game 2 tips Monday Apr 20 at 8 PM ET at Madison Square Garden on NBC/Peacock. New York is a 5.5-point favorite and -220 on the moneyline (FanDuel, Apr 20); total is 216.5. Game 3 shifts to State Farm Arena Thursday Apr 23 on Prime Video. Atlanta is 3-38 all-time when down 1-0 in a series and 0-21 when dropping Game 2 on the road — the margin for error is gone.",
       category: "games",
     },
     {
-      title: "Snyder Extension Talks Still Open",
+      title: "Snyder on Towns: 'Pick Your Poison' — Game 2 Chalkboard Item",
       detail:
-        "Quin Snyder remains in the final year of his 5-year deal and HoopsHype (Apr 12) reported extension talks are active. A deep playoff run would accelerate the conversation; a quick exit here probably wouldn't derail it given Snyder's Coach of the Month win and 20-6 post-ASG record.",
-      category: "general",
+        "Quin Snyder conceded postgame (Yahoo, Apr 18) that defending KAT was \"pick your poison\" — taking Towns away freed Brunson, refocusing on Brunson opened Towns. Late-game adjustment: Daniels on Towns with Okongwu on Hart. Expect Atlanta to open that way in Game 2, especially if Okongwu's minutes need to be managed.",
+      category: "rotation",
     },
     {
-      title: "Trae Young Trade Gets Its First Playoff Verdict",
+      title: "Snyder Called Out 35-15 Free-Throw Gap",
       detail:
-        "The January deal that moved Trae Young to Washington for McCollum and Kispert has Game 1 on the scoreboard: McCollum 26 in 38 minutes, Kispert logged bench minutes with limited opportunity. Atlanta's new-look backcourt held up offensively; the series-long referendum is now on defense.",
+        "Snyder, postgame (Kevin Chouinard/Peachtree Hoops, Apr 18): \"They shoot 35 free throws and we shoot what, 15? That is a big discrepancy that we need to take care of. Some of them were unnecessary where we just reached. You've got to be more disciplined.\" Towns went 10-of-10 from the line by himself. Atlanta's Game 2 reach rate is the single most controllable variable.",
+      category: "rotation",
+    },
+    {
+      title: "Game 1 Recap: Knicks 113, Hawks 102",
+      detail:
+        "A 19-point Brunson first quarter and 19-point Towns third quarter bookended Saturday's 113-102 loss at MSG (ESPN, Apr 18). Atlanta was outscored 30-22 in the third and out-rebounded 45-40, with Hart grabbing 14 boards (half offensive) and Mitchell Robinson's second-chance work giving NY 4-5 extra possessions. Series: NYK leads 1-0.",
+      category: "games",
+    },
+    {
+      title: "Dyson Daniels: 4-9-11-3 Line in Playoff Debut",
+      detail:
+        "Daniels barely missed a triple-double — 4 points, 9 rebounds, 11 assists, 3 steals, 7 deflections and 6 screen assists (Peachtree Hoops, Apr 18) — in his first career playoff game. Scoring was the hole (his shot still a concern), but he hounded Brunson late and even picked up Towns for stretches. Expect a bigger Daniels-on-KAT dose in Game 2.",
+      category: "rotation",
+    },
+    {
+      title: "McCollum 26, Johnson 23 — Starters Held Up Offensively",
+      detail:
+        "CJ McCollum's 26 on 11-of-20 (4-9 3P) was Atlanta's best offensive performance in his first playoff game as a Hawk; Jalen Johnson had 23 (8-19 FG) in his postseason debut. Together they dropped 49; the other three starters combined for 40. The bench, by contrast, managed just 21 total (Kuminga 8, Gueye 2, Vincent 0, Kispert listed DNP/limited, Risacher 0 in 2 min).",
+      category: "games",
+    },
+    {
+      title: "NAW Struggled from the Field — Bounce-Back Candidate",
+      detail:
+        "Nickeil Alexander-Walker scored 17 on 7-of-16 (3-8 3P) in a playoff-career-high 39 minutes. Inefficient but kept shooting, which is what Snyder wants — analysts across FanDuel/Yardbarker project a bounce-back in Game 2 with a cleaner look at his sets.",
+      category: "rotation",
+    },
+    {
+      title: "Risacher Buried in the Rotation: 2 Minutes, 0 Points",
+      detail:
+        "Zaccharie Risacher played 2 first-quarter minutes (0-3 FG, 4 reb) and sat the rest of Game 1 (Heavy Sports, Apr 18). RotoWire notes he's averaged just 15.7 MPG over the last month. Snyder is riding Kispert as the wing reserve; short of a blowout or Game 3 script flip, the No. 1 overall pick has no guaranteed playoff role.",
+      category: "rotation",
+    },
+    {
+      title: "Landale Out Through Round 1",
+      detail:
+        "Jock Landale (right high-ankle sprain, Apr 1) remains ruled out; re-evaluation timeline extends past the first round. His absence is the reason Okongwu's knee inflammation is such a headline — the Hawks have no proven third center behind Okongwu and Gueye.",
+      category: "injuries",
+    },
+    {
+      title: "Trae Young Trade — First Playoff Verdict Favors Atlanta's Offense",
+      detail:
+        "The January deal that sent Trae Young to Washington for McCollum and Kispert has its first playoff score: McCollum's 26 points in 34 minutes was Atlanta's best offensive output, and new-look backcourt hit a 48% 3P rate as a unit in Game 1. The referendum now shifts to defense — Brunson's 28 came against that same group.",
       category: "trades",
     },
     {
-      title: "Johnson's Historic 22/10/7 Season Meets Playoff Reality",
+      title: "Snyder Extension Still in the Mix",
       detail:
-        "Jalen Johnson's 22.5/10.3/7.9 regular-season line made him the 5th player ever to average at least 22/10/7 (joining Oscar Robertson, Wilt, Jokić, Westbrook). Game 1 showed NY will load up to take the ball out of his hands — 23 on moderate efficiency is a starting point, not a ceiling, if he can read the help faster in Game 2.",
+        "Quin Snyder is in the final year of his 5-year deal; HoopsHype (Apr 12) reported extension talks are active. A first-round flameout would cool, not kill, the conversation given the 46-36 finish, Southeast title, Coach of the Month honors and 20-6 post-ASG stretch. Game 2 is effectively the re-opening bid.",
       category: "general",
     },
   ],
   sources: [
+    "Yahoo Sports",
+    "FanDuel Research",
     "ESPN",
     "NBA.com",
     "SI Hawks On SI",
     "Peachtree Hoops",
-    "Yahoo Sports",
-    "FOX 5 New York",
     "Heavy Sports",
+    "ClutchPoints",
+    "Bleacher Nation",
     "HoopsHype",
     "Hoops Rumors",
     "AJC",
     "Kevin Chouinard (X)",
-    "Soaring Down South",
-    "DraftKings Network",
   ],
 };
