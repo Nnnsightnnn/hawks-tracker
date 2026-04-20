@@ -136,8 +136,73 @@ function GroupHeader({ label, count, color }) {
   );
 }
 
+function MinutesBar({ starters, keyRotation }) {
+  const TOTAL_MINUTES = 240;
+  const allPlayers = [...starters, ...keyRotation];
+  const usedMinutes = allPlayers.reduce((s, p) => s + (p.playoffStats?.minutesPerGame || 0), 0);
+
+  return (
+    <div style={{ background: "#1e1e28", borderRadius: 14, padding: 16, marginBottom: 16 }}>
+      <div style={{ fontSize: 10, color: "#888", fontWeight: 600, textTransform: "uppercase", letterSpacing: 1, marginBottom: 10 }}>
+        Game 1 Minutes Distribution
+        <span style={{ color: "#666", fontWeight: 400, marginLeft: 8, letterSpacing: 0 }}>
+          {usedMinutes} of {TOTAL_MINUTES} min
+        </span>
+      </div>
+      {/* Bar */}
+      <div style={{
+        display: "flex", height: 28, borderRadius: 6, overflow: "hidden",
+        background: "#252530", gap: 1,
+      }}>
+        {allPlayers.map((p) => {
+          const mins = p.playoffStats?.minutesPerGame || 0;
+          if (mins === 0) return null;
+          const pct = (mins / TOTAL_MINUTES) * 100;
+          const isStart = starters.some((s) => s.id === p.id);
+          return (
+            <div
+              key={p.id}
+              title={`${p.name}: ${mins} min`}
+              style={{
+                width: `${pct}%`, minWidth: 2,
+                background: isStart ? HAWKS_RED : HAWKS_VOLT,
+                opacity: isStart ? 1 : 0.8,
+                display: "flex", alignItems: "center", justifyContent: "center",
+                fontSize: 8, color: "#fff", fontWeight: 700,
+                overflow: "hidden", whiteSpace: "nowrap",
+              }}
+            >
+              {pct > 5 ? `${mins}` : ""}
+            </div>
+          );
+        })}
+      </div>
+      {/* Legend */}
+      <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginTop: 8 }}>
+        {allPlayers.map((p) => {
+          const mins = p.playoffStats?.minutesPerGame || 0;
+          if (mins === 0) return null;
+          const isStart = starters.some((s) => s.id === p.id);
+          const lastName = p.name.split(" ").pop();
+          return (
+            <div key={p.id} style={{ display: "flex", alignItems: "center", gap: 4 }}>
+              <span style={{
+                width: 8, height: 8, borderRadius: 2,
+                background: isStart ? HAWKS_RED : HAWKS_VOLT,
+              }} />
+              <span style={{ fontSize: 9, color: "#aaa", fontWeight: 600 }}>
+                {lastName} {mins}
+              </span>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
 export default function RotationView({ players, nextGame }) {
-  const { starters, bench, unavailable, byPosition } = useMemo(() => {
+  const { starters, keyRotation, dnp, unavailable, byPosition } = useMemo(() => {
     const available = players.filter((p) => isAvailable(p.status));
     const unavail = players.filter((p) => !isAvailable(p.status));
 
@@ -148,7 +213,14 @@ export default function RotationView({ players, nextGame }) {
     });
     const start = sortedByStarts.slice(0, 5);
     const startIds = new Set(start.map((p) => p.id));
-    const benchList = [...available].filter((p) => !startIds.has(p.id))
+
+    // Split remaining available players into Key Rotation (playoff minutes > 0) and DNP
+    const nonStarters = [...available].filter((p) => !startIds.has(p.id));
+    const keyRot = nonStarters
+      .filter((p) => p.playoffStats && p.playoffStats.gamesPlayed > 0)
+      .sort((a, b) => (b.playoffStats?.minutesPerGame || 0) - (a.playoffStats?.minutesPerGame || 0));
+    const dnpList = nonStarters
+      .filter((p) => !p.playoffStats || p.playoffStats.gamesPlayed === 0)
       .sort((a, b) => b.minutesPerGame - a.minutesPerGame);
 
     // Group full roster by position (available + unavailable)
@@ -162,10 +234,10 @@ export default function RotationView({ players, nextGame }) {
       byPos[k].sort((a, b) => b.minutesPerGame - a.minutesPerGame);
     });
 
-    return { starters: start, bench: benchList, unavailable: unavail, byPosition: byPos };
+    return { starters: start, keyRotation: keyRot, dnp: dnpList, unavailable: unavail, byPosition: byPos };
   }, [players]);
 
-  const totalMins = starters.reduce((s, p) => s + p.minutesPerGame, 0);
+  const rotationSize = starters.length + keyRotation.length;
 
   return (
     <div>
@@ -176,7 +248,7 @@ export default function RotationView({ players, nextGame }) {
       }}>
         <div>
           <div style={{ fontSize: 11, color: HAWKS_VOLT, fontWeight: 700, textTransform: "uppercase", letterSpacing: 1.5 }}>
-            Projected Rotation
+            Playoff Rotation
           </div>
           <div style={{ fontSize: 13, color: "#ccc", marginTop: 4 }}>
             {nextGame
@@ -190,18 +262,21 @@ export default function RotationView({ players, nextGame }) {
             <div style={{ color: "#888", fontSize: 9, textTransform: "uppercase", letterSpacing: 1 }}>Starters</div>
           </div>
           <div style={{ textAlign: "center", background: "#252530", borderRadius: 8, padding: "8px 14px" }}>
-            <div style={{ color: "#fff", fontWeight: 800, fontSize: 18 }}>{bench.length}</div>
-            <div style={{ color: "#888", fontSize: 9, textTransform: "uppercase", letterSpacing: 1 }}>Bench</div>
+            <div style={{ color: HAWKS_VOLT, fontWeight: 800, fontSize: 18 }}>{rotationSize}</div>
+            <div style={{ color: "#888", fontSize: 9, textTransform: "uppercase", letterSpacing: 1 }}>Rotation</div>
           </div>
           <div style={{ textAlign: "center", background: "#252530", borderRadius: 8, padding: "8px 14px" }}>
-            <div style={{ color: HAWKS_VOLT, fontWeight: 800, fontSize: 18 }}>{totalMins.toFixed(0)}</div>
-            <div style={{ color: "#888", fontSize: 9, textTransform: "uppercase", letterSpacing: 1 }}>Starter MPG</div>
+            <div style={{ color: "#fff", fontWeight: 800, fontSize: 18 }}>{dnp.length}</div>
+            <div style={{ color: "#888", fontSize: 9, textTransform: "uppercase", letterSpacing: 1 }}>DNP</div>
           </div>
         </div>
       </div>
 
-      {/* Starters + Bench stacked */}
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(380px, 1fr))", gap: 16, marginBottom: 20 }}>
+      {/* Minutes Distribution Bar */}
+      <MinutesBar starters={starters} keyRotation={keyRotation} />
+
+      {/* Starters + Key Rotation */}
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(380px, 1fr))", gap: 16, marginBottom: 16 }}>
         <div style={{ background: "#1e1e28", borderRadius: 14, padding: 16 }}>
           <GroupHeader label="Starting 5" count={starters.length} color={HAWKS_RED} />
           <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
@@ -211,19 +286,31 @@ export default function RotationView({ players, nextGame }) {
           </div>
         </div>
         <div style={{ background: "#1e1e28", borderRadius: 14, padding: 16 }}>
-          <GroupHeader label="Bench" count={bench.length} color={HAWKS_VOLT} />
+          <GroupHeader label="Key Rotation" count={keyRotation.length} color={HAWKS_VOLT} />
           <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-            {bench.map((p) => (
+            {keyRotation.map((p) => (
               <PlayerRow key={p.id} player={p} isStarter={false} />
             ))}
-            {bench.length === 0 && (
+            {keyRotation.length === 0 && (
               <div style={{ padding: 20, textAlign: "center", color: "#666", fontSize: 12 }}>
-                Bench rotation thin — only starters available.
+                No bench players logged playoff minutes yet.
               </div>
             )}
           </div>
         </div>
       </div>
+
+      {/* DNP */}
+      {dnp.length > 0 && (
+        <div style={{ background: "#1e1e28", borderRadius: 14, padding: 16, marginBottom: 16 }}>
+          <GroupHeader label="DNP — Did Not Play" count={dnp.length} color="#666" />
+          <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+            {dnp.map((p) => (
+              <PlayerRow key={p.id} player={p} isStarter={false} />
+            ))}
+          </div>
+        </div>
+      )}
 
       {/* Unavailable */}
       {unavailable.length > 0 && (

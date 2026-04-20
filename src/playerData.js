@@ -1,7 +1,8 @@
-// ─── Atlanta Hawks Player Data (2025-26 Season · Updated Apr 19, 2026) ───────
+// ─── Atlanta Hawks Player Data (2025-26 Season · Updated Apr 20, 2026) ───────
 // Single source of truth for roster, games, digest, and RSS feeds.
 // Season context: 46-36 regular season, Southeast Division champs, 6-seed in East.
 // Playoffs Round 1 vs NY Knicks: NYK leads 1-0 after 113-102 Game 1 win at MSG (Apr 18).
+// Game 2 tonight at MSG (8 PM ET, NBC). Okongwu questionable with right knee inflammation.
 
 // Statuses: "active" | "day-to-day" | "questionable" | "doubtful" | "out" | "suspended"
 // injuryNote: short description shown on card when not active
@@ -14,7 +15,9 @@ export const PLAYERS = [
     stealsPerGame: 1.4, blocksPerGame: 0.8, turnoversPerGame: 3.1,
     fieldGoalPct: 49.8, threePointPct: 36.2, freeThrowPct: 78.4,
     trueShootingPct: 58.2, plusMinus: 5.6,
-    form: 8.4, status: "active", injuryNote: null,
+    form: 8.1, status: "active", injuryNote: null,
+    recentNotes: "Playoff debut: 23 pts on 8-19 FG, 7 reb, 3 ast. Knicks loaded up to force the ball out of his hands.",
+    playoffStats: { gamesPlayed: 1, minutesPerGame: 38, pointsPerGame: 23, reboundsPerGame: 7, assistsPerGame: 3 },
     image: "https://cdn.nba.com/headshots/nba/latest/1040x760/1630552.png",
     physical: { height: 80, weight: 219 },
     career: [
@@ -29,7 +32,9 @@ export const PLAYERS = [
     stealsPerGame: 3.1, blocksPerGame: 0.6, turnoversPerGame: 2.2,
     fieldGoalPct: 47.1, threePointPct: 35.8, freeThrowPct: 76.2,
     trueShootingPct: 56.8, plusMinus: 4.3,
-    form: 8.1, status: "active", injuryNote: null,
+    form: 8.0, status: "active", injuryNote: null,
+    recentNotes: "Near triple-double in playoff debut: 4-9-11 with 3 stl, 7 deflections, 6 screen assists. Scoring still a question.",
+    playoffStats: { gamesPlayed: 1, minutesPerGame: 36, pointsPerGame: 4, reboundsPerGame: 9, assistsPerGame: 11 },
     image: "https://cdn.nba.com/headshots/nba/latest/1040x760/1630700.png",
     physical: { height: 79, weight: 199 },
     career: [
@@ -45,7 +50,9 @@ export const PLAYERS = [
     stealsPerGame: 1.5, blocksPerGame: 0.4, turnoversPerGame: 1.8,
     fieldGoalPct: 46.4, threePointPct: 39.6, freeThrowPct: 85.3,
     trueShootingPct: 61.2, plusMinus: 6.1,
-    form: 8.2, status: "active", injuryNote: null,
+    form: 7.7, status: "active", injuryNote: null,
+    recentNotes: "17 pts on 7-16 FG (3-8 3P) in Game 1, rough shooting night. Bounce-back candidate in Game 2.",
+    playoffStats: { gamesPlayed: 1, minutesPerGame: 39, pointsPerGame: 17, reboundsPerGame: 1, assistsPerGame: 1 },
     image: "https://cdn.nba.com/headshots/nba/latest/1040x760/1629638.png",
     physical: { height: 77, weight: 204 },
     career: [
@@ -63,7 +70,9 @@ export const PLAYERS = [
     stealsPerGame: 1.0, blocksPerGame: 0.3, turnoversPerGame: 2.1,
     fieldGoalPct: 45.2, threePointPct: 38.1, freeThrowPct: 82.7,
     trueShootingPct: 57.4, plusMinus: 3.1,
-    form: 7.6, status: "active", injuryNote: null,
+    form: 8.0, status: "active", injuryNote: null,
+    recentNotes: "Team-high 26 pts on 11-20 FG (4-9 3P) in his first playoff appearance as a Hawk — best offensive presence in Game 1.",
+    playoffStats: { gamesPlayed: 1, minutesPerGame: 34, pointsPerGame: 26, reboundsPerGame: 2, assistsPerGame: 1 },
     image: "https://cdn.nba.com/headshots/nba/latest/1040x760/203468.png",
     physical: { height: 75, weight: 190 },
     career: [
@@ -80,7 +89,10 @@ export const PLAYERS = [
     stealsPerGame: 0.9, blocksPerGame: 1.4, turnoversPerGame: 1.5,
     fieldGoalPct: 56.8, threePointPct: 34.1, freeThrowPct: 72.4,
     trueShootingPct: 62.1, plusMinus: 3.8,
-    form: 7.7, status: "active", injuryNote: null,
+    form: 7.5, status: "questionable",
+    injuryNote: "Right knee inflammation (questionable for Game 2, popped on report overnight — Yahoo/FanDuel, Apr 19). Hawks need him to check Towns; if out, Gueye and Tony Bradley absorb minutes.",
+    recentNotes: "19 & 8 in Game 1 on KAT; now questionable for Game 2 with right knee inflammation.",
+    playoffStats: { gamesPlayed: 1, minutesPerGame: 37, pointsPerGame: 19, reboundsPerGame: 8, assistsPerGame: 2 },
     image: "https://cdn.nba.com/headshots/nba/latest/1040x760/1630168.png",
     physical: { height: 81, weight: 240 },
     career: [
@@ -98,6 +110,7 @@ export const PLAYERS = [
     fieldGoalPct: 44.6, threePointPct: 37.2, freeThrowPct: 74.8,
     trueShootingPct: 55.4, plusMinus: 1.6,
     form: 7.2, status: "active", injuryNote: null,
+    playoffStats: { gamesPlayed: 1, minutesPerGame: 12, pointsPerGame: 0, reboundsPerGame: 1, assistsPerGame: 0 },
     image: "https://cdn.nba.com/headshots/nba/latest/1040x760/1642258.png",
     physical: { height: 80, weight: 204 },
     career: [
@@ -113,6 +126,7 @@ export const PLAYERS = [
     fieldGoalPct: 47.2, threePointPct: 33.6, freeThrowPct: 70.1,
     trueShootingPct: 55.1, plusMinus: 2.4,
     form: 7.3, status: "active", injuryNote: null,
+    playoffStats: { gamesPlayed: 1, minutesPerGame: 27, pointsPerGame: 4, reboundsPerGame: 3, assistsPerGame: 1 },
     image: "https://cdn.nba.com/headshots/nba/latest/1040x760/1630228.png",
     physical: { height: 79, weight: 225 },
     career: [
@@ -129,6 +143,7 @@ export const PLAYERS = [
     fieldGoalPct: 42.4, threePointPct: 39.8, freeThrowPct: 86.2,
     trueShootingPct: 58.6, plusMinus: 0.9,
     form: 6.9, status: "active", injuryNote: null,
+    playoffStats: { gamesPlayed: 0, minutesPerGame: 0, pointsPerGame: 0, reboundsPerGame: 0, assistsPerGame: 0 },
     image: "https://cdn.nba.com/headshots/nba/latest/1040x760/1627741.png",
     physical: { height: 76, weight: 220 },
     career: [
@@ -147,6 +162,7 @@ export const PLAYERS = [
     fieldGoalPct: 45.1, threePointPct: 40.2, freeThrowPct: 80.4,
     trueShootingPct: 59.1, plusMinus: 1.2,
     form: 6.8, status: "active", injuryNote: null,
+    playoffStats: { gamesPlayed: 0, minutesPerGame: 0, pointsPerGame: 0, reboundsPerGame: 0, assistsPerGame: 0 },
     image: "https://cdn.nba.com/headshots/nba/latest/1040x760/1630557.png",
     physical: { height: 78, weight: 224 },
     career: [
@@ -163,6 +179,7 @@ export const PLAYERS = [
     fieldGoalPct: 40.6, threePointPct: 34.8, freeThrowPct: 82.1,
     trueShootingPct: 52.4, plusMinus: -0.8,
     form: 6.5, status: "active", injuryNote: null,
+    playoffStats: { gamesPlayed: 1, minutesPerGame: 24, pointsPerGame: 0, reboundsPerGame: 4, assistsPerGame: 0 },
     image: "https://cdn.nba.com/headshots/nba/latest/1040x760/1629216.png",
     physical: { height: 74, weight: 200 },
     career: [
@@ -180,6 +197,7 @@ export const PLAYERS = [
     fieldGoalPct: 52.1, threePointPct: 30.4, freeThrowPct: 68.2,
     trueShootingPct: 56.8, plusMinus: 0.2,
     form: 6.6, status: "active", injuryNote: null,
+    playoffStats: { gamesPlayed: 1, minutesPerGame: 21, pointsPerGame: 2, reboundsPerGame: 4, assistsPerGame: 0 },
     image: "https://cdn.nba.com/headshots/nba/latest/1040x760/1641793.png",
     physical: { height: 83, weight: 210 },
     career: [
@@ -195,6 +213,7 @@ export const PLAYERS = [
     fieldGoalPct: 43.8, threePointPct: 36.1, freeThrowPct: 78.4,
     trueShootingPct: 54.2, plusMinus: -1.1,
     form: 6.4, status: "active", injuryNote: null,
+    playoffStats: { gamesPlayed: 0, minutesPerGame: 0, pointsPerGame: 0, reboundsPerGame: 0, assistsPerGame: 0 },
     image: "https://cdn.nba.com/headshots/nba/latest/1040x760/1641734.png",
     physical: { height: 75, weight: 185 },
     career: [
@@ -210,6 +229,7 @@ export const PLAYERS = [
     fieldGoalPct: 48.9, threePointPct: 28.6, freeThrowPct: 65.4,
     trueShootingPct: 52.1, plusMinus: -0.4,
     form: 6.2, status: "active", injuryNote: null,
+    playoffStats: { gamesPlayed: 0, minutesPerGame: 0, pointsPerGame: 0, reboundsPerGame: 0, assistsPerGame: 0 },
     image: "https://cdn.nba.com/headshots/nba/latest/1040x760/1642351.png",
     physical: { height: 82, weight: 220 },
     career: [
@@ -225,6 +245,7 @@ export const PLAYERS = [
     fieldGoalPct: 58.2, threePointPct: 0, freeThrowPct: 70.8,
     trueShootingPct: 61.4, plusMinus: -0.9,
     form: 6.0, status: "active", injuryNote: null,
+    playoffStats: { gamesPlayed: 0, minutesPerGame: 0, pointsPerGame: 0, reboundsPerGame: 0, assistsPerGame: 0 },
     image: "https://cdn.nba.com/headshots/nba/latest/1040x760/1628396.png",
     physical: { height: 82, weight: 248 },
     career: [
@@ -243,6 +264,7 @@ export const PLAYERS = [
     fieldGoalPct: 54.8, threePointPct: 32.1, freeThrowPct: 78.2,
     trueShootingPct: 58.4, plusMinus: -0.3,
     form: 6.4, status: "out", injuryNote: "Right high-ankle sprain (Apr 1) — ruled out for Round 1, re-evaluation timeline extends past first round",
+    playoffStats: null,
     image: "https://cdn.nba.com/headshots/nba/latest/1040x760/1629111.png",
     physical: { height: 83, weight: 255 },
     career: [
