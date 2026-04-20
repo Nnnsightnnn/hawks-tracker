@@ -822,6 +822,103 @@ function NextGameBanner({ game, results }) {
   );
 }
 
+// ─── Injury Report Mini ─────────────────────────────────────────────────────
+
+function InjuryReportMini({ players }) {
+  const injured = players.filter((p) => p.status !== "active");
+  if (injured.length === 0) return null;
+  return (
+    <div style={{ background: "#1e1e28", borderRadius: 14, padding: 16 }}>
+      <div style={{ fontSize: 11, color: "#fd7e14", fontWeight: 700, textTransform: "uppercase", letterSpacing: 1.5, marginBottom: 10 }}>
+        Injury Report
+      </div>
+      <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+        {injured.map((p) => {
+          const cfg = statusUIConfig(p.status);
+          return (
+            <div key={p.id} style={{
+              display: "flex", alignItems: "center", gap: 10,
+              background: "#252530", borderRadius: 8, padding: "8px 10px",
+              borderLeft: `3px solid ${cfg.borderColor}`,
+            }}>
+              <span style={{
+                width: 20, height: 20, borderRadius: "50%",
+                background: cfg.iconBg, color: "#fff", fontSize: 11, fontWeight: 800,
+                display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0,
+              }}>
+                {cfg.icon}
+              </span>
+              <div style={{ flex: 1, minWidth: 0 }}>
+                <div style={{ fontSize: 12, color: "#fff", fontWeight: 700 }}>{p.name}</div>
+                <div style={{ fontSize: 10, color: "#888", marginTop: 1 }}>{p.injuryNote || p.status}</div>
+              </div>
+              <span style={{
+                fontSize: 9, color: cfg.borderColor, fontWeight: 700,
+                textTransform: "uppercase", letterSpacing: 0.5, flexShrink: 0,
+              }}>
+                {p.status}
+              </span>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
+// ─── Playoff Box Score ──────────────────────────────────────────────────────
+
+function PlayoffBoxScore({ players }) {
+  const starters = players
+    .filter((p) => p.playoffStarter && p.playoffStats?.gamesPlayed > 0)
+    .sort((a, b) => b.playoffStats.pointsPerGame - a.playoffStats.pointsPerGame);
+  if (starters.length === 0) return null;
+  const topPts = starters[0]?.playoffStats.pointsPerGame;
+  const bench = players.filter((p) => !p.playoffStarter && p.playoffStats?.gamesPlayed > 0);
+  const benchPts = bench.reduce((s, p) => s + p.playoffStats.pointsPerGame, 0);
+  return (
+    <div style={{ background: "#1e1e28", borderRadius: 14, padding: 16 }}>
+      <div style={{ fontSize: 11, color: HAWKS_VOLT, fontWeight: 700, textTransform: "uppercase", letterSpacing: 1.5, marginBottom: 10 }}>
+        Game 1 Box Score
+      </div>
+      <div style={{ display: "flex", gap: 16, marginBottom: 8, padding: "0 10px" }}>
+        <span style={{ flex: 1, fontSize: 9, color: "#555", fontWeight: 700, textTransform: "uppercase" }}></span>
+        {["PTS", "REB", "AST", "MIN"].map((h) => (
+          <span key={h} style={{ width: 32, fontSize: 9, color: "#555", fontWeight: 700, textAlign: "center", textTransform: "uppercase" }}>{h}</span>
+        ))}
+      </div>
+      <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
+        {starters.map((p) => {
+          const s = p.playoffStats;
+          const isTop = s.pointsPerGame === topPts;
+          return (
+            <div key={p.id} style={{
+              display: "flex", alignItems: "center", gap: 8,
+              background: "#252530", borderRadius: 8, padding: "6px 10px",
+              borderLeft: isTop ? `3px solid ${HAWKS_RED}` : "3px solid transparent",
+            }}>
+              <img src={p.image} alt="" style={{ width: 24, height: 24, borderRadius: "50%", objectFit: "cover", flexShrink: 0 }} />
+              <span style={{ flex: 1, fontSize: 11, color: "#ccc", fontWeight: 600, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+                {p.name}
+              </span>
+              {[s.pointsPerGame, s.reboundsPerGame, s.assistsPerGame, s.minutesPerGame].map((v, i) => (
+                <span key={i} style={{ width: 32, fontSize: 12, color: i === 0 ? "#fff" : "#aaa", fontWeight: i === 0 ? 800 : 600, textAlign: "center" }}>
+                  {v}
+                </span>
+              ))}
+            </div>
+          );
+        })}
+      </div>
+      {bench.length > 0 && (
+        <div style={{ fontSize: 10, color: "#666", marginTop: 8, paddingLeft: 10 }}>
+          Bench: {benchPts} pts ({bench.map((p) => `${p.name.split(" ").pop()} ${p.playoffStats.pointsPerGame}`).join(", ")})
+        </div>
+      )}
+    </div>
+  );
+}
+
 // ─── Playoff Series Card ────────────────────────────────────────────────────
 
 function PlayoffSeriesCard({ series }) {
@@ -831,7 +928,7 @@ function PlayoffSeriesCard({ series }) {
     : "Series tied";
   return (
     <div style={{
-      background: "#1e1e28", borderRadius: 14, padding: 18, marginBottom: 16,
+      background: "#1e1e28", borderRadius: 14, padding: 18,
       border: `1px solid ${HAWKS_RED}33`,
     }}>
       <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 12, flexWrap: "wrap" }}>
@@ -975,6 +1072,16 @@ export default function HawksTracker() {
   const [search, setSearch] = useState("");
   const [statusFilter, setStatusFilter] = useState("all"); // "all" | "available" | "out"
   const [compFilter, setCompFilter] = useState("All"); // "All" | "REG" | "PLAYOFFS"
+  const [modalPlayerId, setModalPlayerId] = useState(null);
+  const modalPlayer = modalPlayerId ? PLAYERS.find((p) => p.id === modalPlayerId) : null;
+
+  // Close modal on Escape
+  useEffect(() => {
+    if (!modalPlayerId) return;
+    const handler = (e) => { if (e.key === "Escape") setModalPlayerId(null); };
+    window.addEventListener("keydown", handler);
+    return () => window.removeEventListener("keydown", handler);
+  }, [modalPlayerId]);
 
   const filteredResults = useMemo(() => {
     if (compFilter === "All") return RESULTS;
@@ -1061,7 +1168,11 @@ export default function HawksTracker() {
               gap: 12,
               marginBottom: 4,
             }}>
-              {PLAYOFF_SERIES && <PlayoffSeriesCard series={PLAYOFF_SERIES} />}
+              <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+                {PLAYOFF_SERIES && <PlayoffSeriesCard series={PLAYOFF_SERIES} />}
+                <InjuryReportMini players={PLAYERS} />
+                <PlayoffBoxScore players={PLAYERS} />
+              </div>
               <EastStandingsCard standings={EAST_STANDINGS} />
             </div>
 
@@ -1252,7 +1363,7 @@ export default function HawksTracker() {
 
         {/* ─── ROTATION VIEW ─── */}
         {view === "rotation" && (
-          <RotationView players={PLAYERS} nextGame={NEXT_GAME} />
+          <RotationView players={PLAYERS} nextGame={NEXT_GAME} onPlayerClick={(id) => setModalPlayerId(id)} />
         )}
 
         {/* ─── NEWS VIEW ─── */}
@@ -1311,6 +1422,27 @@ export default function HawksTracker() {
           <span style={{ color: "#333" }}>True to Atlanta</span>
         </div>
       </div>
+
+      {/* Player Detail Modal (Rotation view) */}
+      {modalPlayer && (
+        <div
+          onClick={() => setModalPlayerId(null)}
+          style={{
+            position: "fixed", inset: 0, zIndex: 1000,
+            background: "rgba(0,0,0,0.7)", backdropFilter: "blur(4px)",
+            display: "flex", alignItems: "center", justifyContent: "center",
+            padding: 20,
+          }}
+        >
+          <div onClick={(e) => e.stopPropagation()} style={{ width: "100%", maxWidth: 320 }}>
+            <PlayerCard
+              player={modalPlayer}
+              expanded={true}
+              onToggle={() => setModalPlayerId(null)}
+            />
+          </div>
+        </div>
+      )}
     </div>
   );
 }

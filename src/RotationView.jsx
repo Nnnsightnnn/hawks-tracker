@@ -28,7 +28,7 @@ function isAvailable(status) {
   return status === "active" || status === "day-to-day" || status === "questionable";
 }
 
-function PlayerRow({ player, isStarter }) {
+function PlayerRow({ player, isStarter, onClick }) {
   const [imgFailed, setImgFailed] = useState(false);
   const accent = POS_COLORS[player.position] || "#888";
   const initials = player.name.split(" ").map((w) => w[0]).join("").slice(0, 2);
@@ -36,11 +36,12 @@ function PlayerRow({ player, isStarter }) {
   const available = isAvailable(player.status);
 
   return (
-    <div style={{
+    <div onClick={onClick} style={{
       display: "flex", alignItems: "center", gap: 12,
       background: isStarter ? "#252530" : "#1e1e28",
       borderRadius: 10, padding: "10px 12px",
       borderLeft: `3px solid ${isStarter ? HAWKS_RED : accent}`,
+      cursor: "pointer", transition: "background 0.15s",
     }}>
       {/* Avatar */}
       <div style={{ position: "relative", width: 44, height: 44, flexShrink: 0 }}>
@@ -201,7 +202,7 @@ function MinutesBar({ starters, keyRotation }) {
   );
 }
 
-export default function RotationView({ players, nextGame }) {
+export default function RotationView({ players, nextGame, onPlayerClick }) {
   const { starters, keyRotation, dnp, unavailable, byPosition } = useMemo(() => {
     const available = players.filter((p) => isAvailable(p.status));
     const unavail = players.filter((p) => !isAvailable(p.status));
@@ -287,7 +288,7 @@ export default function RotationView({ players, nextGame }) {
           <GroupHeader label="Starting 5" count={starters.length} color={HAWKS_RED} />
           <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
             {starters.map((p) => (
-              <PlayerRow key={p.id} player={p} isStarter={true} />
+              <PlayerRow key={p.id} player={p} isStarter={true} onClick={() => onPlayerClick(p.id)} />
             ))}
           </div>
         </div>
@@ -295,7 +296,7 @@ export default function RotationView({ players, nextGame }) {
           <GroupHeader label="Key Rotation" count={keyRotation.length} color={HAWKS_VOLT} />
           <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
             {keyRotation.map((p) => (
-              <PlayerRow key={p.id} player={p} isStarter={false} />
+              <PlayerRow key={p.id} player={p} isStarter={false} onClick={() => onPlayerClick(p.id)} />
             ))}
             {keyRotation.length === 0 && (
               <div style={{ padding: 20, textAlign: "center", color: "#666", fontSize: 12 }}>
@@ -312,7 +313,7 @@ export default function RotationView({ players, nextGame }) {
           <GroupHeader label="DNP — Did Not Play" count={dnp.length} color="#666" />
           <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
             {dnp.map((p) => (
-              <PlayerRow key={p.id} player={p} isStarter={false} />
+              <PlayerRow key={p.id} player={p} isStarter={false} onClick={() => onPlayerClick(p.id)} />
             ))}
           </div>
         </div>
@@ -325,7 +326,7 @@ export default function RotationView({ players, nextGame }) {
           <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
             {unavailable.map((p) => (
               <div key={p.id}>
-                <PlayerRow player={p} isStarter={false} />
+                <PlayerRow player={p} isStarter={false} onClick={() => onPlayerClick(p.id)} />
                 {p.injuryNote && (
                   <div style={{
                     marginTop: 4, marginLeft: 16, fontSize: 11, color: "#ff6b6b",
@@ -366,9 +367,9 @@ export default function RotationView({ players, nextGame }) {
                 {list.map((p, i) => {
                   const available = isAvailable(p.status);
                   return (
-                    <div key={p.id} style={{
+                    <div key={p.id} onClick={() => onPlayerClick(p.id)} style={{
                       display: "flex", alignItems: "center", gap: 8,
-                      padding: "6px 8px", borderRadius: 6,
+                      padding: "6px 8px", borderRadius: 6, cursor: "pointer",
                       background: i === 0 ? "#252530" : "transparent",
                     }}>
                       <span style={{
