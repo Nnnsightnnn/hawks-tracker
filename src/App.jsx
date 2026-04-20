@@ -1344,7 +1344,7 @@ export default function HawksTracker() {
             {/* Player Cards */}
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(260px, 1fr))", gap: 10 }}>
               {filtered.map((player) => (
-                <div key={player.id} style={{ gridColumn: expandedId === player.id ? "span 2" : "span 1" }}>
+                <div key={player.id}>
                   <PlayerCard
                     player={player}
                     expanded={expandedId === player.id}
@@ -1430,11 +1430,11 @@ export default function HawksTracker() {
           style={{
             position: "fixed", inset: 0, zIndex: 1000,
             background: "rgba(0,0,0,0.7)", backdropFilter: "blur(4px)",
-            display: "flex", alignItems: "center", justifyContent: "center",
-            padding: 20,
+            display: "flex", alignItems: "flex-start", justifyContent: "center",
+            padding: 20, overflowY: "auto",
           }}
         >
-          <div onClick={(e) => e.stopPropagation()} style={{ width: "100%", maxWidth: 320 }}>
+          <div onClick={(e) => e.stopPropagation()} style={{ width: "100%", maxWidth: 320, margin: "auto 0" }}>
             <PlayerCard
               player={modalPlayer}
               expanded={true}
