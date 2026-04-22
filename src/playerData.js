@@ -1,9 +1,9 @@
-// ─── Atlanta Hawks Player Data (2025-26 Season · Updated Apr 21, 2026) ───────
+// ─── Atlanta Hawks Player Data (2025-26 Season · Updated Apr 22, 2026) ───────
 // Single source of truth for roster, games, digest, and RSS feeds.
 // Season context: 46-36 regular season, Southeast Division champs, 6-seed in East.
 // Playoffs Round 1 vs NY Knicks: SERIES TIED 1-1. Hawks stole Game 2 107-106 at MSG (Apr 20),
 // overcoming a 12-point 4th quarter deficit behind McCollum's 32 & Kuminga's 19 off the bench.
-// Game 3 Thursday Apr 23 at State Farm Arena (Prime Video).
+// Game 3 Thursday Apr 23 at State Farm Arena (Prime Video) — Hawks home favorites.
 
 // Statuses: "active" | "day-to-day" | "questionable" | "doubtful" | "out" | "suspended"
 // injuryNote: short description shown on card when not active
@@ -17,7 +17,7 @@ export const PLAYERS = [
     fieldGoalPct: 49.8, threePointPct: 36.2, freeThrowPct: 78.4,
     trueShootingPct: 58.2, plusMinus: 5.6,
     form: 7.7, status: "active", injuryNote: null,
-    recentNotes: "17/8/3 in Game 2 win (6-12 FG, 0-3 3P); dagger bucket with 10 seconds left. Outside-shooting slump (0-3 3P) the only blemish through two games.",
+    recentNotes: "Averaging 20.0/7.5/3.0 through two games on 45.2% FG (SI, Apr 22). Snyder expected to assign him primary KAT duty in Game 3 per Hawks beat reporting. 0-3 from three combined Games 1-2 — outside shot the key Game 3 watch.",
     playoffStats: { gamesPlayed: 2, minutesPerGame: 36.8, pointsPerGame: 20.0, reboundsPerGame: 7.5, assistsPerGame: 3.0 },
     image: "https://cdn.nba.com/headshots/nba/latest/1040x760/1630552.png",
     physical: { height: 80, weight: 219 },
@@ -34,7 +34,7 @@ export const PLAYERS = [
     fieldGoalPct: 47.1, threePointPct: 35.8, freeThrowPct: 76.2,
     trueShootingPct: 56.8, plusMinus: 4.3,
     form: 7.1, status: "active", injuryNote: null,
-    recentNotes: "Quiet Game 2: 6/4/2 in 26 min with 3 blocks but <3 min in Q4 as Snyder rode Kuminga. Scoring still the lone hole in his playoff profile.",
+    recentNotes: "Rotation status heading into Game 3 is the series' biggest sub-plot: Kuminga took his crunch minutes in Game 2 (Peachtree Hoops, Apr 22). Still averaging 5.0 PPG across two games — offensive production must climb for him to re-enter the closing five.",
     playoffStats: { gamesPlayed: 2, minutesPerGame: 31.1, pointsPerGame: 5.0, reboundsPerGame: 6.5, assistsPerGame: 6.5 },
     image: "https://cdn.nba.com/headshots/nba/latest/1040x760/1630700.png",
     physical: { height: 79, weight: 199 },
@@ -52,7 +52,7 @@ export const PLAYERS = [
     fieldGoalPct: 45.9, threePointPct: 39.9, freeThrowPct: 90.2,
     trueShootingPct: 61.2, plusMinus: 6.1,
     form: 7.5, status: "active", injuryNote: null,
-    recentNotes: "Two-way stat-sheet stuffer in Game 2: 9/5/6 with 3 BLOCKS on 3-12 FG. Defensive pivots — guarding Brunson late — more valuable than box score.",
+    recentNotes: "Two-way stat-sheet stuffer in Game 2: 9/5/6 with 3 BLOCKS on 3-12 FG in 38 min — Johnson dunk came off a NAW block with 10 sec left (FanDuel, Apr 21). Shooting struggles (8-of-27 FG through two) are the one drag; defensive versatility the reason he's on the floor in crunch.",
     playoffStats: { gamesPlayed: 2, minutesPerGame: 38.6, pointsPerGame: 13.0, reboundsPerGame: 3.0, assistsPerGame: 3.5 },
     image: "https://cdn.nba.com/headshots/nba/latest/1040x760/1629638.png",
     physical: { height: 77, weight: 204 },
@@ -72,7 +72,7 @@ export const PLAYERS = [
     fieldGoalPct: 45.2, threePointPct: 38.1, freeThrowPct: 82.7,
     trueShootingPct: 57.4, plusMinus: 3.1,
     form: 8.9, status: "active", injuryNote: null,
-    recentNotes: "Game 2 hero: 32 pts (12-22 FG, 3-10 3P), 6 ast, 2 stl, go-ahead bucket with 34 sec left after 6 of his points in final 2+ minutes. Averaging 29 PPG through two playoff games.",
+    recentNotes: "Game 2 hero: 32 pts (12-22 FG, 3-10 3P), 6 ast, 2 stl, go-ahead bucket with 34 sec left. 29.0 PPG through two — heads home for Game 3 Thursday as the offensive engine. 'See you in the A' MSG troll now a playoff storyline (B/R, Apr 21).",
     playoffStats: { gamesPlayed: 2, minutesPerGame: 34.7, pointsPerGame: 29.0, reboundsPerGame: 2.5, assistsPerGame: 3.5 },
     image: "https://cdn.nba.com/headshots/nba/latest/1040x760/203468.png",
     physical: { height: 75, weight: 190 },
@@ -90,8 +90,8 @@ export const PLAYERS = [
     stealsPerGame: 1.1, blocksPerGame: 1.1, turnoversPerGame: 1.5,
     fieldGoalPct: 48.0, threePointPct: 37.6, freeThrowPct: 75.7,
     trueShootingPct: 59.4, plusMinus: 3.8,
-    form: 7.7, status: "active", injuryNote: null,
-    recentNotes: "Played through right knee inflammation in Game 2: 15/8 on 6-9 FG (2-3 3P) in 30 min. Four fouls pulled him early; averaging 17/8 for the series.",
+    form: 7.7, status: "questionable", injuryNote: "Right knee inflammation (managed through Games 1-2, 30 min in Game 2; expected to play Game 3 pending pregame check — Hawks injury report, Apr 22)",
+    recentNotes: "Played through knee in Game 2 (15/8, 6-9 FG, 2-3 3P, 30 min). Foul trouble is as much a concern as the knee — averaging 17/8 for the series. Game 3 status firms up at pregame per SI.",
     playoffStats: { gamesPlayed: 2, minutesPerGame: 33.4, pointsPerGame: 17.0, reboundsPerGame: 8.0, assistsPerGame: 1.5 },
     image: "https://cdn.nba.com/headshots/nba/latest/1040x760/1630168.png",
     physical: { height: 81, weight: 240 },
@@ -127,7 +127,7 @@ export const PLAYERS = [
     fieldGoalPct: 47.2, threePointPct: 33.6, freeThrowPct: 70.1,
     trueShootingPct: 55.1, plusMinus: 2.4,
     form: 8.0, status: "active", injuryNote: null,
-    recentNotes: "Game 2 X-factor: 19 pts (7-12 FG), 4 reb, +10 in 35 min including all 12 Q4 minutes. Chase-down block on Brunson sealed the win; officially the first man off the bench now.",
+    recentNotes: "Solidified as Snyder's first man off the bench after Game 2 (19 pts, 7-12 FG, +10 in 35 min, all 12 Q4 minutes, chase-down block on Brunson). Expect 30+ min and a spot in the Game 3 closing five (ClutchPoints, Apr 22).",
     playoffStats: { gamesPlayed: 2, minutesPerGame: 30.9, pointsPerGame: 13.5, reboundsPerGame: 4.0, assistsPerGame: 1.0 },
     image: "https://cdn.nba.com/headshots/nba/latest/1040x760/1630228.png",
     physical: { height: 79, weight: 225 },
@@ -392,80 +392,80 @@ export const EAST_STANDINGS = [
 
 // ─── AI News Digest (generated from live web search) ───────────────────────
 export const NEWS_DIGEST = {
-  generatedAt: "2026-04-21T12:20:00Z",
+  generatedAt: "2026-04-22T13:30:00Z",
   summary:
-    "Atlanta stole Game 2 at MSG 107-106 Monday night, erasing a 12-point 4th-quarter deficit and heading home with the series tied 1-1. CJ McCollum was the hero — 32 points on 12-22 shooting with the go-ahead bucket with 34 seconds left — and Jonathan Kuminga blew up off the bench for 19 and a chase-down block on Brunson at the rim. Atlanta outscored New York 28-15 in the fourth, with the Knicks going 5-of-19 from the field the final 12 minutes. Onyeka Okongwu played through right knee inflammation for 30 minutes of 15/8 ball before foul trouble pulled him; Jalen Johnson added 17/8/3 and the dagger bucket with 10 seconds left. Game 3 tips Thursday Apr 23 at State Farm Arena on Prime Video with Atlanta now a sizable home favorite. Snyder's key adjustment — Daniels <3 minutes in Q4, Kuminga on the floor the entire period — is the story line that defines how the Hawks use their depth the rest of the series.",
+    "Series 1-1 with Atlanta hosting Game 3 on Thursday night (7:30 PM ET, Prime Video) — the Hawks' first game as a home favorite in the Knicks series. Onyeka Okongwu (right knee inflammation) is again listed questionable on Wednesday's injury report but is trending to play after grinding through 30 minutes of 15/8 ball in Game 2. Quin Snyder's two headline Game 3 adjustments: Jalen Johnson as the primary on Karl-Anthony Towns (Atlanta bled points in Game 1 when a center guarded KAT), and Jonathan Kuminga back in the closing five over Dyson Daniels after Kuminga's 19-point Game 2 bench explosion. Mike Brown's Knicks — still reeling from a 12-point fourth-quarter lead surrendered Monday — are expected to tighten the Brunson/Towns staggering pattern that cost them Game 2. CJ McCollum enters Game 3 averaging 29.0 PPG on the series and has already become MSG's new villain after the 'See you in the A' troll on the way out Monday night. FanDuel has New York as a narrow 1-point road favorite on the odds board despite Atlanta reclaiming home court.",
   keyTopics: [
     {
-      title: "Hawks 107, Knicks 106 — Atlanta Steals Game 2, Series Tied 1-1",
+      title: "Game 3 Preview: Hawks Host Knicks Thursday, 1-Point Spread in Vegas",
       detail:
-        "Atlanta erased a 12-point 4th-quarter deficit to win 107-106 at MSG Monday night (NBA.com/ESPN, Apr 20), outscoring NY 28-15 in the fourth and holding the Knicks to 5-of-19 from the field over the final 12 minutes. The series heads to State Farm Arena tied 1-1 with Game 3 Thursday Apr 23 on Prime Video.",
+        "Round 1 Game 3 tips Thursday Apr 23 at 7:30 PM ET at State Farm Arena on Prime Video — Atlanta's first home game of the series. FanDuel opened NYK -1 / total 216.5 (CBS/SportsLine, Apr 22) despite the home court shift, with the Knicks still 73% implied to win the series. Hawks have outscored NY 53-41 in the second halves of Games 1-2.",
       category: "games",
     },
     {
-      title: "McCollum Drops 32, Go-Ahead Bucket with 34 Seconds — MSG's New Villain",
+      title: "Snyder Game 3 Plan: Jalen Johnson on KAT as Primary Assignment",
       detail:
-        "CJ McCollum scored a game-high 32 on 12-22 FG (3-10 3P, 5-7 FT) with 6 assists and 2 steals, including 6 of his points in the final 2+ minutes and the go-ahead bucket with 34 seconds left (Yahoo Sports, NBC Sports, Apr 21). Through two playoff games he's averaging 29.0 PPG — immediate vindication of the Trae Young trade in postseason returns.",
-      category: "games",
-    },
-    {
-      title: "Kuminga the X-Factor: 19 Off the Bench, Played Every Q4 Minute",
-      detail:
-        "Jonathan Kuminga was the decisive bench spark — 19 points (7-12 FG), 4 rebounds, a +10, and a chase-down block on Brunson at the rim (NBA.com, Apr 21). Snyder played him all 12 fourth-quarter minutes. Peachtree Hoops/Soaring Down South: he's officially the first man off the bench now.",
+        "Sports Illustrated's Hawks beat (Apr 22) reports Quin Snyder is expected to defend Karl-Anthony Towns with Jalen Johnson as a primary for extended Game 3 stretches, after New York ruthlessly hunted Okongwu early in Game 1. Johnson's length + Kuminga spot-duty on KAT was a +13 Q4 lineup Monday. Soaring Down South: 'forwards-on-KAT is the chess move that defines the series.'",
       category: "rotation",
     },
     {
-      title: "Daniels Under 3 Minutes in Q4 — Major Rotation Shift",
+      title: "Okongwu Questionable Again — Same Right Knee Note as Game 2",
       detail:
-        "Dyson Daniels played just 26 minutes in Game 2 (6/4/2, 3 blocks) and sat the last five-plus minutes (FanDuel, Apr 20). Snyder prioritized Kuminga's offense and NAW's shot-making over Daniels' defense in crunch — a meaningful change from a DPOY-caliber regular season rotation pattern. Through two games he's averaging just 5.0 PPG.",
-      category: "rotation",
-    },
-    {
-      title: "Okongwu Played Through Knee Inflammation — 15/8, 4 Fouls",
-      detail:
-        "Onyeka Okongwu (questionable pregame, right knee inflammation) was cleared and started (RotoWire, Apr 20), putting up 15 points on 6-9 FG (2-3 from three) and 8 rebounds in 29:52. Picked up his fourth foul early and watched Gueye/Bradley absorb spell minutes. Averaging 17 & 8 through two playoff games.",
+        "Hawks injury report for Game 3 carries Onyeka Okongwu as questionable with right knee inflammation (same designation as Game 2, which he played through — RotoWire, Apr 22). Expectation across Hawks beat (SI, ClutchPoints) is he plays, but pregame warmup will be the final check. He was 15/8 in 30 min in Game 2 before fouling out of the rotation.",
       category: "injuries",
     },
     {
-      title: "NAW: 3 Blocks, Huge Defensive Stops — Box Score Doesn't Capture It",
+      title: "Kuminga Officially the Closing-5 Forward Over Daniels",
       detail:
-        "Nickeil Alexander-Walker had 9 points on 3-12 shooting but posted 5 rebounds, 6 assists and a stunning 3 blocks in 38 minutes (plaintextsports box score, Apr 20). Snyder repeatedly put him on Brunson in the fourth — the CBS Sports headline on Mike Brown's \"failed first major test\" largely traces to those matchup shifts.",
+        "ClutchPoints and Peachtree Hoops (Apr 22) both have Snyder sticking with the Kuminga-at-the-4 closing five over Daniels after Jonathan Kuminga's 19-pt, 35-min, all-12-Q4-minute Game 2 explosion. The Dyson Daniels offensive scoring shortage (5.0 PPG in two games, <3 min in Q4) is the series' biggest sub-plot — he's the DPOY-caliber defender on the bench in crunch time.",
       category: "rotation",
     },
     {
-      title: "Johnson 17/8/3 With Late Dagger — 0-3 From Three the Only Blemish",
+      title: "Landale Still Out — Re-eval Window Lands Mid-Round",
       detail:
-        "Jalen Johnson scored 17 on 6-12 FG (0-3 3P) with 8 rebounds, 3 assists and a bucket with 10 seconds left to push Atlanta's lead to two (Yahoo Sports, Apr 21). Through two playoff games: 20.0 PPG, 7.5 RPG — the outside shooting (0-3 combined from 3 in Games 1-2 relative to 36.2% in regular season) is the single stat to watch in Game 3.",
+        "Jock Landale (right high-ankle sprain, Apr 1) remains out for Game 3 per the Hawks injury report (Apr 22). Two-week re-eval window lands mid-series — realistic return is Round 2 at the earliest. Tony Bradley (12 min in Game 2) keeps the spell-big role with Gueye in reserve.",
+      category: "injuries",
+    },
+    {
+      title: "Mike Brown Under Fire After Game 2 Collapse",
+      detail:
+        "CBS Sports' Bill Reiter (Apr 21) framed Game 2 as Mike Brown's 'failed first major test' — Knicks' no-Brunson/no-KAT fourth-quarter minutes went 3-of-4 misses with a live-ball TO. Daily Knicks: 'even his doubters are missing Thibodeau.' Expect the Brunson/Towns stagger to compress in Game 3 — that's the Knicks' most logical adjustment and the Hawks' largest Q4 advantage to defend against.",
+      category: "rotation",
+    },
+    {
+      title: "McCollum 29.0 PPG for the Series — and MSG's New Villain",
+      detail:
+        "CJ McCollum enters Game 3 averaging 29.0 PPG through two (Yahoo, NBC Sports, Apr 21) and was the Game 2 hero with 32 pts, 6 ast, and the go-ahead bucket with 34 sec left. B/R (Apr 21): after his 'See you in the A' MSG-exit troll, he's the matchup's primary character. The Trae Young trade verdict — at least in postseason returns — is already in.",
       category: "games",
     },
     {
-      title: "Risacher DNP in Game 2 — No. 1 Pick Off the Rotation",
+      title: "Hawks 107, Knicks 106 — Monday's Game 2 Recap",
       detail:
-        "Zaccharie Risacher did not play in Game 2 after a 2-minute Game 1 cameo (Yardbarker/Heavy, Apr 21). Kispert (9 min, 4 pts) is Snyder's wing reserve, and the rookie is completely out of the playoff rotation barring a blowout. A real second-year-jump concern after 9.6/3.8/1.1 regular season averages.",
-      category: "rotation",
-    },
-    {
-      title: "Bradley Activated Over Gueye — Backup Big Pivot",
-      detail:
-        "Tony Bradley got 12 minutes (2 pts, 1 stl, 1 blk, +7) vs. Gueye's 5 (0 pts, -3) after Okongwu's foul trouble. The plaintextsports box score shows Snyder preferring Bradley's size to Gueye's mobility in the KAT matchup. Notable, because Gueye was the advertised emergency starter pregame.",
-      category: "rotation",
-    },
-    {
-      title: "Game 3 Thursday at State Farm Arena — Hawks Home Favorites",
-      detail:
-        "Round 1 Game 3 tips Thursday Apr 23 at 7:30 PM ET at State Farm Arena on Prime Video. Atlanta shifts from road underdog to home favorite for the first time this series — and historically wins Game 3 after splitting Games 1-2 at a very high clip in the 2-2-1-1-1 format.",
+        "Atlanta erased a 12-point 4th-quarter deficit to win 107-106 at MSG on Monday (NBA.com/ESPN, Apr 20-21), outscoring NY 28-15 in the fourth and holding the Knicks to 5-of-19 from the field the final 12 minutes. Johnson 17/8/3, McCollum 32/6, Kuminga 19 off the bench, Okongwu 15/8 through a sore knee. Series home court is back with Atlanta.",
       category: "games",
     },
     {
-      title: "Snyder's Fourth-Quarter Adjustments Held Knicks to 15 Points",
+      title: "NAW's Game 2 Defensive Line: 3 Blocks, Late Block on Brunson",
       detail:
-        "Mike Brown's two-man Brunson-Towns core went 5-of-19 and scored 15 fourth-quarter points (CBS Sports, Apr 21). Snyder's late-game lineup — McCollum / NAW / Kuminga / Johnson / Okongwu — was a +13 in the fourth. Expect it to be the Hawks' go-to closing five the rest of the series.",
+        "Nickeil Alexander-Walker had 9 pts on 3-12 shooting but posted 5 reb / 6 ast / 3 blocks in 38 minutes — season-high in blocks (FanDuel, Apr 22). Johnson's late dagger came off a NAW rejection with 10 sec left. Shooting slump (8-of-27 FG through two) is the drag; Snyder has kept him on the floor for the defensive versatility regardless.",
       category: "rotation",
     },
     {
-      title: "Trae Young Trade Verdict: McCollum 29 PPG, Kispert in the Rotation",
+      title: "Risacher Still Out of Rotation — DNP in Game 2 Followed 2-Min Game 1",
       detail:
-        "Two playoff games since the January Trae-for-McCollum-and-Kispert deal: McCollum averaging 29 PPG with the heroic Game 2 (Hawks.com/Soaring Down South), Kispert in Snyder's wing rotation, and Washington's Trae Young watching from home after WAS missed the play-in. The internal referendum is over; the question shifts to Snyder's extension posture.",
+        "Zaccharie Risacher recorded a DNP-CD in Game 2 after the two-minute Game 1 cameo that included two missed layups (Eurohoops/Heavy, Apr 21-22). Kispert (9 min, 4 pts Game 2) is ahead of him as Snyder's wing reserve. Risacher told EuroHoops 'it's tough' about the playing time — real second-year-jump concern going into summer after 9.6/3.8/1.1 averages.",
+      category: "rotation",
+    },
+    {
+      title: "Bradley Preferred Over Gueye for Backup-Big Minutes",
+      detail:
+        "Tony Bradley got 12 min in Game 2 (2 pts, 1 stl, 1 blk, +7) while Mouhamed Gueye got just 5 (0 pts, -3) after Okongwu's foul trouble. Snyder preferred Bradley's size in the KAT matchup over Gueye's mobility. Expect similar distribution in Game 3 if Okongwu's knee/foul trouble limits him again.",
+      category: "rotation",
+    },
+    {
+      title: "Trae Young Trade Verdict: McCollum / Kuminga / Kispert All Producing",
+      detail:
+        "Two playoff games since the January Trae-for-McCollum-plus package: McCollum at 29 PPG, Kuminga now the closing-five forward, Kispert the preferred wing reserve over No. 1 pick Risacher. Trae Young watching from home after Washington missed the play-in. Hawks.com/Soaring Down South (Apr 21-22) framing it as the trade that 'made the team playoff-tough' — Snyder's extension now the next front-office question.",
       category: "trades",
     },
   ],
@@ -475,17 +475,19 @@ export const NEWS_DIGEST = {
     "Yahoo Sports",
     "NBC Sports",
     "CBS Sports",
-    "ABC7 New York",
-    "Al Jazeera",
-    "NY1",
-    "BVM Sports",
+    "Sports Illustrated (SI/onsi)",
+    "ClutchPoints",
     "Peachtree Hoops",
     "Soaring Down South",
+    "Daily Knicks",
+    "Bleacher Report",
     "FanDuel Research",
     "RotoWire",
     "Yardbarker",
     "Heavy Sports",
-    "plaintextsports.com",
+    "Eurohoops",
+    "SportsLine",
+    "Hoops Rumors",
     "Hawks.com",
   ],
 };
