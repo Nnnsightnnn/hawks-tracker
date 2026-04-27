@@ -1,19 +1,21 @@
-// ─── Atlanta Hawks Player Data (2025-26 Season · Updated Apr 26, 2026 — Game 4 morning-after) ─
+// ─── Atlanta Hawks Player Data (2025-26 Season · Updated Apr 27, 2026 — Game 5 eve at MSG) ─
 // Single source of truth for roster, games, digest, and RSS feeds.
 // Season context: 46-36 regular season, Southeast Division champs, 6-seed in East.
-// Playoffs Round 1 vs NY Knicks: SERIES TIED 2-2 after a 114-98 Game 4 home loss
-// Saturday Apr 25 (NBA.com/CBS Atlanta, Apr 25-26). Karl-Anthony Towns posted his
-// FIRST postseason triple-double (20-10-10 in 40 min, one TO) and OG Anunoby led NYK
-// scorers with 22 — the Knicks led 68-44 at the half and by 20 after Q3 in a wire-to-
-// wire win; Atlanta's last lead was 14-13 midway through Q1. McCollum led ATL with 17
-// (0-for-4 from three after going 9-of-15 in the prior three), Jalen Johnson logged a
-// quiet TD (14-10-10) but never found a scoring rhythm against Anunoby's coverage,
-// Kuminga came back to earth with all 8 of his points in the Q4 garbage stretch.
-// Hawks shot 41% overall, 24% from three. Series guaranteed to return to Atlanta for
-// Game 6 on Thursday. Game 5 is Tuesday Apr 28, 8:00 PM ET at MSG (NBC/Peacock).
-// Lingering franchise news: Nickeil Alexander-Walker named 2025-26 NBA Most Improved
-// Player on Friday Apr 24 (NBA.com/Washington Post) — second straight Hawk to win MIP
-// after Dyson Daniels in 2024-25, a league first for back-to-back team winners.
+// Playoffs Round 1 vs NY Knicks: SERIES TIED 2-2 after Saturday's 114-98 Game 4 home loss.
+// Game 5 tips Tuesday Apr 28 at 8:00 PM ET at Madison Square Garden (NBC/Peacock).
+// Hawks open as 6.5-point road underdogs (FanDuel/Covers, Apr 27); winner of Tuesday
+// holds match point with Game 6 already guaranteed at State Farm Arena Thursday.
+// Snyder talking points heading into the elimination-adjacent night: (1) establish
+// Jalen Johnson — at times "too timid" in the series per multiple postgame writeups
+// (NBA.com/SI/Yardbarker), (2) clean up the 18 turnovers from Game 4, (3) find a
+// counter to Karl-Anthony Towns as a high-post playmaker after his first career
+// postseason triple-double (20-10-10) in Game 4. McCollum, asked Sunday-Monday about
+// being held to 17 on 0-for-4 from three: "life's not so bad" heading back to MSG
+// (ClutchPoints, Apr 26-27). Onyeka Okongwu (right knee inflammation) remains
+// day-to-day with knee management; Jock Landale (high-ankle sprain Apr 1) is still
+// out at least another week. Lingering franchise headline: Nickeil Alexander-Walker
+// named 2025-26 NBA Most Improved Player on Friday Apr 24 — Hawks become the first
+// team ever with back-to-back MIP winners after Dyson Daniels in 2024-25.
 
 // Statuses: "active" | "day-to-day" | "questionable" | "doubtful" | "out" | "suspended"
 // injuryNote: short description shown on card when not active
@@ -27,7 +29,7 @@ export const PLAYERS = [
     fieldGoalPct: 49.0, threePointPct: 36.2, freeThrowPct: 78.4,
     trueShootingPct: 58.2, plusMinus: 5.6,
     form: 7.6, status: "active", injuryNote: null,
-    recentNotes: "First career playoff TRIPLE-DOUBLE in Game 4 — 14 pts (6 paint buckets, 9 FTAs), 10 reb, 10 ast — but quietly muted on the scoring end as OG Anunoby's coverage held him to a 'mild response' (NBA.com/SI, Apr 25-26). KAT's 20-10-10 stole the historical headline. Series averages now 19.5/8.5/6.0 through four games. Lost the Anunoby battle in Game 4 after winning the KAT matchup in G2-3.",
+    recentNotes: "Game 5 eve focal point: Snyder's biggest stated adjustment is to ESTABLISH Johnson early after a series in which he's at times 'appeared too timid' against OG Anunoby's coverage (SI/onsi/Yardbarker, Apr 27). Game 4 line was a quiet 14-10-10 first career playoff TD but only 5-of-15 from the field; series averages 19.5/8.5/6.0 through four. Anunoby is the matchup he must solve to flip the road game; Hawks open Tuesday at MSG as 6.5-point underdogs.",
     playoffStats: { gamesPlayed: 4, minutesPerGame: 37.5, pointsPerGame: 19.5, reboundsPerGame: 8.5, assistsPerGame: 6.0 },
     image: "https://cdn.nba.com/headshots/nba/latest/1040x760/1630552.png",
     physical: { height: 80, weight: 219 },
@@ -44,7 +46,7 @@ export const PLAYERS = [
     fieldGoalPct: 47.1, threePointPct: 35.8, freeThrowPct: 76.2,
     trueShootingPct: 56.8, plusMinus: 4.3,
     form: 6.9, status: "active", injuryNote: null,
-    recentNotes: "Game 4: 9 pts as Hawks dropped Game 4 114-98 (Basketball.com.au, Apr 25). Brunson held to 19 pts under the Daniels/NAW tag-team look — D not the issue, scoring still is. Series line dragged: ~6.8 PPG through four. Snyder kept him in the rotation after the G3 stat-sheet response, but the offensive ceiling remains the visible drag heading into Game 5 at MSG.",
+    recentNotes: "Defense holding up — Brunson at 19 in Game 4 under the Daniels/NAW tag-team look — but scoring still drags (~6.8 PPG, 36.8% FG through four). Snyder keeps him in the starting five for the Brunson assignment, but the offensive ceiling is the visible gap as Hawks open Game 5 as 6.5-point underdogs at MSG (FanDuel/Covers, Apr 27). G3's 8-13-6-3 stat-sheet line remains the series template.",
     playoffStats: { gamesPlayed: 4, minutesPerGame: 31.0, pointsPerGame: 6.8, reboundsPerGame: 7.8, assistsPerGame: 5.5 },
     image: "https://cdn.nba.com/headshots/nba/latest/1040x760/1630700.png",
     physical: { height: 79, weight: 199 },
@@ -62,7 +64,7 @@ export const PLAYERS = [
     fieldGoalPct: 45.9, threePointPct: 39.9, freeThrowPct: 90.2,
     trueShootingPct: 61.2, plusMinus: 6.1,
     form: 7.2, status: "active", injuryNote: null,
-    recentNotes: "Game 4: held to 15 pts as the Knicks geared their defense to take away the McCollum/NAW perimeter combo (NBA.com/CBS Atlanta, Apr 25). Lingering franchise headline: officially named 2025-26 NBA Most Improved Player on Friday Apr 24 — beat Deni Avdija and Jalen Duren, second straight Hawk to win after Daniels (NBA.com/Washington Post). Career-high 20.8 PPG / 39.9% from three / 251 made 3s (franchise record). Series line: ~13.3 PPG through four; Snyder still riding him for the 2-through-4 defensive flexibility despite the cold shooting stretch.",
+    recentNotes: "Heading into Game 5 still the 2-through-4 defensive Swiss-Army piece on Brunson/Anunoby/Hart. Game 4: 15 pts as the Knicks geared coverage to take away the McCollum/NAW perimeter combo (NBA.com/CBS Atlanta, Apr 25). Series PPG dragged to ~13.3 — Snyder will need a bounce-back shooting night Tuesday with the Hawks +6.5 underdogs at MSG. Lingering franchise headline: 2025-26 NBA Most Improved Player on Friday Apr 24, career-high 20.8 PPG / 39.9% from three / franchise-record 251 makes — second straight Hawk to win MIP after Daniels.",
     playoffStats: { gamesPlayed: 4, minutesPerGame: 37.0, pointsPerGame: 13.3, reboundsPerGame: 3.0, assistsPerGame: 3.3 },
     image: "https://cdn.nba.com/headshots/nba/latest/1040x760/1629638.png",
     physical: { height: 77, weight: 204 },
@@ -82,7 +84,7 @@ export const PLAYERS = [
     fieldGoalPct: 45.2, threePointPct: 38.1, freeThrowPct: 82.7,
     trueShootingPct: 57.4, plusMinus: 3.1,
     form: 8.4, status: "active", injuryNote: null,
-    recentNotes: "Game 4: Knicks held him to 17 pts on 0-for-4 from three (Yardbarker/CBS Sports, Apr 25-26) — first scoreless 3-pt night of the series after 9 makes across G1-G3. Still team-high in scoring, but the dagger touch never arrived in a 114-98 blowout where ATL was wire-to-wire trailing. Series average dips to 24.5 PPG; defense geared to deny the McCollum step-back next at MSG.",
+    recentNotes: "Defiant Game 5 setup: 'life's not so bad' was McCollum's framing heading back to MSG (ClutchPoints, Apr 26-27) after Game 4's 17-point, 0-for-4-from-three night ended his streak of 9 made threes across G1-G3. Knicks have geared their coverage to deny the McCollum step-back; Snyder still rides him as the lead playoff scoring engine. Series average 24.5 PPG/2.7 APG through four — the bounce-back game prop is the headline going into Tuesday.",
     playoffStats: { gamesPlayed: 4, minutesPerGame: 34.5, pointsPerGame: 24.5, reboundsPerGame: 3.3, assistsPerGame: 2.7 },
     usageRate: 32.4,
     image: "https://cdn.nba.com/headshots/nba/latest/1040x760/203468.png",
@@ -102,7 +104,7 @@ export const PLAYERS = [
     fieldGoalPct: 48.0, threePointPct: 37.6, freeThrowPct: 75.7,
     trueShootingPct: 59.4, plusMinus: 3.8,
     form: 5.9, status: "day-to-day", injuryNote: "Right knee inflammation (managed through Game 4 in a Hawks loss; day-to-day with knee management heading into Game 5 at MSG — Hawks medical staff via Heavy/CBS, Apr 25-26)",
-    recentNotes: "Played Game 4 through the right-knee inflammation but couldn't slow KAT's first career postseason triple-double (20-10-10) — Knicks led 68-44 at half (NBA.com/CBS Atlanta, Apr 25). KAT-on-Okongwu has been the series-defining matchup since Game 1; ATL has yet to find a counter. Bradley/Gueye still the bench-big plan; knee status carries to Game 5 at MSG.",
+    recentNotes: "Day-to-day with right-knee inflammation heading into Game 5 (Hawks medical staff via Heavy/CBS, Apr 27) — listed on the injury report but expected to play. Played Game 4 through it and couldn't slow KAT's first career postseason triple-double (20-10-10); KAT-on-Okongwu remains the series-defining matchup ATL has yet to counter. Bradley/Gueye still the bench-big plan if Snyder needs the spell minutes earlier than Game 4 timing.",
     playoffStats: { gamesPlayed: 4, minutesPerGame: 28.5, pointsPerGame: 11.0, reboundsPerGame: 6.5, assistsPerGame: 1.3 },
     image: "https://cdn.nba.com/headshots/nba/latest/1040x760/1630168.png",
     physical: { height: 81, weight: 240 },
@@ -121,7 +123,7 @@ export const PLAYERS = [
     fieldGoalPct: 44.6, threePointPct: 37.2, freeThrowPct: 74.8,
     trueShootingPct: 55.9, plusMinus: 1.6,
     form: 4.8, status: "active", injuryNote: null,
-    recentNotes: "Fourth straight playoff DNP-CD in Game 4 — Snyder's wing reserve hierarchy still goes Kuminga > Kispert > Gueye > Risacher (Eurohoops, Apr 24). The No. 1 overall pick remains fully buried in the playoff rotation; offseason narrative looms regardless of how the series ends.",
+    recentNotes: "No path back into the rotation for Game 5 — Snyder's wing reserve hierarchy still goes Kuminga > Kispert > Gueye > Risacher (Eurohoops/FanSided, Apr 24-26). Has logged just 2:30 of total playoff minutes (Game 1) across the series; four straight DNP-CDs heading to MSG. Risacher publicly told reporters 'it's tough' on the lack of run — offseason development plan now the larger-than-Round-1 storyline.",
     playoffStats: { gamesPlayed: 1, minutesPerGame: 1.0, pointsPerGame: 0.0, reboundsPerGame: 2.0, assistsPerGame: 0.0 },
     image: "https://cdn.nba.com/headshots/nba/latest/1040x760/1642258.png",
     physical: { height: 80, weight: 204 },
@@ -138,7 +140,7 @@ export const PLAYERS = [
     fieldGoalPct: 47.2, threePointPct: 33.6, freeThrowPct: 70.1,
     trueShootingPct: 55.1, plusMinus: 2.4,
     form: 7.4, status: "active", injuryNote: null,
-    recentNotes: "Game 4 dud after the Game 3 hero arc: 8 pts (all in Q4 garbage), 2 reb, 0 ast, 0 stl/blk — Warriors fans even chimed in on the no-show (SI/Warriors onsi, Apr 26). Activity level visibly off after the early miss-fest; once the deficit ballooned to 24 by halftime, the Q4 minutes were already spillover. Series PPG drops to 14.0 through four.",
+    recentNotes: "Bounce-back night required Tuesday after the Game 4 dud (8 pts all in Q4 garbage time) followed the Game 3 hero arc (21 off the bench). Snyder's bench plan may need a Game 5 jolt; Kuminga remains the lead wing reserve over Kispert/Gueye/Risacher. Series PPG 14.0 through four. Once the Q1 activity is back, KAT/Anunoby switches still favor him at the rim.",
     playoffStats: { gamesPlayed: 4, minutesPerGame: 30.0, pointsPerGame: 14.0, reboundsPerGame: 3.8, assistsPerGame: 0.8 },
     image: "https://cdn.nba.com/headshots/nba/latest/1040x760/1630228.png",
     physical: { height: 79, weight: 225 },
@@ -407,45 +409,57 @@ export const EAST_STANDINGS = [
 
 // ─── AI News Digest (generated from live web search) ───────────────────────
 export const NEWS_DIGEST = {
-  generatedAt: "2026-04-26T13:30:00Z",
+  generatedAt: "2026-04-27T14:30:00Z",
   summary:
-    "Series tied 2-2 after a 114-98 Game 4 home loss Saturday night that was wire-to-wire from the jump (NBA.com/CBS Atlanta, Apr 25-26). Karl-Anthony Towns logged the FIRST postseason triple-double of his career — 20 pts, 10 reb, 10 ast in 40 min with one turnover — and OG Anunoby led NYK scoring with 22; the Knicks led 68-44 at halftime and Atlanta's last lead came at 14-13 midway through Q1. McCollum was held to 17 on 0-for-4 from three (after 9 makes across the first three games), Jalen Johnson dropped a quiet 14-10-10 triple-double clamped by Anunoby's coverage, NAW added 15, Daniels 9, and Jonathan Kuminga came back to earth with all 8 of his points coming in the Q4 garbage stretch (SI Warriors onsi, Apr 26). Hawks shot 41% overall and 24% from three. Heading to Game 5 Tuesday Apr 28 at 8 PM ET at MSG (NBC/Peacock) — series guaranteed to return for Game 6 Thursday at State Farm Arena. Lingering franchise headline: Nickeil Alexander-Walker was named the 2025-26 NBA Most Improved Player on Friday Apr 24, beating finalists Deni Avdija and Jalen Duren — a career-high 20.8 PPG (up from 9.4) gave the Hawks back-to-back MIP winners after Dyson Daniels in 2024-25, a league first (NBA.com/Washington Post). Onyeka Okongwu played through his right-knee inflammation but couldn't slow KAT's triple-double; status now day-to-day with knee management heading to MSG. Jock Landale (right high-ankle sprain, Apr 1) remains out at least another week.",
+    "Game 5 eve: series tied 2-2, the Hawks open as 6.5-point road underdogs at Madison Square Garden Tuesday Apr 28 at 8 PM ET on NBC/Peacock with Game 6 already guaranteed back at State Farm Arena Thursday (FanDuel/Covers, Apr 27). Snyder's three Monday talking points: (1) ESTABLISH Jalen Johnson, who has 'at times appeared too timid' against OG Anunoby's coverage (SI/onsi/Yardbarker, Apr 27) — Game 4 was a quiet 14-10-10 first career playoff TD on 5-of-15 shooting; (2) clean up the 18 turnovers from Saturday's blowout — Snyder credited NYK's defensive aggression and said decisions need to come quicker; (3) find a counter to Karl-Anthony Towns as a high-post playmaker after his first career postseason triple-double (20-10-10 in 40 min, one TO) headlined the 114-98 Game 4 win that was wire-to-wire from a 14-13 ATL lead in Q1. McCollum, after a 17-point 0-for-4-from-three night that ended his streak of 9 made threes across G1-G3, told reporters Sunday-Monday 'life's not so bad' heading back to MSG (ClutchPoints, Apr 26-27). Onyeka Okongwu (right knee inflammation) is day-to-day with knee management but expected to play; Jock Landale (right high-ankle sprain Apr 1) remains out at least another week. Lingering franchise headline: Nickeil Alexander-Walker was named the 2025-26 NBA Most Improved Player Friday Apr 24, beating finalists Deni Avdija and Jalen Duren — career-high 20.8 PPG, franchise-record 251 made threes — giving the Hawks back-to-back MIP winners after Daniels in 2024-25, a league first (NBA.com/Washington Post).",
   keyTopics: [
     {
-      title: "Knicks 114, Hawks 98 — Game 4 Recap: KAT's First Postseason Triple-Double",
+      title: "Game 5 Tuesday at MSG · Hawks +6.5 Underdogs · Series Tied 2-2",
       detail:
-        "New York leveled the series 2-2 with a wire-to-wire 114-98 home win Saturday night (NBA.com/CBS Atlanta, Apr 25-26). Karl-Anthony Towns went 20-10-10 with one turnover in 40 minutes — first career postseason triple-double, fourth Knick ever (Frazier, McGuire, Hart). NYK led 68-44 at half and by 20 after Q3; Atlanta's last lead was 14-13 in Q1. OG Anunoby led NYK scoring with 22, Brunson added 19. Hawks shot 41% overall, 24% from three.",
+        "Round 1 Game 5 tips Tuesday Apr 28 at 8:00 PM ET at Madison Square Garden on NBC and Peacock (FanDuel/Covers, Apr 27). Atlanta opens as 6.5-point underdogs after the Knicks' 114-98 Game 4 win swung home court back. Best-of-three sprint with the Tuesday winner holding match point; Game 6 already guaranteed back at State Farm Arena Thursday.",
       category: "games",
     },
     {
-      title: "McCollum Held to 17 on 0-for-4 From Three — First Cold Three-Point Night",
+      title: "Snyder's Game 5 Plan: Establish Johnson, Cut Turnovers, Counter KAT",
       detail:
-        "After making 9 threes across G1-G3, McCollum went 0-for-4 from beyond the arc in Game 4 and led ATL with just 17 (Yardbarker/CBS Sports, Apr 25-26). Knicks geared their defense to deny the McCollum step-back; he's now at 24.5 PPG for the series. Game 5 prop expected to drop given the matchup adjustment heading to MSG.",
+        "Quin Snyder's three Monday talking points heading into Tuesday (NBA.com/SI/Yardbarker, Apr 27): (1) ESTABLISH Jalen Johnson early — he has 'at times appeared too timid' against OG Anunoby's coverage and was a quiet 14-10-10 in Game 4 on 5-of-15; (2) clean up the 18 turnovers from Game 4, where Snyder credited Knicks' defensive aggression and said 'decisions need to come quicker'; (3) find a counter to Karl-Anthony Towns as a high-post playmaker after his TD off 12 potential dives.",
+      category: "rotation",
+    },
+    {
+      title: "McCollum Heading to MSG: 'Life's Not So Bad'",
+      detail:
+        "CJ McCollum, after a 17-point 0-for-4-from-three night that ended his streak of 9 made threes across G1-G3, told reporters Sunday-Monday 'life's not so bad' heading back to MSG (ClutchPoints, Apr 26-27). Series average 24.5 PPG/2.7 APG; Knicks have geared their coverage to deny the step-back. The bounce-back game prop is the headline going into Tuesday with the road dog moneyline at +220.",
+      category: "general",
+    },
+    {
+      title: "Knicks 114, Hawks 98 — Game 4 Recap: KAT's First Postseason Triple-Double",
+      detail:
+        "New York leveled the series 2-2 with a wire-to-wire 114-98 home win Saturday Apr 25 (NBA.com/CBS Atlanta, Apr 25-26). Karl-Anthony Towns went 20-10-10 with one turnover in 40 minutes — first career postseason triple-double, fourth Knick ever (Frazier, McGuire, Hart). NYK led 68-44 at half and by 20 after Q3. OG Anunoby led NYK scoring with 22, Brunson added 19. Hawks shot 41% overall, 24% from three.",
       category: "games",
+    },
+    {
+      title: "Knicks' Game 4 Adjustment: Protect Brunson, Run Offense Through KAT",
+      detail:
+        "Mike Brown's Game 4 adjustments unlocked New York's best offensive showing of the series (NY Knicks News, Apr 26-27): rotated coverages and varied switches to keep Brunson off primary ball-handlers defensively, then ran the offense through KAT as a high-post hub — 12 potential assists, 10 made. Hawks have to choose between blitzing KAT (free shooters) or playing him straight (his triple-double map). Whichever Snyder picks Tuesday is the series.",
+      category: "rotation",
+    },
+    {
+      title: "Okongwu Day-to-Day With Knee Inflammation — Expected to Play Game 5",
+      detail:
+        "Onyeka Okongwu (right knee inflammation) remains day-to-day with knee management heading to Tuesday but is expected to play (Heavy/CBS, Apr 27). Played Game 4 through it and was the primary defender on KAT's first career playoff TD. KAT-on-Okongwu remains the series-defining matchup ATL has yet to counter; Bradley/Gueye still the spell-big plan if Snyder goes earlier with the rotation Tuesday.",
+      category: "injuries",
     },
     {
       title: "Johnson's Quiet 14-10-10 — First Career Playoff Triple-Double, In a Loss",
       detail:
-        "Jalen Johnson posted his first career playoff triple-double in Game 4 — 14 pts (6 paint buckets, 9 FTAs), 10 reb, 10 ast — but never found scoring rhythm against OG Anunoby's coverage (SI/onsi, Apr 25-26). 'Mild response' was the league framing. Series line dips to 19.5/8.5/6.0; Anunoby is now the matchup he has to solve to flip Game 5.",
+        "Jalen Johnson posted his first career playoff triple-double in Game 4 — 14 pts (6 paint buckets, 9 FTAs), 10 reb, 10 ast — but never found scoring rhythm against OG Anunoby's coverage (SI/onsi, Apr 25-26). 'Mild response' was the league framing. Series line 19.5/8.5/6.0; Anunoby is now the matchup he has to solve to flip Game 5.",
       category: "games",
     },
     {
       title: "Kuminga Game 4 Dud — All 8 Points in Q4 Garbage Time",
       detail:
-        "After the franchise-history Q1 in Game 3, Kuminga managed only 8 points in Game 4 — every one of them in the fourth quarter once the deficit had ballooned (SI Warriors onsi, Apr 26). 2 reb, 0 ast, 0 stl/blk; activity level visibly off after the early miss-fest. Series PPG drops to 14.0 through four — Snyder's bench plan may need a Game 5 jolt.",
+        "After the franchise-history Q1 in Game 3, Kuminga managed only 8 points in Game 4 — every one of them in the fourth quarter once the deficit had ballooned (SI Warriors onsi, Apr 26). 2 reb, 0 ast, 0 stl/blk; activity level visibly off after the early miss-fest. Series PPG drops to 14.0 through four — Snyder's bench plan needs the Game 3 Kuminga to show back up Tuesday.",
       category: "rotation",
-    },
-    {
-      title: "Game 5 Tuesday at MSG · 8 PM ET, NBC/Peacock · Series Tied 2-2",
-      detail:
-        "Round 1 Game 5 tips Tuesday Apr 28 at 8 PM ET at Madison Square Garden on NBC and Peacock (NBC Sports, Apr 24-26). Best-of-three sprint with the winner of Tuesday holding match point; series guaranteed to return to Atlanta for Game 6 Thursday. Knicks regain home court after stealing it back Saturday with their first 20-point margin of the series.",
-      category: "games",
-    },
-    {
-      title: "Okongwu Day-to-Day with Knee Inflammation — Couldn't Slow KAT's TD",
-      detail:
-        "Onyeka Okongwu played through his right-knee inflammation in Game 4 but was the primary defender on KAT's first career postseason triple-double (Heavy/CBS, Apr 25-26). Status now day-to-day with knee management heading to MSG. Bradley and Gueye still split the spell-big minutes; KAT-on-Okongwu remains the series-defining matchup ATL has yet to counter.",
-      category: "injuries",
     },
     {
       title: "NAW Wins 2025-26 NBA Most Improved Player — Back-to-Back for Hawks",
@@ -454,21 +468,21 @@ export const NEWS_DIGEST = {
       category: "general",
     },
     {
-      title: "Daniels Held to 9 in Game 4 — Defensive Tag-Team Holds, Offense Doesn't",
+      title: "Daniels' Defense Holds Brunson at 19 — Offensive Ceiling Still the Drag",
       detail:
-        "Dyson Daniels finished with 9 points in the Game 4 loss (Basketball.com.au, Apr 25). The Daniels/NAW tag-team look held Brunson to 19 — defense isn't the issue, the offensive ceiling is. Series line: ~6.8 PPG / 7.8 RPG / 5.5 APG. Snyder keeps him in the starting five but the scoring drag remains the visible gap heading to MSG.",
+        "Through four games the Daniels/NAW tag-team look has Brunson at 22 PPG well below his regular-season norm — Game 4 was 19 (Basketball.com.au, Apr 25). Defense isn't the issue; Daniels' own scoring is at ~6.8 PPG on 36.8% FG. Snyder keeps him in the starting five for the Brunson assignment; series box-score expectation is more 9-7-6 than 17-pt spike heading into Tuesday.",
       category: "rotation",
     },
     {
       title: "Hawks 109, Knicks 108 — Game 3 Holds Up as the Lone ATL Home Win",
       detail:
-        "Atlanta's Game 3 win Thursday on CJ McCollum's go-ahead fadeaway at 12.5 seconds and a Jonathan Kuminga help-poke steal (NBA.com/Yahoo, Apr 23-24) is now the only home win of the series after Saturday's blowout. Hawks led 58-50 at half, weathered OG Anunoby 29 and KAT 21/17, and held NYK scoreless on the final two possessions. Second straight one-point win at the time.",
+        "Atlanta's Game 3 win on CJ McCollum's go-ahead fadeaway at 12.5 seconds and a Jonathan Kuminga help-poke steal (NBA.com/Yahoo, Apr 23-24) remains the only home win of the series after Saturday's blowout. Hawks led 58-50 at half, weathered OG Anunoby 29 and KAT 21/17, and held NYK scoreless on the final two possessions.",
       category: "games",
     },
     {
-      title: "Risacher Fourth Straight DNP-CD — No. 1 Pick Buried Through Round 1",
+      title: "Risacher Buried Through Round 1 — Four Straight DNP-CDs Heading to MSG",
       detail:
-        "Zaccharie Risacher recorded his fourth straight playoff DNP-CD in Game 4 (Eurohoops, Apr 24-26). Snyder's wing reserve hierarchy still goes Kuminga > Kispert > Gueye > Risacher; the No. 1 overall pick has not played meaningful minutes in any of the four games. Offseason narrative on the Risacher development plan looms regardless of how the series ends.",
+        "Zaccharie Risacher has logged just 2:30 of total playoff minutes (Game 1) heading into Tuesday — four straight DNP-CDs (Eurohoops/FanSided, Apr 24-26). Snyder's wing reserve hierarchy is Kuminga > Kispert > Gueye > Risacher; the No. 1 overall pick told reporters 'it's tough' on the lack of run. Offseason development plan is now the larger storyline regardless of how Round 1 ends.",
       category: "rotation",
     },
     {
@@ -478,9 +492,9 @@ export const NEWS_DIGEST = {
       category: "injuries",
     },
     {
-      title: "Trae Young Trade: McCollum 24.5 PPG, Kuminga +30 Net Through Four",
+      title: "Trae Young Trade: McCollum 24.5 PPG Series Lead, Kuminga's Wing Slot",
       detail:
-        "Four playoff games since the Jan 8 Trae-for-McCollum-plus package: McCollum at 24.5 PPG with the Game 3 walk-off, Kuminga at 14.0 PPG and a Q4 dud in Game 4, Kispert ahead of No. 1 pick Risacher in the rotation (Soaring Down South/Hawks.com, Apr 24). Trae watching from home after Washington missed the play-in. The trade still grades out as the series enabler even after Saturday's loss.",
+        "Four playoff games since the Jan 8 Trae-for-McCollum-plus package: McCollum leads ATL at 24.5 PPG with the Game 3 walk-off, Kuminga at 14.0 PPG with one Q1 hero arc, Kispert ahead of No. 1 pick Risacher in the rotation (Soaring Down South/Hawks.com, Apr 24). Trae's not playing for Washington again this season after they missed the play-in. The trade still grades as the series enabler.",
       category: "trades",
     },
   ],
@@ -497,14 +511,16 @@ export const NEWS_DIGEST = {
     "ClutchPoints",
     "Peachtree Hoops",
     "Soaring Down South",
-    "Posting and Toasting",
+    "NY Knicks News",
     "Heavy Sports",
     "Bleacher Report",
     "RotoWire",
     "Yardbarker",
     "Eurohoops",
+    "FanSided",
     "Hawks.com",
     "FanDuel Research",
-    "Lineups.com",
+    "Covers",
+    "TotalProSports",
   ],
 };
