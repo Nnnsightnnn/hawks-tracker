@@ -1,1448 +1,1128 @@
 import { useState, useMemo, useEffect } from "react";
-import _ from "lodash";
 import {
   PLAYERS,
-  RSS_FEEDS,
   RESULTS,
   NEXT_GAME,
-  TEAM_LOGOS,
   NEWS_DIGEST,
-  PLAYOFF_SERIES,
   EAST_STANDINGS,
 } from "./playerData.js";
 import RotationView from "./RotationView.jsx";
 
-// ─── Atlanta Hawks Player Tracker ───────────────────────────────────────────
-// 2025-26 season, post-ASB surge, Round 1 playoffs vs Knicks
-
-const HAWKS_RED = "#E03A3E";
-const HAWKS_BLACK = "#26282A";
-const HAWKS_VOLT = "#C1D32F";
-const HAWKS_DARK = "#1a1a1f";
-
-// NBA positions → colors
-const POS_COLORS = {
-  PG: "#3498db",
-  SG: "#2ecc71",
-  SF: "#f1c40f",
-  PF: "#e67e22",
-  C: "#e74c3c",
+// ─── Theme tokens ───────────────────────────────────────────────
+export const C = {
+  bg: "#0B0B0E",
+  panel: "#16161A",
+  panel2: "#1E1E22",
+  red: "#E03A3E",
+  volt: "#C8FB37",
+  ivory: "#F5F1E8",
+  green: "#3FCF8E",
+  amber: "#F4B740",
+  hair: "#27272C",
+  mute: "#7A7A82",
 };
 
-// NBA status taxonomy: active | day-to-day | questionable | doubtful | out | suspended
-function statusUIConfig(status) {
-  switch (status) {
-    case "active":
-      return { borderColor: HAWKS_RED, icon: null, iconBg: null };
-    case "day-to-day":
-      return { borderColor: "#ffc107", icon: "~", iconBg: "#ffc107" };
-    case "questionable":
-      return { borderColor: "#ffc107", icon: "?", iconBg: "#ffc107" };
-    case "doubtful":
-      return { borderColor: "#fd7e14", icon: "?", iconBg: "#fd7e14" };
-    case "out":
-      return { borderColor: "#dc3545", icon: "+", iconBg: "#dc3545" };
-    case "suspended":
-      return { borderColor: "#6c757d", icon: "!", iconBg: "#6c757d" };
-    default:
-      return { borderColor: HAWKS_RED, icon: null, iconBg: null };
-  }
+const TEAM_ABBR = {
+  "Atlanta Hawks": "ATL",
+  "Cleveland Cavaliers": "CLE",
+  "Boston Celtics": "BOS",
+  "New York Knicks": "NYK",
+  "Milwaukee Bucks": "MIL",
+  "Orlando Magic": "ORL",
+  "Detroit Pistons": "DET",
+  "Miami Heat": "MIA",
+  "Brooklyn Nets": "BKN",
+  "Sacramento Kings": "SAC",
+  "Golden State Warriors": "GSW",
+  "Houston Rockets": "HOU",
+  "Dallas Mavericks": "DAL",
+  "Memphis Grizzlies": "MEM",
+};
+
+const COUNTRY_SHORT = {
+  USA: "USA",
+  Australia: "AUS",
+  Canada: "CAN",
+  Bahamas: "BHS",
+  France: "FRA",
+  Senegal: "SEN",
+  "DR Congo": "COD",
+};
+
+function abbr(team) {
+  return TEAM_ABBR[team] || team.split(" ").pop().slice(0, 3).toUpperCase();
 }
 
-// ─── Player Avatar ──────────────────────────────────────────────────────────
-function PlayerAvatar({ player, size = 64 }) {
-  const [imgFailed, setImgFailed] = useState(false);
-  const accent = POS_COLORS[player.position] || "#888";
-  const initials = player.name.split(" ").map((w) => w[0]).join("").slice(0, 2);
-  const ui = statusUIConfig(player.status);
+function countryName(p) {
+  return (p.nationality || "USA").replace(/[^\x00-\x7F]+/g, "").trim();
+}
 
+function countryShort(p) {
+  const n = countryName(p);
+  return COUNTRY_SHORT[n] || n.slice(0, 3).toUpperCase();
+}
+
+// ─── Count-up hook ──────────────────────────────────────────────
+function useCountUp(target, dur = 900) {
+  const [n, setN] = useState(0);
+  useEffect(() => {
+    let raf, t0;
+    const step = (t) => {
+      if (!t0) t0 = t;
+      const p = Math.min((t - t0) / dur, 1);
+      const e = 1 - Math.pow(1 - p, 3);
+      setN(target * e);
+      if (p < 1) raf = requestAnimationFrame(step);
+    };
+    raf = requestAnimationFrame(step);
+    return () => cancelAnimationFrame(raf);
+  }, [target, dur]);
+  return n;
+}
+
+// ─── Volt-underline link ────────────────────────────────────────
+export function Vlink({ children, onClick, active, color = C.volt, size = 12 }) {
+  const [h, setH] = useState(false);
   return (
-    <div style={{ position: "relative", flexShrink: 0, width: size, height: size }}>
-      <div style={{
-        width: size, height: size, borderRadius: "50%", overflow: "hidden",
-        border: `3px solid ${ui.borderColor}`, background: "#2a2a3a",
-        display: "flex", alignItems: "center", justifyContent: "center",
-      }}>
-        {!imgFailed ? (
-          <img
-            src={player.image}
-            alt={player.name}
-            style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top" }}
-            onError={() => setImgFailed(true)}
-          />
-        ) : (
-          <div style={{
-            width: "100%", height: "100%",
-            background: `linear-gradient(135deg, ${accent}55, ${HAWKS_RED}88)`,
-            display: "flex", flexDirection: "column",
-            alignItems: "center", justifyContent: "center", gap: 1,
-          }}>
-            <span style={{ color: "#fff", fontWeight: 800, fontSize: size * 0.3, lineHeight: 1 }}>{initials}</span>
-            <span style={{ color: "#ffffffaa", fontWeight: 700, fontSize: size * 0.17 }}>#{player.number}</span>
-          </div>
-        )}
-      </div>
-      {ui.icon && (
-        <div style={{
-          position: "absolute", bottom: -1, right: -1,
-          width: size * 0.32, height: size * 0.32, borderRadius: "50%",
-          background: ui.iconBg, display: "flex",
-          alignItems: "center", justifyContent: "center",
-          fontSize: size * 0.2, fontWeight: 900, color: "#fff",
-          border: "2px solid #1e1e28", lineHeight: 1,
-        }}>
-          {ui.icon}
-        </div>
-      )}
-    </div>
+    <button
+      onClick={onClick}
+      onMouseEnter={() => setH(true)}
+      onMouseLeave={() => setH(false)}
+      style={{
+        background: "transparent", border: "none", padding: "4px 0",
+        cursor: "pointer",
+        color: active ? "#fff" : (h ? "#fff" : C.mute),
+        fontFamily: "Inter, sans-serif", fontSize: size, fontWeight: 600,
+        textTransform: "uppercase", letterSpacing: 1.4, position: "relative",
+      }}
+    >
+      {children}
+      <span style={{
+        position: "absolute", left: 0, bottom: 0, height: 2,
+        width: (active || h) ? "100%" : "0%",
+        background: color, transition: "width .18s cubic-bezier(.7,0,.3,1)",
+      }}/>
+    </button>
   );
 }
 
-// ─── Helper Components ──────────────────────────────────────────────────────
-
-function FormBadge({ form }) {
-  let color = "#6c757d";
-  let label = "Average";
-  if (form >= 8.0) { color = "#28a745"; label = "Excellent"; }
-  else if (form >= 7.5) { color = "#5cb85c"; label = "Good"; }
-  else if (form >= 7.0) { color = "#ffc107"; label = "Decent"; }
-  else if (form >= 6.5) { color = "#fd7e14"; label = "Fair"; }
-  else { color = "#dc3545"; label = "Poor"; }
-
-  return (
-    <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-      <div style={{
-        width: 48, height: 48, borderRadius: "50%", background: color,
-        display: "flex", alignItems: "center", justifyContent: "center",
-        color: "#fff", fontWeight: 700, fontSize: 16, boxShadow: `0 0 12px ${color}55`,
-      }}>
-        {form.toFixed(1)}
-      </div>
-      <span style={{ fontSize: 11, color: "#aaa", textTransform: "uppercase", letterSpacing: 1 }}>{label}</span>
-    </div>
-  );
-}
-
-function StatBar({ label, value, max, unit = "" }) {
-  const pct = Math.min((value / max) * 100, 100);
-  return (
-    <div style={{ marginBottom: 6 }}>
-      <div style={{ display: "flex", justifyContent: "space-between", fontSize: 11, color: "#bbb", marginBottom: 2 }}>
-        <span>{label}</span>
-        <span style={{ color: "#fff", fontWeight: 600 }}>{value}{unit}</span>
-      </div>
-      <div style={{ height: 4, borderRadius: 2, background: "#333", overflow: "hidden" }}>
-        <div style={{ width: `${pct}%`, height: "100%", borderRadius: 2, background: `linear-gradient(90deg, ${HAWKS_RED}, ${HAWKS_VOLT})`, transition: "width 0.6s ease" }} />
-      </div>
-    </div>
-  );
-}
-
-function PositionTag({ position }) {
-  return (
-    <span style={{
-      background: POS_COLORS[position] || "#888", color: "#fff", fontSize: 10,
-      padding: "2px 8px", borderRadius: 10, fontWeight: 700, letterSpacing: 1,
-    }}>
-      {position}
-    </span>
-  );
-}
-
-function StatusBadge({ status }) {
-  if (status === "active") return null;
-  const cfg = {
-    "day-to-day":   { bg: "#ffc10722", border: "#ffc107", color: "#ffe066", label: "DAY-TO-DAY" },
-    questionable:   { bg: "#ffc10722", border: "#ffc107", color: "#ffe066", label: "QUESTIONABLE" },
-    doubtful:       { bg: "#fd7e1422", border: "#fd7e14", color: "#ffa94d", label: "DOUBTFUL" },
-    out:            { bg: "#dc354522", border: "#dc3545", color: "#ff6b6b", label: "OUT" },
-    suspended:      { bg: "#6c757d22", border: "#6c757d", color: "#adb5bd", label: "SUSPENDED" },
+// ─── Status pill ────────────────────────────────────────────────
+export function Status({ s }) {
+  const map = {
+    active: { c: C.green, l: "ACTIVE" },
+    "day-to-day": { c: C.amber, l: "DTD" },
+    questionable: { c: C.amber, l: "GTD" },
+    doubtful: { c: C.amber, l: "DOUBT" },
+    out: { c: C.red, l: "OUT" },
+    suspended: { c: C.mute, l: "SUS" },
   };
-  const c = cfg[status] || cfg.out;
+  const m = map[s] || map.active;
   return (
     <span style={{
-      background: c.bg, border: `1px solid ${c.border}`, color: c.color,
-      fontSize: 9, padding: "2px 8px", borderRadius: 10, fontWeight: 700, letterSpacing: 1.2,
+      display: "inline-flex", alignItems: "center", gap: 6,
+      fontFamily: "'JetBrains Mono', monospace", fontSize: 9, fontWeight: 600,
+      letterSpacing: 1.5, color: m.c, textTransform: "uppercase",
     }}>
-      {c.label}
+      <span style={{ width: 7, height: 7, background: m.c, display: "inline-block" }}/>
+      {m.l}
     </span>
   );
 }
 
-// ─── Physical Profile ────────────────────────────────────────────────────────
-// Hawks data stores height in inches and weight in lbs directly
-function PhysicalProfile({ physical, age }) {
-  const inches = physical.height;
-  const ft = Math.floor(inches / 12);
-  const inRem = inches % 12;
-  const lbs = physical.weight;
+// ─── Section header ─────────────────────────────────────────────
+export function SectionHeader({ kicker, title, right }) {
   return (
-    <div>
-      <div style={{ display: "flex", gap: 8, marginBottom: 14 }}>
-        <div style={{ flex: 1, background: "#252530", borderRadius: 10, padding: "12px 10px", textAlign: "center" }}>
-          <div style={{ color: "#fff", fontWeight: 800, fontSize: 22 }}>
-            {ft}<span style={{ fontSize: 12, color: "#888", fontWeight: 400 }}>'</span>
-            {inRem}<span style={{ fontSize: 12, color: "#888", fontWeight: 400 }}>"</span>
-          </div>
-          <div style={{ color: "#777", fontSize: 10, textTransform: "uppercase", letterSpacing: 1, marginTop: 2 }}>Height</div>
+    <div style={{
+      display: "flex", alignItems: "flex-end", justifyContent: "space-between",
+      gap: 24, flexWrap: "wrap",
+    }}>
+      <div>
+        <div style={{
+          fontFamily: "'JetBrains Mono', monospace", fontSize: 11,
+          color: C.volt, letterSpacing: 2.5, marginBottom: 8,
+        }}>// {kicker}</div>
+        <h2 style={{
+          fontFamily: "'Anton', sans-serif",
+          fontSize: "clamp(48px, 6vw, 96px)",
+          color: C.ivory, textTransform: "uppercase",
+          lineHeight: 0.85, margin: 0, letterSpacing: "-0.015em",
+        }}>{title}</h2>
+      </div>
+      {right}
+    </div>
+  );
+}
+
+// ─── HERO ───────────────────────────────────────────────────────
+function Hero() {
+  const [now, setNow] = useState(Date.now());
+  useEffect(() => {
+    const t = setInterval(() => setNow(Date.now()), 1000);
+    return () => clearInterval(t);
+  }, []);
+  const target = new Date(NEXT_GAME.date).getTime();
+  const diff = target - now;
+  const days = Math.max(0, Math.floor(diff / 86400000));
+  const hrs = Math.max(0, Math.floor((diff % 86400000) / 3600000));
+  const mins = Math.max(0, Math.floor((diff % 3600000) / 60000));
+  const sec = Math.max(0, Math.floor((diff % 60000) / 1000));
+
+  return (
+    <section style={{
+      position: "relative", borderBottom: `1px solid ${C.hair}`, overflow: "hidden",
+    }}>
+      {/* film grain */}
+      <div style={{
+        position: "absolute", inset: 0, pointerEvents: "none", opacity: 0.04,
+        backgroundImage:
+          "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.9 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>\")",
+        zIndex: 2,
+      }}/>
+
+      {/* top meta */}
+      <div style={{ padding: "24px 40px 0", position: "relative", zIndex: 3 }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
+          <span style={{
+            width: 10, height: 10, background: C.red, display: "inline-block",
+            boxShadow: `0 0 12px ${C.red}aa`,
+          }}/>
+          <span style={{
+            fontFamily: "'JetBrains Mono', monospace", fontSize: 11,
+            color: C.ivory, letterSpacing: 2, fontWeight: 600,
+          }}>SEASON · 2025–26 · OFFSEASON</span>
+          <span style={{ flex: 1, height: 1, background: C.hair }}/>
+          <span style={{
+            fontFamily: "'JetBrains Mono', monospace", fontSize: 11,
+            color: C.mute, letterSpacing: 2,
+          }}>ELIMINATED · R1 · 2–4 NYK</span>
         </div>
-        <div style={{ flex: 1, background: "#252530", borderRadius: 10, padding: "12px 10px", textAlign: "center" }}>
-          <div style={{ color: "#fff", fontWeight: 800, fontSize: 22 }}>
-            {lbs}<span style={{ fontSize: 12, color: "#888", fontWeight: 400 }}> lbs</span>
-          </div>
-          <div style={{ color: "#777", fontSize: 10, textTransform: "uppercase", letterSpacing: 1, marginTop: 2 }}>Weight</div>
+      </div>
+
+      {/* wordmark */}
+      <div style={{ padding: "18px 40px 0", position: "relative", zIndex: 3 }}>
+        <h1 style={{
+          fontFamily: "'Anton', 'Bebas Neue', sans-serif",
+          fontSize: "clamp(120px, 22vw, 360px)",
+          lineHeight: 0.82, margin: 0, letterSpacing: "-0.025em",
+          color: C.ivory, textTransform: "uppercase",
+          transform: "translateX(-1%)", whiteSpace: "nowrap",
+        }}>
+          HAWKS<span style={{ color: C.red }}>.</span>
+          TRACKER<span style={{ color: C.volt }}>/</span>26
+        </h1>
+      </div>
+
+      {/* countdown band */}
+      <div style={{
+        padding: "24px 40px 28px", position: "relative", zIndex: 3,
+        display: "grid", gridTemplateColumns: "1.4fr 1fr",
+        gap: 32, alignItems: "end",
+      }}>
+        <div>
+          <div style={{
+            fontFamily: "'JetBrains Mono', monospace", fontSize: 10,
+            color: C.mute, letterSpacing: 2, marginBottom: 6,
+          }}>// NEXT ON THE CALENDAR</div>
+          <div style={{
+            fontFamily: "'Anton', sans-serif",
+            fontSize: "clamp(28px, 3.4vw, 48px)", color: C.ivory,
+            textTransform: "uppercase", lineHeight: 0.95, letterSpacing: "-0.01em",
+          }}>{NEXT_GAME.opponent}</div>
+          <div style={{
+            fontSize: 13, color: C.mute, marginTop: 8, fontFamily: "Inter,sans-serif",
+          }}>{NEXT_GAME.venue} · {NEXT_GAME.broadcast}</div>
+          <div style={{
+            fontSize: 12, color: "#a8a8b0", marginTop: 6,
+            fontFamily: "Inter,sans-serif", maxWidth: 560, lineHeight: 1.5,
+          }}>{NEXT_GAME.seriesContext}</div>
         </div>
-        <div style={{ flex: 1, background: "#252530", borderRadius: 10, padding: "12px 10px", textAlign: "center" }}>
-          <div style={{ color: "#fff", fontWeight: 800, fontSize: 22 }}>{age}</div>
-          <div style={{ color: "#777", fontSize: 10, textTransform: "uppercase", letterSpacing: 1, marginTop: 2 }}>Age</div>
+        <div style={{
+          display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 0,
+          border: `1px solid ${C.hair}`,
+        }}>
+          {[
+            { l: "DAYS", v: days },
+            { l: "HRS", v: hrs },
+            { l: "MIN", v: mins },
+            { l: "SEC", v: sec },
+          ].map((b, i) => (
+            <div key={b.l} style={{
+              padding: "14px 10px", textAlign: "center",
+              borderRight: i < 3 ? `1px solid ${C.hair}` : "none",
+            }}>
+              <div style={{
+                fontFamily: "'JetBrains Mono', monospace", fontSize: 32,
+                color: i === 0 ? C.volt : C.ivory, fontWeight: 700, lineHeight: 1,
+                fontVariantNumeric: "tabular-nums",
+              }}>{String(b.v).padStart(2, "0")}</div>
+              <div style={{
+                fontSize: 9, color: C.mute, letterSpacing: 1.5, marginTop: 6,
+              }}>{b.l}</div>
+            </div>
+          ))}
         </div>
+      </div>
+
+      <Ticker/>
+    </section>
+  );
+}
+
+// ─── Courtside-LED ticker ───────────────────────────────────────
+function Ticker() {
+  const items = [
+    { l: "FINAL · R1G6", v: "NYK 140 — ATL 89", c: C.red },
+    { l: "SERIES", v: "NYK WINS 4–2", c: C.ivory },
+    { l: "NEXT", v: "DRAFT LOTTERY · MAY 10 · 8:00 PM ET · CHICAGO", c: C.volt },
+    { l: "AWARD", v: "ALEXANDER-WALKER · 2025–26 KIA MIP", c: C.ivory },
+    { l: "INJURY", v: "LANDALE — HIGH-ANKLE SPRAIN · OUT", c: C.red },
+    { l: "REC", v: "REG SEASON 46–36 · SE DIVISION CHAMPS", c: C.ivory },
+    { l: "NOTE", v: "KNICKS 47-PT HALFTIME LEAD — NBA PLAYOFF RECORD", c: C.red },
+    { l: "FA", v: "MCCOLLUM RETENTION TARGETED · MULTI-YEAR", c: C.volt },
+  ];
+  const row = [...items, ...items];
+  return (
+    <div style={{
+      borderTop: `1px solid ${C.hair}`, borderBottom: `1px solid ${C.hair}`,
+      background: "#000", overflow: "hidden", position: "relative", zIndex: 3,
+      marginTop: 24,
+    }}>
+      <div style={{
+        display: "flex", gap: 0, padding: "14px 0",
+        animation: "tick 90s linear infinite", whiteSpace: "nowrap",
+      }}>
+        {row.map((it, i) => (
+          <span key={i} style={{
+            display: "inline-flex", alignItems: "center", gap: 12, paddingRight: 48,
+            fontFamily: "'JetBrains Mono', monospace", fontSize: 13, fontWeight: 600,
+            letterSpacing: 1.5,
+          }}>
+            <span style={{ width: 8, height: 8, background: it.c, display: "inline-block" }}/>
+            <span style={{ color: C.mute, letterSpacing: 2 }}>{it.l}</span>
+            <span style={{ color: it.c }}>{it.v}</span>
+            <span style={{ color: C.hair, marginLeft: 32 }}>///</span>
+          </span>
+        ))}
       </div>
     </div>
   );
 }
 
-// ─── Career Timeline ─────────────────────────────────────────────────────────
-
-function CareerTimeline({ career }) {
-  const reversed = [...career].reverse();
+// ─── Season banner: KPI strip ───────────────────────────────────
+function SeasonBanner() {
+  const stats = [
+    { l: "REG SEASON", v: "46–36", sub: "5TH IN THE EAST" },
+    { l: "OFFENSIVE RTG", v: "118.4", sub: "7TH LEAGUE-WIDE" },
+    { l: "DEFENSIVE RTG", v: "114.2", sub: "14TH LEAGUE-WIDE" },
+    { l: "PACE", v: "99.8", sub: "12TH" },
+    { l: "3-PT %", v: "38.1", sub: "3RD LEAGUE-WIDE" },
+    { l: "R1 SCORING DIFF", v: "-15.3", sub: "4 LOSSES BY 16+", tone: "red" },
+  ];
   return (
-    <div style={{ position: "relative", paddingLeft: 20 }}>
-      <div style={{ position: "absolute", left: 7, top: 4, bottom: 4, width: 2, background: "#333" }} />
-      {reversed.map((entry, i) => {
-        const isCurrent = entry.years.endsWith("-");
-        const isDraft = entry.type === "draft";
-        return (
-          <div key={i} style={{ position: "relative", marginBottom: i < reversed.length - 1 ? 16 : 0 }}>
+    <section style={{
+      padding: "32px 40px", borderBottom: `1px solid ${C.hair}`, background: "#000",
+    }}>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(6, 1fr)", gap: 0 }}>
+        {stats.map((s, i) => (
+          <div key={s.l} style={{
+            padding: "4px 18px",
+            borderRight: i < 5 ? `1px solid ${C.hair}` : "none",
+          }}>
             <div style={{
-              position: "absolute", left: -17, top: 4,
-              width: 12, height: 12, borderRadius: "50%",
-              background: isCurrent ? HAWKS_RED : isDraft ? "transparent" : "#555",
-              border: isDraft ? "2px solid #555" : isCurrent ? `2px solid ${HAWKS_RED}` : "2px solid #555",
-              boxShadow: isCurrent ? `0 0 8px ${HAWKS_RED}66` : "none",
-            }} />
-            <div style={{ opacity: isDraft ? 0.75 : 1 }}>
-              <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" }}>
-                <span style={{ color: isCurrent ? HAWKS_RED : "#fff", fontWeight: 700, fontSize: 13 }}>
-                  {entry.team}
-                </span>
-                {isDraft && (
-                  <span style={{
-                    fontSize: 10, padding: "2px 8px", borderRadius: 8, fontWeight: 600,
-                    background: "#ffc10712", color: "#ffc107", border: "1px solid #ffc10722",
-                  }}>Draft</span>
-                )}
-              </div>
-              <div style={{ fontSize: 11, color: "#666", marginTop: 2 }}>{entry.years}</div>
-            </div>
+              fontFamily: "'JetBrains Mono', monospace", fontSize: 10,
+              color: C.mute, letterSpacing: 2, marginBottom: 8,
+            }}>// {s.l}</div>
+            <div style={{
+              fontFamily: "'Anton', sans-serif", fontSize: 54,
+              color: s.tone === "red" ? C.red : C.ivory, lineHeight: 0.9,
+              letterSpacing: "-0.01em", fontVariantNumeric: "tabular-nums",
+            }}>{s.v}</div>
+            <div style={{
+              fontFamily: "'JetBrains Mono', monospace", fontSize: 9,
+              color: s.tone === "red" ? C.red : C.volt, letterSpacing: 1.8,
+              marginTop: 6,
+            }}>{s.sub}</div>
           </div>
-        );
-      })}
-    </div>
+        ))}
+      </div>
+    </section>
   );
 }
 
-// ─── Player Card ────────────────────────────────────────────────────────────
+// ─── Awards strip ───────────────────────────────────────────────
+function AwardsStrip() {
+  const items = [
+    {
+      kicker: "2025–26 NBA", title: "MOST IMPROVED PLAYER",
+      who: "Nickeil Alexander-Walker",
+      detail: "Back-to-back MIPs for the franchise · 251 threes (franchise record)",
+      tone: "volt",
+    },
+    {
+      kicker: "SOUTHEAST", title: "DIVISION CHAMPS",
+      who: "Atlanta Hawks · 46–36",
+      detail: "First SE crown since 2014–15", tone: "red",
+    },
+    {
+      kicker: "BREAKOUT", title: "JJ ALL-STAR LEAP",
+      who: "Jalen Johnson · 22.8 / 10.3 / 8.0",
+      detail: "First All-Star nod · Olympic camp invite", tone: "ivory",
+    },
+  ];
+  return (
+    <section style={{
+      padding: "56px 40px", borderBottom: `1px solid ${C.hair}`, background: C.bg,
+    }}>
+      <SectionHeader kicker="HARDWARE · 2025–26"
+        title={<>BRIGHT<br/>SPOTS<span style={{ color: C.volt }}>.</span></>}/>
+      <div style={{
+        marginTop: 32, display: "grid", gridTemplateColumns: "repeat(3, 1fr)",
+        gap: 1, background: C.hair, border: `1px solid ${C.hair}`,
+      }}>
+        {items.map((it, i) => {
+          const tc = it.tone === "volt" ? C.volt : it.tone === "red" ? C.red : C.ivory;
+          return (
+            <div key={i} style={{
+              padding: "32px 28px", background: C.panel, position: "relative",
+              overflow: "hidden", minHeight: 240,
+            }}>
+              <div style={{
+                position: "absolute", top: -30, right: -20,
+                fontFamily: "'Anton', sans-serif", fontSize: 200,
+                color: "#1c1c20", lineHeight: 0.8, letterSpacing: "-0.04em",
+                pointerEvents: "none",
+              }}>{String(i + 1).padStart(2, "0")}</div>
+              <div style={{ position: "relative", zIndex: 2 }}>
+                <div style={{
+                  fontFamily: "'JetBrains Mono', monospace", fontSize: 10,
+                  color: tc, letterSpacing: 2.5, marginBottom: 14,
+                }}>// {it.kicker}</div>
+                <div style={{
+                  fontFamily: "'Anton', sans-serif", fontSize: 42, color: C.ivory,
+                  textTransform: "uppercase", lineHeight: 0.9, letterSpacing: "-0.01em",
+                }}>{it.title}</div>
+                <div style={{
+                  marginTop: 18, fontFamily: "Inter,sans-serif",
+                  fontSize: 14, fontWeight: 600, color: tc,
+                }}>{it.who}</div>
+                <div style={{
+                  marginTop: 8, fontSize: 12, color: C.mute, lineHeight: 1.5,
+                }}>{it.detail}</div>
+              </div>
+              <div style={{
+                position: "absolute", left: 0, right: 0, bottom: 0,
+                height: 3, background: tc,
+              }}/>
+            </div>
+          );
+        })}
+      </div>
+    </section>
+  );
+}
 
-function PlayerCard({ player, expanded, onToggle }) {
-  const [activeTab, setActiveTab] = useState("stats");
-  useEffect(() => { if (!expanded) setActiveTab("stats"); }, [expanded]);
+// ─── Player card ────────────────────────────────────────────────
+function PlayerCard({ p, onClick, big = false }) {
+  const [h, setH] = useState(false);
+  const ppg = useCountUp(p.pointsPerGame);
+  const rpg = useCountUp(p.reboundsPerGame);
+  const apg = useCountUp(p.assistsPerGame);
 
-  const formColor = player.form >= 8.0 ? "#28a745"
-    : player.form >= 7.5 ? "#5cb85c"
-    : player.form >= 7.0 ? "#ffc107"
-    : player.form >= 6.5 ? "#fd7e14"
-    : "#dc3545";
-
-  const isAvailable = player.status === "active" || player.status === "day-to-day" || player.status === "questionable";
+  const surnames = p.name.split(" ");
+  const first = surnames[0];
+  const last = surnames.slice(1).join(" ");
 
   return (
     <div
-      onClick={onToggle}
+      onClick={onClick}
+      onMouseEnter={() => setH(true)}
+      onMouseLeave={() => setH(false)}
       style={{
-        background: expanded ? "linear-gradient(135deg, #1e1e28, #2a1520)" : "#1e1e28",
-        borderRadius: 14, padding: 0, cursor: "pointer",
-        border: expanded ? `2px solid ${HAWKS_RED}` : "2px solid transparent",
-        transition: "all 0.3s ease", overflow: "hidden",
-        boxShadow: expanded ? `0 8px 32px ${HAWKS_RED}22` : "0 2px 12px #0005",
+        position: "relative", background: C.panel,
+        border: `1px solid ${h ? C.volt : C.hair}`,
+        cursor: "pointer", overflow: "hidden",
+        transition: "border-color .15s, transform .25s",
+        transform: h ? "translateY(-2px)" : "none",
+        aspectRatio: big ? "0.85/1" : "0.78/1",
         display: "flex", flexDirection: "column",
       }}
     >
-      {/* Header — compact */}
-      <div style={{ display: "flex", alignItems: "center", gap: 10, padding: "12px 14px 8px" }}>
-        <PlayerAvatar player={player} size={44} />
-        <div style={{ flex: 1, minWidth: 0 }}>
-          <div style={{ display: "flex", alignItems: "center", gap: 6, flexWrap: "nowrap", overflow: "hidden" }}>
-            <span style={{ color: HAWKS_RED, fontWeight: 800, fontSize: 11 }}>#{player.number}</span>
-            <span style={{ color: "#fff", fontWeight: 700, fontSize: 13, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{player.name}</span>
-          </div>
-          <div style={{ display: "flex", alignItems: "center", gap: 6, marginTop: 3, flexWrap: "wrap" }}>
-            <PositionTag position={player.position} />
-            <StatusBadge status={player.status} />
-          </div>
-        </div>
-        {/* Compact form circle */}
-        {isAvailable && player.form > 0 ? (
-          <div style={{
-            width: 36, height: 36, borderRadius: "50%", background: formColor,
-            display: "flex", alignItems: "center", justifyContent: "center",
-            color: "#fff", fontWeight: 700, fontSize: 13, flexShrink: 0,
-            boxShadow: `0 0 8px ${formColor}55`,
-          }}>
-            {player.form.toFixed(1)}
-          </div>
-        ) : (
-          <div style={{
-            fontSize: 9, color: "#ff6b6b", fontWeight: 700, textAlign: "center",
-            background: "#dc354515", padding: "4px 8px", borderRadius: 6,
-            border: "1px solid #dc354533", lineHeight: 1.2, flexShrink: 0,
-          }}>
-            OUT
-          </div>
-        )}
+      {/* jersey watermark */}
+      <div style={{
+        position: "absolute", bottom: -28, right: -22,
+        fontFamily: "'Anton', sans-serif",
+        fontSize: big ? 320 : 220, lineHeight: 0.78,
+        color: h ? C.red : "#1c1c20",
+        fontWeight: 400, letterSpacing: "-0.05em",
+        pointerEvents: "none", transition: "color .2s", zIndex: 1,
+      }}>
+        {String(p.number).padStart(2, "0")}
       </div>
 
-      {/* Injury Note */}
-      {player.injuryNote && (
-        <div style={{
-          margin: "0 14px 6px", padding: "5px 8px", borderRadius: 6,
-          background: player.status === "out" ? "#dc354512"
-            : player.status === "doubtful" ? "#fd7e1412" : "#ffc10712",
-          border: `1px solid ${player.status === "out" ? "#dc354533"
-            : player.status === "doubtful" ? "#fd7e1433" : "#ffc10733"}`,
-          fontSize: 10,
-          color: player.status === "out" ? "#ff6b6b"
-            : player.status === "doubtful" ? "#ffa94d" : "#ffe066",
-          lineHeight: 1.3, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis",
-        }}>
-          {player.injuryNote}
-        </div>
-      )}
-
-      {/* Quick Stats — compact grid: PPG / RPG / APG / GP */}
+      {/* vertical surname rail */}
       <div style={{
+        position: "absolute", left: 0, top: 0, bottom: 0, width: 28,
+        display: "flex", flexDirection: "column", alignItems: "center",
+        justifyContent: "flex-start", padding: "14px 0 10px", zIndex: 5,
+        background: `linear-gradient(90deg, ${C.panel}ee 0%, transparent 100%)`,
+      }}>
+        <span style={{
+          writingMode: "vertical-rl", transform: "rotate(180deg)",
+          fontFamily: "'Anton', sans-serif", fontSize: big ? 18 : 15,
+          color: C.ivory, textTransform: "uppercase", letterSpacing: "0.04em",
+          fontWeight: 400, whiteSpace: "nowrap",
+        }}>{(last || first).toUpperCase()}</span>
+        <span style={{
+          writingMode: "vertical-rl", transform: "rotate(180deg)",
+          fontFamily: "'JetBrains Mono', monospace", fontSize: 9,
+          color: C.mute, letterSpacing: 2, marginTop: 10, whiteSpace: "nowrap",
+        }}>{p.position} · {countryShort(p)}</span>
+      </div>
+
+      {/* headshot */}
+      <div style={{
+        position: "absolute", left: 28, right: 0, top: 0, bottom: 42, zIndex: 2,
+        display: "flex", alignItems: "flex-end", justifyContent: "center",
+        overflow: "hidden",
+      }}>
+        <img
+          src={p.image}
+          alt={p.name}
+          style={{
+            width: "100%", height: "100%", objectFit: "contain",
+            objectPosition: "center bottom",
+            filter: p.status === "out" ? "grayscale(0.7)" : "none",
+          }}
+          onError={(e) => { e.target.style.opacity = 0.15; }}
+        />
+      </div>
+
+      {/* form + status */}
+      <div style={{
+        position: "absolute", top: 10, right: 12, zIndex: 6, textAlign: "right",
+      }}>
+        <div style={{
+          fontFamily: "'JetBrains Mono', monospace", fontSize: 9,
+          color: C.mute, letterSpacing: 1.5,
+        }}>FORM</div>
+        <div style={{
+          fontFamily: "'JetBrains Mono', monospace", fontSize: 22,
+          color: p.form >= 7 ? C.volt : p.form >= 6 ? C.ivory : C.red,
+          fontWeight: 700, lineHeight: 1, fontVariantNumeric: "tabular-nums",
+        }}>{p.form.toFixed(1)}</div>
+        <div style={{ marginTop: 6 }}><Status s={p.status}/></div>
+      </div>
+
+      {/* stats strip */}
+      <div style={{
+        position: "absolute", left: 0, right: 0, bottom: 0, zIndex: 5,
+        background: "#000", borderTop: `1px solid ${C.hair}`,
         display: "grid", gridTemplateColumns: "repeat(4, 1fr)",
-        gap: 0, padding: "6px 14px 10px",
-        borderTop: "1px solid #ffffff0a", marginTop: "auto",
       }}>
         {[
-          { label: "PPG", value: player.pointsPerGame.toFixed(1) },
-          { label: "RPG", value: player.reboundsPerGame.toFixed(1) },
-          { label: "APG", value: player.assistsPerGame.toFixed(1) },
-          { label: "GP", value: player.gamesPlayed },
-        ].map((s) => (
-          <div key={s.label} style={{ textAlign: "center" }}>
-            <div style={{ color: "#fff", fontWeight: 700, fontSize: 14 }}>{s.value}</div>
-            <div style={{ color: "#777", fontSize: 9, textTransform: "uppercase", letterSpacing: 0.8 }}>{s.label}</div>
-          </div>
-        ))}
-      </div>
-
-      {/* Expanded Tabs */}
-      {expanded && (
-        <div style={{ padding: "4px 18px 18px", borderTop: "1px solid #ffffff08" }}>
-          {/* Tab Bar */}
-          <div style={{ display: "flex", gap: 4, marginBottom: 14, background: "#ffffff08", borderRadius: 8, padding: 3 }}>
-            {[
-              { key: "stats", label: "Stats" },
-              { key: "physical", label: "Physical" },
-              { key: "career", label: "Career" },
-            ].map((t) => (
-              <button
-                key={t.key}
-                onClick={(e) => { e.stopPropagation(); setActiveTab(t.key); }}
-                style={{
-                  flex: 1, padding: "7px 0", borderRadius: 6, border: "none", cursor: "pointer",
-                  fontWeight: 700, fontSize: 11, textTransform: "uppercase", letterSpacing: 1,
-                  background: activeTab === t.key ? HAWKS_RED : "transparent",
-                  color: activeTab === t.key ? "#fff" : "#888",
-                  transition: "all 0.2s",
-                }}
-              >
-                {t.label}
-              </button>
-            ))}
-          </div>
-
-          {/* Stats Tab */}
-          {activeTab === "stats" && (
-            <div>
-              <div style={{ fontSize: 11, color: HAWKS_VOLT, fontWeight: 700, textTransform: "uppercase", letterSpacing: 1.5, marginBottom: 10 }}>
-                Advanced Stats
-              </div>
-              <StatBar label="True Shooting %" value={player.trueShootingPct} max={70} unit="%" />
-              <StatBar label="3-Point %" value={player.threePointPct} max={50} unit="%" />
-              <StatBar label="Free Throw %" value={player.freeThrowPct} max={100} unit="%" />
-              <StatBar label="Field Goal %" value={player.fieldGoalPct} max={65} unit="%" />
-              <StatBar label="Minutes / Game" value={player.minutesPerGame} max={40} />
-              <div style={{ marginTop: 10, display: "flex", gap: 8 }}>
-                <div style={{ flex: 1, background: "#252530", borderRadius: 8, padding: "10px 12px", textAlign: "center" }}>
-                  <div style={{ color: player.plusMinus >= 0 ? "#28a745" : "#dc3545", fontWeight: 800, fontSize: 18 }}>
-                    {player.plusMinus >= 0 ? "+" : ""}{player.plusMinus.toFixed(1)}
-                  </div>
-                  <div style={{ color: "#777", fontSize: 9, textTransform: "uppercase", letterSpacing: 1, marginTop: 2 }}>+/-</div>
-                </div>
-                <div style={{ flex: 1, background: "#252530", borderRadius: 8, padding: "10px 12px", textAlign: "center" }}>
-                  <div style={{ color: "#fff", fontWeight: 800, fontSize: 18 }}>{player.stealsPerGame.toFixed(1)}</div>
-                  <div style={{ color: "#777", fontSize: 9, textTransform: "uppercase", letterSpacing: 1, marginTop: 2 }}>STL</div>
-                </div>
-                <div style={{ flex: 1, background: "#252530", borderRadius: 8, padding: "10px 12px", textAlign: "center" }}>
-                  <div style={{ color: "#fff", fontWeight: 800, fontSize: 18 }}>{player.blocksPerGame.toFixed(1)}</div>
-                  <div style={{ color: "#777", fontSize: 9, textTransform: "uppercase", letterSpacing: 1, marginTop: 2 }}>BLK</div>
-                </div>
-                <div style={{ flex: 1, background: "#252530", borderRadius: 8, padding: "10px 12px", textAlign: "center" }}>
-                  <div style={{ color: "#fff", fontWeight: 800, fontSize: 18 }}>{player.turnoversPerGame.toFixed(1)}</div>
-                  <div style={{ color: "#777", fontSize: 9, textTransform: "uppercase", letterSpacing: 1, marginTop: 2 }}>TO</div>
-                </div>
-              </div>
-            </div>
-          )}
-
-          {/* Physical Tab */}
-          {activeTab === "physical" && player.physical && (
-            <PhysicalProfile physical={player.physical} age={player.age} />
-          )}
-
-          {/* Career Tab */}
-          {activeTab === "career" && player.career && (
-            <CareerTimeline career={player.career} />
-          )}
-        </div>
-      )}
-    </div>
-  );
-}
-
-// ─── AI News Digest ──────────────────────────────────────────────────────────
-
-const CATEGORY_COLORS = {
-  trades: HAWKS_RED,
-  injuries: "#fd7e14",
-  games: "#3498db",
-  rotation: "#2ecc71",
-  general: "#888",
-};
-
-function NewsDigestSection() {
-  if (!NEWS_DIGEST) return null;
-
-  const timeAgoStr = (() => {
-    const diff = Date.now() - new Date(NEWS_DIGEST.generatedAt).getTime();
-    const mins = Math.floor(diff / 60000);
-    if (mins < 60) return `${mins}m ago`;
-    const hrs = Math.floor(mins / 60);
-    if (hrs < 24) return `${hrs}h ago`;
-    const days = Math.floor(hrs / 24);
-    return `${days}d ago`;
-  })();
-
-  return (
-    <div style={{
-      background: "linear-gradient(135deg, #1e1e28, #1a1520)",
-      borderRadius: 14,
-      padding: 20,
-      marginBottom: 16,
-      border: `1px solid ${HAWKS_RED}33`,
-    }}>
-      <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 14 }}>
-        <span style={{
-          fontSize: 12, color: HAWKS_VOLT, fontWeight: 700,
-          textTransform: "uppercase", letterSpacing: 1.5,
-        }}>
-          AI News Digest
-        </span>
-        <span style={{
-          fontSize: 9, color: "#777", background: "#252530",
-          padding: "3px 8px", borderRadius: 6, fontWeight: 600,
-        }}>
-          Powered by Claude
-        </span>
-        <span style={{ fontSize: 10, color: "#555", marginLeft: "auto" }}>
-          Updated {timeAgoStr}
-        </span>
-      </div>
-
-      <p style={{ fontSize: 14, color: "#ccc", lineHeight: 1.7, margin: "0 0 16px 0" }}>
-        {NEWS_DIGEST.summary}
-      </p>
-
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: 10 }}>
-        {NEWS_DIGEST.keyTopics.map((topic, i) => (
-          <div
-            key={i}
-            style={{
-              background: "#252530",
-              borderRadius: 10,
-              padding: 14,
-              borderLeft: `3px solid ${CATEGORY_COLORS[topic.category] || "#888"}`,
-            }}
-          >
-            <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 6 }}>
-              <span style={{ color: "#fff", fontWeight: 700, fontSize: 13, flex: 1 }}>
-                {topic.title}
-              </span>
-              <span style={{
-                fontSize: 9, fontWeight: 700, textTransform: "uppercase",
-                color: CATEGORY_COLORS[topic.category] || "#888",
-                background: `${CATEGORY_COLORS[topic.category] || "#888"}22`,
-                padding: "2px 7px", borderRadius: 4, letterSpacing: 0.5,
-              }}>
-                {topic.category}
-              </span>
-            </div>
-            <div style={{ color: "#aaa", fontSize: 12, lineHeight: 1.5 }}>
-              {topic.detail}
-            </div>
-          </div>
-        ))}
-      </div>
-
-      <div style={{ marginTop: 12, fontSize: 10, color: "#555" }}>
-        Sources: {NEWS_DIGEST.sources.join(" · ")}
-      </div>
-    </div>
-  );
-}
-
-// ─── Live RSS News Feed ──────────────────────────────────────────────────────
-
-function timeAgo(dateStr) {
-  const diff = Date.now() - new Date(dateStr).getTime();
-  const mins = Math.floor(diff / 60000);
-  if (mins < 60) return `${mins}m ago`;
-  const hrs = Math.floor(mins / 60);
-  if (hrs < 24) return `${hrs}h ago`;
-  const days = Math.floor(hrs / 24);
-  if (days < 7) return `${days}d ago`;
-  const weeks = Math.floor(days / 7);
-  return `${weeks}w ago`;
-}
-
-function parseRSSItems(xmlText, feedMeta) {
-  const parser = new DOMParser();
-  const doc = parser.parseFromString(xmlText, "text/xml");
-  const items = doc.querySelectorAll("item");
-  return Array.from(items).map((item) => ({
-    title: item.querySelector("title")?.textContent || "",
-    link: item.querySelector("link")?.textContent || "",
-    pubDate: item.querySelector("pubDate")?.textContent || "",
-    source: feedMeta.name,
-    category: feedMeta.category,
-    color: feedMeta.color,
-  }));
-}
-
-function LiveNewsFeed({ filter }) {
-  const [articles, setArticles] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    let cancelled = false;
-    setLoading(true);
-    setError(null);
-
-    const isDev = window.location.hostname === "localhost";
-    Promise.allSettled(
-      RSS_FEEDS.map((feed) => {
-        if (isDev) {
-          return fetch("/api/rss?url=" + encodeURIComponent(feed.url))
-            .then((r) => { if (!r.ok) throw new Error(r.status); return r.text(); })
-            .then((xml) => parseRSSItems(xml, feed));
-        }
-        return fetch("https://api.rss2json.com/v1/api.json?rss_url=" + encodeURIComponent(feed.url))
-          .then((r) => { if (!r.ok) throw new Error(r.status); return r.json(); })
-          .then((data) => (data.items || []).map((item) => ({
-            title: item.title || "",
-            link: item.link || "",
-            pubDate: item.pubDate || "",
-            source: feed.name,
-            category: feed.category,
-            color: feed.color,
-          })));
-      })
-    ).then((results) => {
-      if (cancelled) return;
-      const all = results
-        .filter((r) => r.status === "fulfilled")
-        .flatMap((r) => r.value)
-        .filter((a) => a.title && a.pubDate)
-        .sort((a, b) => new Date(b.pubDate) - new Date(a.pubDate));
-      if (all.length === 0) {
-        setError("Could not load any feeds. CORS proxy may be unavailable.");
-      }
-      setArticles(all);
-      setLoading(false);
-    });
-
-    return () => { cancelled = true; };
-  }, []);
-
-  const filtered = filter === "all" ? articles : articles.filter((a) => a.source === filter);
-
-  if (loading) {
-    return (
-      <div style={{ textAlign: "center", padding: 40, color: "#888" }}>
-        Loading live news feeds...
-      </div>
-    );
-  }
-
-  if (error && articles.length === 0) {
-    return (
-      <div style={{ textAlign: "center", padding: 40, color: "#ff6b6b" }}>
-        {error}
-      </div>
-    );
-  }
-
-  const isWide = (i, title) => i === 0 || title.length > 70 || i % 5 === 0;
-
-  return (
-    <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(240px, 1fr))", gap: 10 }}>
-      {filtered.slice(0, 30).map((item, i) => {
-        const wide = isWide(i, item.title);
-        return (
-          <a
-            key={i}
-            href={item.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{
-              gridColumn: wide ? "span 2" : "span 1",
-              padding: wide ? "16px 20px" : "14px 16px",
-              borderRadius: 12,
-              background: "#1e1e28",
-              borderTop: `3px solid ${item.color || HAWKS_RED}`,
-              transition: "all 0.2s",
-              cursor: "pointer",
-              textDecoration: "none",
-              boxShadow: "0 2px 8px #0003",
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.background = "#252530";
-              e.currentTarget.style.transform = "translateY(-2px)";
-              e.currentTarget.style.boxShadow = "0 6px 20px #0005";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.background = "#1e1e28";
-              e.currentTarget.style.transform = "translateY(0)";
-              e.currentTarget.style.boxShadow = "0 2px 8px #0003";
-            }}
-          >
-            <div style={{ color: "#fff", fontSize: wide ? 15 : 13, fontWeight: 600, lineHeight: 1.4 }}>
-              {item.title}
-            </div>
-            <div style={{ display: "flex", gap: 8, marginTop: 8, alignItems: "center" }}>
-              <span style={{ width: 6, height: 6, borderRadius: "50%", background: item.color || HAWKS_RED, flexShrink: 0 }} />
-              <span style={{ fontSize: 10, color: item.color || HAWKS_RED, fontWeight: 600 }}>{item.source}</span>
-              <span style={{ fontSize: 10, color: "#555" }}>{timeAgo(item.pubDate)}</span>
-            </div>
-          </a>
-        );
-      })}
-      {filtered.length === 0 && (
-        <div style={{ textAlign: "center", padding: 40, color: "#666", gridColumn: "1 / -1" }}>
-          No articles found for this filter.
-        </div>
-      )}
-    </div>
-  );
-}
-
-// ─── Result Card ────────────────────────────────────────────────────────────
-
-function ResultCard({ result }) {
-  const compColors = { REG: "#444", PLAYOFFS: HAWKS_RED, PRE: "#666" };
-  const compLabels = { REG: "REG", PLAYOFFS: "PLAYOFFS", PRE: "PRE" };
-  const resultColor = result.result === "W" ? "#28a745" : "#dc3545";
-  const formatDate = (dateStr) => {
-    const d = new Date(dateStr + "T12:00:00");
-    return d.toLocaleDateString("en-US", { day: "numeric", month: "short" });
-  };
-
-  const atlLogo = TEAM_LOGOS["Atlanta Hawks"];
-  const oppLogo = TEAM_LOGOS[result.opponent];
-
-  return (
-    <div style={{
-      background: "#1e1e28", borderRadius: 14, padding: "14px 16px",
-      borderLeft: `4px solid ${resultColor}`, minWidth: 260,
-      display: "flex", flexDirection: "column", gap: 8,
-      boxShadow: "0 2px 12px #0005",
-    }}>
-      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-        <div style={{
-          width: 30, height: 30, borderRadius: 7, background: resultColor,
-          display: "flex", alignItems: "center", justifyContent: "center",
-          color: "#fff", fontWeight: 800, fontSize: 13, flexShrink: 0,
-        }}>{result.result}</div>
-        <div style={{ display: "flex", gap: 6, alignItems: "center" }}>
-          <span style={{
-            fontSize: 9, fontWeight: 700, textTransform: "uppercase", color: "#fff",
-            background: (compColors[result.competition] || "#333") + "cc",
-            padding: "2px 8px", borderRadius: 6, letterSpacing: 0.5,
-          }}>{compLabels[result.competition] || result.competition}</span>
-          <span style={{ fontSize: 10, color: "#666" }}>{formatDate(result.date)}</span>
-        </div>
-      </div>
-      <div style={{ display: "flex", alignItems: "center", gap: 8, justifyContent: "center" }}>
-        {result.home ? (
-          <>
-            {atlLogo && <img src={atlLogo} alt="" style={{ width: 22, height: 22, objectFit: "contain" }} />}
-            <span style={{ color: "#fff", fontWeight: 700, fontSize: 13 }}>ATL</span>
-            <span style={{ color: resultColor, fontWeight: 800, fontSize: 16 }}>{result.score}</span>
-            {oppLogo && <img src={oppLogo} alt="" style={{ width: 22, height: 22, objectFit: "contain" }} />}
-            <span style={{ color: "#fff", fontWeight: 700, fontSize: 13 }}>{result.opponent.split(" ").slice(-1)[0]}</span>
-          </>
-        ) : (
-          <>
-            {oppLogo && <img src={oppLogo} alt="" style={{ width: 22, height: 22, objectFit: "contain" }} />}
-            <span style={{ color: "#fff", fontWeight: 700, fontSize: 13 }}>{result.opponent.split(" ").slice(-1)[0]}</span>
-            <span style={{ color: resultColor, fontWeight: 800, fontSize: 16 }}>
-              {result.score.split("-").reverse().join("-")}
-            </span>
-            {atlLogo && <img src={atlLogo} alt="" style={{ width: 22, height: 22, objectFit: "contain" }} />}
-            <span style={{ color: "#fff", fontWeight: 700, fontSize: 13 }}>ATL</span>
-          </>
-        )}
-      </div>
-      {result.topScorers && (
-        <div style={{ fontSize: 10, color: "#888", textAlign: "center", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
-          {result.topScorers}
-        </div>
-      )}
-    </div>
-  );
-}
-
-// ─── Next Game Banner ───────────────────────────────────────────────────────
-
-function NextGameBanner({ game, results }) {
-  const compColors = { REG: "#444", PLAYOFFS: HAWKS_RED, PRE: "#666" };
-  const compLabels = { REG: "Regular Season", PLAYOFFS: "Playoffs", PRE: "Preseason" };
-  const d = new Date(game.date);
-  const day = d.toLocaleDateString("en-US", { weekday: "long", day: "numeric", month: "long" });
-  const time = d.toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit" });
-  const now = new Date();
-  const diff = d - now;
-  let countdown = "";
-  if (diff > 0) {
-    const days = Math.floor(diff / 86400000);
-    const hours = Math.floor((diff % 86400000) / 3600000);
-    countdown = days > 0 ? `${days}d ${hours}h` : `${hours}h`;
-  } else { countdown = "NOW"; }
-
-  return (
-    <div style={{
-      background: `linear-gradient(135deg, ${HAWKS_RED}dd, #8B0A0Fee)`,
-      borderRadius: 16, padding: 20, marginBottom: 16,
-      border: "1px solid #ffffff15", boxShadow: `0 4px 24px ${HAWKS_RED}33`,
-    }}>
-      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 12, gap: 8, flexWrap: "wrap" }}>
-        <div style={{ fontSize: 11, color: "#ffffffaa", fontWeight: 700, textTransform: "uppercase", letterSpacing: 2 }}>Next Game</div>
-        {game.seriesContext && (
-          <div style={{
-            fontSize: 10, color: HAWKS_VOLT, background: "#00000055",
-            padding: "3px 10px", borderRadius: 6, fontWeight: 700, letterSpacing: 0.5,
-          }}>{game.seriesContext}</div>
-        )}
-        <div style={{
-          fontSize: 10, fontWeight: 700, textTransform: "uppercase",
-          color: "#fff", background: (compColors[game.competition] || "#333"),
-          padding: "3px 10px", borderRadius: 6, letterSpacing: 0.5,
-        }}>{compLabels[game.competition] || game.competition}</div>
-      </div>
-      <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 20, marginBottom: 14 }}>
-        <div style={{ textAlign: "center", flex: 1 }}>
-          <div style={{
-            width: 60, height: 60, borderRadius: "50%", background: "#fff",
-            display: "flex", alignItems: "center", justifyContent: "center",
-            margin: "0 auto 6px", boxShadow: "0 2px 12px #0003", overflow: "hidden",
+          { l: "PPG", v: ppg.toFixed(1) },
+          { l: "RPG", v: rpg.toFixed(1) },
+          { l: "APG", v: apg.toFixed(1) },
+          { l: "GP", v: String(p.gamesPlayed) },
+        ].map((s, i) => (
+          <div key={s.l} style={{
+            padding: "8px 4px", textAlign: "center",
+            borderRight: i < 3 ? `1px solid ${C.hair}` : "none",
           }}>
-            <img src={TEAM_LOGOS["Atlanta Hawks"]} alt="Hawks" style={{ width: 44, height: 44, objectFit: "contain" }} />
+            <div style={{
+              fontFamily: "'JetBrains Mono', monospace",
+              fontSize: big ? 17 : 14, color: C.ivory, fontWeight: 700,
+              lineHeight: 1, fontVariantNumeric: "tabular-nums",
+            }}>{s.v}</div>
+            <div style={{
+              fontSize: 8, color: C.mute, letterSpacing: 1.4, marginTop: 4,
+            }}>{s.l}</div>
           </div>
-          <div style={{ color: "#fff", fontWeight: 700, fontSize: 14 }}>Hawks</div>
-          {game.home && <div style={{ fontSize: 9, color: "#ffffffaa" }}>HOME</div>}
-        </div>
-        <div style={{ textAlign: "center" }}>
-          <div style={{ color: HAWKS_VOLT, fontWeight: 800, fontSize: 22, lineHeight: 1 }}>VS</div>
-          <div style={{ marginTop: 6, background: "#00000044", borderRadius: 8, padding: "4px 12px", color: HAWKS_VOLT, fontWeight: 700, fontSize: 13 }}>{countdown}</div>
-        </div>
-        <div style={{ textAlign: "center", flex: 1 }}>
-          <div style={{
-            width: 60, height: 60, borderRadius: "50%", background: "#ffffff15",
-            display: "flex", alignItems: "center", justifyContent: "center",
-            margin: "0 auto 6px", border: "2px solid #ffffff33", overflow: "hidden",
-          }}>
-            <img
-              src={TEAM_LOGOS[game.opponent] || TEAM_LOGOS[game.shortName]}
-              alt={game.shortName}
-              style={{ width: 44, height: 44, objectFit: "contain" }}
-              onError={(e) => { e.target.style.display = "none"; e.target.parentElement.textContent = game.shortName.slice(0, 3).toUpperCase(); }}
-            />
-          </div>
-          <div style={{ color: "#fff", fontWeight: 700, fontSize: 14 }}>{game.shortName}</div>
-          {!game.home && <div style={{ fontSize: 9, color: "#ffffffaa" }}>AWAY</div>}
-        </div>
-      </div>
-      <div style={{ display: "flex", justifyContent: "center", gap: 20, flexWrap: "wrap", fontSize: 11, color: "#ffffffbb" }}>
-        <span>{day}</span>
-        <span style={{ color: HAWKS_VOLT, fontWeight: 700 }}>{time}</span>
-        <span>{game.venue}</span>
-        {game.broadcast && <span style={{ color: "#ffffffaa" }}>{game.broadcast}</span>}
-      </div>
-      {results && results.length > 0 && (() => {
-        const recent = results.slice(0, 5);
-        const formColors = { W: "#28a745", L: "#dc3545" };
-        const wins = recent.filter(r => r.result === "W").length;
-        const losses = recent.filter(r => r.result === "L").length;
-        return (
-          <div style={{ borderTop: "1px solid #ffffff22", marginTop: 14, paddingTop: 12, display: "flex", alignItems: "center", justifyContent: "center", gap: 14, flexWrap: "wrap" }}>
-            <span style={{ fontSize: 10, color: "#ffffffaa", fontWeight: 700, textTransform: "uppercase", letterSpacing: 1 }}>Last 5</span>
-            <div style={{ display: "flex", gap: 4 }}>
-              {recent.map((r, i) => (
-                <div key={i} style={{
-                  width: 26, height: 26, borderRadius: 6,
-                  background: formColors[r.result], display: "flex",
-                  alignItems: "center", justifyContent: "center",
-                  color: "#fff", fontWeight: 800, fontSize: 11,
-                }}>
-                  {r.result}
-                </div>
-              ))}
-            </div>
-            <div style={{ display: "flex", gap: 10, fontSize: 11, color: "#ffffffbb" }}>
-              <span><span style={{ color: "#28a745", fontWeight: 700 }}>{wins}</span>W</span>
-              <span><span style={{ color: "#dc3545", fontWeight: 700 }}>{losses}</span>L</span>
-            </div>
-          </div>
-        );
-      })()}
-    </div>
-  );
-}
-
-// ─── Injury Report Mini ─────────────────────────────────────────────────────
-
-function InjuryReportMini({ players }) {
-  const injured = players.filter((p) => p.status !== "active");
-  if (injured.length === 0) return null;
-  return (
-    <div style={{ background: "#1e1e28", borderRadius: 14, padding: 16 }}>
-      <div style={{ fontSize: 11, color: "#fd7e14", fontWeight: 700, textTransform: "uppercase", letterSpacing: 1.5, marginBottom: 10 }}>
-        Injury Report
-      </div>
-      <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
-        {injured.map((p) => {
-          const cfg = statusUIConfig(p.status);
-          return (
-            <div key={p.id} style={{
-              display: "flex", alignItems: "center", gap: 10,
-              background: "#252530", borderRadius: 8, padding: "8px 10px",
-              borderLeft: `3px solid ${cfg.borderColor}`,
-            }}>
-              <span style={{
-                width: 20, height: 20, borderRadius: "50%",
-                background: cfg.iconBg, color: "#fff", fontSize: 11, fontWeight: 800,
-                display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0,
-              }}>
-                {cfg.icon}
-              </span>
-              <div style={{ flex: 1, minWidth: 0 }}>
-                <div style={{ fontSize: 12, color: "#fff", fontWeight: 700 }}>{p.name}</div>
-                <div style={{ fontSize: 10, color: "#888", marginTop: 1 }}>{p.injuryNote || p.status}</div>
-              </div>
-              <span style={{
-                fontSize: 9, color: cfg.borderColor, fontWeight: 700,
-                textTransform: "uppercase", letterSpacing: 0.5, flexShrink: 0,
-              }}>
-                {p.status}
-              </span>
-            </div>
-          );
-        })}
-      </div>
-    </div>
-  );
-}
-
-// ─── Playoff Box Score ──────────────────────────────────────────────────────
-
-function PlayoffBoxScore({ players }) {
-  const starters = players
-    .filter((p) => p.playoffStarter && p.playoffStats?.gamesPlayed > 0)
-    .sort((a, b) => b.playoffStats.pointsPerGame - a.playoffStats.pointsPerGame);
-  if (starters.length === 0) return null;
-  const topPts = starters[0]?.playoffStats.pointsPerGame;
-  const bench = players.filter((p) => !p.playoffStarter && p.playoffStats?.gamesPlayed > 0);
-  const benchPts = bench.reduce((s, p) => s + p.playoffStats.pointsPerGame, 0);
-  return (
-    <div style={{ background: "#1e1e28", borderRadius: 14, padding: 16 }}>
-      <div style={{ fontSize: 11, color: HAWKS_VOLT, fontWeight: 700, textTransform: "uppercase", letterSpacing: 1.5, marginBottom: 10 }}>
-        Game 1 Box Score
-      </div>
-      <div style={{ display: "flex", gap: 16, marginBottom: 8, padding: "0 10px" }}>
-        <span style={{ flex: 1, fontSize: 9, color: "#555", fontWeight: 700, textTransform: "uppercase" }}></span>
-        {["PTS", "REB", "AST", "MIN"].map((h) => (
-          <span key={h} style={{ width: 32, fontSize: 9, color: "#555", fontWeight: 700, textAlign: "center", textTransform: "uppercase" }}>{h}</span>
-        ))}
-      </div>
-      <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
-        {starters.map((p) => {
-          const s = p.playoffStats;
-          const isTop = s.pointsPerGame === topPts;
-          return (
-            <div key={p.id} style={{
-              display: "flex", alignItems: "center", gap: 8,
-              background: "#252530", borderRadius: 8, padding: "6px 10px",
-              borderLeft: isTop ? `3px solid ${HAWKS_RED}` : "3px solid transparent",
-            }}>
-              <img src={p.image} alt="" style={{ width: 24, height: 24, borderRadius: "50%", objectFit: "cover", flexShrink: 0 }} />
-              <span style={{ flex: 1, fontSize: 11, color: "#ccc", fontWeight: 600, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
-                {p.name}
-              </span>
-              {[s.pointsPerGame, s.reboundsPerGame, s.assistsPerGame, s.minutesPerGame].map((v, i) => (
-                <span key={i} style={{ width: 32, fontSize: 12, color: i === 0 ? "#fff" : "#aaa", fontWeight: i === 0 ? 800 : 600, textAlign: "center" }}>
-                  {v}
-                </span>
-              ))}
-            </div>
-          );
-        })}
-      </div>
-      {bench.length > 0 && (
-        <div style={{ fontSize: 10, color: "#666", marginTop: 8, paddingLeft: 10 }}>
-          Bench: {benchPts} pts ({bench.map((p) => `${p.name.split(" ").pop()} ${p.playoffStats.pointsPerGame}`).join(", ")})
-        </div>
-      )}
-    </div>
-  );
-}
-
-// ─── Playoff Series Card ────────────────────────────────────────────────────
-
-function PlayoffSeriesCard({ series }) {
-  if (!series) return null;
-  const leads = series.wins > series.losses ? "ATL leads"
-    : series.losses > series.wins ? `${series.opponentShort} leads`
-    : "Series tied";
-  return (
-    <div style={{
-      background: "#1e1e28", borderRadius: 14, padding: 18,
-      border: `1px solid ${HAWKS_RED}33`,
-    }}>
-      <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 12, flexWrap: "wrap" }}>
-        <span style={{ fontSize: 12, color: HAWKS_VOLT, fontWeight: 700, textTransform: "uppercase", letterSpacing: 1.5 }}>
-          Round {series.round} · vs {series.opponent}
-        </span>
-        <span style={{
-          fontSize: 10, color: "#fff", background: HAWKS_RED,
-          padding: "3px 10px", borderRadius: 6, fontWeight: 700, letterSpacing: 0.5,
-        }}>
-          {leads} {series.wins}-{series.losses}
-        </span>
-        <span style={{ fontSize: 10, color: "#666", marginLeft: "auto" }}>
-          #{series.seed} vs #{series.opponentSeed}
-        </span>
-      </div>
-      <div style={{
-        display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))", gap: 8,
-      }}>
-        {series.games.map((g) => {
-          const played = g.result !== null;
-          const resultColor = g.result === "W" ? "#28a745" : g.result === "L" ? "#dc3545" : "#555";
-          const d = new Date(g.date + "T12:00:00");
-          const dateStr = d.toLocaleDateString("en-US", { month: "short", day: "numeric" });
-          return (
-            <div key={g.game} style={{
-              background: "#252530", borderRadius: 10, padding: "10px 12px",
-              borderLeft: `3px solid ${resultColor}`,
-            }}>
-              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 4 }}>
-                <span style={{ fontSize: 10, color: "#888", fontWeight: 700, textTransform: "uppercase", letterSpacing: 1 }}>
-                  Game {g.game}
-                </span>
-                <span style={{ fontSize: 9, color: g.home ? HAWKS_VOLT : "#888", fontWeight: 700 }}>
-                  {g.home ? "HOME" : "AWAY"}
-                </span>
-              </div>
-              <div style={{ fontSize: 11, color: "#ccc" }}>{dateStr}</div>
-              {played ? (
-                <div style={{ fontSize: 13, fontWeight: 800, color: resultColor, marginTop: 2 }}>
-                  {g.result} {g.score}
-                </div>
-              ) : (
-                <div style={{ fontSize: 10, color: "#666", marginTop: 2 }}>
-                  {g.broadcast || "TBD"}
-                </div>
-              )}
-            </div>
-          );
-        })}
-      </div>
-    </div>
-  );
-}
-
-// ─── East Standings Card ────────────────────────────────────────────────────
-
-function EastStandingsCard({ standings }) {
-  if (!standings || standings.length === 0) return null;
-  return (
-    <div style={{
-      background: "#1e1e28", borderRadius: 14, padding: 18, marginBottom: 16,
-    }}>
-      <div style={{ fontSize: 12, color: HAWKS_VOLT, fontWeight: 700, textTransform: "uppercase", letterSpacing: 1.5, marginBottom: 12 }}>
-        Eastern Conference Standings
-      </div>
-      <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
-        {standings.map((s) => {
-          const isHawks = s.team === "Atlanta Hawks";
-          return (
-            <div key={s.seed} style={{
-              display: "flex", alignItems: "center", gap: 10,
-              padding: "7px 10px", borderRadius: 8,
-              background: isHawks ? `${HAWKS_RED}22` : "transparent",
-              border: isHawks ? `1px solid ${HAWKS_RED}55` : "1px solid transparent",
-            }}>
-              <span style={{
-                width: 22, height: 22, borderRadius: 6,
-                background: isHawks ? HAWKS_RED : "#2a2a35",
-                color: "#fff", fontSize: 11, fontWeight: 800,
-                display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0,
-              }}>
-                {s.seed}
-              </span>
-              {TEAM_LOGOS[s.team] && (
-                <img src={TEAM_LOGOS[s.team]} alt="" style={{ width: 18, height: 18, objectFit: "contain", flexShrink: 0 }} />
-              )}
-              <span style={{ flex: 1, color: isHawks ? "#fff" : "#ccc", fontSize: 12, fontWeight: isHawks ? 800 : 600 }}>
-                {s.team}
-              </span>
-              <span style={{ color: "#888", fontSize: 11, fontWeight: 600 }}>{s.record}</span>
-            </div>
-          );
-        })}
-      </div>
-    </div>
-  );
-}
-
-// ─── RSS Feed Sources Panel ─────────────────────────────────────────────────
-
-function RSSSourcesPanel() {
-  return (
-    <div style={{ background: "#1e1e28", borderRadius: 12, padding: 16, marginBottom: 16 }}>
-      <div style={{ fontSize: 12, color: HAWKS_VOLT, fontWeight: 700, textTransform: "uppercase", letterSpacing: 1.5, marginBottom: 12 }}>
-        RSS Feed Sources
-      </div>
-      <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
-        {RSS_FEEDS.map((feed) => (
-          <a
-            key={feed.name}
-            href={feed.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{
-              fontSize: 11, color: "#fff", background: feed.color + "33",
-              border: `1px solid ${feed.color}66`, borderRadius: 8,
-              padding: "6px 12px", textDecoration: "none", fontWeight: 600,
-              transition: "all 0.2s",
-            }}
-            onMouseEnter={(e) => { e.currentTarget.style.background = feed.color + "55"; }}
-            onMouseLeave={(e) => { e.currentTarget.style.background = feed.color + "33"; }}
-          >
-            {feed.name}
-            <span style={{ color: "#888", marginLeft: 6, fontSize: 9, textTransform: "uppercase" }}>{feed.category}</span>
-          </a>
         ))}
       </div>
     </div>
   );
 }
 
-// ─── Main App ───────────────────────────────────────────────────────────────
-
-export default function HawksTracker() {
-  const [posFilter, setPosFilter] = useState("ALL");
-  const [sortBy, setSortBy] = useState("ppg");
-  const [expandedId, setExpandedId] = useState(null);
-  const [newsFilter, setNewsFilter] = useState("all");
-  const [view, setView] = useState("dashboard"); // "dashboard" | "rotation" | "news"
-  const [search, setSearch] = useState("");
-  const [statusFilter, setStatusFilter] = useState("all"); // "all" | "available" | "out"
-  const [compFilter, setCompFilter] = useState("All"); // "All" | "REG" | "PLAYOFFS"
-  const [modalPlayerId, setModalPlayerId] = useState(null);
-  const modalPlayer = modalPlayerId ? PLAYERS.find((p) => p.id === modalPlayerId) : null;
-
-  // Close modal on Escape
-  useEffect(() => {
-    if (!modalPlayerId) return;
-    const handler = (e) => { if (e.key === "Escape") setModalPlayerId(null); };
-    window.addEventListener("keydown", handler);
-    return () => window.removeEventListener("keydown", handler);
-  }, [modalPlayerId]);
-
-  const filteredResults = useMemo(() => {
-    if (compFilter === "All") return RESULTS;
-    return RESULTS.filter((r) => r.competition === compFilter);
-  }, [compFilter]);
-
-  const filtered = useMemo(() => {
-    let list = [...PLAYERS];
-    if (posFilter !== "ALL") list = list.filter((p) => p.position === posFilter);
-    if (statusFilter === "available") {
-      list = list.filter((p) => p.status === "active" || p.status === "day-to-day" || p.status === "questionable");
-    }
-    if (statusFilter === "out") list = list.filter((p) => p.status === "out" || p.status === "doubtful" || p.status === "suspended");
-    if (search) list = list.filter((p) => p.name.toLowerCase().includes(search.toLowerCase()));
-    const sortMap = {
-      form: (a, b) => b.form - a.form,
+// ─── Roster grid + filters ──────────────────────────────────────
+function Roster({ onPlayer }) {
+  const [pos, setPos] = useState("ALL");
+  const [sort, setSort] = useState("ppg");
+  const positions = ["ALL", "PG", "SG", "SF", "PF", "C"];
+  const list = useMemo(() => {
+    let l = [...PLAYERS];
+    if (pos !== "ALL") l = l.filter(p => p.position === pos);
+    const sm = {
       ppg: (a, b) => b.pointsPerGame - a.pointsPerGame,
       rpg: (a, b) => b.reboundsPerGame - a.reboundsPerGame,
       apg: (a, b) => b.assistsPerGame - a.assistsPerGame,
-      ts: (a, b) => b.trueShootingPct - a.trueShootingPct,
       mpg: (a, b) => b.minutesPerGame - a.minutesPerGame,
-      number: (a, b) => a.number - b.number,
+      num: (a, b) => a.number - b.number,
     };
-    return list.sort(sortMap[sortBy] || sortMap.ppg);
-  }, [posFilter, sortBy, search, statusFilter]);
+    return l.sort(sm[sort] || sm.ppg);
+  }, [pos, sort]);
 
   return (
-    <div style={{ minHeight: "100vh", background: HAWKS_DARK, color: "#fff", fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, sans-serif" }}>
-      {/* Header */}
+    <section style={{ padding: "56px 40px", borderBottom: `1px solid ${C.hair}` }}>
+      <SectionHeader
+        kicker="ROSTER · 15"
+        title="THE ATL FIFTEEN"
+        right={
+          <div style={{ display: "flex", gap: 18, alignItems: "center", flexWrap: "wrap" }}>
+            <div style={{ display: "flex", gap: 14 }}>
+              {positions.map(p => (
+                <Vlink key={p} active={pos === p} onClick={() => setPos(p)}>{p}</Vlink>
+              ))}
+            </div>
+            <span style={{ width: 1, height: 18, background: C.hair }}/>
+            <div style={{ display: "flex", gap: 14 }}>
+              {[["ppg", "PPG"], ["rpg", "RPG"], ["apg", "APG"], ["mpg", "MPG"], ["num", "#"]].map(([k, l]) => (
+                <Vlink key={k} active={sort === k} onClick={() => setSort(k)}>{l}</Vlink>
+              ))}
+            </div>
+          </div>
+        }
+      />
       <div style={{
-        background: `linear-gradient(135deg, ${HAWKS_RED} 0%, #8B0A0F 100%)`,
-        padding: "24px 24px 20px", boxShadow: "0 4px 24px #0008",
+        display: "grid",
+        gridTemplateColumns: "repeat(auto-fill, minmax(220px, 1fr))",
+        gap: 1, background: C.hair, marginTop: 32,
+        border: `1px solid ${C.hair}`,
       }}>
-        <div style={{ maxWidth: 1400, margin: "0 auto" }}>
-          <div style={{ display: "flex", alignItems: "center", gap: 16, marginBottom: 12 }}>
-            <div style={{
-              width: 48, height: 48, borderRadius: "50%", background: "#fff",
-              display: "flex", alignItems: "center", justifyContent: "center",
-              boxShadow: "0 2px 12px #0003", overflow: "hidden",
-            }}>
-              <img src={TEAM_LOGOS["Atlanta Hawks"]} alt="ATL" style={{ width: 36, height: 36, objectFit: "contain" }} />
-            </div>
-            <div>
-              <h1 style={{ margin: 0, fontSize: 22, fontWeight: 800, letterSpacing: -0.5 }}>Atlanta Hawks Tracker</h1>
-              <p style={{ margin: 0, fontSize: 12, opacity: 0.85 }}>2025-26 Season — Roster, Stats & Playoff Run</p>
-            </div>
-          </div>
-
-          {/* View Toggle */}
-          <div style={{ display: "flex", gap: 4, background: "#ffffff15", borderRadius: 10, padding: 3, width: "fit-content" }}>
-            {[
-              { key: "dashboard", label: "Dashboard" },
-              { key: "rotation", label: "Rotation" },
-              { key: "news", label: "News Feed" },
-            ].map((v) => (
-              <button
-                key={v.key}
-                onClick={() => setView(v.key)}
-                style={{
-                  padding: "8px 20px", borderRadius: 8, border: "none", cursor: "pointer",
-                  fontWeight: 700, fontSize: 13, textTransform: "uppercase", letterSpacing: 1,
-                  background: view === v.key ? "#fff" : "transparent",
-                  color: view === v.key ? HAWKS_RED : "#fffc",
-                  transition: "all 0.2s",
-                }}
-              >
-                {v.label}
-              </button>
-            ))}
-          </div>
-        </div>
+        {list.map(p => (
+          <PlayerCard key={p.id} p={p} onClick={() => onPlayer(p.id)}/>
+        ))}
       </div>
+    </section>
+  );
+}
 
-      <div style={{ maxWidth: 1400, margin: "0 auto", padding: "20px 16px 40px" }}>
-        {/* ─── DASHBOARD VIEW ─── */}
-        {view === "dashboard" && (
-          <>
-            <NextGameBanner game={NEXT_GAME} results={RESULTS} />
-
-            {/* Playoff series + standings side by side on wide screens */}
-            <div style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
-              gap: 12,
-              marginBottom: 4,
+// ─── Standings ──────────────────────────────────────────────────
+function Standings() {
+  return (
+    <div>
+      <div style={{
+        fontFamily: "'JetBrains Mono', monospace", fontSize: 11,
+        color: C.volt, letterSpacing: 2.5, marginBottom: 14,
+      }}>// EAST · FINAL STANDINGS</div>
+      <div style={{ border: `1px solid ${C.hair}` }}>
+        {EAST_STANDINGS.map((s, i) => {
+          const me = s.team === "Atlanta Hawks";
+          return (
+            <div key={s.seed} style={{
+              display: "grid", gridTemplateColumns: "40px 1fr auto",
+              padding: "12px 14px", alignItems: "center", gap: 14,
+              borderBottom: i < EAST_STANDINGS.length - 1 ? `1px solid ${C.hair}` : "none",
+              background: me ? `${C.red}15` : "transparent",
+              borderLeft: me ? `3px solid ${C.red}` : "3px solid transparent",
             }}>
-              <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
-                {PLAYOFF_SERIES && <PlayoffSeriesCard series={PLAYOFF_SERIES} />}
-                <InjuryReportMini players={PLAYERS} />
-                <PlayoffBoxScore players={PLAYERS} />
+              <span style={{
+                fontFamily: "'Anton', sans-serif", fontSize: 24,
+                color: me ? C.red : C.mute, lineHeight: 1,
+              }}>{String(s.seed).padStart(2, "0")}</span>
+              <div>
+                <div style={{
+                  fontFamily: "Inter, sans-serif", fontSize: 13, fontWeight: 600,
+                  color: me ? C.ivory : "#bdbdc2",
+                }}>{s.team}</div>
+                <div style={{
+                  fontFamily: "'JetBrains Mono', monospace", fontSize: 9,
+                  color: C.mute, letterSpacing: 1.5, marginTop: 2,
+                }}>{abbr(s.team)}</div>
               </div>
-              <EastStandingsCard standings={EAST_STANDINGS} />
+              <span style={{
+                fontFamily: "'JetBrains Mono', monospace", fontSize: 14,
+                fontWeight: 600, color: me ? C.volt : C.ivory,
+                fontVariantNumeric: "tabular-nums",
+              }}>{s.record}</span>
             </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
 
-            {/* Stats tiles */}
-            <div style={{
-              display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(100px, 1fr))",
-              gap: 10, marginBottom: 20,
+// ─── Series box ─────────────────────────────────────────────────
+function SeriesBox() {
+  const games = RESULTS.filter(r => r.competition === "PLAYOFFS").reverse();
+  return (
+    <div>
+      <div style={{
+        fontFamily: "'JetBrains Mono', monospace", fontSize: 11,
+        color: C.red, letterSpacing: 2.5, marginBottom: 14,
+      }}>// R1 · ATL 2 — NYK 4 · ELIMINATED</div>
+      <div style={{
+        display: "grid", gridTemplateColumns: "repeat(6, 1fr)", gap: 1,
+        background: C.hair, border: `1px solid ${C.hair}`,
+      }}>
+        {games.map((g, i) => {
+          const win = g.result === "W";
+          return (
+            <div key={i} style={{
+              background: C.bg, padding: "14px 10px", textAlign: "center",
+              borderTop: `3px solid ${win ? C.volt : C.red}`,
             }}>
-              {[
-                { label: "Played", value: filteredResults.length, color: "#fff" },
-                { label: "Won", value: filteredResults.filter((r) => r.result === "W").length, color: "#28a745" },
-                { label: "Lost", value: filteredResults.filter((r) => r.result === "L").length, color: "#dc3545" },
-                {
-                  label: "PF/G",
-                  value: filteredResults.length
-                    ? (filteredResults.reduce((s, r) => {
-                        const [h, a] = r.score.split("-").map(Number);
-                        return s + (r.home ? h : a);
-                      }, 0) / filteredResults.length).toFixed(1)
-                    : "—",
-                  color: HAWKS_VOLT,
-                },
-                {
-                  label: "PA/G",
-                  value: filteredResults.length
-                    ? (filteredResults.reduce((s, r) => {
-                        const [h, a] = r.score.split("-").map(Number);
-                        return s + (r.home ? a : h);
-                      }, 0) / filteredResults.length).toFixed(1)
-                    : "—",
-                  color: "#ff6b6b",
-                },
-                { label: "Team PPG", value: _.meanBy(PLAYERS, "pointsPerGame").toFixed(1), color: HAWKS_VOLT },
-                { label: "Team RPG", value: _.meanBy(PLAYERS, "reboundsPerGame").toFixed(1), color: "#3498db" },
-                { label: "Team APG", value: _.meanBy(PLAYERS, "assistsPerGame").toFixed(1), color: "#2ecc71" },
-                { label: "Avg Form", value: _.meanBy(PLAYERS, "form").toFixed(1), color: "#2ecc71" },
-                { label: "Out", value: PLAYERS.filter((p) => p.status === "out" || p.status === "doubtful").length, color: "#dc3545" },
-              ].map((s) => (
-                <div key={s.label} style={{ background: "#1e1e28", borderRadius: 12, padding: "12px 10px", textAlign: "center" }}>
-                  <div style={{ color: s.color, fontWeight: 800, fontSize: 18 }}>{s.value}</div>
-                  <div style={{ color: "#777", fontSize: 9, textTransform: "uppercase", letterSpacing: 1, marginTop: 2 }}>{s.label}</div>
-                </div>
-              ))}
+              <div style={{
+                fontFamily: "'JetBrains Mono', monospace", fontSize: 9,
+                color: C.mute, letterSpacing: 2,
+              }}>G{i + 1}</div>
+              <div style={{
+                fontFamily: "'Anton', sans-serif", fontSize: 28,
+                color: win ? C.volt : C.red, lineHeight: 1.1,
+              }}>{g.result}</div>
+              <div style={{
+                fontFamily: "'JetBrains Mono', monospace", fontSize: 11,
+                color: C.ivory, marginTop: 2, fontVariantNumeric: "tabular-nums",
+              }}>{g.score}</div>
+              <div style={{
+                fontSize: 9, color: C.mute, marginTop: 4, letterSpacing: 1,
+              }}>{g.home ? "HOME" : "AWAY"}</div>
             </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
 
-            {/* Results Strip */}
-            <div style={{ marginBottom: 20 }}>
-              <div style={{ fontSize: 11, color: HAWKS_VOLT, fontWeight: 700, textTransform: "uppercase", letterSpacing: 1.5, marginBottom: 8 }}>
-                {compFilter === "All" ? "Recent Results" : `${compFilter} Results`}
-              </div>
-              <div style={{ display: "flex", gap: 10, overflowX: "auto", paddingBottom: 8, scrollbarWidth: "thin", scrollbarColor: "#333 transparent" }}>
-                {filteredResults.map((r, i) => (
-                  <div key={i} style={{ flex: "0 0 auto" }}>
-                    <ResultCard result={r} />
-                  </div>
-                ))}
-                {filteredResults.length === 0 && (
-                  <div style={{ padding: "20px 40px", color: "#666", fontSize: 12 }}>No results for this filter.</div>
-                )}
-              </div>
-            </div>
-
-            {/* Filter Bar */}
-            <div style={{
-              display: "flex", flexWrap: "wrap", gap: 12, background: "#1e1e28",
-              borderRadius: 14, padding: "12px 16px", marginBottom: 16, alignItems: "center",
+// ─── Results — courtside scoreboard strip ───────────────────────
+function Results() {
+  const last12 = RESULTS.slice(0, 12);
+  return (
+    <section style={{
+      padding: "56px 40px", borderBottom: `1px solid ${C.hair}`, background: C.panel,
+    }}>
+      <SectionHeader
+        kicker="LAST 12 GAMES · REG + R1"
+        title={<>RESULTS<span style={{ color: C.red }}>.</span></>}
+      />
+      <div style={{
+        marginTop: 32, display: "grid",
+        gridTemplateColumns: "repeat(auto-fill, minmax(220px, 1fr))",
+        gap: 1, background: C.hair, border: `1px solid ${C.hair}`,
+      }}>
+        {last12.map((r, i) => {
+          const [s1, s2] = r.score.split("-").map(Number);
+          const ours = s1;
+          const theirs = s2;
+          const win = r.result === "W";
+          const playoff = r.competition === "PLAYOFFS";
+          return (
+            <div key={i} style={{
+              padding: "18px 18px 14px", background: C.bg, position: "relative",
+              borderTop: `3px solid ${win ? C.volt : C.red}`,
             }}>
-              <input
-                type="text"
-                placeholder="Search players..."
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-                style={{
-                  width: 200, padding: "8px 12px", borderRadius: 8,
-                  background: "#252530", border: "1px solid #333", color: "#fff",
-                  fontSize: 12, outline: "none", boxSizing: "border-box",
-                }}
-              />
-              <div style={{ display: "flex", gap: 4, alignItems: "center" }}>
-                {["ALL", "PG", "SG", "SF", "PF", "C"].map((pos) => (
-                  <button
-                    key={pos}
-                    onClick={() => setPosFilter(pos)}
-                    style={{
-                      padding: "5px 10px", borderRadius: 6, border: "none", cursor: "pointer",
-                      fontWeight: 700, fontSize: 10,
-                      background: posFilter === pos ? HAWKS_RED : "#252530",
-                      color: posFilter === pos ? "#fff" : "#999",
-                      transition: "all 0.2s",
-                    }}
-                  >
-                    {pos}
-                  </button>
-                ))}
+              <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 14 }}>
+                <span style={{
+                  fontFamily: "'JetBrains Mono', monospace", fontSize: 9,
+                  color: C.mute, letterSpacing: 2,
+                }}>{new Date(r.date + "T12:00:00")
+                    .toLocaleDateString("en-US", { month: "short", day: "2-digit" })
+                    .toUpperCase()}</span>
+                <span style={{
+                  fontFamily: "'JetBrains Mono', monospace", fontSize: 9,
+                  color: playoff ? C.red : C.mute, letterSpacing: 2, fontWeight: 700,
+                }}>{playoff ? "PLAYOFFS" : "REG"} · {r.home ? "HOME" : "AWAY"}</span>
               </div>
-              <div style={{ display: "flex", gap: 4, alignItems: "center" }}>
-                {[
-                  { key: "All", label: "All", bg: "#ffffff22" },
-                  { key: "REG", label: "REG", bg: "#444" },
-                  { key: "PLAYOFFS", label: "Playoffs", bg: HAWKS_RED },
-                ].map((tab) => (
-                  <button key={tab.key} onClick={() => setCompFilter(tab.key)} style={{
-                    padding: "5px 12px", borderRadius: 14, border: "none", cursor: "pointer",
-                    fontSize: 10, fontWeight: 700, textTransform: "uppercase", letterSpacing: 0.5,
-                    color: compFilter === tab.key ? "#fff" : "#888",
-                    background: compFilter === tab.key ? tab.bg : "#252530",
-                    transition: "all 0.2s",
-                  }}>
-                    {tab.label}
-                  </button>
-                ))}
+              <div style={{
+                fontFamily: "'Anton', sans-serif", fontSize: 54, color: C.ivory,
+                lineHeight: 0.85, display: "flex", alignItems: "baseline", gap: 8,
+                fontVariantNumeric: "tabular-nums",
+              }}>
+                <span style={{ color: win ? C.volt : C.ivory }}>{ours}</span>
+                <span style={{ fontSize: 18, color: C.mute }}>—</span>
+                <span style={{ color: win ? C.mute : C.red }}>{theirs}</span>
               </div>
-              <div style={{ display: "flex", gap: 4, alignItems: "center" }}>
-                {[
-                  { key: "all", label: "All" },
-                  { key: "available", label: "Available" },
-                  { key: "out", label: "Out" },
-                ].map((f) => (
-                  <button
-                    key={f.key}
-                    onClick={() => setStatusFilter(f.key)}
-                    style={{
-                      padding: "5px 10px", borderRadius: 6, border: "none", cursor: "pointer",
-                      fontWeight: 700, fontSize: 10,
-                      background: statusFilter === f.key
-                        ? (f.key === "out" ? "#dc3545" : f.key === "available" ? "#28a745" : "#252530")
-                        : "#252530",
-                      color: statusFilter === f.key ? "#fff" : "#999",
-                      transition: "all 0.2s",
-                    }}
-                  >
-                    {f.label}
-                  </button>
-                ))}
+              <div style={{ display: "flex", alignItems: "center", gap: 8, marginTop: 10 }}>
+                <span style={{
+                  width: 24, height: 24, display: "inline-flex",
+                  alignItems: "center", justifyContent: "center",
+                  background: win ? C.volt : C.red, color: win ? "#000" : "#fff",
+                  fontFamily: "'Anton', sans-serif", fontSize: 16, fontWeight: 700,
+                }}>{r.result}</span>
+                <span style={{
+                  fontFamily: "'Anton', sans-serif", fontSize: 20, color: C.ivory,
+                  letterSpacing: "0.02em",
+                }}>{r.home ? "vs" : "at"} {abbr(r.opponent)}</span>
               </div>
-              <div style={{ display: "flex", gap: 4, alignItems: "center", marginLeft: "auto" }}>
-                <span style={{ fontSize: 9, color: "#666", textTransform: "uppercase", letterSpacing: 1 }}>Sort:</span>
-                {[
-                  { key: "form", label: "Form" },
-                  { key: "ppg", label: "PPG" },
-                  { key: "rpg", label: "RPG" },
-                  { key: "apg", label: "APG" },
-                  { key: "ts", label: "TS%" },
-                  { key: "mpg", label: "MPG" },
-                  { key: "number", label: "#" },
-                ].map((s) => (
-                  <button
-                    key={s.key}
-                    onClick={() => setSortBy(s.key)}
-                    style={{
-                      padding: "5px 10px", borderRadius: 6, border: "none", cursor: "pointer",
-                      fontWeight: 700, fontSize: 10,
-                      background: sortBy === s.key ? HAWKS_VOLT : "#252530",
-                      color: sortBy === s.key ? "#000" : "#999",
-                      transition: "all 0.2s",
-                    }}
-                  >
-                    {s.label}
-                  </button>
-                ))}
-              </div>
+              <div style={{
+                fontSize: 11, color: C.mute, marginTop: 8, lineHeight: 1.4,
+                fontFamily: "Inter, sans-serif",
+                display: "-webkit-box", WebkitBoxOrient: "vertical",
+                WebkitLineClamp: 3, overflow: "hidden",
+              }}>{r.topScorers}</div>
             </div>
+          );
+        })}
+      </div>
+    </section>
+  );
+}
 
-            {/* Squad Section Header */}
-            <div style={{ fontSize: 11, color: HAWKS_VOLT, fontWeight: 700, textTransform: "uppercase", letterSpacing: 1.5, marginBottom: 8 }}>
-              Roster
-            </div>
+// ─── News view ──────────────────────────────────────────────────
+function NewsView() {
+  const topics = NEWS_DIGEST.keyTopics;
+  const lead = topics[0];
+  const rest = topics.slice(1);
 
-            {/* Player Cards */}
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(260px, 1fr))", gap: 10 }}>
-              {filtered.map((player) => (
-                <div key={player.id}>
-                  <PlayerCard
-                    player={player}
-                    expanded={expandedId === player.id}
-                    onToggle={() => setExpandedId(expandedId === player.id ? null : player.id)}
-                  />
-                </div>
-              ))}
-              {filtered.length === 0 && (
-                <div style={{ textAlign: "center", padding: 40, color: "#666", gridColumn: "1 / -1" }}>
-                  No players found matching your criteria.
-                </div>
-              )}
-            </div>
-          </>
-        )}
+  // pull a source citation from the first parenthetical in detail
+  const sourceFrom = (detail) => {
+    const m = detail.match(/\(([^,)]+(?:\/[^,)]+)*)/);
+    return m ? m[1].split("/").slice(0, 3).join(" / ").trim() : "WIRE · ATL";
+  };
+  const ages = ["2H", "3H", "4H", "5H", "6H", "8H", "10H", "12H", "14H", "16H", "18H", "20H", "1D", "1D", "1D"];
 
-        {/* ─── ROTATION VIEW ─── */}
-        {view === "rotation" && (
-          <RotationView players={PLAYERS} nextGame={NEXT_GAME} onPlayerClick={(id) => setModalPlayerId(id)} />
-        )}
+  return (
+    <section style={{ padding: "56px 40px", borderBottom: `1px solid ${C.hair}` }}>
+      <SectionHeader
+        kicker="WIRE · LIVE"
+        title={<>NEWS<span style={{ color: C.red }}>/</span>FEED</>}
+      />
 
-        {/* ─── NEWS VIEW ─── */}
-        {view === "news" && (
-          <>
-            <RSSSourcesPanel />
-            <NewsDigestSection />
+      {/* Lead */}
+      <article style={{
+        marginTop: 40, paddingTop: 32, borderTop: `1px solid ${C.hair}`,
+        display: "grid", gridTemplateColumns: "1.5fr 1fr", gap: 48,
+      }}>
+        <div>
+          <div style={{
+            display: "flex", gap: 14, fontFamily: "'JetBrains Mono', monospace",
+            fontSize: 11, color: C.mute, letterSpacing: 2, marginBottom: 18,
+            flexWrap: "wrap",
+          }}>
+            <span style={{ color: C.red }}>ATLANTA</span>
+            <span>—</span>
+            <span>APR 30, 2026</span>
+            <span>—</span>
+            <span>{(lead.category || "GENERAL").toUpperCase()}</span>
+          </div>
+          <h3 style={{
+            fontFamily: "'Anton', sans-serif",
+            fontSize: "clamp(40px, 4.5vw, 72px)",
+            color: C.ivory, textTransform: "uppercase",
+            lineHeight: 0.92, margin: 0, letterSpacing: "-0.01em",
+          }}>
+            <span style={{
+              color: C.red, fontSize: "1.4em", float: "left", lineHeight: 0.85,
+              marginRight: 14, marginTop: -4,
+            }}>{lead.title.charAt(0)}</span>
+            {lead.title.slice(1)}
+          </h3>
+          <p style={{
+            marginTop: 24, fontFamily: "Inter, sans-serif", fontSize: 16,
+            color: "#c5c5cc", lineHeight: 1.6, maxWidth: 640,
+          }}>{lead.detail}</p>
+          <div style={{
+            marginTop: 18, fontFamily: "'JetBrains Mono', monospace", fontSize: 11,
+            color: C.volt, letterSpacing: 2,
+          }}>{sourceFrom(lead.detail)} · 2H AGO</div>
+        </div>
+        <div style={{ borderLeft: `1px solid ${C.hair}`, paddingLeft: 32 }}>
+          <div style={{
+            fontFamily: "'JetBrains Mono', monospace", fontSize: 11,
+            color: C.mute, letterSpacing: 2, marginBottom: 16,
+          }}>// PULL QUOTE</div>
+          <div style={{
+            fontFamily: "'Anton', sans-serif", fontSize: 42, color: C.ivory,
+            lineHeight: 1, textTransform: "uppercase", letterSpacing: "-0.005em",
+          }}>"OBVIOUSLY,<br/>IT <span style={{ color: C.red }}>SUCKS</span>."</div>
+          <div style={{
+            marginTop: 18, fontFamily: "Inter, sans-serif", fontSize: 13,
+            color: C.mute, lineHeight: 1.5,
+          }}>— Jalen Johnson, postgame, after the 51-point closeout that ended the Hawks' season.</div>
+        </div>
+      </article>
 
-            <div style={{ display: "flex", gap: 8, marginBottom: 16, flexWrap: "wrap", alignItems: "center" }}>
-              <span style={{ fontSize: 11, color: "#888", fontWeight: 600, textTransform: "uppercase", letterSpacing: 1 }}>Filter:</span>
-              {[
-                { key: "all", label: "All News", color: HAWKS_RED },
-                ...RSS_FEEDS.map((f) => ({ key: f.name, label: f.name, color: f.color })),
-              ].map((f) => (
-                <button
-                  key={f.key}
-                  onClick={() => setNewsFilter(f.key)}
-                  style={{
-                    padding: "6px 14px", borderRadius: 8, border: "none", cursor: "pointer",
-                    fontWeight: 700, fontSize: 11,
-                    background: newsFilter === f.key ? f.color : "#1e1e28",
-                    color: newsFilter === f.key ? "#fff" : "#999",
-                    transition: "all 0.2s",
-                  }}
-                >
-                  {f.label}
-                </button>
-              ))}
-            </div>
-
-            <LiveNewsFeed filter={newsFilter} />
-
+      {/* Rest */}
+      <div style={{
+        marginTop: 48, display: "grid",
+        gridTemplateColumns: "repeat(auto-fill, minmax(360px, 1fr))",
+        gap: 0, borderTop: `1px solid ${C.hair}`,
+      }}>
+        {rest.map((n, i) => (
+          <article key={i} style={{
+            padding: "28px 28px 28px 0",
+            borderBottom: `1px solid ${C.hair}`,
+            borderRight: (i % 2 === 0) ? `1px solid ${C.hair}` : "none",
+            paddingLeft: (i % 2 === 0) ? 0 : 28,
+          }}>
             <div style={{
-              marginTop: 20, background: "#1e1e28", borderRadius: 12, padding: 20,
-              border: `1px solid ${HAWKS_RED}22`,
+              display: "flex", gap: 10, fontFamily: "'JetBrains Mono', monospace",
+              fontSize: 10, color: C.mute, letterSpacing: 1.8, marginBottom: 12,
+              flexWrap: "wrap",
             }}>
-              <div style={{ fontSize: 12, color: HAWKS_VOLT, fontWeight: 700, textTransform: "uppercase", letterSpacing: 1.5, marginBottom: 8 }}>
-                Subscribe to Live RSS Feeds
-              </div>
-              <p style={{ fontSize: 13, color: "#aaa", lineHeight: 1.6, margin: 0 }}>
-                Click any source above to access its RSS feed URL. Add these to your favorite RSS reader
-                (Feedly, Inoreader, NetNewsWire, etc.) for real-time Hawks news updates.
-                The feeds include fan-site analysis, major-outlet coverage, and league-wide context.
-              </p>
+              <span style={{ color: C.red }}>ATL</span>
+              <span>·</span>
+              <span>{(n.category || "GENERAL").toUpperCase()}</span>
+              <span>·</span>
+              <span>{ages[i + 1] || "1D"} AGO</span>
             </div>
-          </>
-        )}
+            <h4 style={{
+              fontFamily: "'Anton', sans-serif", fontSize: 26, color: C.ivory,
+              textTransform: "uppercase", lineHeight: 1, margin: 0,
+              letterSpacing: "-0.005em",
+            }}>{n.title}</h4>
+            <p style={{
+              marginTop: 12, fontFamily: "Inter, sans-serif", fontSize: 13,
+              color: "#a8a8b0", lineHeight: 1.55,
+            }}>{n.detail}</p>
+            <div style={{
+              marginTop: 12, fontFamily: "'JetBrains Mono', monospace", fontSize: 10,
+              color: C.volt, letterSpacing: 1.8,
+            }}>{sourceFrom(n.detail)}</div>
+          </article>
+        ))}
+      </div>
+    </section>
+  );
+}
 
-        {/* Footer */}
+// ─── Player Modal ───────────────────────────────────────────────
+function PlayerModal({ id, onClose }) {
+  const p = PLAYERS.find(x => x.id === id);
+  useEffect(() => {
+    const k = (e) => { if (e.key === "Escape") onClose(); };
+    window.addEventListener("keydown", k);
+    return () => window.removeEventListener("keydown", k);
+  }, [onClose]);
+  if (!p) return null;
+  const inches = p.physical.height;
+  const ftIn = `${Math.floor(inches / 12)}'${inches % 12}"`;
+  return (
+    <div onClick={onClose} style={{
+      position: "fixed", inset: 0, zIndex: 1000, background: "rgba(0,0,0,0.85)",
+      backdropFilter: "blur(8px)", overflowY: "auto", padding: "40px 20px",
+    }}>
+      <div onClick={(e) => e.stopPropagation()} style={{
+        maxWidth: 1100, margin: "0 auto", background: C.bg,
+        border: `1px solid ${C.hair}`, position: "relative",
+      }}>
+        <button onClick={onClose} style={{
+          position: "absolute", top: 16, right: 16, zIndex: 10,
+          background: "transparent", border: `1px solid ${C.hair}`,
+          color: C.ivory, padding: "8px 14px", cursor: "pointer",
+          fontFamily: "'JetBrains Mono', monospace", fontSize: 11,
+          letterSpacing: 1.5,
+        }}>CLOSE · ESC</button>
+
         <div style={{
-          marginTop: 32, textAlign: "center", padding: "16px 0",
-          borderTop: "1px solid #ffffff08", color: "#444", fontSize: 11,
+          display: "grid", gridTemplateColumns: "1fr 1.2fr", gap: 0, minHeight: 560,
         }}>
-          Atlanta Hawks Tracker — 2025-26 Season — Data via NBA.com, Basketball Reference & team reporting
-          <br />
-          <span style={{ color: "#333" }}>True to Atlanta</span>
-        </div>
-      </div>
+          {/* Left: portrait + jersey */}
+          <div style={{
+            position: "relative", background: C.panel, overflow: "hidden",
+            borderRight: `1px solid ${C.hair}`,
+          }}>
+            <div style={{
+              position: "absolute", top: -50, left: -30,
+              fontFamily: "'Anton', sans-serif", fontSize: 520, lineHeight: 0.78,
+              color: C.red, opacity: 0.18, pointerEvents: "none",
+            }}>{String(p.number).padStart(2, "0")}</div>
+            <img src={p.image} alt={p.name} style={{
+              position: "absolute", bottom: 0, left: "50%",
+              transform: "translateX(-50%)",
+              width: "95%", maxHeight: "95%", objectFit: "contain", zIndex: 2,
+            }}/>
+          </div>
 
-      {/* Player Detail Modal (Rotation view) */}
-      {modalPlayer && (
-        <div
-          onClick={() => setModalPlayerId(null)}
-          style={{
-            position: "fixed", inset: 0, zIndex: 1000,
-            background: "rgba(0,0,0,0.7)", backdropFilter: "blur(4px)",
-            display: "flex", alignItems: "flex-start", justifyContent: "center",
-            padding: 20, overflowY: "auto",
-          }}
-        >
-          <div onClick={(e) => e.stopPropagation()} style={{ width: "100%", maxWidth: 320, margin: "auto 0" }}>
-            <PlayerCard
-              player={modalPlayer}
-              expanded={true}
-              onToggle={() => setModalPlayerId(null)}
-            />
+          {/* Right: data */}
+          <div style={{ padding: "40px 40px 32px" }}>
+            <div style={{
+              fontFamily: "'JetBrains Mono', monospace", fontSize: 11,
+              color: C.volt, letterSpacing: 2.5, marginBottom: 10,
+            }}>// {p.position} · #{p.number} · {countryShort(p)} · AGE {p.age}</div>
+            <div style={{
+              fontFamily: "'Anton', sans-serif", fontSize: 72, color: C.ivory,
+              textTransform: "uppercase", lineHeight: 0.85, letterSpacing: "-0.015em",
+            }}>{p.name}</div>
+            <div style={{ marginTop: 14 }}><Status s={p.status}/></div>
+            {p.injuryNote && (
+              <div style={{
+                marginTop: 14, padding: "10px 14px",
+                borderLeft: `3px solid ${C.red}`, background: `${C.red}10`,
+                fontSize: 13, color: C.ivory,
+              }}>{p.injuryNote}</div>
+            )}
+
+            {/* season line */}
+            <div style={{
+              marginTop: 28, display: "grid", gridTemplateColumns: "repeat(4, 1fr)",
+              border: `1px solid ${C.hair}`,
+            }}>
+              {[
+                { l: "PPG", v: p.pointsPerGame.toFixed(1), c: C.volt },
+                { l: "RPG", v: p.reboundsPerGame.toFixed(1) },
+                { l: "APG", v: p.assistsPerGame.toFixed(1) },
+                { l: "MPG", v: p.minutesPerGame.toFixed(1) },
+              ].map((s, i) => (
+                <div key={s.l} style={{
+                  padding: "18px 12px", textAlign: "center",
+                  borderRight: i < 3 ? `1px solid ${C.hair}` : "none",
+                }}>
+                  <div style={{
+                    fontFamily: "'JetBrains Mono', monospace", fontSize: 36,
+                    color: s.c || C.ivory, fontWeight: 700, lineHeight: 1,
+                    fontVariantNumeric: "tabular-nums",
+                  }}>{s.v}</div>
+                  <div style={{
+                    fontSize: 9, color: C.mute, letterSpacing: 2, marginTop: 6,
+                  }}>{s.l}</div>
+                </div>
+              ))}
+            </div>
+
+            {/* Shooting */}
+            <div style={{ marginTop: 24 }}>
+              <div style={{
+                fontFamily: "'JetBrains Mono', monospace", fontSize: 10,
+                color: C.mute, letterSpacing: 2, marginBottom: 10,
+              }}>// SHOOTING</div>
+              {[
+                { l: "FIELD GOAL", v: p.fieldGoalPct, max: 65 },
+                { l: "3-POINT", v: p.threePointPct, max: 50 },
+                { l: "FREE THROW", v: p.freeThrowPct, max: 100 },
+                { l: "TRUE SHOOTING", v: p.trueShootingPct, max: 70 },
+              ].map(b => (
+                <div key={b.l} style={{ marginBottom: 10 }}>
+                  <div style={{
+                    display: "flex", justifyContent: "space-between", marginBottom: 4,
+                    fontFamily: "'JetBrains Mono', monospace", fontSize: 11,
+                  }}>
+                    <span style={{ color: C.mute, letterSpacing: 1.5 }}>{b.l}</span>
+                    <span style={{
+                      color: C.ivory, fontVariantNumeric: "tabular-nums",
+                    }}>{b.v.toFixed(1)}%</span>
+                  </div>
+                  <div style={{ height: 3, background: C.hair, position: "relative" }}>
+                    <div style={{
+                      position: "absolute", left: 0, top: 0, bottom: 0,
+                      width: `${Math.min(100, (b.v / b.max) * 100)}%`,
+                      background: C.volt,
+                    }}/>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Phys */}
+            <div style={{
+              marginTop: 20, display: "flex", gap: 24,
+              fontFamily: "'JetBrains Mono', monospace", fontSize: 11,
+              color: C.mute, letterSpacing: 1.5, flexWrap: "wrap",
+            }}>
+              <span>HT <span style={{ color: C.ivory, fontSize: 14 }}>{ftIn}</span></span>
+              <span>WT <span style={{ color: C.ivory, fontSize: 14 }}>
+                {p.physical.weight}<span style={{ color: C.mute }}> LB</span>
+              </span></span>
+              <span>+/- <span style={{
+                color: p.plusMinus >= 0 ? C.volt : C.red, fontSize: 14,
+              }}>{p.plusMinus >= 0 ? "+" : ""}{p.plusMinus.toFixed(1)}</span></span>
+            </div>
+
+            {/* Note */}
+            {p.recentNotes && (
+              <div style={{
+                marginTop: 24, padding: "16px 18px",
+                borderLeft: `3px solid ${C.volt}`, background: C.panel,
+                fontSize: 13, color: "#c5c5cc", lineHeight: 1.55,
+                fontFamily: "Inter, sans-serif", maxHeight: 220,
+                overflowY: "auto",
+              }}>{p.recentNotes}</div>
+            )}
           </div>
         </div>
-      )}
+      </div>
+    </div>
+  );
+}
+
+// ─── Dashboard composition ──────────────────────────────────────
+function Dashboard({ onPlayer }) {
+  return (
+    <>
+      <SeasonBanner/>
+      <section style={{
+        padding: "56px 40px", borderBottom: `1px solid ${C.hair}`,
+        display: "grid", gridTemplateColumns: "1.4fr 1fr", gap: 48,
+      }}>
+        <SeriesBox/>
+        <Standings/>
+      </section>
+      <AwardsStrip/>
+      <Roster onPlayer={onPlayer}/>
+      <Results/>
+    </>
+  );
+}
+
+// ─── App ────────────────────────────────────────────────────────
+export default function HawksTracker() {
+  const [view, setView] = useState("dashboard");
+  const [modalId, setModalId] = useState(null);
+
+  return (
+    <div style={{
+      minHeight: "100vh", background: C.bg, color: C.ivory,
+      fontFamily: "Inter, sans-serif",
+    }}>
+      {/* Top nav */}
+      <nav style={{
+        display: "flex", alignItems: "center", padding: "18px 40px", gap: 32,
+        borderBottom: `1px solid ${C.hair}`, background: C.bg,
+        position: "sticky", top: 0, zIndex: 50,
+      }}>
+        <div style={{
+          fontFamily: "'Anton', sans-serif", fontSize: 24, color: C.ivory,
+          textTransform: "uppercase", letterSpacing: "0.02em",
+        }}>
+          ATL<span style={{ color: C.red }}>/</span>26
+        </div>
+        <div style={{ flex: 1, display: "flex", gap: 28 }}>
+          <Vlink active={view === "dashboard"} onClick={() => setView("dashboard")} size={13}>
+            Dashboard
+          </Vlink>
+          <Vlink active={view === "rotation"} onClick={() => setView("rotation")} size={13}>
+            Rotation
+          </Vlink>
+          <Vlink active={view === "news"} onClick={() => setView("news")} size={13}>
+            News
+          </Vlink>
+        </div>
+        <div style={{
+          fontFamily: "'JetBrains Mono', monospace", fontSize: 11,
+          color: C.mute, letterSpacing: 1.8,
+        }}>
+          <span style={{ color: C.red }}>●</span> SEASON OVER · MAY 1 · 2026
+        </div>
+      </nav>
+
+      {view === "dashboard" && <Hero/>}
+      {view === "dashboard" && <Dashboard onPlayer={setModalId}/>}
+      {view === "rotation" && <RotationView onPlayer={setModalId}/>}
+      {view === "news" && <NewsView/>}
+
+      {/* Footer */}
+      <footer style={{
+        padding: "48px 40px", display: "flex",
+        justifyContent: "space-between", alignItems: "center", gap: 24,
+        flexWrap: "wrap",
+      }}>
+        <div style={{
+          fontFamily: "'Anton', sans-serif", fontSize: 64, color: "#1d1d22",
+          textTransform: "uppercase", lineHeight: 0.85, letterSpacing: "-0.01em",
+        }}>TRUE TO ATL.</div>
+        <div style={{
+          fontFamily: "'JetBrains Mono', monospace", fontSize: 10, color: C.mute,
+          letterSpacing: 1.5, textAlign: "right",
+        }}>
+          // EOF · 2025–26<br/>
+          // ROSTER · 15 PLAYERS<br/>
+          // REC · 46–36
+        </div>
+      </footer>
+
+      {modalId && <PlayerModal id={modalId} onClose={() => setModalId(null)}/>}
     </div>
   );
 }

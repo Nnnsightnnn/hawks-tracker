@@ -3,21 +3,124 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Atlanta Hawks Tracker</title>
+    <title>ATL/26 — Hawks Tracker</title>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="https://nnnsightnnn.github.io/tracker-shared/live-scores.css" />
     <style>
       * { margin: 0; padding: 0; box-sizing: border-box; }
-      body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; }
-      ::-webkit-scrollbar { width: 8px; }
-      ::-webkit-scrollbar-track { background: #1a1a1f; }
-      ::-webkit-scrollbar-thumb { background: #E03A3E55; border-radius: 4px; }
-      ::-webkit-scrollbar-thumb:hover { background: #E03A3E88; }
+      html, body { background: #0B0B0E; color: #F5F1E8; -webkit-font-smoothing: antialiased; }
+      body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; overflow-x: hidden; }
+      ::-webkit-scrollbar { width: 10px; height: 10px; }
+      ::-webkit-scrollbar-track { background: #0B0B0E; }
+      ::-webkit-scrollbar-thumb { background: #27272C; }
+      ::-webkit-scrollbar-thumb:hover { background: #E03A3E; }
+      ::selection { background: #C8FB37; color: #000; }
+      button { font-family: inherit; }
+      @keyframes tick {
+        0%   { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
+      }
+
+      /* ── Live Score Box · Hawks site-template overrides ─────────────────── */
+      .ls-card {
+        background: #16161A;
+        border: 1px solid #27272C;
+        border-radius: 0;
+        padding: 14px 18px;
+        color: #F5F1E8;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        box-shadow: none;
+      }
+      .ls-card[data-state="in"] {
+        border-left: 3px solid #E03A3E;
+      }
+      .ls-card[data-state="post"] { border-left: 3px solid #C8FB37; }
+      .ls-card[data-state="pre"]  { border-left: 3px solid #27272C; }
+
+      .ls-status {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 10px;
+        color: #C8FB37;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-weight: 600;
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .ls-card[data-state="pre"] .ls-status { color: #7A7A82; }
+
+      .ls-teams { display: flex; flex-direction: column; gap: 6px; }
+      .ls-team {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 8px 12px;
+        background: #0B0B0E;
+        border: 1px solid #27272C;
+        border-radius: 0;
+      }
+      .ls-abbr {
+        font-family: 'Anton', sans-serif;
+        font-weight: 400;
+        font-size: 18px;
+        letter-spacing: 0.04em;
+        color: #F5F1E8;
+        text-transform: uppercase;
+      }
+      .ls-score {
+        font-family: 'JetBrains Mono', monospace;
+        font-variant-numeric: tabular-nums;
+        font-weight: 700;
+        font-size: 22px;
+        color: #F5F1E8;
+      }
+
+      .ls-live {
+        display: inline-block;
+        width: 9px;
+        height: 9px;
+        background: #E03A3E;
+        border-radius: 50%;
+        animation: ls-pulse 1.2s infinite;
+        box-shadow: 0 0 8px #E03A3E;
+      }
+
+      .ls-events {
+        list-style: none;
+        padding: 10px 0 0 0;
+        margin-top: 10px;
+        border-top: 1px solid #27272C;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 11px;
+        color: #7A7A82;
+        letter-spacing: 1px;
+      }
+      .ls-events li { padding: 3px 0; }
+
+      .ls-empty {
+        color: #7A7A82;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-weight: 600;
+        padding: 6px 0;
+        text-align: center;
+      }
+
+      @keyframes ls-pulse { 50% { opacity: 0.3; } }
     </style>
   </head>
   <body>
-    <div id="score-box" style="max-width: 900px; margin: 1rem auto; padding: 0 1rem;"></div>
+    <div id="score-box" style="max-width: 1200px; margin: 16px auto 0; padding: 0 16px;"></div>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
     <script type="module" src="/live-scores-init.js"></script>
