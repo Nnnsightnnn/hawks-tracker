@@ -244,14 +244,14 @@ function Hero() {
           }}>// NEXT ON THE CALENDAR</div>
           <div style={{
             fontFamily: "'Anton', sans-serif",
-            fontSize: "clamp(28px, 3.4vw, 48px)", color: C.ivory,
+            fontSize: m ? "clamp(24px, 7vw, 36px)" : "clamp(28px, 3.4vw, 48px)", color: C.ivory,
             textTransform: "uppercase", lineHeight: 0.95, letterSpacing: "-0.01em",
           }}>{NEXT_GAME.opponent}</div>
           <div style={{
-            fontSize: 13, color: C.mute, marginTop: 8, fontFamily: "Inter,sans-serif",
+            fontSize: m ? 12 : 13, color: C.mute, marginTop: 8, fontFamily: "Inter,sans-serif",
           }}>{NEXT_GAME.venue} · {NEXT_GAME.broadcast}</div>
           <div style={{
-            fontSize: 12, color: "#a8a8b0", marginTop: 6,
+            fontSize: m ? 11 : 12, color: "#a8a8b0", marginTop: 6,
             fontFamily: "Inter,sans-serif", maxWidth: 560, lineHeight: 1.5,
           }}>{NEXT_GAME.seriesContext}</div>
         </div>
@@ -266,16 +266,16 @@ function Hero() {
             { l: "SEC", v: sec },
           ].map((b, i) => (
             <div key={b.l} style={{
-              padding: "14px 10px", textAlign: "center",
+              padding: m ? "10px 4px" : "14px 10px", textAlign: "center",
               borderRight: i < 3 ? `1px solid ${C.hair}` : "none",
             }}>
               <div style={{
-                fontFamily: "'JetBrains Mono', monospace", fontSize: 32,
+                fontFamily: "'JetBrains Mono', monospace", fontSize: m ? 22 : 32,
                 color: i === 0 ? C.volt : C.ivory, fontWeight: 700, lineHeight: 1,
                 fontVariantNumeric: "tabular-nums",
               }}>{String(b.v).padStart(2, "0")}</div>
               <div style={{
-                fontSize: 9, color: C.mute, letterSpacing: 1.5, marginTop: 6,
+                fontSize: 9, color: C.mute, letterSpacing: 1.5, marginTop: m ? 4 : 6,
               }}>{b.l}</div>
             </div>
           ))}
@@ -412,30 +412,30 @@ function AwardsStrip() {
           const tc = it.tone === "volt" ? C.volt : it.tone === "red" ? C.red : C.ivory;
           return (
             <div key={i} style={{
-              padding: "32px 28px", background: C.panel, position: "relative",
-              overflow: "hidden", minHeight: 240,
+              padding: m ? "22px 18px" : "32px 28px", background: C.panel, position: "relative",
+              overflow: "hidden", minHeight: m ? 170 : 240,
             }}>
               <div style={{
-                position: "absolute", top: -30, right: -20,
-                fontFamily: "'Anton', sans-serif", fontSize: 200,
+                position: "absolute", top: m ? -16 : -30, right: m ? -8 : -20,
+                fontFamily: "'Anton', sans-serif", fontSize: m ? 110 : 200,
                 color: "#1c1c20", lineHeight: 0.8, letterSpacing: "-0.04em",
                 pointerEvents: "none",
               }}>{String(i + 1).padStart(2, "0")}</div>
               <div style={{ position: "relative", zIndex: 2 }}>
                 <div style={{
                   fontFamily: "'JetBrains Mono', monospace", fontSize: 10,
-                  color: tc, letterSpacing: 2.5, marginBottom: 14,
+                  color: tc, letterSpacing: 2.5, marginBottom: m ? 10 : 14,
                 }}>// {it.kicker}</div>
                 <div style={{
-                  fontFamily: "'Anton', sans-serif", fontSize: 42, color: C.ivory,
+                  fontFamily: "'Anton', sans-serif", fontSize: m ? 28 : 42, color: C.ivory,
                   textTransform: "uppercase", lineHeight: 0.9, letterSpacing: "-0.01em",
                 }}>{it.title}</div>
                 <div style={{
-                  marginTop: 18, fontFamily: "Inter,sans-serif",
-                  fontSize: 14, fontWeight: 600, color: tc,
+                  marginTop: m ? 12 : 18, fontFamily: "Inter,sans-serif",
+                  fontSize: m ? 13 : 14, fontWeight: 600, color: tc,
                 }}>{it.who}</div>
                 <div style={{
-                  marginTop: 8, fontSize: 12, color: C.mute, lineHeight: 1.5,
+                  marginTop: 8, fontSize: m ? 11 : 12, color: C.mute, lineHeight: 1.5,
                 }}>{it.detail}</div>
               </div>
               <div style={{
@@ -452,6 +452,7 @@ function AwardsStrip() {
 
 // ─── Player card ────────────────────────────────────────────────
 function PlayerCard({ p, onClick, big = false }) {
+  const m = useIsMobile();
   const [h, setH] = useState(false);
   const ppg = useCountUp(p.pointsPerGame);
   const rpg = useCountUp(p.reboundsPerGame);
@@ -460,6 +461,8 @@ function PlayerCard({ p, onClick, big = false }) {
   const surnames = p.name.split(" ");
   const first = surnames[0];
   const last = surnames.slice(1).join(" ");
+  const railW = m ? 0 : 28;
+  const stripH = m ? 36 : 42;
 
   return (
     <div
@@ -472,15 +475,15 @@ function PlayerCard({ p, onClick, big = false }) {
         cursor: "pointer", overflow: "hidden",
         transition: "border-color .15s, transform .25s",
         transform: h ? "translateY(-2px)" : "none",
-        aspectRatio: big ? "0.85/1" : "0.78/1",
+        aspectRatio: big ? "0.85/1" : m ? "0.92/1" : "0.78/1",
         display: "flex", flexDirection: "column",
       }}
     >
       {/* jersey watermark */}
       <div style={{
-        position: "absolute", bottom: -28, right: -22,
+        position: "absolute", bottom: m ? -16 : -28, right: m ? -10 : -22,
         fontFamily: "'Anton', sans-serif",
-        fontSize: big ? 320 : 220, lineHeight: 0.78,
+        fontSize: big ? 320 : m ? 130 : 220, lineHeight: 0.78,
         color: h ? C.red : "#1c1c20",
         fontWeight: 400, letterSpacing: "-0.05em",
         pointerEvents: "none", transition: "color .2s", zIndex: 1,
@@ -488,29 +491,31 @@ function PlayerCard({ p, onClick, big = false }) {
         {String(p.number).padStart(2, "0")}
       </div>
 
-      {/* vertical surname rail */}
-      <div style={{
-        position: "absolute", left: 0, top: 0, bottom: 0, width: 28,
-        display: "flex", flexDirection: "column", alignItems: "center",
-        justifyContent: "flex-start", padding: "14px 0 10px", zIndex: 5,
-        background: `linear-gradient(90deg, ${C.panel}ee 0%, transparent 100%)`,
-      }}>
-        <span style={{
-          writingMode: "vertical-rl", transform: "rotate(180deg)",
-          fontFamily: "'Anton', sans-serif", fontSize: big ? 18 : 15,
-          color: C.ivory, textTransform: "uppercase", letterSpacing: "0.04em",
-          fontWeight: 400, whiteSpace: "nowrap",
-        }}>{(last || first).toUpperCase()}</span>
-        <span style={{
-          writingMode: "vertical-rl", transform: "rotate(180deg)",
-          fontFamily: "'JetBrains Mono', monospace", fontSize: 9,
-          color: C.mute, letterSpacing: 2, marginTop: 10, whiteSpace: "nowrap",
-        }}>{p.position} · {countryShort(p)}</span>
-      </div>
+      {/* vertical surname rail (desktop only) */}
+      {!m && (
+        <div style={{
+          position: "absolute", left: 0, top: 0, bottom: 0, width: 28,
+          display: "flex", flexDirection: "column", alignItems: "center",
+          justifyContent: "flex-start", padding: "14px 0 10px", zIndex: 5,
+          background: `linear-gradient(90deg, ${C.panel}ee 0%, transparent 100%)`,
+        }}>
+          <span style={{
+            writingMode: "vertical-rl", transform: "rotate(180deg)",
+            fontFamily: "'Anton', sans-serif", fontSize: big ? 18 : 15,
+            color: C.ivory, textTransform: "uppercase", letterSpacing: "0.04em",
+            fontWeight: 400, whiteSpace: "nowrap",
+          }}>{(last || first).toUpperCase()}</span>
+          <span style={{
+            writingMode: "vertical-rl", transform: "rotate(180deg)",
+            fontFamily: "'JetBrains Mono', monospace", fontSize: 9,
+            color: C.mute, letterSpacing: 2, marginTop: 10, whiteSpace: "nowrap",
+          }}>{p.position} · {countryShort(p)}</span>
+        </div>
+      )}
 
       {/* headshot */}
       <div style={{
-        position: "absolute", left: 28, right: 0, top: 0, bottom: 42, zIndex: 2,
+        position: "absolute", left: railW, right: 0, top: 0, bottom: stripH, zIndex: 2,
         display: "flex", alignItems: "flex-end", justifyContent: "center",
         overflow: "hidden",
       }}>
@@ -526,45 +531,76 @@ function PlayerCard({ p, onClick, big = false }) {
         />
       </div>
 
-      {/* form + status */}
+      {/* form + status (desktop) / form-only chip (mobile) */}
       <div style={{
-        position: "absolute", top: 10, right: 12, zIndex: 6, textAlign: "right",
+        position: "absolute", top: m ? 8 : 10, right: m ? 8 : 12,
+        zIndex: 6, textAlign: "right",
       }}>
+        {!m && (
+          <div style={{
+            fontFamily: "'JetBrains Mono', monospace", fontSize: 9,
+            color: C.mute, letterSpacing: 1.5,
+          }}>FORM</div>
+        )}
         <div style={{
-          fontFamily: "'JetBrains Mono', monospace", fontSize: 9,
-          color: C.mute, letterSpacing: 1.5,
-        }}>FORM</div>
-        <div style={{
-          fontFamily: "'JetBrains Mono', monospace", fontSize: 22,
+          fontFamily: "'JetBrains Mono', monospace", fontSize: m ? 14 : 22,
           color: p.form >= 7 ? C.volt : p.form >= 6 ? C.ivory : C.red,
           fontWeight: 700, lineHeight: 1, fontVariantNumeric: "tabular-nums",
         }}>{p.form.toFixed(1)}</div>
-        <div style={{ marginTop: 6 }}><Status s={p.status}/></div>
+        {!m && <div style={{ marginTop: 6 }}><Status s={p.status}/></div>}
       </div>
 
-      {/* stats strip */}
+      {/* mobile: name overlay above stats strip */}
+      {m && (
+        <div style={{
+          position: "absolute", left: 0, right: 0, bottom: stripH,
+          padding: "6px 8px", zIndex: 5,
+          background: `linear-gradient(180deg, transparent 0%, ${C.panel}f0 60%)`,
+        }}>
+          <div style={{
+            fontFamily: "'Anton', sans-serif", fontSize: 14, color: C.ivory,
+            textTransform: "uppercase", letterSpacing: "0.02em", lineHeight: 1,
+            whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis",
+          }}>{(last || first).toUpperCase()}</div>
+          <div style={{
+            fontFamily: "'JetBrains Mono', monospace", fontSize: 8,
+            color: C.mute, letterSpacing: 1.4, marginTop: 2,
+          }}>{p.position} · #{p.number}</div>
+        </div>
+      )}
+
+      {/* stats strip — 3 stats on mobile, 4 on desktop */}
       <div style={{
         position: "absolute", left: 0, right: 0, bottom: 0, zIndex: 5,
         background: "#000", borderTop: `1px solid ${C.hair}`,
-        display: "grid", gridTemplateColumns: "repeat(4, 1fr)",
+        display: "grid",
+        gridTemplateColumns: m ? "repeat(3, 1fr)" : "repeat(4, 1fr)",
+        height: stripH,
       }}>
-        {[
-          { l: "PPG", v: ppg.toFixed(1) },
-          { l: "RPG", v: rpg.toFixed(1) },
-          { l: "APG", v: apg.toFixed(1) },
-          { l: "GP", v: String(p.gamesPlayed) },
-        ].map((s, i) => (
+        {(m
+          ? [
+              { l: "PPG", v: ppg.toFixed(1) },
+              { l: "RPG", v: rpg.toFixed(1) },
+              { l: "APG", v: apg.toFixed(1) },
+            ]
+          : [
+              { l: "PPG", v: ppg.toFixed(1) },
+              { l: "RPG", v: rpg.toFixed(1) },
+              { l: "APG", v: apg.toFixed(1) },
+              { l: "GP", v: String(p.gamesPlayed) },
+            ]
+        ).map((s, i, arr) => (
           <div key={s.l} style={{
-            padding: "8px 4px", textAlign: "center",
-            borderRight: i < 3 ? `1px solid ${C.hair}` : "none",
+            padding: m ? "5px 2px" : "8px 4px", textAlign: "center",
+            borderRight: i < arr.length - 1 ? `1px solid ${C.hair}` : "none",
           }}>
             <div style={{
               fontFamily: "'JetBrains Mono', monospace",
-              fontSize: big ? 17 : 14, color: C.ivory, fontWeight: 700,
+              fontSize: big ? 17 : m ? 12 : 14, color: C.ivory, fontWeight: 700,
               lineHeight: 1, fontVariantNumeric: "tabular-nums",
             }}>{s.v}</div>
             <div style={{
-              fontSize: 8, color: C.mute, letterSpacing: 1.4, marginTop: 4,
+              fontSize: m ? 7 : 8, color: C.mute, letterSpacing: 1.4, marginTop: m ? 2 : 4,
             }}>{s.l}</div>
           </div>
         ))}
@@ -694,7 +730,7 @@ function SeriesBox() {
           const win = g.result === "W";
           return (
             <div key={i} style={{
-              background: C.bg, padding: "14px 10px", textAlign: "center",
+              background: C.bg, padding: m ? "10px 6px" : "14px 10px", textAlign: "center",
               borderTop: `3px solid ${win ? C.volt : C.red}`,
             }}>
               <div style={{
@@ -702,16 +738,16 @@ function SeriesBox() {
                 color: C.mute, letterSpacing: 2,
               }}>G{i + 1}</div>
               <div style={{
-                fontFamily: "'Anton', sans-serif", fontSize: 28,
+                fontFamily: "'Anton', sans-serif", fontSize: m ? 22 : 28,
                 color: win ? C.volt : C.red, lineHeight: 1.1,
               }}>{g.result}</div>
               <div style={{
-                fontFamily: "'JetBrains Mono', monospace", fontSize: 11,
+                fontFamily: "'JetBrains Mono', monospace", fontSize: m ? 10 : 11,
                 color: C.ivory, marginTop: 2, fontVariantNumeric: "tabular-nums",
               }}>{g.score}</div>
               <div style={{
-                fontSize: 9, color: C.mute, marginTop: 4, letterSpacing: 1,
-              }}>{g.home ? "HOME" : "AWAY"}</div>
+                fontSize: 8, color: C.mute, marginTop: 4, letterSpacing: 1,
+              }}>{g.home ? "H" : "A"}</div>
             </div>
           );
         })}
@@ -747,10 +783,10 @@ function Results() {
           const playoff = r.competition === "PLAYOFFS";
           return (
             <div key={i} style={{
-              padding: "18px 18px 14px", background: C.bg, position: "relative",
+              padding: m ? "12px 12px 10px" : "18px 18px 14px", background: C.bg, position: "relative",
               borderTop: `3px solid ${win ? C.volt : C.red}`,
             }}>
-              <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 14 }}>
+              <div style={{ display: "flex", justifyContent: "space-between", marginBottom: m ? 8 : 14, gap: 6 }}>
                 <span style={{
                   fontFamily: "'JetBrains Mono', monospace", fontSize: 9,
                   color: C.mute, letterSpacing: 2,
@@ -760,35 +796,38 @@ function Results() {
                 <span style={{
                   fontFamily: "'JetBrains Mono', monospace", fontSize: 9,
                   color: playoff ? C.red : C.mute, letterSpacing: 2, fontWeight: 700,
-                }}>{playoff ? "PLAYOFFS" : "REG"} · {r.home ? "HOME" : "AWAY"}</span>
+                }}>{playoff ? (m ? "PO" : "PLAYOFFS") : "REG"} · {r.home ? "H" : "A"}</span>
               </div>
               <div style={{
-                fontFamily: "'Anton', sans-serif", fontSize: 54, color: C.ivory,
-                lineHeight: 0.85, display: "flex", alignItems: "baseline", gap: 8,
+                fontFamily: "'Anton', sans-serif", fontSize: m ? 36 : 54, color: C.ivory,
+                lineHeight: 0.85, display: "flex", alignItems: "baseline", gap: m ? 6 : 8,
                 fontVariantNumeric: "tabular-nums",
               }}>
                 <span style={{ color: win ? C.volt : C.ivory }}>{ours}</span>
-                <span style={{ fontSize: 18, color: C.mute }}>—</span>
+                <span style={{ fontSize: m ? 14 : 18, color: C.mute }}>—</span>
                 <span style={{ color: win ? C.mute : C.red }}>{theirs}</span>
               </div>
-              <div style={{ display: "flex", alignItems: "center", gap: 8, marginTop: 10 }}>
+              <div style={{ display: "flex", alignItems: "center", gap: m ? 6 : 8, marginTop: m ? 8 : 10 }}>
                 <span style={{
-                  width: 24, height: 24, display: "inline-flex",
+                  width: m ? 20 : 24, height: m ? 20 : 24, display: "inline-flex",
                   alignItems: "center", justifyContent: "center",
                   background: win ? C.volt : C.red, color: win ? "#000" : "#fff",
-                  fontFamily: "'Anton', sans-serif", fontSize: 16, fontWeight: 700,
+                  fontFamily: "'Anton', sans-serif", fontSize: m ? 13 : 16, fontWeight: 700,
+                  flexShrink: 0,
                 }}>{r.result}</span>
                 <span style={{
-                  fontFamily: "'Anton', sans-serif", fontSize: 20, color: C.ivory,
+                  fontFamily: "'Anton', sans-serif", fontSize: m ? 16 : 20, color: C.ivory,
                   letterSpacing: "0.02em",
                 }}>{r.home ? "vs" : "at"} {abbr(r.opponent)}</span>
               </div>
-              <div style={{
-                fontSize: 11, color: C.mute, marginTop: 8, lineHeight: 1.4,
-                fontFamily: "Inter, sans-serif",
-                display: "-webkit-box", WebkitBoxOrient: "vertical",
-                WebkitLineClamp: 3, overflow: "hidden",
-              }}>{r.topScorers}</div>
+              {!m && (
+                <div style={{
+                  fontSize: 11, color: C.mute, marginTop: 8, lineHeight: 1.4,
+                  fontFamily: "Inter, sans-serif",
+                  display: "-webkit-box", WebkitBoxOrient: "vertical",
+                  WebkitLineClamp: 3, overflow: "hidden",
+                }}>{r.topScorers}</div>
+              )}
             </div>
           );
         })}
@@ -839,18 +878,24 @@ function NewsView() {
           </div>
           <h3 style={{
             fontFamily: "'Anton', sans-serif",
-            fontSize: m ? "clamp(32px, 9vw, 52px)" : "clamp(40px, 4.5vw, 72px)",
+            fontSize: m ? "clamp(28px, 8vw, 42px)" : "clamp(40px, 4.5vw, 72px)",
             color: C.ivory, textTransform: "uppercase",
-            lineHeight: 0.92, margin: 0, letterSpacing: "-0.01em",
+            lineHeight: 0.95, margin: 0, letterSpacing: "-0.01em",
           }}>
-            <span style={{
-              color: C.red, fontSize: "1.4em", float: "left", lineHeight: 0.85,
-              marginRight: 14, marginTop: -4,
-            }}>{lead.title.charAt(0)}</span>
-            {lead.title.slice(1)}
+            {m ? (
+              lead.title
+            ) : (
+              <>
+                <span style={{
+                  color: C.red, fontSize: "1.4em", float: "left", lineHeight: 0.85,
+                  marginRight: 14, marginTop: -4,
+                }}>{lead.title.charAt(0)}</span>
+                {lead.title.slice(1)}
+              </>
+            )}
           </h3>
           <p style={{
-            marginTop: 24, fontFamily: "Inter, sans-serif", fontSize: 16,
+            marginTop: m ? 16 : 24, fontFamily: "Inter, sans-serif", fontSize: m ? 14 : 16,
             color: "#c5c5cc", lineHeight: 1.6, maxWidth: 640,
           }}>{lead.detail}</p>
           <div style={{
@@ -904,12 +949,12 @@ function NewsView() {
               <span>{ages[i + 1] || "1D"} AGO</span>
             </div>
             <h4 style={{
-              fontFamily: "'Anton', sans-serif", fontSize: 26, color: C.ivory,
-              textTransform: "uppercase", lineHeight: 1, margin: 0,
+              fontFamily: "'Anton', sans-serif", fontSize: m ? 20 : 26, color: C.ivory,
+              textTransform: "uppercase", lineHeight: 1.05, margin: 0,
               letterSpacing: "-0.005em",
             }}>{n.title}</h4>
             <p style={{
-              marginTop: 12, fontFamily: "Inter, sans-serif", fontSize: 13,
+              marginTop: 10, fontFamily: "Inter, sans-serif", fontSize: m ? 12 : 13,
               color: "#a8a8b0", lineHeight: 1.55,
             }}>{n.detail}</p>
             <div style={{

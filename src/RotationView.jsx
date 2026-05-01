@@ -23,29 +23,32 @@ export default function RotationView({ onPlayer }) {
           const po = p.playoffStats;
           const mpg = po?.minutesPerGame ?? p.minutesPerGame;
           const ppg = po?.pointsPerGame ?? p.pointsPerGame;
+          const stripH = m ? 64 : 88;
+          const surnames = p.name.split(" ");
+          const last = surnames.slice(1).join(" ") || surnames[0];
           return (
             <div
               key={p.id}
               onClick={() => onPlayer(p.id)}
               style={{
                 background: C.panel, position: "relative", overflow: "hidden",
-                cursor: "pointer", aspectRatio: "0.7/1",
+                cursor: "pointer", aspectRatio: m ? "0.85/1" : "0.7/1",
               }}
             >
               {/* big index watermark */}
               <div style={{
-                position: "absolute", bottom: -30, left: -12,
-                fontFamily: "'Anton', sans-serif", fontSize: 280, lineHeight: 0.8,
+                position: "absolute", bottom: m ? -16 : -30, left: m ? -6 : -12,
+                fontFamily: "'Anton', sans-serif", fontSize: m ? 150 : 280, lineHeight: 0.8,
                 color: "#1c1c20", pointerEvents: "none", zIndex: 1,
               }}>{i + 1}</div>
 
               <div style={{
-                position: "absolute", top: 14, right: 14, zIndex: 3,
-                fontFamily: "'Anton', sans-serif", fontSize: 38, color: C.red, lineHeight: 1,
+                position: "absolute", top: m ? 8 : 14, right: m ? 8 : 14, zIndex: 3,
+                fontFamily: "'Anton', sans-serif", fontSize: m ? 24 : 38, color: C.red, lineHeight: 1,
               }}>#{p.number}</div>
 
               <div style={{
-                position: "absolute", left: 0, right: 0, top: 0, bottom: 88,
+                position: "absolute", left: 0, right: 0, top: 0, bottom: stripH,
                 display: "flex", alignItems: "flex-end", justifyContent: "center",
                 zIndex: 2, overflow: "hidden",
               }}>
@@ -63,19 +66,19 @@ export default function RotationView({ onPlayer }) {
               <div style={{
                 position: "absolute", left: 0, right: 0, bottom: 0, zIndex: 4,
                 background: "#000", borderTop: `1px solid ${C.hair}`,
-                padding: "12px 14px",
+                padding: m ? "8px 10px" : "12px 14px",
               }}>
                 <div style={{
-                  fontFamily: "'Anton', sans-serif", fontSize: 20, color: C.ivory,
+                  fontFamily: "'Anton', sans-serif", fontSize: m ? 15 : 20, color: C.ivory,
                   textTransform: "uppercase", lineHeight: 0.95, letterSpacing: "0.01em",
                   whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis",
-                }}>{p.name}</div>
+                }}>{m ? last.toUpperCase() : p.name}</div>
                 <div style={{
-                  display: "flex", justifyContent: "space-between", marginTop: 10,
-                  fontFamily: "'JetBrains Mono', monospace", fontSize: 10,
-                  color: C.mute, letterSpacing: 1.4,
+                  display: "flex", justifyContent: "space-between", marginTop: m ? 6 : 10,
+                  fontFamily: "'JetBrains Mono', monospace", fontSize: m ? 9 : 10,
+                  color: C.mute, letterSpacing: m ? 1 : 1.4,
                 }}>
-                  <span>{p.position}</span>
+                  {!m && <span>{p.position}</span>}
                   <span style={{ color: C.volt }}>{mpg.toFixed(1)} MPG</span>
                   <span style={{ color: C.ivory }}>{ppg.toFixed(1)} PPG</span>
                 </div>
@@ -119,11 +122,12 @@ export default function RotationView({ onPlayer }) {
                 }}>{p.position}</span>
               </div>
               <div style={{
-                fontFamily: "'Anton', sans-serif", fontSize: 14, color: C.ivory,
+                fontFamily: "'Anton', sans-serif", fontSize: m ? 13 : 14, color: C.ivory,
                 textTransform: "uppercase", letterSpacing: "0.02em", lineHeight: 1.05,
-              }}>{p.name}</div>
+                whiteSpace: m ? "nowrap" : "normal", overflow: "hidden", textOverflow: "ellipsis",
+              }}>{m ? (p.name.split(" ").slice(1).join(" ") || p.name).toUpperCase() : p.name}</div>
               <div style={{
-                fontFamily: "'JetBrains Mono', monospace", fontSize: 10,
+                fontFamily: "'JetBrains Mono', monospace", fontSize: m ? 9 : 10,
                 color: C.ivory, marginTop: 2, fontVariantNumeric: "tabular-nums",
               }}>
                 {p.pointsPerGame.toFixed(1)}<span style={{ color: C.mute }}> PPG</span> ·{" "}
