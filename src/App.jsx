@@ -62,6 +62,21 @@ function countryShort(p) {
   return COUNTRY_SHORT[n] || n.slice(0, 3).toUpperCase();
 }
 
+// ─── Mobile breakpoint hook ─────────────────────────────────────
+export function useIsMobile(bp = 768) {
+  const [m, setM] = useState(
+    typeof window !== "undefined" ? window.innerWidth <= bp : false
+  );
+  useEffect(() => {
+    const mq = window.matchMedia(`(max-width: ${bp}px)`);
+    const on = (e) => setM(e.matches);
+    setM(mq.matches);
+    mq.addEventListener("change", on);
+    return () => mq.removeEventListener("change", on);
+  }, [bp]);
+  return m;
+}
+
 // ─── Count-up hook ──────────────────────────────────────────────
 function useCountUp(target, dur = 900) {
   const [n, setN] = useState(0);
@@ -131,10 +146,11 @@ export function Status({ s }) {
 
 // ─── Section header ─────────────────────────────────────────────
 export function SectionHeader({ kicker, title, right }) {
+  const m = useIsMobile();
   return (
     <div style={{
       display: "flex", alignItems: "flex-end", justifyContent: "space-between",
-      gap: 24, flexWrap: "wrap",
+      gap: m ? 16 : 24, flexWrap: "wrap",
     }}>
       <div>
         <div style={{
@@ -143,7 +159,7 @@ export function SectionHeader({ kicker, title, right }) {
         }}>// {kicker}</div>
         <h2 style={{
           fontFamily: "'Anton', sans-serif",
-          fontSize: "clamp(48px, 6vw, 96px)",
+          fontSize: m ? "clamp(40px, 11vw, 64px)" : "clamp(48px, 6vw, 96px)",
           color: C.ivory, textTransform: "uppercase",
           lineHeight: 0.85, margin: 0, letterSpacing: "-0.015em",
         }}>{title}</h2>
@@ -155,6 +171,7 @@ export function SectionHeader({ kicker, title, right }) {
 
 // ─── HERO ───────────────────────────────────────────────────────
 function Hero() {
+  const m = useIsMobile();
   const [now, setNow] = useState(Date.now());
   useEffect(() => {
     const t = setInterval(() => setNow(Date.now()), 1000);
@@ -180,43 +197,45 @@ function Hero() {
       }}/>
 
       {/* top meta */}
-      <div style={{ padding: "24px 40px 0", position: "relative", zIndex: 3 }}>
-        <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
+      <div style={{ padding: m ? "16px 16px 0" : "24px 40px 0", position: "relative", zIndex: 3 }}>
+        <div style={{ display: "flex", alignItems: "center", gap: m ? 10 : 14, flexWrap: "wrap" }}>
           <span style={{
             width: 10, height: 10, background: C.red, display: "inline-block",
             boxShadow: `0 0 12px ${C.red}aa`,
           }}/>
           <span style={{
-            fontFamily: "'JetBrains Mono', monospace", fontSize: 11,
+            fontFamily: "'JetBrains Mono', monospace", fontSize: m ? 10 : 11,
             color: C.ivory, letterSpacing: 2, fontWeight: 600,
           }}>SEASON · 2025–26 · OFFSEASON</span>
-          <span style={{ flex: 1, height: 1, background: C.hair }}/>
+          {!m && <span style={{ flex: 1, height: 1, background: C.hair }}/>}
           <span style={{
-            fontFamily: "'JetBrains Mono', monospace", fontSize: 11,
+            fontFamily: "'JetBrains Mono', monospace", fontSize: m ? 10 : 11,
             color: C.mute, letterSpacing: 2,
           }}>ELIMINATED · R1 · 2–4 NYK</span>
         </div>
       </div>
 
       {/* wordmark */}
-      <div style={{ padding: "18px 40px 0", position: "relative", zIndex: 3 }}>
+      <div style={{ padding: m ? "14px 16px 0" : "18px 40px 0", position: "relative", zIndex: 3 }}>
         <h1 style={{
           fontFamily: "'Anton', 'Bebas Neue', sans-serif",
-          fontSize: "clamp(120px, 22vw, 360px)",
+          fontSize: m ? "clamp(54px, 17vw, 92px)" : "clamp(120px, 22vw, 360px)",
           lineHeight: 0.82, margin: 0, letterSpacing: "-0.025em",
           color: C.ivory, textTransform: "uppercase",
-          transform: "translateX(-1%)", whiteSpace: "nowrap",
+          transform: m ? "none" : "translateX(-1%)",
+          whiteSpace: m ? "normal" : "nowrap",
         }}>
           HAWKS<span style={{ color: C.red }}>.</span>
+          {m && <br/>}
           TRACKER<span style={{ color: C.volt }}>/</span>26
         </h1>
       </div>
 
       {/* countdown band */}
       <div style={{
-        padding: "24px 40px 28px", position: "relative", zIndex: 3,
-        display: "grid", gridTemplateColumns: "1.4fr 1fr",
-        gap: 32, alignItems: "end",
+        padding: m ? "20px 16px 24px" : "24px 40px 28px", position: "relative", zIndex: 3,
+        display: "grid", gridTemplateColumns: m ? "1fr" : "1.4fr 1fr",
+        gap: m ? 20 : 32, alignItems: "end",
       }}>
         <div>
           <div style={{
@@ -310,6 +329,7 @@ function Ticker() {
 
 // ─── Season banner: KPI strip ───────────────────────────────────
 function SeasonBanner() {
+  const m = useIsMobile();
   const stats = [
     { l: "REG SEASON", v: "46–36", sub: "5TH IN THE EAST" },
     { l: "OFFENSIVE RTG", v: "118.4", sub: "7TH LEAGUE-WIDE" },
@@ -320,20 +340,27 @@ function SeasonBanner() {
   ];
   return (
     <section style={{
-      padding: "32px 40px", borderBottom: `1px solid ${C.hair}`, background: "#000",
+      padding: m ? "20px 16px" : "32px 40px", borderBottom: `1px solid ${C.hair}`, background: "#000",
     }}>
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(6, 1fr)", gap: 0 }}>
+      <div style={{
+        display: "grid",
+        gridTemplateColumns: m ? "repeat(2, 1fr)" : "repeat(6, 1fr)",
+        gap: m ? 1 : 0,
+        background: m ? C.hair : "transparent",
+        border: m ? `1px solid ${C.hair}` : "none",
+      }}>
         {stats.map((s, i) => (
           <div key={s.l} style={{
-            padding: "4px 18px",
-            borderRight: i < 5 ? `1px solid ${C.hair}` : "none",
+            padding: m ? "14px 14px" : "4px 18px",
+            background: m ? "#000" : "transparent",
+            borderRight: !m && i < 5 ? `1px solid ${C.hair}` : "none",
           }}>
             <div style={{
               fontFamily: "'JetBrains Mono', monospace", fontSize: 10,
               color: C.mute, letterSpacing: 2, marginBottom: 8,
             }}>// {s.l}</div>
             <div style={{
-              fontFamily: "'Anton', sans-serif", fontSize: 54,
+              fontFamily: "'Anton', sans-serif", fontSize: m ? 38 : 54,
               color: s.tone === "red" ? C.red : C.ivory, lineHeight: 0.9,
               letterSpacing: "-0.01em", fontVariantNumeric: "tabular-nums",
             }}>{s.v}</div>
@@ -351,6 +378,7 @@ function SeasonBanner() {
 
 // ─── Awards strip ───────────────────────────────────────────────
 function AwardsStrip() {
+  const m = useIsMobile();
   const items = [
     {
       kicker: "2025–26 NBA", title: "MOST IMPROVED PLAYER",
@@ -371,12 +399,13 @@ function AwardsStrip() {
   ];
   return (
     <section style={{
-      padding: "56px 40px", borderBottom: `1px solid ${C.hair}`, background: C.bg,
+      padding: m ? "32px 16px" : "56px 40px", borderBottom: `1px solid ${C.hair}`, background: C.bg,
     }}>
       <SectionHeader kicker="HARDWARE · 2025–26"
         title={<>BRIGHT<br/>SPOTS<span style={{ color: C.volt }}>.</span></>}/>
       <div style={{
-        marginTop: 32, display: "grid", gridTemplateColumns: "repeat(3, 1fr)",
+        marginTop: m ? 20 : 32, display: "grid",
+        gridTemplateColumns: m ? "1fr" : "repeat(3, 1fr)",
         gap: 1, background: C.hair, border: `1px solid ${C.hair}`,
       }}>
         {items.map((it, i) => {
@@ -546,6 +575,7 @@ function PlayerCard({ p, onClick, big = false }) {
 
 // ─── Roster grid + filters ──────────────────────────────────────
 function Roster({ onPlayer }) {
+  const m = useIsMobile();
   const [pos, setPos] = useState("ALL");
   const [sort, setSort] = useState("ppg");
   const positions = ["ALL", "PG", "SG", "SF", "PF", "C"];
@@ -563,19 +593,19 @@ function Roster({ onPlayer }) {
   }, [pos, sort]);
 
   return (
-    <section style={{ padding: "56px 40px", borderBottom: `1px solid ${C.hair}` }}>
+    <section style={{ padding: m ? "32px 16px" : "56px 40px", borderBottom: `1px solid ${C.hair}` }}>
       <SectionHeader
         kicker="ROSTER · 15"
         title="THE ATL FIFTEEN"
         right={
-          <div style={{ display: "flex", gap: 18, alignItems: "center", flexWrap: "wrap" }}>
-            <div style={{ display: "flex", gap: 14 }}>
+          <div style={{ display: "flex", gap: m ? 12 : 18, alignItems: "center", flexWrap: "wrap" }}>
+            <div style={{ display: "flex", gap: m ? 10 : 14, flexWrap: "wrap" }}>
               {positions.map(p => (
                 <Vlink key={p} active={pos === p} onClick={() => setPos(p)}>{p}</Vlink>
               ))}
             </div>
             <span style={{ width: 1, height: 18, background: C.hair }}/>
-            <div style={{ display: "flex", gap: 14 }}>
+            <div style={{ display: "flex", gap: m ? 10 : 14, flexWrap: "wrap" }}>
               {[["ppg", "PPG"], ["rpg", "RPG"], ["apg", "APG"], ["mpg", "MPG"], ["num", "#"]].map(([k, l]) => (
                 <Vlink key={k} active={sort === k} onClick={() => setSort(k)}>{l}</Vlink>
               ))}
@@ -585,8 +615,10 @@ function Roster({ onPlayer }) {
       />
       <div style={{
         display: "grid",
-        gridTemplateColumns: "repeat(auto-fill, minmax(220px, 1fr))",
-        gap: 1, background: C.hair, marginTop: 32,
+        gridTemplateColumns: m
+          ? "repeat(2, 1fr)"
+          : "repeat(auto-fill, minmax(220px, 1fr))",
+        gap: 1, background: C.hair, marginTop: m ? 20 : 32,
         border: `1px solid ${C.hair}`,
       }}>
         {list.map(p => (
@@ -645,6 +677,7 @@ function Standings() {
 
 // ─── Series box ─────────────────────────────────────────────────
 function SeriesBox() {
+  const m = useIsMobile();
   const games = RESULTS.filter(r => r.competition === "PLAYOFFS").reverse();
   return (
     <div>
@@ -653,8 +686,9 @@ function SeriesBox() {
         color: C.red, letterSpacing: 2.5, marginBottom: 14,
       }}>// R1 · ATL 2 — NYK 4 · ELIMINATED</div>
       <div style={{
-        display: "grid", gridTemplateColumns: "repeat(6, 1fr)", gap: 1,
-        background: C.hair, border: `1px solid ${C.hair}`,
+        display: "grid",
+        gridTemplateColumns: m ? "repeat(3, 1fr)" : "repeat(6, 1fr)",
+        gap: 1, background: C.hair, border: `1px solid ${C.hair}`,
       }}>
         {games.map((g, i) => {
           const win = g.result === "W";
@@ -688,18 +722,21 @@ function SeriesBox() {
 
 // ─── Results — courtside scoreboard strip ───────────────────────
 function Results() {
+  const m = useIsMobile();
   const last12 = RESULTS.slice(0, 12);
   return (
     <section style={{
-      padding: "56px 40px", borderBottom: `1px solid ${C.hair}`, background: C.panel,
+      padding: m ? "32px 16px" : "56px 40px", borderBottom: `1px solid ${C.hair}`, background: C.panel,
     }}>
       <SectionHeader
         kicker="LAST 12 GAMES · REG + R1"
         title={<>RESULTS<span style={{ color: C.red }}>.</span></>}
       />
       <div style={{
-        marginTop: 32, display: "grid",
-        gridTemplateColumns: "repeat(auto-fill, minmax(220px, 1fr))",
+        marginTop: m ? 20 : 32, display: "grid",
+        gridTemplateColumns: m
+          ? "repeat(2, 1fr)"
+          : "repeat(auto-fill, minmax(220px, 1fr))",
         gap: 1, background: C.hair, border: `1px solid ${C.hair}`,
       }}>
         {last12.map((r, i) => {
@@ -762,6 +799,7 @@ function Results() {
 
 // ─── News view ──────────────────────────────────────────────────
 function NewsView() {
+  const m = useIsMobile();
   const topics = NEWS_DIGEST.keyTopics;
   const lead = topics[0];
   const rest = topics.slice(1);
@@ -774,7 +812,7 @@ function NewsView() {
   const ages = ["2H", "3H", "4H", "5H", "6H", "8H", "10H", "12H", "14H", "16H", "18H", "20H", "1D", "1D", "1D"];
 
   return (
-    <section style={{ padding: "56px 40px", borderBottom: `1px solid ${C.hair}` }}>
+    <section style={{ padding: m ? "32px 16px" : "56px 40px", borderBottom: `1px solid ${C.hair}` }}>
       <SectionHeader
         kicker="WIRE · LIVE"
         title={<>NEWS<span style={{ color: C.red }}>/</span>FEED</>}
@@ -782,8 +820,10 @@ function NewsView() {
 
       {/* Lead */}
       <article style={{
-        marginTop: 40, paddingTop: 32, borderTop: `1px solid ${C.hair}`,
-        display: "grid", gridTemplateColumns: "1.5fr 1fr", gap: 48,
+        marginTop: m ? 24 : 40, paddingTop: m ? 20 : 32, borderTop: `1px solid ${C.hair}`,
+        display: "grid",
+        gridTemplateColumns: m ? "1fr" : "1.5fr 1fr",
+        gap: m ? 28 : 48,
       }}>
         <div>
           <div style={{
@@ -799,7 +839,7 @@ function NewsView() {
           </div>
           <h3 style={{
             fontFamily: "'Anton', sans-serif",
-            fontSize: "clamp(40px, 4.5vw, 72px)",
+            fontSize: m ? "clamp(32px, 9vw, 52px)" : "clamp(40px, 4.5vw, 72px)",
             color: C.ivory, textTransform: "uppercase",
             lineHeight: 0.92, margin: 0, letterSpacing: "-0.01em",
           }}>
@@ -818,13 +858,18 @@ function NewsView() {
             color: C.volt, letterSpacing: 2,
           }}>{sourceFrom(lead.detail)} · 2H AGO</div>
         </div>
-        <div style={{ borderLeft: `1px solid ${C.hair}`, paddingLeft: 32 }}>
+        <div style={{
+          borderLeft: m ? "none" : `1px solid ${C.hair}`,
+          borderTop: m ? `1px solid ${C.hair}` : "none",
+          paddingLeft: m ? 0 : 32,
+          paddingTop: m ? 20 : 0,
+        }}>
           <div style={{
             fontFamily: "'JetBrains Mono', monospace", fontSize: 11,
             color: C.mute, letterSpacing: 2, marginBottom: 16,
           }}>// PULL QUOTE</div>
           <div style={{
-            fontFamily: "'Anton', sans-serif", fontSize: 42, color: C.ivory,
+            fontFamily: "'Anton', sans-serif", fontSize: m ? 32 : 42, color: C.ivory,
             lineHeight: 1, textTransform: "uppercase", letterSpacing: "-0.005em",
           }}>"OBVIOUSLY,<br/>IT <span style={{ color: C.red }}>SUCKS</span>."</div>
           <div style={{
@@ -836,16 +881,16 @@ function NewsView() {
 
       {/* Rest */}
       <div style={{
-        marginTop: 48, display: "grid",
-        gridTemplateColumns: "repeat(auto-fill, minmax(360px, 1fr))",
+        marginTop: m ? 32 : 48, display: "grid",
+        gridTemplateColumns: m ? "1fr" : "repeat(auto-fill, minmax(360px, 1fr))",
         gap: 0, borderTop: `1px solid ${C.hair}`,
       }}>
         {rest.map((n, i) => (
           <article key={i} style={{
-            padding: "28px 28px 28px 0",
+            padding: m ? "20px 0" : "28px 28px 28px 0",
             borderBottom: `1px solid ${C.hair}`,
-            borderRight: (i % 2 === 0) ? `1px solid ${C.hair}` : "none",
-            paddingLeft: (i % 2 === 0) ? 0 : 28,
+            borderRight: !m && (i % 2 === 0) ? `1px solid ${C.hair}` : "none",
+            paddingLeft: !m && (i % 2 !== 0) ? 28 : 0,
           }}>
             <div style={{
               display: "flex", gap: 10, fontFamily: "'JetBrains Mono', monospace",
@@ -880,6 +925,7 @@ function NewsView() {
 
 // ─── Player Modal ───────────────────────────────────────────────
 function PlayerModal({ id, onClose }) {
+  const m = useIsMobile();
   const p = PLAYERS.find(x => x.id === id);
   useEffect(() => {
     const k = (e) => { if (e.key === "Escape") onClose(); };
@@ -892,31 +938,37 @@ function PlayerModal({ id, onClose }) {
   return (
     <div onClick={onClose} style={{
       position: "fixed", inset: 0, zIndex: 1000, background: "rgba(0,0,0,0.85)",
-      backdropFilter: "blur(8px)", overflowY: "auto", padding: "40px 20px",
+      backdropFilter: "blur(8px)", overflowY: "auto",
+      padding: m ? "16px 8px" : "40px 20px",
     }}>
       <div onClick={(e) => e.stopPropagation()} style={{
         maxWidth: 1100, margin: "0 auto", background: C.bg,
         border: `1px solid ${C.hair}`, position: "relative",
       }}>
         <button onClick={onClose} style={{
-          position: "absolute", top: 16, right: 16, zIndex: 10,
-          background: "transparent", border: `1px solid ${C.hair}`,
+          position: "absolute", top: 12, right: 12, zIndex: 10,
+          background: "rgba(0,0,0,0.6)", border: `1px solid ${C.hair}`,
           color: C.ivory, padding: "8px 14px", cursor: "pointer",
           fontFamily: "'JetBrains Mono', monospace", fontSize: 11,
           letterSpacing: 1.5,
-        }}>CLOSE · ESC</button>
+        }}>{m ? "CLOSE" : "CLOSE · ESC"}</button>
 
         <div style={{
-          display: "grid", gridTemplateColumns: "1fr 1.2fr", gap: 0, minHeight: 560,
+          display: "grid",
+          gridTemplateColumns: m ? "1fr" : "1fr 1.2fr",
+          gap: 0, minHeight: m ? 0 : 560,
         }}>
           {/* Left: portrait + jersey */}
           <div style={{
             position: "relative", background: C.panel, overflow: "hidden",
-            borderRight: `1px solid ${C.hair}`,
+            borderRight: m ? "none" : `1px solid ${C.hair}`,
+            borderBottom: m ? `1px solid ${C.hair}` : "none",
+            height: m ? 320 : "auto",
           }}>
             <div style={{
-              position: "absolute", top: -50, left: -30,
-              fontFamily: "'Anton', sans-serif", fontSize: 520, lineHeight: 0.78,
+              position: "absolute", top: m ? -20 : -50, left: m ? -10 : -30,
+              fontFamily: "'Anton', sans-serif",
+              fontSize: m ? 280 : 520, lineHeight: 0.78,
               color: C.red, opacity: 0.18, pointerEvents: "none",
             }}>{String(p.number).padStart(2, "0")}</div>
             <img src={p.image} alt={p.name} style={{
@@ -927,13 +979,14 @@ function PlayerModal({ id, onClose }) {
           </div>
 
           {/* Right: data */}
-          <div style={{ padding: "40px 40px 32px" }}>
+          <div style={{ padding: m ? "24px 18px 24px" : "40px 40px 32px" }}>
             <div style={{
               fontFamily: "'JetBrains Mono', monospace", fontSize: 11,
               color: C.volt, letterSpacing: 2.5, marginBottom: 10,
             }}>// {p.position} · #{p.number} · {countryShort(p)} · AGE {p.age}</div>
             <div style={{
-              fontFamily: "'Anton', sans-serif", fontSize: 72, color: C.ivory,
+              fontFamily: "'Anton', sans-serif",
+              fontSize: m ? 44 : 72, color: C.ivory,
               textTransform: "uppercase", lineHeight: 0.85, letterSpacing: "-0.015em",
             }}>{p.name}</div>
             <div style={{ marginTop: 14 }}><Status s={p.status}/></div>
@@ -1039,12 +1092,15 @@ function PlayerModal({ id, onClose }) {
 
 // ─── Dashboard composition ──────────────────────────────────────
 function Dashboard({ onPlayer }) {
+  const m = useIsMobile();
   return (
     <>
       <SeasonBanner/>
       <section style={{
-        padding: "56px 40px", borderBottom: `1px solid ${C.hair}`,
-        display: "grid", gridTemplateColumns: "1.4fr 1fr", gap: 48,
+        padding: m ? "32px 16px" : "56px 40px", borderBottom: `1px solid ${C.hair}`,
+        display: "grid",
+        gridTemplateColumns: m ? "1fr" : "1.4fr 1fr",
+        gap: m ? 32 : 48,
       }}>
         <SeriesBox/>
         <Standings/>
@@ -1058,6 +1114,7 @@ function Dashboard({ onPlayer }) {
 
 // ─── App ────────────────────────────────────────────────────────
 export default function HawksTracker() {
+  const m = useIsMobile();
   const [view, setView] = useState("dashboard");
   const [modalId, setModalId] = useState(null);
 
@@ -1068,33 +1125,38 @@ export default function HawksTracker() {
     }}>
       {/* Top nav */}
       <nav style={{
-        display: "flex", alignItems: "center", padding: "18px 40px", gap: 32,
+        display: "flex", alignItems: "center",
+        padding: m ? "12px 16px" : "18px 40px",
+        gap: m ? 16 : 32,
         borderBottom: `1px solid ${C.hair}`, background: C.bg,
         position: "sticky", top: 0, zIndex: 50,
       }}>
         <div style={{
-          fontFamily: "'Anton', sans-serif", fontSize: 24, color: C.ivory,
+          fontFamily: "'Anton', sans-serif",
+          fontSize: m ? 20 : 24, color: C.ivory,
           textTransform: "uppercase", letterSpacing: "0.02em",
         }}>
           ATL<span style={{ color: C.red }}>/</span>26
         </div>
-        <div style={{ flex: 1, display: "flex", gap: 28 }}>
-          <Vlink active={view === "dashboard"} onClick={() => setView("dashboard")} size={13}>
-            Dashboard
+        <div style={{ flex: 1, display: "flex", gap: m ? 16 : 28 }}>
+          <Vlink active={view === "dashboard"} onClick={() => setView("dashboard")} size={m ? 12 : 13}>
+            {m ? "Dash" : "Dashboard"}
           </Vlink>
-          <Vlink active={view === "rotation"} onClick={() => setView("rotation")} size={13}>
+          <Vlink active={view === "rotation"} onClick={() => setView("rotation")} size={m ? 12 : 13}>
             Rotation
           </Vlink>
-          <Vlink active={view === "news"} onClick={() => setView("news")} size={13}>
+          <Vlink active={view === "news"} onClick={() => setView("news")} size={m ? 12 : 13}>
             News
           </Vlink>
         </div>
-        <div style={{
-          fontFamily: "'JetBrains Mono', monospace", fontSize: 11,
-          color: C.mute, letterSpacing: 1.8,
-        }}>
-          <span style={{ color: C.red }}>●</span> SEASON OVER · MAY 1 · 2026
-        </div>
+        {!m && (
+          <div style={{
+            fontFamily: "'JetBrains Mono', monospace", fontSize: 11,
+            color: C.mute, letterSpacing: 1.8,
+          }}>
+            <span style={{ color: C.red }}>●</span> SEASON OVER · MAY 1 · 2026
+          </div>
+        )}
       </nav>
 
       {view === "dashboard" && <Hero/>}
@@ -1104,12 +1166,13 @@ export default function HawksTracker() {
 
       {/* Footer */}
       <footer style={{
-        padding: "48px 40px", display: "flex",
+        padding: m ? "32px 16px" : "48px 40px", display: "flex",
         justifyContent: "space-between", alignItems: "center", gap: 24,
         flexWrap: "wrap",
       }}>
         <div style={{
-          fontFamily: "'Anton', sans-serif", fontSize: 64, color: "#1d1d22",
+          fontFamily: "'Anton', sans-serif",
+          fontSize: m ? 40 : 64, color: "#1d1d22",
           textTransform: "uppercase", lineHeight: 0.85, letterSpacing: "-0.01em",
         }}>TRUE TO ATL.</div>
         <div style={{

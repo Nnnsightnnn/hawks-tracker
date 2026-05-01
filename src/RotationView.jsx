@@ -1,20 +1,22 @@
 import { PLAYERS } from "./playerData.js";
-import { C, Status, SectionHeader } from "./App.jsx";
+import { C, Status, SectionHeader, useIsMobile } from "./App.jsx";
 
 export default function RotationView({ onPlayer }) {
+  const m = useIsMobile();
   const starters = PLAYERS.filter(p => p.playoffStarter);
   const bench = PLAYERS.filter(p => !p.playoffStarter && p.status !== "out");
   const out = PLAYERS.filter(p => p.status === "out");
 
   return (
-    <section style={{ padding: "56px 40px", borderBottom: `1px solid ${C.hair}` }}>
+    <section style={{ padding: m ? "32px 16px" : "56px 40px", borderBottom: `1px solid ${C.hair}` }}>
       <SectionHeader
         kicker="ROTATION · R1 · 2025–26"
         title={<>STARTING<br/>FIVE<span style={{ color: C.volt }}>.</span></>}
       />
 
       <div style={{
-        marginTop: 32, display: "grid", gridTemplateColumns: "repeat(5, 1fr)",
+        marginTop: m ? 20 : 32, display: "grid",
+        gridTemplateColumns: m ? "repeat(2, 1fr)" : "repeat(5, 1fr)",
         gap: 1, background: C.hair, border: `1px solid ${C.hair}`,
       }}>
         {starters.map((p, i) => {
@@ -91,7 +93,9 @@ export default function RotationView({ onPlayer }) {
         }}>// BENCH · {bench.length} ACTIVE</div>
         <div style={{
           display: "grid",
-          gridTemplateColumns: `repeat(${Math.max(bench.length, 1)}, 1fr)`,
+          gridTemplateColumns: m
+            ? "repeat(2, 1fr)"
+            : `repeat(${Math.max(bench.length, 1)}, 1fr)`,
           gap: 1, background: C.hair, border: `1px solid ${C.hair}`,
         }}>
           {bench.map(p => (
