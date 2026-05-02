@@ -1,4 +1,4 @@
-// ─── Atlanta Hawks Player Data (2025-26 Season · Updated May 1, 2026 — SEASON OVER · ELIMINATED in R1 ) ─
+// ─── Atlanta Hawks Player Data (2025-26 Season · Updated May 2, 2026 — SEASON OVER · ELIMINATED in R1 ) ─
 // Single source of truth for roster, games, digest, and RSS feeds.
 // Season context: 46-36 regular season, Southeast Division champs, 6-seed in East.
 // Playoffs Round 1 vs NY Knicks: KNICKS WIN SERIES 4-2 after Thursday's HISTORIC 140-89 Game 6 blowout at State Farm Arena.
@@ -50,7 +50,7 @@ export const PLAYERS = [
     fieldGoalPct: 47.1, threePointPct: 35.8, freeThrowPct: 76.2,
     trueShootingPct: 56.8, plusMinus: 4.3,
     form: 6.7, status: "active", injuryNote: null,
-    recentNotes: "Sour ending — ejected from Game 6 in the second quarter alongside Mitchell Robinson after a free-throw scrum in which Daniels threw an elbow into Robinson's chest and Robinson shoved back, sending a referee to the floor (Bleacher Report/Yahoo/Yardbarker/Heavy, Apr 30). Exited with 3 pts on 1-of-4 in 15 min. Six-game R1 line lands around 7.8/5.8/4.7 in 27 mpg — but the headline accomplishment stands: through the first four games he became the first NBA player since Luka 2022 to post 24+ pts/35+ reb/25+ ast/10+ stl in a four-game span (NBA.com Apr 27). Reigning MIP and 24-25 All-Defensive 1st-team; offseason expectation is a real DPOY case in 26-27 with a full year as primary perimeter stopper.",
+    recentNotes: "NBA fined Daniels $25,000 Friday May 1 for his role in the Game 6 free-throw scrum — Mitchell Robinson hit with the larger $50K fine, no suspensions for either (NBA.com release / ESPN / AP / Hoops Rumors, May 1). Daniels had been ejected mid-Q2 alongside Robinson after Daniels threw an elbow into Robinson's chest and Robinson shoved back, with a referee knocked to the floor in the scrum (Bleacher Report/Yahoo/Heavy, Apr 30). Exited Game 6 with 3 pts on 1-of-4 in 15 min. Six-game R1 line lands around 7.8/5.8/4.7 in 27 mpg — but the headline accomplishment stands: through the first four games he became the first NBA player since Luka 2022 to post 24+ pts/35+ reb/25+ ast/10+ stl in a four-game span (NBA.com Apr 27). Reigning MIP and 24-25 All-Defensive 1st-team; finished 2nd in 24-25 DPOY voting and the offseason narrative is a real DPOY case in 26-27 (was at +2000 odds as of Mar 24).",
     playoffStats: { gamesPlayed: 6, minutesPerGame: 27.4, pointsPerGame: 7.8, reboundsPerGame: 5.8, assistsPerGame: 4.7 },
     playoffSeries: null,
     minutesTrend: "down",
@@ -93,7 +93,7 @@ export const PLAYERS = [
     fieldGoalPct: 45.2, threePointPct: 38.1, freeThrowPct: 82.7,
     trueShootingPct: 57.4, plusMinus: 3.1,
     form: 6.5, status: "active", injuryNote: null,
-    recentNotes: "Series ends with 11 in the blowout (NBA.com 4 takeaways, Apr 30); third straight non-impact night after a hot G1-G3. Six-game R1 line settled around 19.2 PPG — well off the 24.5 series-opening pace. Headlines now flip to free agency: SI onsi (Apr 30) and Hoops Rumors confirm Atlanta's plan is to bring McCollum back on a multi-year deal this summer; Jake Fischer (Hoops Rumors Apr) reports mutual interest. Was acquired Jan 8 in the Trae trade and started 25 of 41 games as a Hawk on 18.7/3.1/4.1; the playoff sample (20+ PPG average across 6 games) likely shapes that next contract upward.",
+    recentNotes: "Free-agency sample is set: 19.2 PPG across the six R1 games on 49% FG / 31% 3P (HoopsHype May 1) after coming over Jan 8 in the Trae trade and starting 25 of 41 games as a Hawk on 18.7/3.1/4.1. SI onsi (Apr 30) and Hoops Rumors (Apr 28) confirm Atlanta's plan is to bring him back on a multi-year deal; HoopsHype (May 1) reports execs expect offers 'slightly above the mid-level exception' — most pegging two years and $35-40M as the fair ballpark. Atlanta enters the offseason with $55.9M in projected cap space below the first apron (HoopsHype, May 1).",
     playoffStats: { gamesPlayed: 6, minutesPerGame: 33.0, pointsPerGame: 19.2, reboundsPerGame: 3.2, assistsPerGame: 2.5 },
     playoffSeries: null,
     usageRate: 31.8,
@@ -155,7 +155,7 @@ export const PLAYERS = [
     fieldGoalPct: 47.2, threePointPct: 33.6, freeThrowPct: 70.1,
     trueShootingPct: 55.1, plusMinus: 2.4,
     form: 6.4, status: "active", injuryNote: null,
-    recentNotes: "Game 6 line: 11 pts as one of the four Hawks who hit double figures in the 140-89 wipeout (NBA.com 4 takeaways, Apr 30). Six-game R1 line lands around 13.4 PPG with a three-point shot that never recovered (sub-30% over the last four). Atlanta holds a $24.3M club option for 26-27 (CBS Sports trade-grades Apr); Hoops Rumors Apr 28 flagged him as a key piece going forward. The Q1-hero arc from Game 3 (21 off the bench) was the high-water mark — getting a more consistent version off the bench is the offseason coaching project.",
+    recentNotes: "Now the Hawks' biggest cap call of the offseason: Bleacher Report and Hoops Rumors (Apr 28-30) flag a possible mutual-interest move where ATL DECLINES the $24.3M 26-27 team option to negotiate a longer-term deal, per Jake Fischer — the Warriors-with-Kuminga template Atlanta is now stepping into. Game 6 line: 11 pts as one of the four Hawks in double figures in the 140-89 wipeout (NBA.com 4 takeaways, Apr 30). Six-game R1 line landed around 13.4 PPG with a three-point shot that never recovered (sub-30% over the last four). The Q1-hero arc from Game 3 (21 off the bench) was the high-water mark — getting a more consistent version off the bench is the offseason coaching project.",
     playoffStats: { gamesPlayed: 6, minutesPerGame: 25.7, pointsPerGame: 13.4, reboundsPerGame: 3.6, assistsPerGame: 0.8 },
     playoffSeries: null,
     minutesTrend: "down",
@@ -434,20 +434,50 @@ export const EAST_STANDINGS = [
 
 // ─── AI News Digest (generated from live web search) ───────────────────────
 export const NEWS_DIGEST = {
-  generatedAt: "2026-05-01T13:00:00Z",
+  generatedAt: "2026-05-02T11:00:00Z",
   summary:
-    "SEASON OVER — Knicks ended the Hawks 140-89 in Game 6 Thursday at State Farm Arena, the most lopsided game in NBA playoff history by halftime margin and tied for the 6th-largest final margin (51) in the postseason record book (NBA.com 4 takeaways/FOX Sports/NY Post/AP via fultonneighbor, Apr 30/May 1). Knicks lead 40-15 after one (a shot-clock-era playoff record), 83-36 at the break (the largest halftime lead in playoff history, eclipsing 41), and led by as many as 61. OG Anunoby torched ATL for 29 in 27 minutes, Karl-Anthony Towns posted his second triple-double of the series (12-11-10), and Brunson cruised in the closeout (NBA.com/Yahoo Sports/Bleacher Report, Apr 30). Late in Q2 the night turned ugly: Mitchell Robinson and Dyson Daniels were both ejected after a free-throw scrum in which Daniels threw an elbow into Robinson's chest, Robinson shoved back, and a referee was knocked to the floor (Bleacher Report/Yahoo/Larry Brown Sports/Yardbarker/Heavy, Apr 30). Daniels exited with 3 pts on 1-of-4 in 15 min. For Atlanta, Jalen Johnson team-high 21; McCollum, NAW and Kuminga 11 apiece. Postgame Johnson: 'I don't really have any words for that. Obviously, disappointing. Obviously, it sucks. Out of all the things we did accomplish this year, obviously, we're all just looking forward to being better' (Heavy, Apr 30). Snyder: 'we didn't have an answer for that tonight' (NBA.com 4 takeaways, Apr 30). Series ends 4-2 Knicks; New York advances to ECF semifinals vs the Celtics-76ers Game 7 winner. Hawks shift to a fast offseason: SI onsi (Apr 30) and Hoops Rumors (Apr 28) report Atlanta plans to bring back HC Quin Snyder on an extension and re-sign UFA CJ McCollum on a new multi-year deal. The 2026 NBA Draft Lottery is May 10 (NBA.com): ATL holds the more-favorable of the New Orleans and Milwaukee picks (current projections: Nos. 7 and 10) plus Cleveland's first at No. 24 (Peachtree Hoops draft assets, Apr; Tankathon). Lingering award headline: NAW's 2025-26 Kia Most Improved Player win Apr 24 made ATL the first franchise ever with back-to-back MIPs.",
+    "OFFSEASON — Day 2 after elimination. The NBA's discipline call landed Friday May 1: Mitchell Robinson fined $50,000 (with the higher number citing his postgame social-media post about the incident) and Dyson Daniels fined $25,000 for their roles in the Game 6 free-throw scrum, no suspensions handed down (NBA.com release / ESPN / AP / Yahoo / Hoops Rumors, May 1). Atlanta's offseason is now fully in motion. SI onsi (Apr 30) and Hoops Rumors (Apr 28) reported Atlanta plans to bring back HC Quin Snyder on an extension and re-sign UFA CJ McCollum on a multi-year deal; HoopsHype (May 1) added that McCollum is expected to draw offers 'slightly above the mid-level exception' — execs estimate two years and $35-40M as the fair range. Atlanta enters the summer with roughly $55.9M in projected cap space below the first apron (HoopsHype/SI onsi cap tracker, May 1). Jonathan Kuminga emerges as the biggest cap call: Bleacher Report and Hoops Rumors (Apr 28-30) cite mutual interest in DECLINING his $24.3M 26-27 team option to hash out a longer-term agreement (per Jake Fischer). The 2026 NBA Draft Lottery is May 10 in Chicago — ATL holds the more-favorable of New Orleans and Milwaukee's picks plus Cleveland's at No. 24 — with Pelicans' lottery slot at the 7th-best odds (6.8% No. 1) and Bucks at 10th (Tankathon/Yahoo Sports/CBS Sports). The Knicks closeout backdrop: 140-89 in Game 6 at State Farm Arena Apr 30, the LARGEST halftime lead (47) in NBA playoff history (83-36) and tied for the 6th-largest final margin (51) (NBA.com/FOX Sports/NY Post/AP via fultonneighbor, Apr 30/May 1). Lingering award headlines: Jalen Johnson became just the 5th player in NBA history to average 22+/10+/7+ in a season (joining Oscar Robertson, Wilt Chamberlain, Jokic, Westbrook), earning his first All-Star nod and a plausible All-NBA third-team case; NAW's 2025-26 Kia Most Improved Player win Apr 24 made ATL the first franchise ever with back-to-back MIPs (Daniels won 24-25).",
   keyTopics: [
     {
-      title: "Knicks 140, Hawks 89 — Historic 51-Point R1 Closeout Ends Atlanta's Season",
+      title: "NBA Fines Daniels $25K, Robinson $50K for Game 6 Altercation — No Suspensions",
       detail:
-        "Knicks beat Atlanta 140-89 in Game 6 Thursday Apr 30 at State Farm Arena to win the series 4-2 (NBA.com/FOX Sports/NY Post/AP via fultonneighbor, Apr 30/May 1). Knicks led 40-15 after Q1 (largest 1Q lead in shot-clock-era playoff history), 83-36 at the half (LARGEST HALFTIME LEAD IN NBA PLAYOFF HISTORY — previous record 41), and led by as many as 61. The 51-point margin is tied for 6th-largest in postseason history. Knicks shot the lights out from the opening tip while ATL went cold — sportsrush called it 'a clinic on every level.' New York advances to ECF semifinals vs Celtics-76ers G7 winner.",
+        "League discipline announced Friday May 1: Mitchell Robinson fined $50,000 and Dyson Daniels fined $25,000 for their roles in the Game 6 free-throw scrum (NBA.com release / ESPN / AP via Winchester Star / Yahoo Sports / Hoops Rumors, May 1). The NBA noted Robinson's larger fine 'takes into account his inappropriate post on social media in reference to the incident postgame.' No suspensions handed down — irrelevant for ATL given the elimination, but means Robinson's available for Round 2 vs Boston-or-76ers. EssentiallySports' coverage flagged that Robinson received the higher fine despite Daniels' clear elbow on tape, the unusual point of dispute in the discipline call.",
+      category: "general",
+    },
+    {
+      title: "McCollum Free Agency: Hawks Plan Return; Offers Pegged 'Slightly Above MLE' (~2yr/$35-40M)",
+      detail:
+        "Headline Hawks free agent. SI onsi (Apr 30) and Hoops Rumors (Apr 28) report Atlanta's plan is to bring CJ McCollum back on a multi-year deal; Jake Fischer (Hoops Rumors) reports mutual interest. HoopsHype (May 1) adds that McCollum is expected to draw offers 'slightly above the mid-level exception' — most execs pegging two years and $35-40M as the fair range. Came over Jan 8 in the Trae trade, regular-season line of 18.7/3.1/4.1 in 41 games (25 starts), R1 line of 19.2 PPG / 49% FG / 31% 3P. Atlanta enters with $55.9M in projected cap space below the first apron (HoopsHype/SI onsi cap tracker, May 1).",
+      category: "trades",
+    },
+    {
+      title: "Snyder Extension Talks Now Active — Strong Front-Office Support",
+      detail:
+        "Yardbarker (May 1), RealGM and Yahoo Sports (Apr 28-30) all confirmed extension talks between Quin Snyder and the Hawks are expected to ramp now that the season has ended. Snyder enters the final year of his existing deal in 26-27, with NBA insider Jake Fischer reporting 'strong' front-office support to retain him long-term. The 20-6 finish to avoid the play-in for the first time in five years (post-Trae Young trade) is the cited tipping point.",
+      category: "general",
+    },
+    {
+      title: "Kuminga Cap Call: Mutual Interest in DECLINING $24.3M Option for Longer-Term Deal",
+      detail:
+        "Atlanta's biggest summer cap question is Jonathan Kuminga. Bleacher Report and Hoops Rumors (Apr 28-30) cite Jake Fischer reporting mutual interest in declining the $24.3M 26-27 team option in order to negotiate a longer-term agreement. Acquired before the deadline in the Porzingis trade, Kuminga played 16 games as a Hawk on a mixed-bag results: 14.9/5.1/2.2 regular season, 13.4 PPG R1, sub-30% from three over the last four playoff games. The Warriors-with-Kuminga template Atlanta now has to navigate (BlueManHoop, May 1). Without a deal he could walk for nothing.",
+      category: "trades",
+    },
+    {
+      title: "May 10 NBA Draft Lottery: Hawks Hold More-Favorable of NOP/MIL Plus CLE No. 24",
+      detail:
+        "Atlanta's biggest 2026 offseason calendar event is the May 10 NBA Draft Lottery in Chicago (NBA.com 2026 Draft Order / Tankathon). Hawks own the more-favorable of New Orleans and Milwaukee's first-round picks via prior trades — Pelicans currently sit with the 7th-best odds (6.8% chance at No. 1, ~40% chance at top-4) and Bucks at 10th-best per Yahoo Sports / CBS Sports / SI onsi. Atlanta also holds Cleveland's first at No. 24 plus a second-rounder. Top of class: Darryn Peterson (Kansas), Cameron Boozer (Duke), AJ Dybantsa — Bleacher Report's Wasserman mock has ATL taking Kingston Flemings (Houston) at No. 7. Combine May 8-10; full draft June 23-24.",
+      category: "general",
+    },
+    {
+      title: "Knicks 140, Hawks 89 — Historic 51-Point R1 Closeout Ended Atlanta's Season",
+      detail:
+        "Knicks beat Atlanta 140-89 in Game 6 Thursday Apr 30 at State Farm Arena to win the series 4-2 (NBA.com/FOX Sports/NY Post/AP via fultonneighbor, Apr 30/May 1). Knicks led 40-15 after Q1 (largest 1Q lead in shot-clock-era playoff history), 83-36 at the half (LARGEST HALFTIME LEAD IN NBA PLAYOFF HISTORY — previous record 41), and led by as many as 61. The 51-point margin is tied for 6th-largest in postseason history. New York advances to ECF semifinals vs Celtics-76ers G7 winner.",
       category: "games",
     },
     {
       title: "Daniels & Mitchell Robinson Ejected in Q2 Free-Throw Scrum",
       detail:
-        "Late in the second quarter, with NYK already up 50-plus, Mitchell Robinson and Dyson Daniels were both ejected after a fight that broke out during free throws (Bleacher Report/Yahoo/Larry Brown Sports/Yardbarker/Heavy, Apr 30). Replay showed Daniels threw an elbow into Robinson's chest while OG Anunoby was at the line; Robinson responded with a shove that knocked a referee to the floor. Both received double technicals and were tossed. Daniels finished with 3 pts on 1-of-4 in 15 min; Robinson 6 pts/3 reb/2 blk in 9 min. Snyder declined to comment on the play postgame.",
+        "Late in the second quarter of Game 6, with NYK already up 50-plus, Mitchell Robinson and Dyson Daniels were both ejected after a fight that broke out during free throws (Bleacher Report/Yahoo/Larry Brown Sports/Yardbarker/Heavy, Apr 30). Replay showed Daniels threw an elbow into Robinson's chest while OG Anunoby was at the line; Robinson responded with a shove that knocked a referee to the floor. Both received double technicals and were tossed. Daniels finished with 3 pts on 1-of-4 in 15 min; Robinson 6 pts/3 reb/2 blk in 9 min. Discipline followed May 1 (see top topic).",
       category: "games",
     },
     {
@@ -469,9 +499,9 @@ export const NEWS_DIGEST = {
       category: "games",
     },
     {
-      title: "Snyder Extension Talks Expected; Hawks Plan to Bring McCollum Back",
+      title: "Hollinger: Hawks Likely to Shop Risacher or Kispert After Modest R1 Roles",
       detail:
-        "League sources via SI onsi and Hoops Rumors (Apr 30 / Apr 28) report Atlanta is expected to engage Quin Snyder on a contract extension this offseason — strong front-office support to retain him long-term, with one year remaining on his current deal (RealGM/Bleacher Report/Sportsnaut, Apr 28-29). Separately, Jake Fischer (Hoops Rumors) reports the Hawks plan to bring back UFA CJ McCollum on a new multi-year deal this summer; mutual interest, with extension talks expected to ramp now that the season has ended.",
+        "John Hollinger's Hawks offseason preview (The Athletic / SI onsi summary, Apr 30) predicts Atlanta will probably look to trade either Zaccharie Risacher or Corey Kispert this summer after both played very modest roles in the first-round series vs New York. Risacher logged just 2:30 of total Round 1 floor time across the entire series — one Game 1 cameo and five straight DNP-CDs (NBA.com 4 takeaways / box scores Apr 18-30). Sophomore line: 9.6/3.8/1.1 on 44.6% FG / 37.2% 3P over 66 games — regression from his 12.6 PPG rookie year as usage dropped from 21.6% to 17.7% (CraftedNBA / Roundtable Apr 30). 'Ups and downs' was Risacher's own description of the year.",
       category: "trades",
     },
     {
@@ -481,27 +511,21 @@ export const NEWS_DIGEST = {
       category: "games",
     },
     {
-      title: "May 10 NBA Draft Lottery: Hawks Hold the More-Favorable of NOP/MIL Plus CLE No. 24",
+      title: "Johnson's All-Time Statistical Bar: 5th Player Ever at 22+/10+/7+",
       detail:
-        "Atlanta's biggest 2026 offseason calendar event arrives May 10 with the NBA Draft Lottery in Chicago (NBA.com 2026 Draft Order/Tankathon). Hawks own the more-favorable of New Orleans and Milwaukee's first-round picks via prior trades — current projections place those slots at No. 7 (NOP) and No. 10 (MIL) per Peachtree Hoops draft asset round-up (Apr). Atlanta also holds Cleveland's first at No. 24 plus a second-rounder. Multiple SI onsi mocks have linked the Hawks to lead-guard help and a Big Ten guard/wing — full draft June 23-24.",
+        "Jalen Johnson became just the FIFTH PLAYER IN NBA HISTORY to average 22+ points, 10+ rebounds and 7+ assists in a season — joining Oscar Robertson, Wilt Chamberlain, Nikola Jokic and Russell Westbrook (Soaring Down South / Wikipedia / Hawks.com Apr). First All-Star nod (Feb 2026 reserve), played in the new World-format ASG and helped Team Stars take the 2026 NBA All-Star Championship. R1 line settled at 19.5/8.3/5.5; offseason narrative is whether Johnson lands All-NBA third-team votes and whether ATL pivots to an extension talk this summer.",
       category: "general",
     },
     {
       title: "Daniels' Career Series Despite the Sour End — Joins Luka 2022 Bar",
       detail:
-        "Through the first four games of Round 1, Daniels totaled 24 pts / 35 reb / 25 ast / 10 stl — the first NBA player since Luka Dončić in the 2022 playoffs to clear that bar in a four-game span (NBA.com Apr 27). Reigning MIP, 24-25 All-Defensive 1st team; six-game R1 line settled around 7.8/5.8/4.7 in 27 mpg with a Game 5 scoring breakthrough (17 on 7-of-11) bookended by the Game 6 ejection. DPOY case for 26-27 is the offseason narrative.",
+        "Through the first four games of Round 1, Daniels totaled 24 pts / 35 reb / 25 ast / 10 stl — the first NBA player since Luka Dončić in the 2022 playoffs to clear that bar in a four-game span (NBA.com Apr 27). Reigning MIP, 24-25 All-Defensive 1st team and 2nd in 24-25 DPOY voting; six-game R1 line settled around 7.8/5.8/4.7 in 27 mpg with a Game 5 scoring breakthrough (17 on 7-of-11) bookended by the Game 6 ejection. DPOY case for 26-27 (was at +2000 odds as of Mar 24) is the offseason narrative.",
       category: "general",
-    },
-    {
-      title: "McCollum Six-Game R1: 19.2 PPG — Free-Agency Sample Set",
-      detail:
-        "Six-game R1 line for CJ McCollum lands around 19.2 PPG (down from a 24.5 series-opening pace after a flat G4-G5-G6 closeout — NBA.com box scores/Soaring Down South Apr 28-30). Came over Jan 8 in the Trae trade, 18.7/3.1/4.1 in 41 games as a Hawk. Hoops Rumors (Apr) and SI onsi (Apr 30) report mutual interest on a multi-year extension this summer; the playoff sample likely lifts the contract value.",
-      category: "trades",
     },
     {
       title: "Okongwu Played All Six Through Knee Inflammation",
       detail:
-        "Onyeka Okongwu played all six R1 games through the right knee inflammation diagnosed after Game 1 (Heavy/CBS Apr 24-29). KAT-on-Okongwu was the series-defining matchup ATL never solved (Towns posted two triple-doubles). Regular-season was career-best 15.2/7.6/3.1 on 48.0% FG over 74 games and 31 mpg. Atlanta now decides whether to formalize him as the post-Trae starting C long-term or pursue a pivot center this offseason (Bleacher Report cap notes, Apr 28).",
+        "Onyeka Okongwu played all six R1 games through the right knee inflammation diagnosed after Game 1 (Heavy/CBS Apr 24-29). KAT-on-Okongwu was the series-defining matchup ATL never solved (Towns posted two triple-doubles). Regular-season was career-best 15.2/7.6/3.1 on 48.0% FG over 74 games and 31 mpg. Two years left on his 4yr/$62M deal ($16.1M in 26-27 per Spotrac); Atlanta has resisted prior trade interest and now decides whether to formalize him as the post-Trae starting C long-term (Bleacher Report cap notes, Apr 28).",
       category: "injuries",
     },
     {
@@ -511,15 +535,9 @@ export const NEWS_DIGEST = {
       category: "general",
     },
     {
-      title: "Risacher Round 1: 2:30 Total — Sophomore Season Ends 'Ups and Downs'",
+      title: "Hawks Free-Agency Watchlist: McCollum, Vincent, Bradley, Landale UFA; Wallace RFA",
       detail:
-        "No. 1 overall pick Zaccharie Risacher logged just 2:30 of total Round 1 floor time across the entire series — one Game 1 cameo and five straight DNP-CDs (NBA.com 4 takeaways/box scores Apr 18-30). Sophomore line: 9.6/3.8/1.1 on 44.6% FG and 37.2% from three across 66 games. 'Ups and downs' was Risacher's own description of his year (Roundtable Apr 30); offseason development plan and a likely Summer League run is now the storyline.",
-      category: "rotation",
-    },
-    {
-      title: "Hawks Free-Agency Watchlist: Vincent, Bradley, Landale UFA; Wallace RFA",
-      detail:
-        "Per Bleacher Report cap notes (Apr 28) and Hoops Rumors offseason brief (Apr 30): Atlanta's UFAs after the season are CJ McCollum, Gabe Vincent, Tony Bradley and Jock Landale. Restricted FAs include Keaton Wallace, RayJ Dennis and Christian Koloko. McCollum is the priority retention; Wallace likely gets a qualifying offer. Buddy Hield is on a $9.4M expiring (Hoops Rumors) and is a known offseason discussion piece. Atlanta's plan, per Fischer, is to build around its young core (Johnson, Daniels, NAW, Okongwu, Risacher) with extensions inevitable.",
+        "Per Bleacher Report cap notes (Apr 28) and Hoops Rumors offseason brief (Apr 30): Atlanta's UFAs are CJ McCollum, Gabe Vincent, Tony Bradley and Jock Landale. Restricted FAs include Keaton Wallace, RayJ Dennis and Christian Koloko. McCollum is the priority retention; Wallace likely gets a qualifying offer. Buddy Hield is on a $9.4M expiring (Hoops Rumors) and is a known offseason discussion piece. Atlanta's plan, per Jake Fischer, is to build around its young core (Johnson, Daniels, NAW, Okongwu, Risacher) with extensions inevitable.",
       category: "trades",
     },
   ],
@@ -528,11 +546,14 @@ export const NEWS_DIGEST = {
     "ESPN",
     "Yahoo Sports",
     "FOX Sports",
+    "AP / Winchester Star",
     "AP / fultonneighbor.com",
     "NY Post",
+    "Washington Post",
     "CBS Sports",
     "AJC",
     "Sports Illustrated (SI/onsi)",
+    "HoopsHype",
     "ClutchPoints",
     "Peachtree Hoops",
     "Soaring Down South",
@@ -541,10 +562,14 @@ export const NEWS_DIGEST = {
     "Bleacher Report",
     "Yardbarker",
     "Larry Brown Sports",
+    "EssentiallySports",
     "Sportsrush",
     "Sportsnaut",
     "Roundtable",
     "Hawks.com",
     "Tankathon",
+    "CraftedNBA",
+    "BlueManHoop",
+    "RealGM",
   ],
 };
