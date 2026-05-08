@@ -1,4 +1,4 @@
-// ─── Atlanta Hawks Player Data (2025-26 Season · Updated May 3, 2026 — SEASON OVER · ELIMINATED in R1 · Lottery in 1 week) ─
+// ─── Atlanta Hawks Player Data (2025-26 Season · Updated May 8, 2026 — SEASON OVER · ELIMINATED in R1 · LOTTERY IN 2 DAYS · Saleh: 'We're in a good place' · Combine Week kicks off Sunday) ─
 // Single source of truth for roster, games, digest, and RSS feeds.
 // Season context: 46-36 regular season, Southeast Division champs, 6-seed in East.
 // Playoffs Round 1 vs NY Knicks: KNICKS WIN SERIES 4-2 after Thursday's HISTORIC 140-89 Game 6 blowout at State Farm Arena.
@@ -14,10 +14,11 @@
 // 12-11-10 (his SECOND triple-double of the series), Brunson with the close-out load. Hawks: Johnson team-high
 // 21, McCollum/NAW/Kuminga 11 apiece — Johnson's blunt postgame quote "I don't really have any words for that.
 // Obviously, disappointing. Obviously, it sucks." (Heavy, Apr 30). Snyder: "we didn't have an answer for that
-// tonight" (NBA.com 4 takeaways/AP via fultonneighbor, Apr 30/May 1). Knicks advance to ECF semifinals vs the
-// Celtics-76ers Game 7 winner. Hawks pivot to a quick offseason: Snyder extension talks, McCollum free-agency
-// retention plan, and the May 10 NBA Draft Lottery (ATL holds the more-favorable of NOP/MIL picks plus the No. 24
-// from CLE) lead the agenda (SI onsi/Hoops Rumors/Yardbarker/Bleacher Report, Apr 28-30).
+// tonight" (NBA.com 4 takeaways/AP via fultonneighbor, Apr 30/May 1). Knicks advanced to the East semifinals
+// (now vs Philadelphia after PHI's historic 3-1 comeback over Boston in R1; DET-CLE the other ECSF series).
+// Hawks pivoted to a quick offseason: Snyder extension talks, McCollum free-agency retention plan, and the
+// MAY 10 NBA DRAFT LOTTERY — now TWO DAYS away — lead the agenda (ATL holds the more-favorable of NOP/MIL
+// picks plus the No. 24 from CLE) (SI onsi/Hoops Rumors/Yardbarker/Bleacher Report/AJC May 1-8).
 
 // Statuses: "active" | "day-to-day" | "questionable" | "doubtful" | "out" | "suspended"
 // injuryNote: short description shown on card when not active
@@ -25,13 +26,13 @@ export const PLAYERS = [
   // ── Starters ─────────────────────────────────────────────────────────────
   {
     id: 1, name: "Jalen Johnson", number: 1, position: "SF", nationality: "🇺🇸 USA", age: 23, playoffStarter: true,
-    gamesPlayed: 74, gamesStarted: 72, minutesPerGame: 34.6,
-    pointsPerGame: 22.8, reboundsPerGame: 10.3, assistsPerGame: 8.0,
+    gamesPlayed: 72, gamesStarted: 72, minutesPerGame: 35.2,
+    pointsPerGame: 22.5, reboundsPerGame: 10.3, assistsPerGame: 7.9,
     stealsPerGame: 1.2, blocksPerGame: 0.8, turnoversPerGame: 3.1,
     fieldGoalPct: 49.0, threePointPct: 36.2, freeThrowPct: 78.4,
     trueShootingPct: 58.2, plusMinus: 5.6,
     form: 6.9, status: "active", injuryNote: null,
-    recentNotes: "Now the unambiguous franchise focal point heading into Sunday May 3's offseason — Saleh's exit-interview message ('we're not one player away … best iteration through development') frames the summer around Johnson's continued growth (Peachtree Hoops / SI onsi, May 1-2). Final R1 line settled at 19.5/8.3/5.5 vs his 22.8/10.3/8.0 regular-season baseline; AJC and SI onsi credited Anunoby's coverage as the series-defining drag. Offseason agenda: All-NBA third-team voting still pending (Yahoo's media-poll ballot showed first-team Johnson votes, full results out in coming weeks), plus rumored extension talks now that Trae's gone — the historical company on the 22+/10+/7+ line (Oscar, Wilt, Jokic, Westbrook) keeps the comparison ceilings high.",
+    recentNotes: "T-2 DAYS to the lottery (Sunday May 10): Saleh's AJC May 8 framing — 'We're in a good place ... position set up moving forward' — hangs the offseason on Johnson's continued development as the franchise focal point. Two-day-old peer recognition: The Athletic's Anonymous NBA Player Poll (May 6) named him the league's MOST UNDERRATED, tied with Derrick White at 4% (HoopsHype / SI onsi / Bleacher Report / Yahoo Sports). Yahoo's May 1 media-poll ballot still has him on the All-NBA THIRD TEAM (league official results pending late May after MVP reveal). Final R1 line settled at 19.5/8.3/5.5 vs his 22.5/10.3/7.9/72 GP/35.2 mpg regular-season baseline (5th player ever to clear 22+/10+/7+, after Oscar, Wilt, Jokic, Westbrook). Extension talks remain the next narrative beat.",
     playoffStats: { gamesPlayed: 6, minutesPerGame: 35.0, pointsPerGame: 19.5, reboundsPerGame: 8.3, assistsPerGame: 5.5 },
     playoffSeries: null,
     minutesTrend: "down",
@@ -50,7 +51,7 @@ export const PLAYERS = [
     fieldGoalPct: 47.1, threePointPct: 35.8, freeThrowPct: 76.2,
     trueShootingPct: 56.8, plusMinus: 4.3,
     form: 6.7, status: "active", injuryNote: null,
-    recentNotes: "Two days past the Game 6 ejection and one $25,000 fine handed down (May 1) — the season-defining storylines remain the Luka-2022 bar (24 pts / 35 reb / 25 ast / 10 stl through the first four R1 games, the first NBA player to clear that span since 2022 per NBA.com Apr 27) and the 26-27 DPOY case (Wembanyama swept this year's race unanimously per Hoops Rumors Apr — Daniels was at +2000 in March). Reigning MIP and 24-25 All-Defensive 1st-team; finished 2nd in 24-25 DPOY voting. Six-game R1 line settled around 7.8/5.8/4.7 in 27 mpg with a Game 5 scoring breakthrough (17 on 7-of-11) before the Game 6 ejection. NAW's MIP win (Apr 24) made ATL the first franchise ever with back-to-back winners.",
+    recentNotes: "Eight days past the Game 6 ejection and one week past the $25K fine (May 1) — Daniels enters his offseason with the season-defining R1 backdrop intact: Luka-2022 bar through G1-G4 (24 pts / 35 reb / 25 ast / 10 stl, first NBA player to clear that span since 2022 per NBA.com Apr 27) and a 26-27 DPOY case rebuilding alongside Wembanyama (Wemby took 2025-26 DPOY). Reigning 24-25 MIP and All-Defensive 1st-team; the Pelicans scout who drafted him at No. 8, BRYSON GRAHAM, was hired by the Bulls Monday May 4 as EVP of Basketball Ops (NBA.com / Bulls.com / Bleacher Nation). Six-game R1 line settled around 7.8/5.8/4.7 in 27 mpg with a Game 5 scoring breakthrough (17 on 7-of-11) before the Game 6 ejection. His five-year, $125M rookie-scale extension kicks in next season ($25M jump in 26-27 per Spotrac).",
     playoffStats: { gamesPlayed: 6, minutesPerGame: 27.4, pointsPerGame: 7.8, reboundsPerGame: 5.8, assistsPerGame: 4.7 },
     playoffSeries: null,
     minutesTrend: "down",
@@ -70,7 +71,7 @@ export const PLAYERS = [
     fieldGoalPct: 45.9, threePointPct: 39.9, freeThrowPct: 90.2,
     trueShootingPct: 61.2, plusMinus: 6.1,
     form: 6.8, status: "active", injuryNote: null,
-    recentNotes: "MIP trophy is the through-line into May 3: 2025-26 Kia Most Improved Player Apr 24 with 66 of 100 first-place votes, beating finalists Deni Avdija and Jalen Duren (NBA.com / Washington Post). Career-best 20.8/3.4/3.7 on 39.9% from three (251 makes is a Hawks single-season record) — back-to-back MIPs for ATL after Daniels' 24-25 win. Series scoring settled around 13.4 PPG; the only ATL perimeter player above 33% from three across the full six. Locked in long-term on the four-year deal he signed last summer — Saleh's exit-interview line about building 'through development' applies most directly to NAW given how recent the breakout was.",
+    recentNotes: "Two-week-old MIP trophy is the through-line into Combine Week: 2025-26 Kia Most Improved Player Apr 24 with 66 of 100 first-place votes, beating finalists Deni Avdija and Jalen Duren (NBA.com / Washington Post / Yahoo Sports / Hoops Rumors). Career-best 20.8/3.4/3.7 on 39.9% from three (251 makes is a Hawks single-season record, 4th in the NBA) — back-to-back MIPs for ATL after Daniels' 24-25 win, the FIRST FRANCHISE EVER with consecutive winners. Series scoring settled around 13.4 PPG; the only ATL perimeter player above 33% from three across the full six. NAW also drafted by Bryson Graham in New Orleans — Graham left Atlanta for Chicago Monday May 4 as EVP of Basketball Ops. Locked in long-term on the four-year deal he signed last summer.",
     playoffStats: { gamesPlayed: 6, minutesPerGame: 34.4, pointsPerGame: 13.4, reboundsPerGame: 2.3, assistsPerGame: 3.2 },
     playoffSeries: null,
     usageRate: 18.6,
@@ -93,7 +94,7 @@ export const PLAYERS = [
     fieldGoalPct: 45.2, threePointPct: 38.1, freeThrowPct: 82.7,
     trueShootingPct: 57.4, plusMinus: 3.1,
     form: 6.5, status: "active", injuryNote: null,
-    recentNotes: "Headline UFA target. SI onsi (Apr 30), Hoops Rumors (Apr 28) and HoopsHype (May 1) all align: Atlanta plans to bring him back on a multi-year deal, with offers expected 'slightly above the mid-level exception' — most execs pegging 2yr/$35-40M as the fair range. Hollinger's Athletic preview (May 1-2) flags age (34) as the structural risk but still endorses the retention. Free-agency sample is set: 18.7/3.1/4.1 in 41 regular-season games (25 starts), then 19.2 PPG / 49% FG / 31% 3P across the six R1 games. Atlanta operates with $55.9M of theoretical cap space under the first apron, but Hollinger expects the team to run OVER the cap and use the non-tax MLE (~$15.1M) to sign him.",
+    recentNotes: "Headline UFA. SI onsi / Hoops Rumors / HoopsHype / Bleacher Report (Apr 28-May 6) align: Atlanta plans to bring him back on a multi-year deal, with offers expected 'slightly above the mid-level exception' — most execs pegging 2yr/$35-40M as the fair range. McCollum publicly confirmed a 'productive conversation' with the front office (Heavy, May 4); Bleacher Report's salary-cap breakdown (May 7) calls re-signing him 'a no-brainer' given his stretch-run lift to the 6-seed. Hollinger's Athletic preview flags age (34/about-to-turn-35) as the structural risk. Final regular-season line: 18.7 / 3.3 / 3.9 on 45.5/37.5/77.2 across 76 total games (41 with Hawks post-Jan 8 trade, 25 starts), then 19.2 PPG / 49% FG / 31% 3P across the six R1 games. Hollinger expects ATL to run OVER the cap and use the non-tax MLE (~$15.1M) plus extra room as the working tool.",
     playoffStats: { gamesPlayed: 6, minutesPerGame: 33.0, pointsPerGame: 19.2, reboundsPerGame: 3.2, assistsPerGame: 2.5 },
     playoffSeries: null,
     usageRate: 31.8,
@@ -115,7 +116,7 @@ export const PLAYERS = [
     fieldGoalPct: 48.0, threePointPct: 37.6, freeThrowPct: 75.7,
     trueShootingPct: 59.4, plusMinus: 3.8,
     form: 6.6, status: "active", injuryNote: null,
-    recentNotes: "Career-best regular season locks in his role as the post-Trae starting C: 15.2/7.6/3.1 on 48.0% FG with 1.1 blk and 1.1 stl across 74 games and 31 mpg (basketball-reference / RotoWire / lineups.com). Two years left on his 4yr/$62M deal at $16.1M in 26-27 (Spotrac). Atlanta has resisted prior trade interest and Bleacher Report cap notes (Apr 28) plus Hollinger's preview (May 1-2) treat the C role as locked. Six-game R1 line was ~11.3/5.7/1.7 played through right-knee inflammation diagnosed after Game 1 — KAT's two triple-doubles in the matchup were the series-defining mismatch ATL never solved.",
+    recentNotes: "Career-best regular season locks in his role as the post-Trae starting C: 15.2/7.6/3.1 on 48.0% FG with 1.1 blk and 1.1 stl across 74 games and 31 mpg (basketball-reference / RotoWire / Spotrac). Two years left on his 4yr/$62M extension at $16.1M in 26-27. Atlanta has resisted prior trade interest (Pacers reportedly called pre-deadline per Yahoo) and Hollinger's preview treats the C role as locked. Yardbarker / SI onsi / Soaring Down South (May 5-7) name Isaiah Hartenstein as the top free-agency frontcourt target if Atlanta clears room — would pair WITH Okongwu, not replace him; Hartenstein shot 71% from the field in OKC's R1 sweep of Phoenix. Six-game R1 line was ~11.3/5.7/1.7 played through right-knee inflammation diagnosed after Game 1 — KAT's two triple-doubles were the series-defining mismatch ATL never solved.",
     playoffStats: { gamesPlayed: 6, minutesPerGame: 28.5, pointsPerGame: 11.3, reboundsPerGame: 5.7, assistsPerGame: 1.7 },
     playoffSeries: null,
     minutesTrend: "down",
@@ -136,7 +137,7 @@ export const PLAYERS = [
     fieldGoalPct: 44.6, threePointPct: 37.2, freeThrowPct: 74.8,
     trueShootingPct: 55.9, plusMinus: 1.6,
     form: 4.5, status: "active", injuryNote: null,
-    recentNotes: "Trade-watch player No. 1 of the offseason. Hollinger's Athletic preview (relayed via SI onsi / Larry Brown Sports / Yardbarker / Lindys, May 1-2) named Risacher (and Kispert) as the likeliest summer trade chip after R1. Soaring Down South (May 1) added that with Johnson, NAW and Kuminga ahead on the wing depth chart and a likely Boozer-or-equivalent draft addition, the path to minutes is gone. Round 1 floor time was just 2:30 across the whole series — one Game 1 cameo, then five straight DNP-CDs. Sophomore line: 9.6/3.8/1.1 on 44.6% FG / 37.2% 3P across 66 games (Roundtable/CraftedNBA Apr 30) — regression from his 12.6 PPG rookie year as usage dropped from 21.6% to 17.7%.",
+    recentNotes: "Offseason trade-watch player No. 1 — and the volume keeps building. Hollinger's Athletic preview (relayed via SI onsi / Larry Brown Sports / Lindys / Hoops Wire / FanSided, May 1-7) tagged Risacher (and Kispert) as the likeliest summer trade chip; Hoops Wire flagged Atlanta 'could look to trade' him. The structural read: Risacher is owed $13.7M next season then a $17.8M team option for 27-28 (per Bleacher Report cap notes) — the Hawks have to decide whether the 21-year-old's path to minutes ever returns. Sophomore line: 9.6/3.8/1.1 on 44.6% FG / 37.2% 3P across 66 games (Roundtable/CraftedNBA Apr 30) — regression from his 12.6 PPG rookie year as usage dropped from 21.6% to 17.7%. Round 1 floor time was just 2:30 across six games — one Game 1 cameo then five straight DNP-CDs. With Johnson, NAW, Kuminga ahead on the wing depth chart and a likely Boozer-class draft pick incoming, the path is hard to map.",
     playoffStats: { gamesPlayed: 1, minutesPerGame: 1.0, pointsPerGame: 0.0, reboundsPerGame: 2.0, assistsPerGame: 0.0 },
     playoffSeries: null,
     minutesTrend: "down",
@@ -155,7 +156,7 @@ export const PLAYERS = [
     fieldGoalPct: 47.2, threePointPct: 33.6, freeThrowPct: 70.1,
     trueShootingPct: 55.1, plusMinus: 2.4,
     form: 6.4, status: "active", injuryNote: null,
-    recentNotes: "Biggest cap decision of the offseason — DEADLINE JUNE 29 on the $24.3M 26-27 team option (Heavy / ClutchPoints, Apr 30). Bleacher Report and Hoops Rumors (Apr 28-30) flag mutual interest in DECLINING the option to negotiate a longer-term deal per Jake Fischer; Hollinger's Athletic preview (May 1-2) endorses that path. The Warriors-with-Kuminga template Atlanta now navigates (BlueManHoop, May 1). Six-game R1 line landed around 13.4 PPG with a three-point shot that never recovered (sub-30% over the last four). Regular-season Hawks line of 14.9/5.1/2.2 in 16 games left both a clear ceiling (Game 3's 21-off-bench Q1 hero arc) and a clear coaching project for the summer.",
+    recentNotes: "Biggest cap decision of the offseason — DEADLINE JUNE 29 (52 days out) on the $24.3M 26-27 team option (Heavy / ClutchPoints / ESPN's Bobby Marks, Apr 30-May 7). Bleacher Report / Hoops Rumors / Yardbarker (Apr 28-May 7) flag mutual interest in DECLINING the option to negotiate a longer-term deal per Jake Fischer; Hollinger's Athletic preview endorses that path; Soaring Down South tags it the 'obvious' move post-elimination. Without a deal he could walk for nothing. The Warriors-with-Kuminga template Atlanta now navigates (BlueManHoop, May 1). Six-game R1 line landed around 13.4 PPG with a three-point shot that never recovered (sub-30% over the last four). Regular-season Hawks line of 14.9/5.1/2.2 in 16 games left both a clear ceiling (Game 3's 21-off-bench Q1 hero arc) and a clear coaching project for the summer.",
     playoffStats: { gamesPlayed: 6, minutesPerGame: 25.7, pointsPerGame: 13.4, reboundsPerGame: 3.6, assistsPerGame: 0.8 },
     playoffSeries: null,
     minutesTrend: "down",
@@ -175,7 +176,7 @@ export const PLAYERS = [
     fieldGoalPct: 42.4, threePointPct: 39.8, freeThrowPct: 86.2,
     trueShootingPct: 58.6, plusMinus: 0.9,
     form: 5.7, status: "active", injuryNote: null,
-    recentNotes: "Calendar marker: $9.4M 26-27 contract has just $3M guaranteed UNTIL JUNE 25, when it triggers full guarantee (SI onsi cap tracker / BlueManHoop, Apr 28-May 1). Three Hawks paths: trigger and use as movable expiring, waive before the trigger and save $6.4M, or include in a pre-trigger trade. Hoops Rumors Apr listed Hield as a likely offseason discussion piece. Regular-season line of 11.8/2.8/2.1 on 39.8% from three across 71 games (12 starts), but R1 role was largely abandoned (6 mpg in 2 games). Decision is one of the May–June calendar pivots — alongside the Kuminga option (June 29) and the lottery (May 10).",
+    recentNotes: "Calendar marker: $9.4M 26-27 contract has just $3M guaranteed UNTIL JUNE 25 — 48 days out — when it triggers full guarantee (SI onsi cap tracker / BlueManHoop, Apr 28-May 1). Three Hawks paths: trigger and use as movable expiring, waive before the trigger and save $6.4M, or include in a pre-trigger trade. Hoops Rumors lists Hield as a likely offseason discussion piece. Regular-season line of 11.8/2.8/2.1 on 39.8% from three across 71 games (12 starts), but R1 role was largely abandoned (6 mpg in 2 games). Decision is the second of three back-to-back May–June calendar pivots — Sunday's lottery (May 10), Hield's June 25 trigger, then Kuminga's June 29 option.",
     playoffStats: { gamesPlayed: 2, minutesPerGame: 6.0, pointsPerGame: 4.0, reboundsPerGame: 0.5, assistsPerGame: 0.5 },
     playoffSeries: null,
     minutesTrend: "down",
@@ -381,11 +382,11 @@ export const NEXT_GAME = {
   opponent: "2026 NBA Draft Lottery",
   shortName: "LOTT",
   home: false,
-  date: "2026-05-10T20:00:00-04:00",
+  date: "2026-05-10T15:00:00-04:00",
   competition: "OFFSEASON",
   venue: "McCormick Place West (Chicago)",
-  broadcast: "ESPN",
-  seriesContext: "1 week out · ATL holds more-favorable of NOP (6.8% No. 1, ~29% top-4) and MIL plus CLE 1st (No. 24)",
+  broadcast: "ABC",
+  seriesContext: "2 DAYS OUT · Sunday May 10, 3 PM ET · ATL holds more-favorable of NOP (6.8% No. 1, 39.9% top-4 combined per Tankathon) and MIL plus CLE 1st (No. 24) · 73-prospect Combine May 10-17 in Chicago overlaps the lottery · Saleh (AJC May 8): 'We're in a good place' · ATL workout group: Bidunga/Onyenso/Suder/Uzan already in",
 };
 
 // ─── Game Results (2025-26 regular season · last 16 games) ─────────────────
@@ -434,14 +435,68 @@ export const EAST_STANDINGS = [
 
 // ─── AI News Digest (generated from live web search) ───────────────────────
 export const NEWS_DIGEST = {
-  generatedAt: "2026-05-03T13:00:00Z",
+  generatedAt: "2026-05-08T08:00:00Z",
   summary:
-    "OFFSEASON — Sunday May 3, one week out from the lottery. Hawks GM Onsi Saleh's exit-interview message has set the offseason tone: 'We're not one player away from this … the best iteration of this team is going to be through development and our players currently getting better' (Peachtree Hoops / SI onsi / Atlanta News First / 92.9 The Game, May 1-2). Saleh — who finished 2ND IN NBA EXECUTIVE OF THE YEAR voting Apr 28 (Brad Stevens won it; Saleh 41 pts, Detroit's Trajan Langdon 40) — also publicly committed to Quin Snyder ('an unbelievable partner') with extension talks now actively on the calendar (RealGM / Yahoo / Yardbarker, Apr 28-May 2). John Hollinger's Athletic offseason preview (summarized via SI onsi / Hoops Rumors / Last Word, May 1-2) confirms Atlanta will operate OVER the cap rather than carve out room — using $55.9M of theoretical space as leverage, with the non-tax MLE (~$15.1M), BAE (~$5.1M), four trade exceptions and Hield's $9.4M expiring as the working tools (Bleacher Report cap notes, Apr 28). The offseason spine: bring back UFA CJ McCollum on a 2yr/$35-40M ballpark deal 'slightly above the MLE' (HoopsHype, May 1), DECLINE Jonathan Kuminga's $24.3M 26-27 option to negotiate a longer-term Kuminga deal (mutual interest, per Jake Fischer), make the Buddy Hield $3M-vs-$9.4M call BEFORE June 25 (full-guarantee trigger date), and decide whether Risacher or Kispert is the wing the front office shops (Hollinger). Saleh's not pursuing Giannis — Jake Fischer reported NO indication of an Atlanta whale chase (Yardbarker, May 1). The May 10 Draft Lottery in Chicago is now the next dated event: Hawks hold the more-favorable of NOP (6.8% at No. 1, ~40% top-4) and MIL (10th-best odds), plus Cleveland's first at No. 24 and a second-rounder. Athletic mock has Cameron Boozer (Duke) at No. 3 to ATL with Ebuka Okorie (Stanford) at No. 22 (Roundtable, May 1-2). Lingering award headline: NAW's Kia MIP win Apr 24 made the Hawks the first franchise ever with back-to-back winners (Daniels 24-25), and Jalen Johnson's 22.8/10.3/8.0 line keeps an All-NBA third-team case alive into voting.",
+    "OFFSEASON — Friday May 8, TWO DAYS from the draft lottery. THE LEAD: GM ONSI SALEH's lottery-eve framing in the AJC's May 8 piece — 'We're in a good place. Position set up moving forward, and our coaching staff has just been remarkable this year' — recasts the offseason as patience-and-development, not a star chase, with Atlanta one of just TWO playoff teams in the lottery (OKC the other) and 39.9% combined top-4 odds via the more-favorable of New Orleans (7th-best, 6.8% at No. 1) and Milwaukee (10th-best). Sunday at 3 PM ET on ABC at McCormick Place West sets the slot. Combine Week opens the same day: 73 prospects to Wintrust Arena May 10-17 (NBA.com), with Atlanta's first pre-draft workout group already on campus — Flory Bidunga (Kansas), Ugonna Onyenso (Virginia), Peter Suder (Miami OH) and Milos Uzan (Houston) — all projected second-rounders for the No. 57 slot (SI onsi May 7, HoopsHype workout tracker May 7). Two-days-old peer recognition still resonates: JALEN JOHNSON tied as NBA's MOST UNDERRATED PLAYER in The Athletic's Anonymous Player Poll (May 6), with Yahoo's media ballot still slotting him on the All-NBA Third Team pending the league's official vote. Saleh enters Sunday short-handed: top scout BRYSON GRAHAM left for the Bulls' EVP chair Monday May 4 (NBA.com / Bulls.com), so Cody Toppert and Landry Fields run the war-room for the Combine. Front-office spine remains Hollinger's preview: operate OVER the cap with the non-tax MLE (~$15.1M), BAE (~$5.1M), four trade exceptions and Hield's $9.4M expiring; retain McCollum on a multi-year 'slightly above the MLE' (~2yr/$35-40M per HoopsHype) deal; decline Kuminga's $24.3M 26-27 option by June 29 to renegotiate; call Hield's $3M-vs-$9.4M trigger before June 25; shop Risacher or Kispert (R1 floor time was 2:30 across six games for Risacher). Hartenstein is the named free-agency frontcourt target if cap room can be created; Athletic mock still has Boozer to ATL at No. 3. Snyder extension talks remain on the calendar (Saleh: 'unbelievable partner').",
   keyTopics: [
+    {
+      title: "Saleh's Lottery-Eve Framing (AJC May 8): 'We're In A Good Place' — Patience Over Star-Chase",
+      detail:
+        "FRESH (Friday May 8): The AJC's lottery-preview interview with Hawks GM Onsi Saleh sets the tone TWO DAYS before Sunday's draw — 'We're in a good place. Position set up moving forward, and our coaching staff has just been remarkable this year' (AJC 'We're in a good place: Hawks focused on development ahead of draft lottery', May 8). Atlanta is one of only TWO playoff teams in the lottery (Oklahoma City the other) and the 6th-best odds team via the more-favorable of NOP/MIL. Saleh reiterated the 46-36 / 6-seed result as a foundation, not a ceiling, repeated the 'we're not one player away' frame from his exit interview, and pointed at Atlanta's THREE picks (lottery via NOP/MIL, No. 23 via CLE, No. 57) as the offseason value lever. Hawks bypassed the play-in for the first time in four years.",
+      category: "general",
+    },
+    {
+      title: "Lottery Countdown — TWO DAYS Until Sunday May 10 (NOP 6.8% No. 1, 39.9% Top-4 Combined)",
+      detail:
+        "The 2026 NBA Draft Lottery is now TWO DAYS away in Chicago — Sunday May 10 at 3 PM ET on ABC at McCormick Place West (NBA.com / Tankathon / ESPN / Yahoo Sports / SI onsi May 7-8). Atlanta holds the MORE-FAVORABLE of New Orleans and Milwaukee's first-round picks via prior trades. Pelicans sit with the 7th-best odds (6.8% chance at No. 1, ~29% chance at top-4); Bucks at 10th-best. ATL's combined top-4 odds: 9.7% / 9.9% / 10.1% / 10.2% — 39.9% combined per SI onsi (May 7). The most-likely outcome remains Atlanta picking 8th (35.6%); 7-9 is a 69.2% range. ATL also holds Cleveland's first at No. 23-24 plus the No. 57 second-rounder. Top of class: AJ Dybantsa (BYU), Darryn Peterson (Kansas), Cameron Boozer (Duke), Caleb Wilson (UNC).",
+      category: "general",
+    },
+    {
+      title: "Combine Week Opens Sunday — 73 Prospects to Chicago, ATL's First Workout Group Already In",
+      detail:
+        "TWO DAYS OUT: 73 players were invited to the AWS NBA Draft Combine running Sunday May 10 through Saturday May 17 at Wintrust Arena in Chicago — concurrent with the lottery (NBA.com / Hoops Rumors May 5-6, HoopsHype workout tracker May 7). Atlanta's reported pre-draft workout group is already in: FLORY BIDUNGA (Kansas), UGONNA ONYENSO (Virginia), PETER SUDER (Miami OH), MILOS UZAN (Houston) — all projected second-rounders for the No. 57 slot (SI onsi 'Hawks To Bring in Four Prospects For Pre-Draft Workouts', May 7). Uzan was one of three Cougars to start all 37 games, led Houston with 1,219 minutes and a 3.08 A/TO ratio. Once the lottery slots Atlanta on Sunday, expect a much-fuller workout slate with combine-tier prospects. The G League combine ran May 8-10 leading in.",
+      category: "general",
+    },
+    {
+      title: "Anonymous Player Poll: Jalen Johnson Named NBA's MOST UNDERRATED — Tied with Derrick White",
+      detail:
+        "Two days old (Wed May 6): The Athletic's annual 2026 Anonymous NBA Player Poll names ATL forward JALEN JOHNSON the league's MOST UNDERRATED player, tied with Boston Celtics guard DERRICK WHITE atop the category at 4% of the vote (HoopsHype / SI onsi 'Hawks Forward Jalen Johnson Earns Top Honor in NBA's Anonymous Player Poll' / Bleacher Report / Yahoo Sports, May 6). Peer recognition lands the same week as Yahoo Sports' May 1 media-poll ballot listing Johnson on the All-NBA THIRD TEAM (official league voting still pending). Final regular-season line: 22.5/10.3/7.9 across 72 games at 35.2 mpg — fifth player in NBA history to clear 22+/10+/7+ in a season (Oscar, Wilt, Jokic, Westbrook). Sets the stage for the extension talk this summer (Johnson is on his rookie extension already inked last fall).",
+      category: "general",
+    },
+    {
+      title: "Hartenstein Becomes the Hawks' Top Free-Agency Frontcourt Target Talk",
+      detail:
+        "Yardbarker / SI onsi / Soaring Down South (May 5-7) frame Isaiah Hartenstein (Oklahoma City Thunder) as the clearest Atlanta free-agency target if cap room can be created — 'the best solution for the Hawks' defensive issues' and 'the one clear target they should be aiming for.' Hartenstein shot 71% from the field while sweeping the Suns in OKC's R1, exactly the matchup-size profile Atlanta lacked vs the Knicks. There's a structural catch: he only hits free agency if OKC declines his $29M team option, which is far from certain given the Thunder's cap crunch. Atlanta would need a sign-and-trade or reshuffled Kuminga/Hield money to fit him. Hollinger's preview still has Atlanta operating OVER the cap. Quentin Grimes (PHI) and Collin Sexton (CHI) get mentioned as secondary perimeter options; Norman Powell also listed as creative/shooting depth (Soaring Down South May 7).",
+      category: "trades",
+    },
+    {
+      title: "Bulls Hire Bryson Graham as EVP of Basketball Ops — Saleh's Top Deputy Defects (Mon May 4)",
+      detail:
+        "Four days old: The Chicago Bulls named BRYSON GRAHAM their Executive Vice President of Basketball Operations on Monday May 4 (NBA.com / Bulls.com / ABC7 Chicago / Bleacher Nation / Yardbarker, May 4-5). Graham, 39, was Atlanta's Senior Vice President of Basketball Operations for one season after Onsi Saleh recruited him from a 15-year run in the New Orleans Pelicans front office (intern → GM). He is the talent evaluator widely credited with the Pelicans' Trey Murphy III, Herbert Jones, Dyson Daniels and Nickeil Alexander-Walker drafts. Bulls owner Jerry Reinsdorf and the Karnisovas-replacement search picked him a month after firing Karnisovas; the Bulls also interviewed Cleveland GM Mike Gansey, Spurs assistant GM Dave Telep and Celtics assistant GM Dave Lewin. Atlanta loses its top draft mind two days before the lottery and the Combine. Saleh's bench is now scouting director Cody Toppert and assistant GM Landry Fields, with the President of Basketball Operations chair still vacant.",
+      category: "general",
+    },
+    {
+      title: "Yahoo's 2026 Awards Ballot: Jalen Johnson on All-NBA THIRD TEAM in Media Poll (Official Voting Pending)",
+      detail:
+        "One week old: Yahoo Sports' 2026 NBA Awards Ballot (Kevin O'Connor / Tom Haberstroh, May 1) lists JALEN JOHNSON on the All-NBA Third Team in the writer's media poll — Johnson received 14 points in the wider ClutchPoints media poll. The league's official All-NBA results are still to come (basketball-reference.com awards page, expected late May after the MVP reveal). Johnson's regular-season line of 22.5/10.3/7.9 across 72 games made him just the FIFTH player ever to clear 22+/10+/7+ for a full season (joining Oscar, Wilt, Jokic, Westbrook). First All-Star nod arrived in February. If the league ballot mirrors the media poll, this would be Johnson's first All-NBA selection and the first by a Hawk since Trae Young's 2022 Third Team. MVP finalists already announced: SGA, Jokic, Wembanyama (Wemby took DPOY; Cooper Flagg took ROY; Keldon Johnson took 6MOY).",
+      category: "general",
+    },
+    {
+      title: "ECSF Underway: Knicks Push Through ATL's R1 Bracket — Hawks Watch From Outside",
+      detail:
+        "The Hawks are now eight days into offseason while their first-round vanquishers play on. The East semifinals: Knicks-76ers (Philadelphia advanced after a historic 3-1 comeback over Boston in Round 1, sealed in Game 7) and Pistons-Cavaliers (CBS Sports / NBA.com / NBC New York, May 6-8). The 76ers' upset of the No. 2 Celtics is the storyline of Round 2; the Pacers missed the playoffs entirely for the first time since 2023. ECF Round date setting up while ATL's lottery-and-combine week opens Sunday. Useful Hawks frame: the team that ended Atlanta's season is two wins from the conference finals, and CJ McCollum's free agency lands inside this very window — bringing the lottery / Combine / ECSF into the same week's news cycle.",
+      category: "games",
+    },
+    {
+      title: "Saleh Finishes 2nd in 2026 NBA Executive of the Year Voting Behind Brad Stevens",
+      detail:
+        "Hawks GM ONSI SALEH finished 2nd in the 2026 NBA Executive of the Year voting announced Tuesday April 28 (Atlanta News First / Boston.com / Peachtree Hoops / Hoops Rumors). Boston's Brad Stevens repeated with 69 points; Saleh took 41 points; Detroit's Trajan Langdon was third at 40. Cited moves: trading Trae Young to Washington for CJ McCollum and Corey Kispert in January; the Nickeil Alexander-Walker sign-and-trade using the MLE last summer (NAW went on to win MIP); deadline pickup of Kuminga via Porzingis; and acquiring the more-favorable of NOP/MIL via the prior draft-night swap. Saleh runs his second offseason with the GM title intact while the Hawks continue searching for a President of Basketball Operations.",
+      category: "general",
+    },
     {
       title: "Saleh Exit-Interview Message: 'We're Not One Player Away — Build Through Development'",
       detail:
-        "Hawks GM Onsi Saleh's address to the room set the May 3 offseason tone (Peachtree Hoops / SI onsi / Atlanta News First / 92.9 The Game, May 1-2): 'We're not one player away from this. The best iteration of this team is going to be through development and our players currently getting better.' He also told players the building is 'really pissed off, frustrated' from the Game 6 ending — 'a good thing' to internalize for the summer. Saleh publicly endorsed Snyder ('He has been an unbelievable partner') and pointed at the draft and existing flexibility as the lever, NOT a whale-trade. Yardbarker and SI onsi (May 1) corroborate Jake Fischer's report that Atlanta has NO indication of pursuing Giannis Antetokounmpo via trade.",
+        "Hawks GM Onsi Saleh's exit address Friday May 1 still frames the offseason heading into Combine Week (Peachtree Hoops / SI onsi / Atlanta News First / 92.9 The Game / Yardbarker, May 1-2): 'We're not one player away from this. The best iteration of this team is going to be through development and our players currently getting better.' He told players the building is 'really pissed off, frustrated' from the Game 6 ending — 'a good thing' to internalize for the summer. Saleh publicly endorsed Snyder ('He has been an unbelievable partner') and pointed at the draft and existing flexibility as the lever, NOT a whale-trade. Yardbarker and SI onsi (May 1) corroborate Jake Fischer's report that Atlanta has NO indication of pursuing Giannis Antetokounmpo via trade. Saleh also told reporters Atlanta will 'take the best player available regardless of fit' at the lottery slot.",
       category: "general",
     },
     {
@@ -451,33 +506,21 @@ export const NEWS_DIGEST = {
       category: "trades",
     },
     {
-      title: "Saleh Finishes 2nd in NBA Executive of the Year Voting (Apr 28)",
-      detail:
-        "Brad Stevens won the 2025-26 NBA Executive of the Year award for the second straight year (announced Tuesday Apr 28 by NBA.com / Boston Globe / Atlanta News First) — Stevens with 69 points, Hawks GM Onsi Saleh 2nd with 41 points, Detroit's Trajan Langdon 3rd with 40. Recognition follows Saleh's transformative first season as lead exec: the mid-season Trae Young → McCollum/Kispert trade, the Kuminga acquisition before the deadline, and a 6-win improvement that ended the four-year play-in stretch. Soaring Down South framed it as the highest realistic finish given Stevens's Boston track record.",
-      category: "general",
-    },
-    {
-      title: "May 10 NBA Draft Lottery: 1 Week Out — Hawks Hold More-Favorable of NOP (6.8%) / MIL Plus CLE No. 24",
-      detail:
-        "The 2026 NBA Draft Lottery is now exactly one week away in Chicago (Tuesday May 10 at McCormick Place West, ESPN broadcast — NBA.com / Tankathon / Yahoo Sports / CBS Sports). Atlanta holds the MORE-FAVORABLE of New Orleans and Milwaukee's first-round picks via prior trades. Pelicans currently sit with the 7th-best odds (6.8% chance at No. 1, ~29.3% chance at top-4 per SI onsi May 1); Bucks at 10th-best. ATL also holds Cleveland's first at No. 24 plus the No. 57 second-rounder. Combine runs May 8-10; full draft June 23-24. Top of class: Darryn Peterson (Kansas), Cameron Boozer (Duke), AJ Dybantsa.",
-      category: "general",
-    },
-    {
       title: "Athletic Mock: Cameron Boozer to Hawks at No. 3, Ebuka Okorie at No. 22",
       detail:
-        "The Athletic's post-elimination mock (relayed via Roundtable / SI onsi / Yahoo Sports, May 1-2) projects Atlanta landing Duke forward CAMERON BOOZER at No. 3 via the Pelicans pick, plus Stanford guard EBUKA OKORIE at No. 22 (CLE pick was No. 23 in the pre-lottery order; mocks vary). Boozer (6-9, national POY for Duke at 22.5/10.0/4.0) is widely viewed as the safest pick in the class; a Boozer-Johnson-Okongwu frontcourt would give Atlanta one of the East's most skilled groups from day one. Bleacher Report's Wasserman alternate has ATL taking Houston's Kingston Flemings if the Pelicans pick stays at No. 7.",
+        "The Athletic's post-elimination mock (relayed via Roundtable / SI onsi / Yahoo Sports, May 1-2) projects Atlanta landing Duke forward CAMERON BOOZER at No. 3 via the Pelicans pick, plus Stanford guard EBUKA OKORIE at No. 22 (CLE pick was No. 23 in the pre-lottery order; mocks vary). Boozer (6-9, national POY for Duke at 22.5/10.0/4.0) is widely viewed as the safest pick in the class; a Boozer-Johnson-Okongwu frontcourt would give Atlanta one of the East's most skilled groups from day one. Bleacher Report's Wasserman alternate has ATL taking Houston's Kingston Flemings if the Pelicans pick stays at No. 7. ESPN's Givony post-deadline mock (May 5) has Boozer as a top-3 lock with Dybantsa and Peterson the other two anchors.",
       category: "general",
     },
     {
       title: "McCollum Free Agency: 'Slightly Above MLE' (~2yr/$35-40M) Range — Hawks Plan Return",
       detail:
-        "Headline Hawks UFA. SI onsi (Apr 30) and Hoops Rumors (Apr 28) confirm Atlanta's plan is to bring CJ McCollum back on a multi-year deal; Jake Fischer reports mutual interest. HoopsHype (May 1) adds that McCollum is expected to draw offers 'slightly above the mid-level exception' — most execs peg two years and $35-40M as the fair range. The Hawks Jan 8 trade addition started 25 of 41 regular-season games on 18.7/3.1/4.1, then 19.2 PPG / 49% FG in the R1 series. The Athletic's Hollinger flagged McCollum's age (34) as the structural risk. Atlanta has roughly $55.9M of projected cap space below the first apron (HoopsHype/SI onsi cap tracker, May 1).",
+        "Headline Hawks UFA. SI onsi (Apr 30) and Hoops Rumors (Apr 28) confirm Atlanta's plan is to bring CJ McCollum back on a multi-year deal; Jake Fischer reports mutual interest. HoopsHype (May 1) adds that McCollum is expected to draw offers 'slightly above the mid-level exception' — most execs peg two years and $35-40M as the fair range. McCollum has confirmed having a 'productive conversation' with the front office (Heavy, May 4). Final regular-season line: 18.7 PPG / 3.3 RPG / 3.9 APG on 45.5/37.5/77.2 across 76 games (post-trade Hawks portion was 41 games, 25 starts), then 19.2 PPG / 49% FG in the R1 series. The Athletic's Hollinger flagged McCollum's age (34) as the structural risk. Atlanta has roughly $55.9M of projected cap space below the first apron.",
       category: "trades",
     },
     {
       title: "Snyder Extension Talks Now Active — Saleh: 'Unbelievable Partner'",
       detail:
-        "Yardbarker (May 1), RealGM and Yahoo Sports (Apr 28-30) all confirm extension talks between Quin Snyder and the Hawks are now actively on the calendar. Snyder enters the final year of his existing deal in 26-27, with NBA insider Jake Fischer reporting 'strong' front-office support to retain him long-term. Saleh, in his exit address to media (May 1-2), publicly endorsed Snyder: 'He has been an unbelievable partner in all of this … just having a partner who you're so aligned with, it makes it easy.' The 20-6 finish that avoided the play-in for the first time in five years remains the cited tipping point.",
+        "Yardbarker (May 1), RealGM and Yahoo Sports (Apr 28-30) all confirm extension talks between Quin Snyder and the Hawks are now actively on the calendar. Snyder enters the final year of his existing deal in 26-27, with NBA insider Jake Fischer reporting 'strong' front-office support to retain him long-term. Saleh, in his exit address to media (May 1-2), publicly endorsed Snyder: 'He has been an unbelievable partner in all of this … just having a partner who you're so aligned with, it makes it easy.' The 20-6 finish that avoided the play-in for the first time in five years remains the cited tipping point. With Bryson Graham now gone to Chicago, locking Snyder up before training camp becomes even more important to Saleh's bench.",
       category: "general",
     },
     {
@@ -495,7 +538,7 @@ export const NEWS_DIGEST = {
     {
       title: "Risacher 'Up & Down' Year Becomes Trade Watch — Hollinger Sees It Likeliest Move",
       detail:
-        "John Hollinger of The Athletic explicitly named Zaccharie Risacher (and Corey Kispert) as the likeliest summer trade chip after R1 (SI onsi summary / Larry Brown Sports / Yardbarker / Lindys, May 1-2). Sophomore line ended at 9.6/3.8/1.1 on 44.6% FG / 37.2% 3P over 66 games — regression from his 12.6 PPG rookie line as usage dropped from 21.6% to 17.7% (CraftedNBA/Roundtable, Apr 30). R1 floor time was just 2:30 across the entire series. With Johnson, NAW and Kuminga ahead of him on the wing depth chart and a likely Boozer-or-equivalent draft addition, the path to minutes is gone (Soaring Down South / FOX Sports, May 1-2).",
+        "John Hollinger of The Athletic explicitly named Zaccharie Risacher (and Corey Kispert) as the likeliest summer trade chip after R1 (SI onsi summary / Larry Brown Sports / Yardbarker / Lindys / Hoops Wire, May 1-3). Sophomore line ended at 9.6/3.8/1.1 on 44.6% FG / 37.2% 3P over 66 games — regression from his 12.6 PPG rookie line as usage dropped from 21.6% to 17.7% (CraftedNBA/Roundtable, Apr 30). R1 floor time was just 2:30 across the entire series. With Johnson, NAW and Kuminga ahead of him on the wing depth chart and a likely Boozer-or-equivalent draft addition, the path to minutes is gone. Dallas reportedly inquired (Soaring Down South / FOX Sports, May 1-2).",
       category: "trades",
     },
     {
@@ -505,22 +548,10 @@ export const NEWS_DIGEST = {
       category: "trades",
     },
     {
-      title: "NBA Fines Daniels $25K, Robinson $50K for Game 6 Altercation — No Suspensions",
-      detail:
-        "League discipline (Friday May 1, NBA.com release / ESPN / AP via Winchester Star / Yahoo Sports / Hoops Rumors): Mitchell Robinson fined $50,000 and Dyson Daniels fined $25,000 for their roles in the Game 6 free-throw scrum. The NBA noted Robinson's larger fine 'takes into account his inappropriate post on social media in reference to the incident postgame.' No suspensions handed down — irrelevant for ATL given the elimination, but Robinson's available for Round 2 vs Boston-or-76ers. EssentiallySports flagged that Robinson received the higher fine despite Daniels' clear elbow on tape — the unusual point of dispute in the discipline call.",
-      category: "general",
-    },
-    {
       title: "Knicks 140, Hawks 89 — Historic 51-Point R1 Closeout Ended Atlanta's Season",
       detail:
-        "The series-ending Knicks 140-89 Game 6 (Thursday Apr 30 at State Farm Arena — NBA.com/FOX Sports/NY Post/AP via fultonneighbor) remains the elimination backdrop now five days old. Knicks led 40-15 after Q1 (largest 1Q lead in shot-clock-era playoff history), 83-36 at the half (LARGEST HALFTIME LEAD IN NBA PLAYOFF HISTORY — previous record 41), and led by as many as 61. The 51-point margin tied for 6th-largest in postseason history. New York is now in ECF semifinals waiting on the Celtics-76ers G7 winner.",
+        "The series-ending Knicks 140-89 Game 6 (Thursday Apr 30 at State Farm Arena — NBA.com/FOX Sports/NY Post/AP via fultonneighbor) remains the elimination backdrop now one week old. Knicks led 40-15 after Q1 (largest 1Q lead in shot-clock-era playoff history), 83-36 at the half (LARGEST HALFTIME LEAD IN NBA PLAYOFF HISTORY — previous record 41), and led by as many as 61. The 51-point margin tied for 6th-largest in postseason history. New York is in the ECF semifinals; Mitchell Robinson received a $50K fine and Daniels $25K from the May 1 league discipline.",
       category: "games",
-    },
-    {
-      title: "Johnson's All-Time Statistical Bar: 5th Player Ever at 22+/10+/7+",
-      detail:
-        "Jalen Johnson became just the FIFTH PLAYER IN NBA HISTORY to average 22+ points, 10+ rebounds and 7+ assists in a season — joining Oscar Robertson, Wilt Chamberlain, Nikola Jokic and Russell Westbrook (Soaring Down South / Wikipedia / Hawks.com Apr). First All-Star nod (Feb 2026 reserve), played in the new World-format ASG and helped Team Stars take the 2026 NBA All-Star Championship. R1 line settled at 19.5/8.3/5.5; offseason narrative is whether Johnson lands All-NBA third-team votes and whether ATL pivots to an extension talk this summer.",
-      category: "general",
     },
     {
       title: "NAW Wins 2025-26 Kia Most Improved Player — Back-to-Back for Hawks",
@@ -528,17 +559,12 @@ export const NEWS_DIGEST = {
         "Nickeil Alexander-Walker was named the 2025-26 Kia Most Improved Player on Apr 24 (NBA.com/Washington Post/Bleacher Report), beating finalists Deni Avdija and Jalen Duren with 66 of 100 first-place votes. Career-best 20.8 PPG (up 11.4 from 24-25's 9.4 — third-largest single-season jump in 25 years), 39.9% from three on a franchise-record 251 makes. Hawks are the first team in NBA history with back-to-back MIPs (Daniels won 24-25). NAW is locked in long-term on the four-year deal he signed last summer.",
       category: "general",
     },
-    {
-      title: "Daniels' Career Series Despite the Sour End — Joins Luka 2022 Bar",
-      detail:
-        "Through the first four games of Round 1, Daniels totaled 24 pts / 35 reb / 25 ast / 10 stl — the first NBA player since Luka Dončić in the 2022 playoffs to clear that bar in a four-game span (NBA.com Apr 27). Reigning MIP, 24-25 All-Defensive 1st team and 2nd in 24-25 DPOY voting; six-game R1 line settled around 7.8/5.8/4.7 in 27 mpg. Wembanyama swept this year's DPOY race (unanimous, all 100 first-place votes per Hoops Rumors Apr) but Daniels' 26-27 DPOY case (was at +2000 odds in March) is the offseason narrative to track.",
-      category: "general",
-    },
   ],
   sources: [
     "NBA.com",
     "ESPN",
     "Yahoo Sports",
+    "The Athletic",
     "AP / Winchester Star",
     "AP / fultonneighbor.com",
     "NY Post",
@@ -556,6 +582,8 @@ export const NEWS_DIGEST = {
     "Heavy Sports",
     "Bleacher Report",
     "Yardbarker",
+    "ABC7 Chicago",
+    "Bulls.com",
     "Larry Brown Sports",
     "Last Word On Basketball",
     "Lindys Sports",
