@@ -1,13 +1,9 @@
-import { useState, useMemo, useEffect } from "react";
 import {
-  PLAYERS,
-  RESULTS,
-  NEXT_GAME,
-  NEWS_DIGEST,
-  EAST_STANDINGS,
+  useState, useMemo, useEffect, useRef, createContext, useContext,
+} from "react";
+import {
+  PLAYERS, RESULTS, NEXT_GAME, NEWS_DIGEST, EAST_STANDINGS,
 } from "./playerData.js";
-import RotationView from "./RotationView.jsx";
-import MagazineView from "./MagazineView.jsx";
 
 // ─── Theme tokens ───────────────────────────────────────────────
 export const C = {
@@ -23,48 +19,45 @@ export const C = {
   mute: "#7A7A82",
 };
 
+// ─── Section registry ───────────────────────────────────────────
+const SECTIONS = [
+  { code: "COV",  id: "cov",  page:  1, label: "COVER" },
+  { code: "IDX",  id: "idx",  page:  4, label: "INDEX" },
+  { code: "PRE",  id: "pre",  page:  6, label: "PREVIEW" },
+  { code: "HRDW", id: "hrdw", page:  8, label: "HARDWARE" },
+  { code: "STRY", id: "stry", page: 18, label: "STORY" },
+  { code: "PORT", id: "port", page: 32, label: "PORTFOLIO" },
+  { code: "TACT", id: "tact", page: 46, label: "TACTICS" },
+  { code: "NUM",  id: "num",  page: 54, label: "NUMBERS" },
+  { code: "LDGR", id: "ldgr", page: 62, label: "LEDGER" },
+  { code: "WIRE", id: "wire", page: 68, label: "WIRE" },
+  { code: "BACK", id: "back", page: 80, label: "BACK" },
+];
+
 const TEAM_ABBR = {
-  "Atlanta Hawks": "ATL",
-  "Cleveland Cavaliers": "CLE",
-  "Boston Celtics": "BOS",
-  "New York Knicks": "NYK",
-  "Milwaukee Bucks": "MIL",
-  "Orlando Magic": "ORL",
-  "Detroit Pistons": "DET",
-  "Miami Heat": "MIA",
-  "Brooklyn Nets": "BKN",
-  "Sacramento Kings": "SAC",
-  "Golden State Warriors": "GSW",
-  "Houston Rockets": "HOU",
-  "Dallas Mavericks": "DAL",
-  "Memphis Grizzlies": "MEM",
+  "Atlanta Hawks": "ATL", "Cleveland Cavaliers": "CLE", "Boston Celtics": "BOS",
+  "New York Knicks": "NYK", "Milwaukee Bucks": "MIL", "Orlando Magic": "ORL",
+  "Detroit Pistons": "DET", "Miami Heat": "MIA", "Brooklyn Nets": "BKN",
+  "Sacramento Kings": "SAC", "Golden State Warriors": "GSW",
+  "Houston Rockets": "HOU", "Dallas Mavericks": "DAL", "Memphis Grizzlies": "MEM",
 };
-
 const COUNTRY_SHORT = {
-  USA: "USA",
-  Australia: "AUS",
-  Canada: "CAN",
-  Bahamas: "BHS",
-  France: "FRA",
-  Senegal: "SEN",
-  "DR Congo": "COD",
+  USA: "USA", Australia: "AUS", Canada: "CAN", Bahamas: "BHS",
+  France: "FRA", Senegal: "SEN", "DR Congo": "COD",
 };
-
 function abbr(team) {
   return TEAM_ABBR[team] || team.split(" ").pop().slice(0, 3).toUpperCase();
 }
-
 function countryName(p) {
   return (p.nationality || "USA").replace(/[^\x00-\x7F]+/g, "").trim();
 }
-
 function countryShort(p) {
   const n = countryName(p);
   return COUNTRY_SHORT[n] || n.slice(0, 3).toUpperCase();
 }
 
-// ─── Mobile breakpoint hook ─────────────────────────────────────
-export function useIsMobile(bp = 768) {
+// ─── Hooks ──────────────────────────────────────────────────────
+export function useIsMobile(bp = 900) {
   const [m, setM] = useState(
     typeof window !== "undefined" ? window.innerWidth <= bp : false
   );
@@ -78,7 +71,6 @@ export function useIsMobile(bp = 768) {
   return m;
 }
 
-// ─── Count-up hook ──────────────────────────────────────────────
 function useCountUp(target, dur = 900) {
   const [n, setN] = useState(0);
   useEffect(() => {
@@ -96,7 +88,45 @@ function useCountUp(target, dur = 900) {
   return n;
 }
 
-// ─── Volt-underline link ────────────────────────────────────────
+function useScrollSpy(ids) {
+  const [active, setActive] = useState(ids[0]);
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const obs = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((e) => e.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+        if (visible[0]) setActive(visible[0].target.id);
+      },
+      { rootMargin: "-30% 0px -55% 0px", threshold: [0, 0.25, 0.5, 0.75, 1] }
+    );
+    const els = ids.map((id) => document.getElementById(id)).filter(Boolean);
+    els.forEach((el) => obs.observe(el));
+    return () => obs.disconnect();
+  }, [ids.join(",")]);
+  return active;
+}
+
+// ─── Tweaks context ─────────────────────────────────────────────
+const TweaksContext = createContext({
+  bw: true, rail: true, setBw: () => {}, setRail: () => {},
+});
+export function useTweaks() { return useContext(TweaksContext); }
+
+function TweaksProvider({ children }) {
+  const [bw, setBw] = useState(true);
+  const [rail, setRail] = useState(true);
+  return (
+    <TweaksContext.Provider value={{ bw, setBw, rail, setRail }}>
+      {children}
+    </TweaksContext.Provider>
+  );
+}
+
+const bwFilter = (on) => (on ? "grayscale(1) contrast(1.06)" : "none");
+
+// ─── Primitives ─────────────────────────────────────────────────
 export function Vlink({ children, onClick, active, color = C.volt, size = 12 }) {
   const [h, setH] = useState(false);
   return (
@@ -122,7 +152,6 @@ export function Vlink({ children, onClick, active, color = C.volt, size = 12 }) 
   );
 }
 
-// ─── Status pill ────────────────────────────────────────────────
 export function Status({ s }) {
   const map = {
     active: { c: C.green, l: "ACTIVE" },
@@ -145,239 +174,463 @@ export function Status({ s }) {
   );
 }
 
-// ─── Section header ─────────────────────────────────────────────
-export function SectionHeader({ kicker, title, right }) {
+export function SectionHeader({ code, page, kicker, title, right }) {
   const m = useIsMobile();
   return (
-    <div style={{
-      display: "flex", alignItems: "flex-end", justifyContent: "space-between",
-      gap: m ? 16 : 24, flexWrap: "wrap",
-    }}>
-      <div>
-        <div style={{
-          fontFamily: "'JetBrains Mono', monospace", fontSize: 11,
-          color: C.volt, letterSpacing: 2.5, marginBottom: 8,
-        }}>// {kicker}</div>
+    <div style={{ marginBottom: m ? 24 : 36 }}>
+      <Folio code={code} page={page} kicker={kicker}/>
+      <div style={{
+        marginTop: m ? 14 : 22,
+        display: "flex", alignItems: "flex-end", justifyContent: "space-between",
+        gap: m ? 16 : 24, flexWrap: "wrap",
+      }}>
         <h2 style={{
           fontFamily: "'Anton', sans-serif",
-          fontSize: m ? "clamp(40px, 11vw, 64px)" : "clamp(48px, 6vw, 96px)",
+          fontSize: m ? "clamp(40px, 11vw, 64px)" : "clamp(56px, 7vw, 116px)",
           color: C.ivory, textTransform: "uppercase",
-          lineHeight: 0.85, margin: 0, letterSpacing: "-0.015em",
+          lineHeight: 0.85, margin: 0, letterSpacing: "-0.018em",
         }}>{title}</h2>
+        {right}
       </div>
-      {right}
     </div>
   );
 }
 
-// ─── HERO ───────────────────────────────────────────────────────
-function Hero() {
-  const m = useIsMobile();
-  const [now, setNow] = useState(Date.now());
-  useEffect(() => {
-    const t = setInterval(() => setNow(Date.now()), 1000);
-    return () => clearInterval(t);
-  }, []);
-  const target = new Date(NEXT_GAME.date).getTime();
-  const diff = target - now;
-  const days = Math.max(0, Math.floor(diff / 86400000));
-  const hrs = Math.max(0, Math.floor((diff % 86400000) / 3600000));
-  const mins = Math.max(0, Math.floor((diff % 3600000) / 60000));
-  const sec = Math.max(0, Math.floor((diff % 60000) / 1000));
-
-  return (
-    <section style={{
-      position: "relative", borderBottom: `1px solid ${C.hair}`, overflow: "hidden",
-    }}>
-      {/* film grain */}
-      <div style={{
-        position: "absolute", inset: 0, pointerEvents: "none", opacity: 0.04,
-        backgroundImage:
-          "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.9 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>\")",
-        zIndex: 2,
-      }}/>
-
-      {/* top meta */}
-      <div style={{ padding: m ? "16px 16px 0" : "24px 40px 0", position: "relative", zIndex: 3 }}>
-        <div style={{ display: "flex", alignItems: "center", gap: m ? 10 : 14, flexWrap: "wrap" }}>
-          <span style={{
-            width: 10, height: 10, background: C.red, display: "inline-block",
-            boxShadow: `0 0 12px ${C.red}aa`,
-          }}/>
-          <span style={{
-            fontFamily: "'JetBrains Mono', monospace", fontSize: m ? 10 : 11,
-            color: C.ivory, letterSpacing: 2, fontWeight: 600,
-          }}>SEASON · 2025–26 · OFFSEASON</span>
-          {!m && <span style={{ flex: 1, height: 1, background: C.hair }}/>}
-          <span style={{
-            fontFamily: "'JetBrains Mono', monospace", fontSize: m ? 10 : 11,
-            color: C.mute, letterSpacing: 2,
-          }}>ELIMINATED · R1 · 2–4 NYK</span>
-        </div>
-      </div>
-
-      {/* wordmark — stacks to two lines so it never clips off the right edge */}
-      <div style={{ padding: m ? "14px 16px 0" : "18px 40px 0", position: "relative", zIndex: 3 }}>
-        <h1 style={{
-          fontFamily: "'Anton', 'Bebas Neue', sans-serif",
-          fontSize: m ? "clamp(54px, 17vw, 92px)" : "clamp(120px, 18vw, 280px)",
-          lineHeight: 0.82, margin: 0, letterSpacing: "-0.025em",
-          color: C.ivory, textTransform: "uppercase",
-          whiteSpace: "normal",
-        }}>
-          HAWKS<span style={{ color: C.red }}>.</span>
-          <br/>
-          TRACKER<span style={{ color: C.volt }}>/</span>26
-        </h1>
-      </div>
-
-      {/* countdown band */}
-      <div style={{
-        padding: m ? "20px 16px 24px" : "24px 40px 28px", position: "relative", zIndex: 3,
-        display: "grid", gridTemplateColumns: m ? "1fr" : "1.4fr 1fr",
-        gap: m ? 20 : 32, alignItems: "end",
-      }}>
-        <div>
-          <div style={{
-            fontFamily: "'JetBrains Mono', monospace", fontSize: 10,
-            color: C.mute, letterSpacing: 2, marginBottom: 6,
-          }}>// NEXT ON THE CALENDAR</div>
-          <div style={{
-            fontFamily: "'Anton', sans-serif",
-            fontSize: m ? "clamp(24px, 7vw, 36px)" : "clamp(28px, 3.4vw, 48px)", color: C.ivory,
-            textTransform: "uppercase", lineHeight: 0.95, letterSpacing: "-0.01em",
-          }}>{NEXT_GAME.opponent}</div>
-          <div style={{
-            fontSize: m ? 12 : 13, color: C.mute, marginTop: 8, fontFamily: "Inter,sans-serif",
-          }}>{NEXT_GAME.venue} · {NEXT_GAME.broadcast}</div>
-          <div style={{
-            fontSize: m ? 11 : 12, color: "#a8a8b0", marginTop: 6,
-            fontFamily: "Inter,sans-serif", maxWidth: 560, lineHeight: 1.5,
-          }}>{NEXT_GAME.seriesContext}</div>
-        </div>
-        <div style={{
-          display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 0,
-          border: `1px solid ${C.hair}`,
-        }}>
-          {[
-            { l: "DAYS", v: days },
-            { l: "HRS", v: hrs },
-            { l: "MIN", v: mins },
-            { l: "SEC", v: sec },
-          ].map((b, i) => (
-            <div key={b.l} style={{
-              padding: m ? "10px 4px" : "14px 10px", textAlign: "center",
-              borderRight: i < 3 ? `1px solid ${C.hair}` : "none",
-            }}>
-              <div style={{
-                fontFamily: "'JetBrains Mono', monospace", fontSize: m ? 22 : 32,
-                color: i === 0 ? C.volt : C.ivory, fontWeight: 700, lineHeight: 1,
-                fontVariantNumeric: "tabular-nums",
-              }}>{String(b.v).padStart(2, "0")}</div>
-              <div style={{
-                fontSize: 9, color: C.mute, letterSpacing: 1.5, marginTop: m ? 4 : 6,
-              }}>{b.l}</div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      <Ticker/>
-    </section>
-  );
-}
-
-// ─── Courtside-LED ticker ───────────────────────────────────────
-function Ticker() {
-  const items = [
-    { l: "FINAL · R1G6", v: "NYK 140 — ATL 89", c: C.red },
-    { l: "SERIES", v: "NYK WINS 4–2", c: C.ivory },
-    { l: "NEXT", v: "DRAFT LOTTERY · MAY 10 · 8:00 PM ET · CHICAGO", c: C.volt },
-    { l: "AWARD", v: "ALEXANDER-WALKER · 2025–26 KIA MIP", c: C.ivory },
-    { l: "INJURY", v: "LANDALE — HIGH-ANKLE SPRAIN · OUT", c: C.red },
-    { l: "REC", v: "REG SEASON 46–36 · SE DIVISION CHAMPS", c: C.ivory },
-    { l: "NOTE", v: "KNICKS 47-PT HALFTIME LEAD — NBA PLAYOFF RECORD", c: C.red },
-    { l: "FA", v: "MCCOLLUM RETENTION TARGETED · MULTI-YEAR", c: C.volt },
-  ];
-  const row = [...items, ...items];
+function Folio({ code, page, kicker }) {
   return (
     <div style={{
-      borderTop: `1px solid ${C.hair}`, borderBottom: `1px solid ${C.hair}`,
-      background: "#000", overflow: "hidden", position: "relative", zIndex: 3,
-      marginTop: 24,
+      display: "flex", alignItems: "center", gap: 12,
+      fontFamily: "'JetBrains Mono', monospace", fontSize: 10,
+      color: C.mute, letterSpacing: 2.2,
     }}>
-      <div style={{
-        display: "flex", gap: 0, padding: "14px 0",
-        animation: "tick 90s linear infinite", whiteSpace: "nowrap",
-      }}>
-        {row.map((it, i) => (
-          <span key={i} style={{
-            display: "inline-flex", alignItems: "center", gap: 12, paddingRight: 48,
-            fontFamily: "'JetBrains Mono', monospace", fontSize: 13, fontWeight: 600,
-            letterSpacing: 1.5,
-          }}>
-            <span style={{ width: 8, height: 8, background: it.c, display: "inline-block" }}/>
-            <span style={{ color: C.mute, letterSpacing: 2 }}>{it.l}</span>
-            <span style={{ color: it.c }}>{it.v}</span>
-            <span style={{ color: C.hair, marginLeft: 32 }}>///</span>
-          </span>
-        ))}
-      </div>
+      {code && <span style={{ color: C.red, fontWeight: 700 }}>// {code}</span>}
+      {page != null && <span style={{ color: C.volt }}>P.{String(page).padStart(3, "0")}</span>}
+      {kicker && <>
+        <span style={{ flex: 1, maxWidth: 80, height: 1, background: C.hair }}/>
+        <span>{kicker}</span>
+      </>}
     </div>
   );
 }
 
-// ─── Season banner: KPI strip ───────────────────────────────────
-function SeasonBanner() {
+// ─── Shell: Masthead ────────────────────────────────────────────
+function Masthead() {
   const m = useIsMobile();
-  const stats = [
-    { l: "REG SEASON", v: "46–36", sub: "5TH IN THE EAST" },
-    { l: "OFFENSIVE RTG", v: "118.4", sub: "7TH LEAGUE-WIDE" },
-    { l: "DEFENSIVE RTG", v: "114.2", sub: "14TH LEAGUE-WIDE" },
-    { l: "PACE", v: "99.8", sub: "12TH" },
-    { l: "3-PT %", v: "38.1", sub: "3RD LEAGUE-WIDE" },
-    { l: "R1 SCORING DIFF", v: "-15.3", sub: "4 LOSSES BY 16+", tone: "red" },
-  ];
   return (
-    <section style={{
-      padding: m ? "20px 16px" : "32px 40px", borderBottom: `1px solid ${C.hair}`, background: "#000",
+    <header style={{
+      position: "sticky", top: 0, zIndex: 60,
+      background: C.bg, borderBottom: `1px solid ${C.hair}`,
+      padding: m ? "10px 14px" : "14px 28px",
+      display: "grid",
+      gridTemplateColumns: m ? "1fr auto" : "1fr 2fr 1fr",
+      alignItems: "center", gap: m ? 12 : 24,
+      fontFamily: "'JetBrains Mono', monospace",
+      fontSize: m ? 10 : 11, letterSpacing: 2,
+      color: C.mute,
+    }}>
+      <div style={{ color: C.ivory, fontWeight: 700 }}>
+        HAWKS<span style={{ color: C.red }}>/</span>26
+        {!m && <span style={{ color: C.mute, fontWeight: 400, marginLeft: 12 }}>· THE MAGAZINE</span>}
+      </div>
+      {!m && (
+        <div style={{ textAlign: "center" }}>
+          VOL <span style={{ color: C.ivory }}>XXVI</span>
+          {" "}· ISSUE NO. <span style={{ color: C.ivory }}>06</span>
+          {" "}· MAY <span style={{ color: C.ivory }}>2026</span>
+          {" "}· ATL · USA
+        </div>
+      )}
+      <div style={{ textAlign: "right" }}>
+        <span style={{ color: C.volt }}>$0.00</span>
+        {!m && <span> · COMPLIMENTARY</span>}
+      </div>
+    </header>
+  );
+}
+
+// ─── Shell: Left rail (section codes, scroll-spy) ───────────────
+function LeftRail({ active }) {
+  return (
+    <aside style={{
+      position: "sticky", top: 54, alignSelf: "start",
+      height: "calc(100vh - 54px)",
+      borderRight: `1px solid ${C.hair}`,
+      background: C.bg,
+      display: "flex", flexDirection: "column", justifyContent: "space-between",
+      padding: "20px 0", zIndex: 40,
+    }}>
+      {/* top vertical wordmark */}
+      <div style={{
+        writingMode: "vertical-rl", transform: "rotate(180deg)",
+        textAlign: "center",
+        fontFamily: "'JetBrains Mono', monospace", fontSize: 11,
+        color: C.ivory, fontWeight: 700, letterSpacing: 4,
+        alignSelf: "center", padding: "8px 0",
+      }}>
+        HAWKS<span style={{ color: C.red }}>/</span>26
+      </div>
+
+      {/* code stack */}
+      <nav style={{
+        display: "flex", flexDirection: "column", alignItems: "center",
+        gap: 14, padding: "12px 0",
+      }}>
+        {SECTIONS.map((s) => {
+          const isActive = active === s.id;
+          return (
+            <a key={s.code} href={`#${s.id}`}
+              style={{
+                fontFamily: "'JetBrains Mono', monospace",
+                fontSize: 10, letterSpacing: 2,
+                color: isActive ? C.volt : C.mute,
+                fontWeight: isActive ? 700 : 500,
+                textDecoration: "none",
+                padding: "3px 6px",
+                borderLeft: isActive ? `2px solid ${C.volt}` : `2px solid transparent`,
+                transition: "color .15s",
+              }}
+              onMouseEnter={(e) => { if (!isActive) e.currentTarget.style.color = C.ivory; }}
+              onMouseLeave={(e) => { if (!isActive) e.currentTarget.style.color = C.mute; }}
+            >{s.code}</a>
+          );
+        })}
+      </nav>
+
+      {/* bottom rotated meta */}
+      <div style={{
+        writingMode: "vertical-rl", transform: "rotate(180deg)",
+        fontFamily: "'JetBrains Mono', monospace", fontSize: 10,
+        color: C.mute, letterSpacing: 3,
+        alignSelf: "center", padding: "8px 0",
+      }}>
+        ISSUE 06 · MAY 26
+      </div>
+    </aside>
+  );
+}
+
+// ─── Shell: Right rail (rotated tagline) ────────────────────────
+function RightRail() {
+  return (
+    <aside style={{
+      position: "sticky", top: 54, alignSelf: "start",
+      height: "calc(100vh - 54px)",
+      borderLeft: `1px solid ${C.hair}`,
+      background: C.bg,
+      display: "flex", alignItems: "center", justifyContent: "center",
+      zIndex: 40,
+    }}>
+      <div style={{
+        writingMode: "vertical-rl",
+        fontFamily: "'JetBrains Mono', monospace", fontSize: 11,
+        color: C.mute, letterSpacing: 4, fontWeight: 500,
+        textTransform: "uppercase",
+      }}>
+        The <span style={{ color: C.ivory }}>Official</span> Hawks Tracker Magazine
+        {" "}· Atlanta · May 26
+      </div>
+    </aside>
+  );
+}
+
+// ─── Shell: Tweaks panel ────────────────────────────────────────
+function Toggle({ on, onChange }) {
+  return (
+    <button onClick={() => onChange(!on)} style={{
+      width: 38, height: 22, borderRadius: 11,
+      background: on ? "#3ECF8E" : "#3a3a40",
+      border: "none", cursor: "pointer", padding: 0,
+      position: "relative", transition: "background .15s",
+      flexShrink: 0,
+    }}>
+      <span style={{
+        position: "absolute", top: 2, left: on ? 18 : 2,
+        width: 18, height: 18, borderRadius: "50%",
+        background: "#fff", transition: "left .15s",
+        boxShadow: "0 1px 3px rgba(0,0,0,0.3)",
+      }}/>
+    </button>
+  );
+}
+
+function TweaksPanel() {
+  const { bw, setBw, rail, setRail } = useTweaks();
+  const [open, setOpen] = useState(false);
+  return (
+    <>
+      {/* trigger */}
+      <button onClick={() => setOpen((o) => !o)} style={{
+        position: "fixed", bottom: 18, right: 18, zIndex: 80,
+        width: 44, height: 44,
+        background: open ? C.volt : C.panel,
+        color: open ? "#000" : C.ivory,
+        border: `1px solid ${open ? C.volt : C.hair}`,
+        cursor: "pointer", fontFamily: "'JetBrains Mono', monospace",
+        fontSize: 11, fontWeight: 700, letterSpacing: 1,
+      }}>
+        {open ? "×" : "⚙"}
+      </button>
+
+      {/* panel */}
+      {open && (
+        <div style={{
+          position: "fixed", bottom: 74, right: 18, zIndex: 80,
+          width: 280, background: "#1d1d22",
+          border: `1px solid ${C.hair}`, padding: "14px 16px",
+          fontFamily: "Inter, sans-serif",
+          boxShadow: "0 16px 40px rgba(0,0,0,0.5)",
+        }}>
+          <div style={{
+            display: "flex", justifyContent: "space-between", alignItems: "baseline",
+            marginBottom: 14,
+          }}>
+            <span style={{
+              fontSize: 15, fontWeight: 700, color: C.ivory,
+            }}>Tweaks</span>
+            <span style={{
+              fontFamily: "'JetBrains Mono', monospace", fontSize: 9,
+              color: C.mute, letterSpacing: 1.5,
+            }}>// SETTINGS</span>
+          </div>
+
+          <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+            <label style={{
+              display: "flex", alignItems: "center", justifyContent: "space-between",
+              gap: 14, fontSize: 13, color: C.ivory, cursor: "pointer",
+            }}>
+              <span>Black &amp; white portraits</span>
+              <Toggle on={bw} onChange={setBw}/>
+            </label>
+            <label style={{
+              display: "flex", alignItems: "center", justifyContent: "space-between",
+              gap: 14, fontSize: 13, color: C.ivory, cursor: "pointer",
+            }}>
+              <span>Issue rail (left)</span>
+              <Toggle on={rail} onChange={setRail}/>
+            </label>
+          </div>
+
+          <div style={{
+            marginTop: 14, paddingTop: 12, borderTop: `1px solid ${C.hair}`,
+            fontFamily: "'JetBrains Mono', monospace", fontSize: 9,
+            color: C.mute, letterSpacing: 1.5,
+          }}>HAWKS/26 · TWEAKS v1</div>
+        </div>
+      )}
+    </>
+  );
+}
+
+// ─── Cover (COV + IDX combined spread) ──────────────────────────
+function Cover() {
+  const m = useIsMobile();
+  const { bw } = useTweaks();
+  const star = PLAYERS.find((p) => p.id === 1) || PLAYERS[0];
+
+  const toc = [
+    { kicker: "FEATURE",   page: 18, t: "Jalen Johnson on the night the season ended" },
+    { kicker: "PORTFOLIO", page: 32, t: "The Fifteen — A Roster, in Portraits" },
+    { kicker: "REPORT",    page: 46, t: "MIP No. 2 — Alexander-Walker's 251 threes" },
+    { kicker: "COLUMN",    page: 54, t: "Why Atlanta should keep CJ McCollum" },
+    { kicker: "WIRE",      page: 62, t: "Saleh-to-Philly · Day 8 · The League bets no" },
+  ];
+
+  return (
+    <section id="cov" style={{
+      position: "relative", borderBottom: `1px solid ${C.hair}`,
+      background: C.bg, overflow: "hidden",
+      minHeight: m ? "auto" : "calc(100vh - 54px)",
     }}>
       <div style={{
         display: "grid",
-        gridTemplateColumns: m ? "repeat(2, 1fr)" : "repeat(6, 1fr)",
-        gap: m ? 1 : 0,
-        background: m ? C.hair : "transparent",
-        border: m ? `1px solid ${C.hair}` : "none",
+        gridTemplateColumns: m ? "1fr" : "minmax(280px, 1.05fr) 2.2fr",
+        gap: 0, minHeight: m ? "auto" : "calc(100vh - 54px)",
       }}>
-        {stats.map((s, i) => (
-          <div key={s.l} style={{
-            padding: m ? "14px 14px" : "4px 18px",
-            background: m ? "#000" : "transparent",
-            borderRight: !m && i < 5 ? `1px solid ${C.hair}` : "none",
+        {/* IDX panel */}
+        <div id="idx" style={{
+          padding: m ? "28px 20px 24px" : "40px 36px 32px",
+          borderRight: m ? "none" : `1px solid ${C.hair}`,
+          borderBottom: m ? `1px solid ${C.hair}` : "none",
+          display: "flex", flexDirection: "column", gap: 0,
+        }}>
+          <div style={{
+            fontFamily: "'JetBrains Mono', monospace", fontSize: 11,
+            color: C.volt, letterSpacing: 3, marginBottom: 14,
+          }}>// INSIDE THIS ISSUE</div>
+          <div style={{ height: 1, background: C.hair, marginBottom: m ? 18 : 26 }}/>
+
+          {toc.map((e, i) => (
+            <a key={e.page} href={`#${
+              ["stry", "port", "hrdw", "stry", "wire"][i] || "stry"
+            }`} style={{
+              display: "block", textDecoration: "none",
+              padding: m ? "12px 0" : "16px 0",
+              borderBottom: i < toc.length - 1 ? `1px solid ${C.hair}80` : "none",
+            }}>
+              <div style={{
+                display: "flex", alignItems: "baseline", gap: 10,
+                fontFamily: "'JetBrains Mono', monospace", fontSize: 10,
+                color: C.red, letterSpacing: 2.5, marginBottom: 6,
+              }}>
+                <span>{e.kicker}</span>
+                <span style={{ color: C.mute }}>· P.{e.page}</span>
+              </div>
+              <div style={{
+                fontFamily: "'Anton', sans-serif",
+                fontSize: m ? 19 : 22, lineHeight: 1.04,
+                color: C.ivory, textTransform: "uppercase",
+                letterSpacing: "-0.005em",
+              }}>{e.t}</div>
+            </a>
+          ))}
+        </div>
+
+        {/* Cover image area: huge HAWK + portrait + ribbon */}
+        <div style={{
+          position: "relative", overflow: "hidden",
+          minHeight: m ? 480 : "auto", background: C.bg,
+        }}>
+          {/* film grain */}
+          <div style={{
+            position: "absolute", inset: 0, opacity: 0.05,
+            pointerEvents: "none", zIndex: 1,
+            backgroundImage:
+              "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.9 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>\")",
+          }}/>
+
+          {/* HAWK wordmark — massive, top */}
+          <div style={{
+            position: "absolute",
+            top: m ? 8 : 18, left: m ? -10 : -22,
+            right: m ? -10 : 0,
+            fontFamily: "'Anton', sans-serif",
+            fontSize: m ? "clamp(120px, 38vw, 220px)" : "clamp(280px, 28vw, 460px)",
+            lineHeight: 0.82, color: C.ivory,
+            textTransform: "uppercase", letterSpacing: "-0.035em",
+            whiteSpace: "nowrap", zIndex: 2, pointerEvents: "none",
+            fontWeight: 400,
+          }}>HAWK</div>
+
+          {/* Vertical "ER/" — wordmark tail */}
+          {!m && (
+            <div style={{
+              position: "absolute", right: 8, top: "32%",
+              writingMode: "vertical-rl",
+              fontFamily: "'Anton', sans-serif",
+              fontSize: "clamp(80px, 8vw, 130px)",
+              color: C.volt, lineHeight: 0.85,
+              textTransform: "uppercase", letterSpacing: "-0.02em",
+              zIndex: 3, pointerEvents: "none",
+            }}>ER<span style={{ color: C.red }}>/</span></div>
+          )}
+
+          {/* Portrait — bottom-aligned, B&W per tweak */}
+          <img src={star.image} alt={star.name} style={{
+            position: "absolute", bottom: 0, left: "50%",
+            transform: "translateX(-50%)",
+            height: m ? "82%" : "92%",
+            maxHeight: m ? 440 : 760,
+            objectFit: "contain", objectPosition: "center bottom",
+            filter: bwFilter(bw),
+            zIndex: 4,
+          }} onError={(e) => { e.target.style.opacity = 0.2; }}/>
+
+          {/* Red cover-star ribbon */}
+          <div style={{
+            position: "absolute",
+            bottom: m ? 36 : 64, left: "50%",
+            transform: "translateX(-50%)",
+            zIndex: 5, background: C.red, color: "#fff",
+            padding: m ? "12px 16px" : "16px 26px",
+            fontFamily: "'JetBrains Mono', monospace",
+            fontSize: m ? 11 : 13, fontWeight: 700,
+            letterSpacing: m ? 2 : 3.5,
+            textAlign: "center", lineHeight: 1.35,
+            boxShadow: "0 8px 24px rgba(224,58,62,0.35)",
+            maxWidth: m ? "calc(100% - 32px)" : "auto",
+            whiteSpace: m ? "normal" : "nowrap",
           }}>
-            <div style={{
-              fontFamily: "'JetBrains Mono', monospace", fontSize: 10,
-              color: C.mute, letterSpacing: 2, marginBottom: 8,
-            }}>// {s.l}</div>
-            <div style={{
-              fontFamily: "'Anton', sans-serif", fontSize: m ? 38 : 54,
-              color: s.tone === "red" ? C.red : C.ivory, lineHeight: 0.9,
-              letterSpacing: "-0.01em", fontVariantNumeric: "tabular-nums",
-            }}>{s.v}</div>
-            <div style={{
-              fontFamily: "'JetBrains Mono', monospace", fontSize: 9,
-              color: s.tone === "red" ? C.red : C.volt, letterSpacing: 1.8,
-              marginTop: 6,
-            }}>{s.sub}</div>
+            EXCLUSIVE · COVER STAR · JALEN JOHNSON
           </div>
-        ))}
+
+          {/* corner meta */}
+          <div style={{
+            position: "absolute", top: m ? 10 : 18, right: m ? 10 : 18,
+            fontFamily: "'JetBrains Mono', monospace", fontSize: 9,
+            color: C.mute, letterSpacing: 2, zIndex: 6, textAlign: "right",
+          }}>
+            <span style={{ color: C.red }}>●</span> SEASON OVER
+            <br/>ELIMINATED · R1 · 2–4 NYK
+          </div>
+        </div>
       </div>
     </section>
   );
 }
 
-// ─── Awards strip ───────────────────────────────────────────────
-function AwardsStrip() {
+// ─── Editor's Letter (PRE) ──────────────────────────────────────
+function EditorsLetter() {
+  const m = useIsMobile();
+  return (
+    <section id="pre" style={{
+      padding: m ? "44px 16px" : "72px 56px",
+      borderBottom: `1px solid ${C.hair}`, background: C.bg,
+    }}>
+      <Folio code="PRE" page={6} kicker="EDITOR'S LETTER"/>
+      <div style={{
+        marginTop: m ? 22 : 36,
+        display: "grid",
+        gridTemplateColumns: m ? "1fr" : "1.3fr 1fr",
+        gap: m ? 24 : 56,
+      }}>
+        <div>
+          <h2 style={{
+            fontFamily: "'Anton', sans-serif",
+            fontSize: m ? "clamp(42px, 12vw, 60px)" : "clamp(64px, 7vw, 130px)",
+            color: C.ivory, textTransform: "uppercase",
+            lineHeight: 0.85, margin: 0, letterSpacing: "-0.022em",
+          }}>The work<br/>doesn't end<br/>at <span style={{ color: C.red }}>89</span>.</h2>
+        </div>
+        <div style={{
+          paddingTop: m ? 0 : 12,
+          borderLeft: m ? "none" : `1px solid ${C.hair}`,
+          paddingLeft: m ? 0 : 28,
+        }}>
+          <p style={{
+            margin: 0, fontFamily: "Inter, sans-serif",
+            fontSize: m ? 14 : 16, color: "#c5c5cc", lineHeight: 1.7,
+            maxWidth: 540,
+          }}>
+            <span style={{
+              float: "left", fontFamily: "'Anton', sans-serif",
+              fontSize: m ? 56 : 84, lineHeight: 0.82,
+              color: C.red, marginRight: 10, marginTop: 4,
+              letterSpacing: "-0.02em",
+            }}>F</span>
+            orty-six wins. A Southeast banner. Back-to-back Most Improved
+            Players. And then — eighty-nine. The final score of the worst
+            night, set against the franchise's loudest spring in a decade.
+            This issue holds both at once: the dossier on what just
+            happened, and the road map for what's already underway. Lottery
+            slot at No. 8. McCollum back. Snyder extended. Saleh staying.
+          </p>
+          <div style={{
+            marginTop: 22, display: "flex", gap: 18,
+            fontFamily: "'JetBrains Mono', monospace", fontSize: 10,
+            color: C.mute, letterSpacing: 2, flexWrap: "wrap",
+          }}>
+            <span style={{ color: C.volt }}>— THE EDITORS</span>
+            <span>·</span><span>ATLANTA</span>
+            <span>·</span><span>MAY 20, 2026</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ─── Hardware (HRDW · awards) ───────────────────────────────────
+function Hardware() {
   const m = useIsMobile();
   const items = [
     {
@@ -389,22 +642,25 @@ function AwardsStrip() {
     {
       kicker: "SOUTHEAST", title: "DIVISION CHAMPS",
       who: "Atlanta Hawks · 46–36",
-      detail: "First SE crown since 2014–15", tone: "red",
+      detail: "First SE crown since 2014–15",
+      tone: "red",
     },
     {
       kicker: "BREAKOUT", title: "JJ ALL-STAR LEAP",
-      who: "Jalen Johnson · 22.8 / 10.3 / 8.0",
-      detail: "First All-Star nod · Olympic camp invite", tone: "ivory",
+      who: "Jalen Johnson · 22.5 / 10.3 / 7.9",
+      detail: "First All-Star nod · ESPN's Bontemps had him 2nd-team All-NBA",
+      tone: "ivory",
     },
   ];
   return (
-    <section style={{
-      padding: m ? "32px 16px" : "56px 40px", borderBottom: `1px solid ${C.hair}`, background: C.bg,
+    <section id="hrdw" style={{
+      padding: m ? "44px 16px" : "72px 56px",
+      borderBottom: `1px solid ${C.hair}`, background: C.panel,
     }}>
-      <SectionHeader kicker="HARDWARE · 2025–26"
+      <SectionHeader code="HRDW" page={8} kicker="HARDWARE · 2025–26"
         title={<>BRIGHT<br/>SPOTS<span style={{ color: C.volt }}>.</span></>}/>
       <div style={{
-        marginTop: m ? 20 : 32, display: "grid",
+        display: "grid",
         gridTemplateColumns: m ? "1fr" : "repeat(3, 1fr)",
         gap: 1, background: C.hair, border: `1px solid ${C.hair}`,
       }}>
@@ -412,30 +668,35 @@ function AwardsStrip() {
           const tc = it.tone === "volt" ? C.volt : it.tone === "red" ? C.red : C.ivory;
           return (
             <div key={i} style={{
-              padding: m ? "22px 18px" : "32px 28px", background: C.panel, position: "relative",
-              overflow: "hidden", minHeight: m ? 170 : 240,
+              padding: m ? "26px 20px" : "36px 32px", background: C.bg,
+              position: "relative", overflow: "hidden",
+              minHeight: m ? 180 : 280,
             }}>
               <div style={{
-                position: "absolute", top: m ? -16 : -30, right: m ? -8 : -20,
-                fontFamily: "'Anton', sans-serif", fontSize: m ? 110 : 200,
-                color: "#1c1c20", lineHeight: 0.8, letterSpacing: "-0.04em",
+                position: "absolute", top: m ? -16 : -34, right: m ? -8 : -18,
+                fontFamily: "'Anton', sans-serif",
+                fontSize: m ? 130 : 240, color: "#1c1c20",
+                lineHeight: 0.78, letterSpacing: "-0.04em",
                 pointerEvents: "none",
               }}>{String(i + 1).padStart(2, "0")}</div>
               <div style={{ position: "relative", zIndex: 2 }}>
                 <div style={{
                   fontFamily: "'JetBrains Mono', monospace", fontSize: 10,
-                  color: tc, letterSpacing: 2.5, marginBottom: m ? 10 : 14,
+                  color: tc, letterSpacing: 2.5, marginBottom: m ? 12 : 16,
                 }}>// {it.kicker}</div>
                 <div style={{
-                  fontFamily: "'Anton', sans-serif", fontSize: m ? 28 : 42, color: C.ivory,
-                  textTransform: "uppercase", lineHeight: 0.9, letterSpacing: "-0.01em",
+                  fontFamily: "'Anton', sans-serif",
+                  fontSize: m ? 30 : 46, color: C.ivory,
+                  textTransform: "uppercase", lineHeight: 0.92,
+                  letterSpacing: "-0.012em",
                 }}>{it.title}</div>
                 <div style={{
-                  marginTop: m ? 12 : 18, fontFamily: "Inter,sans-serif",
-                  fontSize: m ? 13 : 14, fontWeight: 600, color: tc,
+                  marginTop: m ? 14 : 20, fontFamily: "Inter, sans-serif",
+                  fontSize: m ? 13 : 14, fontWeight: 700, color: tc,
                 }}>{it.who}</div>
                 <div style={{
-                  marginTop: 8, fontSize: m ? 11 : 12, color: C.mute, lineHeight: 1.5,
+                  marginTop: 8, fontSize: m ? 12 : 13,
+                  color: C.mute, lineHeight: 1.55,
                 }}>{it.detail}</div>
               </div>
               <div style={{
@@ -450,17 +711,110 @@ function AwardsStrip() {
   );
 }
 
-// ─── Player card ────────────────────────────────────────────────
-function PlayerCard({ p, onClick, big = false }) {
+// ─── Story (STRY · feature article) ─────────────────────────────
+function Story() {
   const m = useIsMobile();
+  const lead = NEWS_DIGEST.keyTopics[0] || { title: "A Season That Ended at 89", detail: "" };
+  const body = (lead.detail || "").trim();
+  const first = body.charAt(0) || "T";
+  const rest = body.slice(1);
+
+  return (
+    <section id="stry" style={{
+      padding: m ? "44px 16px" : "72px 56px",
+      borderBottom: `1px solid ${C.hair}`, background: C.bg,
+    }}>
+      <Folio code="STRY" page={18} kicker="FEATURE · LONG-FORM"/>
+      <div style={{ marginTop: m ? 18 : 28 }}>
+        <h2 style={{
+          fontFamily: "'Anton', sans-serif",
+          fontSize: m ? "clamp(38px, 10.5vw, 52px)" : "clamp(60px, 7vw, 130px)",
+          color: C.ivory, textTransform: "uppercase",
+          lineHeight: 0.85, margin: 0, letterSpacing: "-0.025em",
+          maxWidth: 1100,
+        }}>{lead.title}</h2>
+        <div style={{
+          marginTop: m ? 14 : 20, fontFamily: "Inter, sans-serif",
+          fontSize: m ? 13 : 16, color: "#a8a8b0",
+          fontStyle: "italic", lineHeight: 1.55, maxWidth: 760,
+        }}>
+          The 51-point Game 6 closeout did more than end a series. It set
+          the terms for the offseason that followed.
+        </div>
+        <div style={{
+          marginTop: m ? 16 : 22, display: "flex", gap: 14, flexWrap: "wrap",
+          fontFamily: "'JetBrains Mono', monospace", fontSize: 10,
+          color: C.mute, letterSpacing: 2,
+        }}>
+          <span>BY <span style={{ color: C.ivory }}>THE EDITORS</span></span>
+          <span>·</span><span>ATLANTA</span>
+          <span>·</span><span>MAY 20, 2026</span>
+          <span>·</span><span style={{ color: C.volt }}>{(lead.category || "FEATURE").toUpperCase()}</span>
+        </div>
+      </div>
+
+      <div style={{ height: 1, background: C.hair, margin: m ? "24px 0" : "36px 0" }}/>
+
+      <div style={{
+        columnCount: m ? 1 : 2, columnGap: 44,
+        fontFamily: "Inter, sans-serif",
+        fontSize: m ? 14 : 15, color: "#c5c5cc", lineHeight: 1.75,
+      }}>
+        <p style={{ margin: 0 }}>
+          <span style={{
+            float: "left", fontFamily: "'Anton', sans-serif",
+            fontSize: m ? 80 : 120, lineHeight: 0.82,
+            color: C.red, marginRight: 12, marginTop: 4,
+            letterSpacing: "-0.02em",
+          }}>{first}</span>
+          {rest}
+        </p>
+      </div>
+
+      {/* pull quote */}
+      <div style={{
+        marginTop: m ? 32 : 52,
+        padding: m ? "22px 0" : "32px 0",
+        borderTop: `2px solid ${C.red}`,
+        borderBottom: `2px solid ${C.red}`,
+        display: "grid",
+        gridTemplateColumns: m ? "1fr" : "auto 1fr",
+        gap: m ? 14 : 40, alignItems: "center",
+      }}>
+        <div style={{
+          fontFamily: "'JetBrains Mono', monospace", fontSize: 11,
+          color: C.red, letterSpacing: 2.5,
+          minWidth: m ? "auto" : 200,
+        }}>// PULL QUOTE · POSTGAME</div>
+        <blockquote style={{
+          margin: 0, fontFamily: "'Anton', sans-serif",
+          fontSize: m ? "clamp(26px, 7vw, 36px)" : "clamp(34px, 4vw, 56px)",
+          color: C.ivory, textTransform: "uppercase",
+          lineHeight: 0.98, letterSpacing: "-0.01em",
+        }}>
+          "I don't really have any words for that.
+          {" "}<span style={{ color: C.red }}>Obviously, it sucks.</span>"
+          <div style={{
+            marginTop: 14, fontFamily: "'JetBrains Mono', monospace",
+            fontSize: 11, color: C.mute, letterSpacing: 2,
+          }}>— JALEN JOHNSON · GAME 6 · APRIL 30</div>
+        </blockquote>
+      </div>
+    </section>
+  );
+}
+
+// ─── Player card (B&W aware) ────────────────────────────────────
+function PlayerCard({ p, onClick }) {
+  const m = useIsMobile();
+  const { bw } = useTweaks();
   const [h, setH] = useState(false);
   const ppg = useCountUp(p.pointsPerGame);
   const rpg = useCountUp(p.reboundsPerGame);
   const apg = useCountUp(p.assistsPerGame);
 
   const surnames = p.name.split(" ");
-  const first = surnames[0];
-  const last = surnames.slice(1).join(" ");
+  const last = surnames.slice(1).join(" ") || surnames[0];
   const railW = m ? 0 : 28;
   const stripH = m ? 36 : 42;
 
@@ -475,23 +829,19 @@ function PlayerCard({ p, onClick, big = false }) {
         cursor: "pointer", overflow: "hidden",
         transition: "border-color .15s, transform .25s",
         transform: h ? "translateY(-2px)" : "none",
-        aspectRatio: big ? "0.85/1" : m ? "0.92/1" : "0.78/1",
+        aspectRatio: m ? "0.92/1" : "0.78/1",
         display: "flex", flexDirection: "column",
       }}
     >
-      {/* jersey watermark */}
       <div style={{
         position: "absolute", bottom: m ? -16 : -28, right: m ? -10 : -22,
         fontFamily: "'Anton', sans-serif",
-        fontSize: big ? 320 : m ? 130 : 220, lineHeight: 0.78,
+        fontSize: m ? 130 : 220, lineHeight: 0.78,
         color: h ? C.red : "#1c1c20",
         fontWeight: 400, letterSpacing: "-0.05em",
         pointerEvents: "none", transition: "color .2s", zIndex: 1,
-      }}>
-        {String(p.number).padStart(2, "0")}
-      </div>
+      }}>{String(p.number).padStart(2, "0")}</div>
 
-      {/* vertical surname rail (desktop only) */}
       {!m && (
         <div style={{
           position: "absolute", left: 0, top: 0, bottom: 0, width: 28,
@@ -501,10 +851,10 @@ function PlayerCard({ p, onClick, big = false }) {
         }}>
           <span style={{
             writingMode: "vertical-rl", transform: "rotate(180deg)",
-            fontFamily: "'Anton', sans-serif", fontSize: big ? 18 : 15,
+            fontFamily: "'Anton', sans-serif", fontSize: 15,
             color: C.ivory, textTransform: "uppercase", letterSpacing: "0.04em",
             fontWeight: 400, whiteSpace: "nowrap",
-          }}>{(last || first).toUpperCase()}</span>
+          }}>{last.toUpperCase()}</span>
           <span style={{
             writingMode: "vertical-rl", transform: "rotate(180deg)",
             fontFamily: "'JetBrains Mono', monospace", fontSize: 9,
@@ -513,25 +863,22 @@ function PlayerCard({ p, onClick, big = false }) {
         </div>
       )}
 
-      {/* headshot */}
       <div style={{
         position: "absolute", left: railW, right: 0, top: 0, bottom: stripH, zIndex: 2,
         display: "flex", alignItems: "flex-end", justifyContent: "center",
         overflow: "hidden",
       }}>
         <img
-          src={p.image}
-          alt={p.name}
+          src={p.image} alt={p.name}
           style={{
             width: "100%", height: "100%", objectFit: "contain",
             objectPosition: "center bottom",
-            filter: p.status === "out" ? "grayscale(0.7)" : "none",
+            filter: p.status === "out" ? "grayscale(1) contrast(.95)" : bwFilter(bw),
           }}
           onError={(e) => { e.target.style.opacity = 0.15; }}
         />
       </div>
 
-      {/* form + status (desktop) / form-only chip (mobile) */}
       <div style={{
         position: "absolute", top: m ? 8 : 10, right: m ? 8 : 12,
         zIndex: 6, textAlign: "right",
@@ -550,7 +897,6 @@ function PlayerCard({ p, onClick, big = false }) {
         {!m && <div style={{ marginTop: 6 }}><Status s={p.status}/></div>}
       </div>
 
-      {/* mobile: name overlay above stats strip */}
       {m && (
         <div style={{
           position: "absolute", left: 0, right: 0, bottom: stripH,
@@ -561,7 +907,7 @@ function PlayerCard({ p, onClick, big = false }) {
             fontFamily: "'Anton', sans-serif", fontSize: 14, color: C.ivory,
             textTransform: "uppercase", letterSpacing: "0.02em", lineHeight: 1,
             whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis",
-          }}>{(last || first).toUpperCase()}</div>
+          }}>{last.toUpperCase()}</div>
           <div style={{
             fontFamily: "'JetBrains Mono', monospace", fontSize: 8,
             color: C.mute, letterSpacing: 1.4, marginTop: 2,
@@ -569,7 +915,6 @@ function PlayerCard({ p, onClick, big = false }) {
         </div>
       )}
 
-      {/* stats strip — 3 stats on mobile, 4 on desktop */}
       <div style={{
         position: "absolute", left: 0, right: 0, bottom: 0, zIndex: 5,
         background: "#000", borderTop: `1px solid ${C.hair}`,
@@ -577,30 +922,28 @@ function PlayerCard({ p, onClick, big = false }) {
         gridTemplateColumns: m ? "repeat(3, 1fr)" : "repeat(4, 1fr)",
         height: stripH,
       }}>
-        {(m
-          ? [
-              { l: "PPG", v: ppg.toFixed(1) },
-              { l: "RPG", v: rpg.toFixed(1) },
-              { l: "APG", v: apg.toFixed(1) },
-            ]
-          : [
-              { l: "PPG", v: ppg.toFixed(1) },
-              { l: "RPG", v: rpg.toFixed(1) },
-              { l: "APG", v: apg.toFixed(1) },
-              { l: "GP", v: String(p.gamesPlayed) },
-            ]
-        ).map((s, i, arr) => (
+        {(m ? [
+          { l: "PPG", v: ppg.toFixed(1) },
+          { l: "RPG", v: rpg.toFixed(1) },
+          { l: "APG", v: apg.toFixed(1) },
+        ] : [
+          { l: "PPG", v: ppg.toFixed(1) },
+          { l: "RPG", v: rpg.toFixed(1) },
+          { l: "APG", v: apg.toFixed(1) },
+          { l: "GP", v: String(p.gamesPlayed) },
+        ]).map((s, i, arr) => (
           <div key={s.l} style={{
             padding: m ? "5px 2px" : "8px 4px", textAlign: "center",
             borderRight: i < arr.length - 1 ? `1px solid ${C.hair}` : "none",
           }}>
             <div style={{
               fontFamily: "'JetBrains Mono', monospace",
-              fontSize: big ? 17 : m ? 12 : 14, color: C.ivory, fontWeight: 700,
+              fontSize: m ? 12 : 14, color: C.ivory, fontWeight: 700,
               lineHeight: 1, fontVariantNumeric: "tabular-nums",
             }}>{s.v}</div>
             <div style={{
-              fontSize: m ? 7 : 8, color: C.mute, letterSpacing: 1.4, marginTop: m ? 2 : 4,
+              fontSize: m ? 7 : 8, color: C.mute, letterSpacing: 1.4,
+              marginTop: m ? 2 : 4,
             }}>{s.l}</div>
           </div>
         ))}
@@ -609,15 +952,15 @@ function PlayerCard({ p, onClick, big = false }) {
   );
 }
 
-// ─── Roster grid + filters ──────────────────────────────────────
-function Roster({ onPlayer }) {
+// ─── Portfolio (PORT · roster gallery) ──────────────────────────
+function Portfolio({ onPlayer }) {
   const m = useIsMobile();
   const [pos, setPos] = useState("ALL");
   const [sort, setSort] = useState("ppg");
   const positions = ["ALL", "PG", "SG", "SF", "PF", "C"];
   const list = useMemo(() => {
     let l = [...PLAYERS];
-    if (pos !== "ALL") l = l.filter(p => p.position === pos);
+    if (pos !== "ALL") l = l.filter((p) => p.position === pos);
     const sm = {
       ppg: (a, b) => b.pointsPerGame - a.pointsPerGame,
       rpg: (a, b) => b.reboundsPerGame - a.reboundsPerGame,
@@ -629,14 +972,20 @@ function Roster({ onPlayer }) {
   }, [pos, sort]);
 
   return (
-    <section style={{ padding: m ? "32px 16px" : "56px 40px", borderBottom: `1px solid ${C.hair}` }}>
+    <section id="port" style={{
+      padding: m ? "44px 16px" : "72px 56px",
+      borderBottom: `1px solid ${C.hair}`, background: C.bg,
+    }}>
       <SectionHeader
-        kicker="ROSTER · 15"
-        title="THE ATL FIFTEEN"
+        code="PORT" page={32}
+        kicker="PORTFOLIO · THE FIFTEEN"
+        title={<>A ROSTER<span style={{ color: C.red }}>,</span><br/>IN PORTRAITS<span style={{ color: C.volt }}>.</span></>}
         right={
-          <div style={{ display: "flex", gap: m ? 12 : 18, alignItems: "center", flexWrap: "wrap" }}>
+          <div style={{
+            display: "flex", gap: m ? 12 : 18, alignItems: "center", flexWrap: "wrap",
+          }}>
             <div style={{ display: "flex", gap: m ? 10 : 14, flexWrap: "wrap" }}>
-              {positions.map(p => (
+              {positions.map((p) => (
                 <Vlink key={p} active={pos === p} onClick={() => setPos(p)}>{p}</Vlink>
               ))}
             </div>
@@ -654,10 +1003,10 @@ function Roster({ onPlayer }) {
         gridTemplateColumns: m
           ? "repeat(2, 1fr)"
           : "repeat(auto-fill, minmax(220px, 1fr))",
-        gap: 1, background: C.hair, marginTop: m ? 20 : 32,
+        gap: 1, background: C.hair,
         border: `1px solid ${C.hair}`,
       }}>
-        {list.map(p => (
+        {list.map((p) => (
           <PlayerCard key={p.id} p={p} onClick={() => onPlayer(p.id)}/>
         ))}
       </div>
@@ -665,162 +1014,449 @@ function Roster({ onPlayer }) {
   );
 }
 
-// ─── Standings ──────────────────────────────────────────────────
-function Standings() {
+// ─── Tactics (TACT · rotation) ──────────────────────────────────
+function Tactics({ onPlayer }) {
+  const m = useIsMobile();
+  const { bw } = useTweaks();
+  const starters = PLAYERS.filter((p) => p.playoffStarter);
+  const bench = PLAYERS.filter((p) => !p.playoffStarter && p.status !== "out");
+  const out = PLAYERS.filter((p) => p.status === "out");
+
   return (
-    <div>
+    <section id="tact" style={{
+      padding: m ? "44px 16px" : "72px 56px",
+      borderBottom: `1px solid ${C.hair}`, background: C.panel,
+    }}>
+      <SectionHeader
+        code="TACT" page={46}
+        kicker="ROTATION · R1 · 2025–26"
+        title={<>STARTING<br/>FIVE<span style={{ color: C.volt }}>.</span></>}
+      />
+      <div style={{
+        display: "grid",
+        gridTemplateColumns: m ? "repeat(2, 1fr)" : "repeat(5, 1fr)",
+        gap: 1, background: C.hair, border: `1px solid ${C.hair}`,
+      }}>
+        {starters.map((p, i) => {
+          const po = p.playoffStats;
+          const mpg = po?.minutesPerGame ?? p.minutesPerGame;
+          const ppg = po?.pointsPerGame ?? p.pointsPerGame;
+          const stripH = m ? 64 : 88;
+          const last = p.name.split(" ").slice(1).join(" ") || p.name.split(" ")[0];
+          return (
+            <div key={p.id} onClick={() => onPlayer(p.id)} style={{
+              background: C.bg, position: "relative", overflow: "hidden",
+              cursor: "pointer", aspectRatio: m ? "0.85/1" : "0.7/1",
+            }}>
+              <div style={{
+                position: "absolute", bottom: m ? -16 : -30, left: m ? -6 : -12,
+                fontFamily: "'Anton', sans-serif", fontSize: m ? 150 : 280,
+                lineHeight: 0.8, color: "#1c1c20",
+                pointerEvents: "none", zIndex: 1,
+              }}>{i + 1}</div>
+              <div style={{
+                position: "absolute", top: m ? 8 : 14, right: m ? 8 : 14, zIndex: 3,
+                fontFamily: "'Anton', sans-serif", fontSize: m ? 24 : 38,
+                color: C.red, lineHeight: 1,
+              }}>#{p.number}</div>
+              <div style={{
+                position: "absolute", left: 0, right: 0, top: 0, bottom: stripH,
+                display: "flex", alignItems: "flex-end", justifyContent: "center",
+                zIndex: 2, overflow: "hidden",
+              }}>
+                <img src={p.image} alt={p.name} style={{
+                  width: "108%", height: "100%", objectFit: "contain",
+                  objectPosition: "center bottom",
+                  filter: bwFilter(bw),
+                }} onError={(e) => { e.target.style.opacity = 0.15; }}/>
+              </div>
+              <div style={{
+                position: "absolute", left: 0, right: 0, bottom: 0, zIndex: 4,
+                background: "#000", borderTop: `1px solid ${C.hair}`,
+                padding: m ? "8px 10px" : "12px 14px",
+              }}>
+                <div style={{
+                  fontFamily: "'Anton', sans-serif", fontSize: m ? 15 : 20,
+                  color: C.ivory, textTransform: "uppercase",
+                  lineHeight: 0.95, letterSpacing: "0.01em",
+                  whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis",
+                }}>{m ? last.toUpperCase() : p.name}</div>
+                <div style={{
+                  display: "flex", justifyContent: "space-between",
+                  marginTop: m ? 6 : 10,
+                  fontFamily: "'JetBrains Mono', monospace",
+                  fontSize: m ? 9 : 10, color: C.mute,
+                  letterSpacing: m ? 1 : 1.4,
+                }}>
+                  {!m && <span>{p.position}</span>}
+                  <span style={{ color: C.volt }}>{mpg.toFixed(1)} MPG</span>
+                  <span style={{ color: C.ivory }}>{ppg.toFixed(1)} PPG</span>
+                </div>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+
+      <div style={{ marginTop: 28 }}>
+        <Folio code="BENCH" kicker={`${bench.length} ACTIVE`}/>
+        <div style={{
+          marginTop: 12,
+          display: "grid",
+          gridTemplateColumns: m
+            ? "repeat(2, 1fr)"
+            : `repeat(${Math.max(bench.length, 1)}, 1fr)`,
+          gap: 1, background: C.hair, border: `1px solid ${C.hair}`,
+        }}>
+          {bench.map((p) => (
+            <div key={p.id} onClick={() => onPlayer(p.id)} style={{
+              background: C.bg, padding: "12px 10px", cursor: "pointer",
+              display: "flex", flexDirection: "column", gap: 4,
+            }}>
+              <div style={{
+                display: "flex", justifyContent: "space-between", alignItems: "baseline",
+              }}>
+                <span style={{
+                  fontFamily: "'Anton', sans-serif", fontSize: 24,
+                  color: C.red, lineHeight: 1,
+                }}>#{p.number}</span>
+                <span style={{
+                  fontFamily: "'JetBrains Mono', monospace", fontSize: 9,
+                  color: C.mute, letterSpacing: 1.5,
+                }}>{p.position}</span>
+              </div>
+              <div style={{
+                fontFamily: "'Anton', sans-serif", fontSize: m ? 13 : 14,
+                color: C.ivory, textTransform: "uppercase",
+                letterSpacing: "0.02em", lineHeight: 1.05,
+                whiteSpace: m ? "nowrap" : "normal",
+                overflow: "hidden", textOverflow: "ellipsis",
+              }}>{m ? (p.name.split(" ").slice(1).join(" ") || p.name).toUpperCase() : p.name}</div>
+              <div style={{
+                fontFamily: "'JetBrains Mono', monospace", fontSize: m ? 9 : 10,
+                color: C.ivory, marginTop: 2, fontVariantNumeric: "tabular-nums",
+              }}>
+                {p.pointsPerGame.toFixed(1)}<span style={{ color: C.mute }}> PPG</span> ·{" "}
+                {p.minutesPerGame.toFixed(1)}<span style={{ color: C.mute }}> MPG</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {out.length > 0 && (
+        <div style={{ marginTop: 24 }}>
+          <Folio code="OUT" kicker="UNAVAILABLE"/>
+          <div style={{ marginTop: 10 }}>
+            {out.map((p) => (
+              <div key={p.id} style={{
+                border: `1px solid ${C.hair}`, borderLeft: `3px solid ${C.red}`,
+                background: C.bg,
+                padding: "14px 16px", display: "grid",
+                gridTemplateColumns: "60px 1fr auto", gap: 14, alignItems: "center",
+                marginBottom: 8,
+              }}>
+                <span style={{
+                  fontFamily: "'Anton', sans-serif", fontSize: 32,
+                  color: C.red, lineHeight: 1,
+                }}>#{p.number}</span>
+                <div>
+                  <div style={{
+                    fontFamily: "'Anton', sans-serif", fontSize: 22, color: C.ivory,
+                    textTransform: "uppercase", letterSpacing: "0.02em",
+                  }}>{p.name}</div>
+                  <div style={{
+                    fontSize: 11, color: C.mute, marginTop: 4,
+                    fontFamily: "Inter, sans-serif",
+                  }}>{p.injuryNote}</div>
+                </div>
+                <Status s={p.status}/>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+    </section>
+  );
+}
+
+// ─── Numbers (NUM · season ledger) ──────────────────────────────
+function Numbers() {
+  const m = useIsMobile();
+  const big = [
+    { k: "RECORD",     v: "46–36",  tone: "ivory" },
+    { k: "SEED · E",   v: "6",      tone: "red" },
+    { k: "MIPs",       v: "2",      tone: "volt", sub: "back to back" },
+  ];
+  const ledger = [
+    ["MOST 3PM, SEASON",      "251 · Alexander-Walker",  "franchise record"],
+    ["OFFENSIVE RATING",      "118.4",                    "7th league-wide"],
+    ["DEFENSIVE RATING",      "114.2",                    "14th"],
+    ["PACE",                  "99.8",                     "12th"],
+    ["3-POINT %",             "38.1%",                    "3rd"],
+    ["JJ STAT LINE",          "22.5 / 10.3 / 7.9",        "5th ever 22-10-7"],
+    ["R1 SCORING DIFF",       "−15.3",                    "four losses by 16+"],
+    ["GAME 6 MARGIN",         "−51",                      "T-6th largest in NBA history"],
+    ["HALFTIME DEFICIT, G6",  "−47",                      "largest in playoff history"],
+    ["LOTTERY PICK",          "No. 8",                    "via NOP — most-likely outcome"],
+    ["DAYS TO DRAFT",         "34",                       "June 23, 2026"],
+    ["DAYS TO FA OPEN",       "42",                       "June 30, 6 PM ET"],
+  ];
+
+  return (
+    <section id="num" style={{
+      padding: m ? "44px 16px" : "72px 56px",
+      borderBottom: `1px solid ${C.hair}`, background: C.bg,
+    }}>
+      <SectionHeader
+        code="NUM" page={54}
+        kicker="DATA · 2025–26 IN NUMBERS"
+        title={<>By the<br/>Numbers<span style={{ color: C.volt }}>.</span></>}
+      />
+      <div style={{
+        display: "grid",
+        gridTemplateColumns: m ? "repeat(3, 1fr)" : "repeat(3, 1fr)",
+        gap: 1, background: C.hair, border: `1px solid ${C.hair}`,
+      }}>
+        {big.map((b) => {
+          const tc = b.tone === "volt" ? C.volt : b.tone === "red" ? C.red : C.ivory;
+          return (
+            <div key={b.k} style={{
+              padding: m ? "20px 12px" : "32px 28px", background: C.panel,
+              textAlign: "left",
+            }}>
+              <div style={{
+                fontFamily: "'JetBrains Mono', monospace", fontSize: 10,
+                color: C.mute, letterSpacing: 2, marginBottom: m ? 8 : 14,
+              }}>// {b.k}</div>
+              <div style={{
+                fontFamily: "'Anton', sans-serif",
+                fontSize: m ? "clamp(44px, 13vw, 68px)" : "clamp(80px, 9vw, 148px)",
+                color: tc, lineHeight: 0.85, letterSpacing: "-0.025em",
+                fontVariantNumeric: "tabular-nums",
+              }}>{b.v}</div>
+              {b.sub && (
+                <div style={{
+                  marginTop: 8, fontFamily: "'JetBrains Mono', monospace",
+                  fontSize: 10, color: tc, letterSpacing: 2,
+                }}>{b.sub.toUpperCase()}</div>
+              )}
+            </div>
+          );
+        })}
+      </div>
+
+      <div style={{ marginTop: m ? 24 : 36, border: `1px solid ${C.hair}` }}>
+        <div style={{
+          display: "grid",
+          gridTemplateColumns: m ? "1.2fr 1fr" : "1.4fr 1fr 1fr",
+          padding: "12px 14px", borderBottom: `1px solid ${C.hair}`,
+          background: C.panel,
+          fontFamily: "'JetBrains Mono', monospace", fontSize: 10,
+          color: C.mute, letterSpacing: 2,
+        }}>
+          <span>METRIC</span>
+          <span style={{ textAlign: "right" }}>VALUE</span>
+          {!m && <span style={{ textAlign: "right" }}>NOTE</span>}
+        </div>
+        {ledger.map((row, i) => (
+          <div key={row[0]} style={{
+            display: "grid",
+            gridTemplateColumns: m ? "1.2fr 1fr" : "1.4fr 1fr 1fr",
+            padding: "13px 14px",
+            borderBottom: i < ledger.length - 1 ? `1px solid ${C.hair}` : "none",
+            alignItems: "baseline",
+            background: i % 2 === 0 ? "transparent" : `${C.panel}80`,
+          }}>
+            <span style={{
+              fontFamily: "Inter, sans-serif", fontSize: 13,
+              color: C.ivory, fontWeight: 600,
+            }}>{row[0]}</span>
+            <span style={{
+              fontFamily: "'JetBrains Mono', monospace",
+              fontSize: m ? 13 : 14, color: C.volt, textAlign: "right",
+              fontVariantNumeric: "tabular-nums",
+            }}>{row[1]}</span>
+            {!m && (
+              <span style={{
+                fontFamily: "Inter, sans-serif", fontSize: 12,
+                color: C.mute, textAlign: "right", fontStyle: "italic",
+              }}>{row[2]}</span>
+            )}
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+// ─── Ledger (LDGR · results + standings + series box) ───────────
+function Ledger() {
+  const m = useIsMobile();
+  const last12 = RESULTS.slice(0, 12);
+  const games = RESULTS.filter((r) => r.competition === "PLAYOFFS").reverse();
+
+  return (
+    <section id="ldgr" style={{
+      padding: m ? "44px 16px" : "72px 56px",
+      borderBottom: `1px solid ${C.hair}`, background: C.panel,
+    }}>
+      <SectionHeader
+        code="LDGR" page={62}
+        kicker="THE BOX SCORES · REG + R1"
+        title={<>Ledger<span style={{ color: C.red }}>.</span></>}
+      />
+
+      {/* Series box + standings */}
+      <div style={{
+        display: "grid",
+        gridTemplateColumns: m ? "1fr" : "1.4fr 1fr",
+        gap: m ? 28 : 48, marginBottom: m ? 32 : 48,
+      }}>
+        <div>
+          <div style={{
+            fontFamily: "'JetBrains Mono', monospace", fontSize: 11,
+            color: C.red, letterSpacing: 2.5, marginBottom: 14,
+          }}>// R1 · ATL 2 — NYK 4 · ELIMINATED</div>
+          <div style={{
+            display: "grid",
+            gridTemplateColumns: m ? "repeat(3, 1fr)" : "repeat(6, 1fr)",
+            gap: 1, background: C.hair, border: `1px solid ${C.hair}`,
+          }}>
+            {games.map((g, i) => {
+              const win = g.result === "W";
+              return (
+                <div key={i} style={{
+                  background: C.bg, padding: m ? "10px 6px" : "14px 10px",
+                  textAlign: "center",
+                  borderTop: `3px solid ${win ? C.volt : C.red}`,
+                }}>
+                  <div style={{
+                    fontFamily: "'JetBrains Mono', monospace", fontSize: 9,
+                    color: C.mute, letterSpacing: 2,
+                  }}>G{i + 1}</div>
+                  <div style={{
+                    fontFamily: "'Anton', sans-serif",
+                    fontSize: m ? 22 : 28, color: win ? C.volt : C.red, lineHeight: 1.1,
+                  }}>{g.result}</div>
+                  <div style={{
+                    fontFamily: "'JetBrains Mono', monospace",
+                    fontSize: m ? 10 : 11, color: C.ivory, marginTop: 2,
+                    fontVariantNumeric: "tabular-nums",
+                  }}>{g.score}</div>
+                  <div style={{
+                    fontSize: 8, color: C.mute, marginTop: 4, letterSpacing: 1,
+                  }}>{g.home ? "H" : "A"}</div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
+        <div>
+          <div style={{
+            fontFamily: "'JetBrains Mono', monospace", fontSize: 11,
+            color: C.volt, letterSpacing: 2.5, marginBottom: 14,
+          }}>// EAST · FINAL STANDINGS</div>
+          <div style={{ border: `1px solid ${C.hair}`, background: C.bg }}>
+            {EAST_STANDINGS.map((s, i) => {
+              const me = s.team === "Atlanta Hawks";
+              return (
+                <div key={s.seed} style={{
+                  display: "grid", gridTemplateColumns: "40px 1fr auto",
+                  padding: "12px 14px", alignItems: "center", gap: 14,
+                  borderBottom: i < EAST_STANDINGS.length - 1 ? `1px solid ${C.hair}` : "none",
+                  background: me ? `${C.red}15` : "transparent",
+                  borderLeft: me ? `3px solid ${C.red}` : "3px solid transparent",
+                }}>
+                  <span style={{
+                    fontFamily: "'Anton', sans-serif", fontSize: 24,
+                    color: me ? C.red : C.mute, lineHeight: 1,
+                  }}>{String(s.seed).padStart(2, "0")}</span>
+                  <div>
+                    <div style={{
+                      fontFamily: "Inter, sans-serif", fontSize: 13, fontWeight: 600,
+                      color: me ? C.ivory : "#bdbdc2",
+                    }}>{s.team}</div>
+                    <div style={{
+                      fontFamily: "'JetBrains Mono', monospace", fontSize: 9,
+                      color: C.mute, letterSpacing: 1.5, marginTop: 2,
+                    }}>{abbr(s.team)}</div>
+                  </div>
+                  <span style={{
+                    fontFamily: "'JetBrains Mono', monospace", fontSize: 14,
+                    fontWeight: 600, color: me ? C.volt : C.ivory,
+                    fontVariantNumeric: "tabular-nums",
+                  }}>{s.record}</span>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+
+      {/* last 12 scoreboard */}
       <div style={{
         fontFamily: "'JetBrains Mono', monospace", fontSize: 11,
         color: C.volt, letterSpacing: 2.5, marginBottom: 14,
-      }}>// EAST · FINAL STANDINGS</div>
-      <div style={{ border: `1px solid ${C.hair}` }}>
-        {EAST_STANDINGS.map((s, i) => {
-          const me = s.team === "Atlanta Hawks";
-          return (
-            <div key={s.seed} style={{
-              display: "grid", gridTemplateColumns: "40px 1fr auto",
-              padding: "12px 14px", alignItems: "center", gap: 14,
-              borderBottom: i < EAST_STANDINGS.length - 1 ? `1px solid ${C.hair}` : "none",
-              background: me ? `${C.red}15` : "transparent",
-              borderLeft: me ? `3px solid ${C.red}` : "3px solid transparent",
-            }}>
-              <span style={{
-                fontFamily: "'Anton', sans-serif", fontSize: 24,
-                color: me ? C.red : C.mute, lineHeight: 1,
-              }}>{String(s.seed).padStart(2, "0")}</span>
-              <div>
-                <div style={{
-                  fontFamily: "Inter, sans-serif", fontSize: 13, fontWeight: 600,
-                  color: me ? C.ivory : "#bdbdc2",
-                }}>{s.team}</div>
-                <div style={{
-                  fontFamily: "'JetBrains Mono', monospace", fontSize: 9,
-                  color: C.mute, letterSpacing: 1.5, marginTop: 2,
-                }}>{abbr(s.team)}</div>
-              </div>
-              <span style={{
-                fontFamily: "'JetBrains Mono', monospace", fontSize: 14,
-                fontWeight: 600, color: me ? C.volt : C.ivory,
-                fontVariantNumeric: "tabular-nums",
-              }}>{s.record}</span>
-            </div>
-          );
-        })}
-      </div>
-    </div>
-  );
-}
-
-// ─── Series box ─────────────────────────────────────────────────
-function SeriesBox() {
-  const m = useIsMobile();
-  const games = RESULTS.filter(r => r.competition === "PLAYOFFS").reverse();
-  return (
-    <div>
-      <div style={{
-        fontFamily: "'JetBrains Mono', monospace", fontSize: 11,
-        color: C.red, letterSpacing: 2.5, marginBottom: 14,
-      }}>// R1 · ATL 2 — NYK 4 · ELIMINATED</div>
+      }}>// LAST 12 · REG + R1</div>
       <div style={{
         display: "grid",
-        gridTemplateColumns: m ? "repeat(3, 1fr)" : "repeat(6, 1fr)",
-        gap: 1, background: C.hair, border: `1px solid ${C.hair}`,
-      }}>
-        {games.map((g, i) => {
-          const win = g.result === "W";
-          return (
-            <div key={i} style={{
-              background: C.bg, padding: m ? "10px 6px" : "14px 10px", textAlign: "center",
-              borderTop: `3px solid ${win ? C.volt : C.red}`,
-            }}>
-              <div style={{
-                fontFamily: "'JetBrains Mono', monospace", fontSize: 9,
-                color: C.mute, letterSpacing: 2,
-              }}>G{i + 1}</div>
-              <div style={{
-                fontFamily: "'Anton', sans-serif", fontSize: m ? 22 : 28,
-                color: win ? C.volt : C.red, lineHeight: 1.1,
-              }}>{g.result}</div>
-              <div style={{
-                fontFamily: "'JetBrains Mono', monospace", fontSize: m ? 10 : 11,
-                color: C.ivory, marginTop: 2, fontVariantNumeric: "tabular-nums",
-              }}>{g.score}</div>
-              <div style={{
-                fontSize: 8, color: C.mute, marginTop: 4, letterSpacing: 1,
-              }}>{g.home ? "H" : "A"}</div>
-            </div>
-          );
-        })}
-      </div>
-    </div>
-  );
-}
-
-// ─── Results — courtside scoreboard strip ───────────────────────
-function Results() {
-  const m = useIsMobile();
-  const last12 = RESULTS.slice(0, 12);
-  return (
-    <section style={{
-      padding: m ? "32px 16px" : "56px 40px", borderBottom: `1px solid ${C.hair}`, background: C.panel,
-    }}>
-      <SectionHeader
-        kicker="LAST 12 GAMES · REG + R1"
-        title={<>RESULTS<span style={{ color: C.red }}>.</span></>}
-      />
-      <div style={{
-        marginTop: m ? 20 : 32, display: "grid",
-        gridTemplateColumns: m
-          ? "repeat(2, 1fr)"
-          : "repeat(auto-fill, minmax(220px, 1fr))",
+        gridTemplateColumns: m ? "repeat(2, 1fr)" : "repeat(auto-fill, minmax(220px, 1fr))",
         gap: 1, background: C.hair, border: `1px solid ${C.hair}`,
       }}>
         {last12.map((r, i) => {
           const [s1, s2] = r.score.split("-").map(Number);
-          const ours = s1;
-          const theirs = s2;
           const win = r.result === "W";
           const playoff = r.competition === "PLAYOFFS";
           return (
             <div key={i} style={{
-              padding: m ? "12px 12px 10px" : "18px 18px 14px", background: C.bg, position: "relative",
+              padding: m ? "12px 12px 10px" : "18px 18px 14px",
+              background: C.bg, position: "relative",
               borderTop: `3px solid ${win ? C.volt : C.red}`,
             }}>
-              <div style={{ display: "flex", justifyContent: "space-between", marginBottom: m ? 8 : 14, gap: 6 }}>
+              <div style={{
+                display: "flex", justifyContent: "space-between",
+                marginBottom: m ? 8 : 14, gap: 6,
+              }}>
                 <span style={{
                   fontFamily: "'JetBrains Mono', monospace", fontSize: 9,
                   color: C.mute, letterSpacing: 2,
                 }}>{new Date(r.date + "T12:00:00")
-                    .toLocaleDateString("en-US", { month: "short", day: "2-digit" })
-                    .toUpperCase()}</span>
+                  .toLocaleDateString("en-US", { month: "short", day: "2-digit" })
+                  .toUpperCase()}</span>
                 <span style={{
                   fontFamily: "'JetBrains Mono', monospace", fontSize: 9,
                   color: playoff ? C.red : C.mute, letterSpacing: 2, fontWeight: 700,
                 }}>{playoff ? (m ? "PO" : "PLAYOFFS") : "REG"} · {r.home ? "H" : "A"}</span>
               </div>
               <div style={{
-                fontFamily: "'Anton', sans-serif", fontSize: m ? 36 : 54, color: C.ivory,
-                lineHeight: 0.85, display: "flex", alignItems: "baseline", gap: m ? 6 : 8,
+                fontFamily: "'Anton', sans-serif", fontSize: m ? 36 : 54,
+                color: C.ivory, lineHeight: 0.85,
+                display: "flex", alignItems: "baseline", gap: m ? 6 : 8,
                 fontVariantNumeric: "tabular-nums",
               }}>
-                <span style={{ color: win ? C.volt : C.ivory }}>{ours}</span>
+                <span style={{ color: win ? C.volt : C.ivory }}>{s1}</span>
                 <span style={{ fontSize: m ? 14 : 18, color: C.mute }}>—</span>
-                <span style={{ color: win ? C.mute : C.red }}>{theirs}</span>
+                <span style={{ color: win ? C.mute : C.red }}>{s2}</span>
               </div>
-              <div style={{ display: "flex", alignItems: "center", gap: m ? 6 : 8, marginTop: m ? 8 : 10 }}>
+              <div style={{
+                display: "flex", alignItems: "center",
+                gap: m ? 6 : 8, marginTop: m ? 8 : 10,
+              }}>
                 <span style={{
                   width: m ? 20 : 24, height: m ? 20 : 24, display: "inline-flex",
                   alignItems: "center", justifyContent: "center",
                   background: win ? C.volt : C.red, color: win ? "#000" : "#fff",
-                  fontFamily: "'Anton', sans-serif", fontSize: m ? 13 : 16, fontWeight: 700,
-                  flexShrink: 0,
+                  fontFamily: "'Anton', sans-serif", fontSize: m ? 13 : 16,
+                  fontWeight: 700, flexShrink: 0,
                 }}>{r.result}</span>
                 <span style={{
-                  fontFamily: "'Anton', sans-serif", fontSize: m ? 16 : 20, color: C.ivory,
-                  letterSpacing: "0.02em",
+                  fontFamily: "'Anton', sans-serif", fontSize: m ? 16 : 20,
+                  color: C.ivory, letterSpacing: "0.02em",
                 }}>{r.home ? "vs" : "at"} {abbr(r.opponent)}</span>
               </div>
-              {!m && (
+              {!m && r.topScorers && (
                 <div style={{
                   fontSize: 11, color: C.mute, marginTop: 8, lineHeight: 1.4,
                   fontFamily: "Inter, sans-serif",
@@ -836,30 +1472,33 @@ function Results() {
   );
 }
 
-// ─── News view ──────────────────────────────────────────────────
-function NewsView() {
+// ─── Wire (WIRE · news feed) ────────────────────────────────────
+function Wire() {
   const m = useIsMobile();
-  const topics = NEWS_DIGEST.keyTopics;
+  const topics = NEWS_DIGEST.keyTopics || [];
   const lead = topics[0];
-  const rest = topics.slice(1);
+  const rest = topics.slice(1, 9);
+  if (!lead) return null;
 
-  // pull a source citation from the first parenthetical in detail
-  const sourceFrom = (detail) => {
-    const m = detail.match(/\(([^,)]+(?:\/[^,)]+)*)/);
-    return m ? m[1].split("/").slice(0, 3).join(" / ").trim() : "WIRE · ATL";
+  const sourceFrom = (detail = "") => {
+    const mt = detail.match(/\(([^,)]+(?:\/[^,)]+)*)/);
+    return mt ? mt[1].split("/").slice(0, 3).join(" / ").trim() : "WIRE · ATL";
   };
-  const ages = ["2H", "3H", "4H", "5H", "6H", "8H", "10H", "12H", "14H", "16H", "18H", "20H", "1D", "1D", "1D"];
+  const ages = ["2H", "3H", "4H", "5H", "6H", "8H", "10H", "12H", "14H", "16H", "18H", "20H"];
 
   return (
-    <section style={{ padding: m ? "32px 16px" : "56px 40px", borderBottom: `1px solid ${C.hair}` }}>
+    <section id="wire" style={{
+      padding: m ? "44px 16px" : "72px 56px",
+      borderBottom: `1px solid ${C.hair}`, background: C.bg,
+    }}>
       <SectionHeader
-        kicker="WIRE · LIVE"
-        title={<>NEWS<span style={{ color: C.red }}>/</span>FEED</>}
+        code="WIRE" page={68}
+        kicker="WIRE · LIVE FROM ATL"
+        title={<>News<span style={{ color: C.red }}>/</span>Feed</>}
       />
 
-      {/* Lead */}
       <article style={{
-        marginTop: m ? 24 : 40, paddingTop: m ? 20 : 32, borderTop: `1px solid ${C.hair}`,
+        paddingTop: m ? 16 : 28, borderTop: `1px solid ${C.hair}`,
         display: "grid",
         gridTemplateColumns: m ? "1fr" : "1.5fr 1fr",
         gap: m ? 28 : 48,
@@ -872,7 +1511,7 @@ function NewsView() {
           }}>
             <span style={{ color: C.red }}>ATLANTA</span>
             <span>—</span>
-            <span>APR 30, 2026</span>
+            <span>MAY 20, 2026</span>
             <span>—</span>
             <span>{(lead.category || "GENERAL").toUpperCase()}</span>
           </div>
@@ -882,40 +1521,40 @@ function NewsView() {
             color: C.ivory, textTransform: "uppercase",
             lineHeight: 0.95, margin: 0, letterSpacing: "-0.01em",
           }}>
-            {m ? (
-              lead.title
-            ) : (
+            {m ? lead.title : (
               <>
                 <span style={{
-                  color: C.red, fontSize: "1.4em", float: "left", lineHeight: 0.85,
-                  marginRight: 14, marginTop: -4,
+                  color: C.red, fontSize: "1.4em", float: "left",
+                  lineHeight: 0.85, marginRight: 14, marginTop: -4,
                 }}>{lead.title.charAt(0)}</span>
                 {lead.title.slice(1)}
               </>
             )}
           </h3>
           <p style={{
-            marginTop: m ? 16 : 24, fontFamily: "Inter, sans-serif", fontSize: m ? 14 : 16,
-            color: "#c5c5cc", lineHeight: 1.6, maxWidth: 640,
+            marginTop: m ? 16 : 24, fontFamily: "Inter, sans-serif",
+            fontSize: m ? 14 : 16, color: "#c5c5cc",
+            lineHeight: 1.65, maxWidth: 640,
           }}>{lead.detail}</p>
           <div style={{
-            marginTop: 18, fontFamily: "'JetBrains Mono', monospace", fontSize: 11,
-            color: C.volt, letterSpacing: 2,
+            marginTop: 16, fontFamily: "'JetBrains Mono', monospace",
+            fontSize: 11, color: C.volt, letterSpacing: 2,
           }}>{sourceFrom(lead.detail)} · 2H AGO</div>
         </div>
         <div style={{
           borderLeft: m ? "none" : `1px solid ${C.hair}`,
           borderTop: m ? `1px solid ${C.hair}` : "none",
           paddingLeft: m ? 0 : 32,
-          paddingTop: m ? 20 : 0,
+          paddingTop: m ? 18 : 0,
         }}>
           <div style={{
             fontFamily: "'JetBrains Mono', monospace", fontSize: 11,
             color: C.mute, letterSpacing: 2, marginBottom: 16,
           }}>// PULL QUOTE</div>
           <div style={{
-            fontFamily: "'Anton', sans-serif", fontSize: m ? 32 : 42, color: C.ivory,
-            lineHeight: 1, textTransform: "uppercase", letterSpacing: "-0.005em",
+            fontFamily: "'Anton', sans-serif",
+            fontSize: m ? 32 : 42, color: C.ivory, lineHeight: 1,
+            textTransform: "uppercase", letterSpacing: "-0.005em",
           }}>"OBVIOUSLY,<br/>IT <span style={{ color: C.red }}>SUCKS</span>."</div>
           <div style={{
             marginTop: 18, fontFamily: "Inter, sans-serif", fontSize: 13,
@@ -924,18 +1563,18 @@ function NewsView() {
         </div>
       </article>
 
-      {/* Rest */}
       <div style={{
-        marginTop: m ? 32 : 48, display: "grid",
+        marginTop: m ? 30 : 44,
+        display: "grid",
         gridTemplateColumns: m ? "1fr" : "repeat(auto-fill, minmax(360px, 1fr))",
         gap: 0, borderTop: `1px solid ${C.hair}`,
       }}>
         {rest.map((n, i) => (
           <article key={i} style={{
-            padding: m ? "20px 0" : "28px 28px 28px 0",
+            padding: m ? "20px 0" : "26px 26px 26px 0",
             borderBottom: `1px solid ${C.hair}`,
             borderRight: !m && (i % 2 === 0) ? `1px solid ${C.hair}` : "none",
-            paddingLeft: !m && (i % 2 !== 0) ? 28 : 0,
+            paddingLeft: !m && (i % 2 !== 0) ? 26 : 0,
           }}>
             <div style={{
               display: "flex", gap: 10, fontFamily: "'JetBrains Mono', monospace",
@@ -949,17 +1588,17 @@ function NewsView() {
               <span>{ages[i + 1] || "1D"} AGO</span>
             </div>
             <h4 style={{
-              fontFamily: "'Anton', sans-serif", fontSize: m ? 20 : 26, color: C.ivory,
-              textTransform: "uppercase", lineHeight: 1.05, margin: 0,
-              letterSpacing: "-0.005em",
+              fontFamily: "'Anton', sans-serif", fontSize: m ? 20 : 26,
+              color: C.ivory, textTransform: "uppercase",
+              lineHeight: 1.05, margin: 0, letterSpacing: "-0.005em",
             }}>{n.title}</h4>
             <p style={{
-              marginTop: 10, fontFamily: "Inter, sans-serif", fontSize: m ? 12 : 13,
-              color: "#a8a8b0", lineHeight: 1.55,
-            }}>{n.detail}</p>
+              marginTop: 10, fontFamily: "Inter, sans-serif",
+              fontSize: m ? 12 : 13, color: "#a8a8b0", lineHeight: 1.55,
+            }}>{(n.detail || "").slice(0, 360)}{(n.detail || "").length > 360 ? "…" : ""}</p>
             <div style={{
-              marginTop: 12, fontFamily: "'JetBrains Mono', monospace", fontSize: 10,
-              color: C.volt, letterSpacing: 1.8,
+              marginTop: 12, fontFamily: "'JetBrains Mono', monospace",
+              fontSize: 10, color: C.volt, letterSpacing: 1.8,
             }}>{sourceFrom(n.detail)}</div>
           </article>
         ))}
@@ -968,10 +1607,103 @@ function NewsView() {
   );
 }
 
+// ─── Back page (BACK · colophon) ────────────────────────────────
+function BackPage() {
+  const m = useIsMobile();
+  const sources = (NEWS_DIGEST.sources || []).slice(0, 18);
+  return (
+    <section id="back" style={{
+      padding: m ? "44px 16px 56px" : "72px 56px 96px",
+      background: C.bg,
+    }}>
+      <Folio code="BACK" page={80} kicker="COLOPHON · CREDITS"/>
+      <div style={{
+        marginTop: m ? 22 : 32,
+        display: "grid",
+        gridTemplateColumns: m ? "1fr" : "1.4fr 1fr",
+        gap: m ? 28 : 56,
+      }}>
+        <div>
+          <h2 style={{
+            fontFamily: "'Anton', sans-serif",
+            fontSize: m ? "clamp(46px, 12vw, 64px)" : "clamp(64px, 7vw, 130px)",
+            color: C.ivory, textTransform: "uppercase",
+            lineHeight: 0.85, margin: 0, letterSpacing: "-0.022em",
+          }}>True to ATL<span style={{ color: C.red }}>.</span></h2>
+          <p style={{
+            marginTop: m ? 16 : 22, fontFamily: "Inter, sans-serif",
+            fontSize: m ? 13 : 14, color: "#a8a8b0",
+            lineHeight: 1.65, maxWidth: 560,
+          }}>
+            HAWKS/26 is set in <span style={{ color: C.ivory }}>Anton</span> for
+            display, <span style={{ color: C.ivory }}>Inter</span> for body, and
+            {" "}<span style={{ color: C.ivory }}>JetBrains Mono</span> for the
+            ledger marks and folios. Black field, ivory ink, red and volt for
+            the urgent and the unexpected. Next issue: after the lottery is
+            spent and the draft is on the board.
+          </p>
+          <div style={{
+            marginTop: m ? 22 : 32,
+            display: "grid", gridTemplateColumns: m ? "1fr 1fr" : "repeat(3, 1fr)",
+            gap: 14,
+            fontFamily: "'JetBrains Mono', monospace", fontSize: 10,
+            color: C.mute, letterSpacing: 1.8,
+          }}>
+            <div>
+              <div style={{ color: C.volt, marginBottom: 4 }}>// MASTHEAD</div>
+              <div>EDITOR · THE EDITORS</div>
+              <div>DESIGN · ANTON / INTER</div>
+            </div>
+            <div>
+              <div style={{ color: C.volt, marginBottom: 4 }}>// FREQUENCY</div>
+              <div>VOL XXVI · ISSUE 06</div>
+              <div>MAY 2026 · OFFSEASON</div>
+            </div>
+            <div>
+              <div style={{ color: C.volt, marginBottom: 4 }}>// NEXT UP</div>
+              <div>{NEXT_GAME.opponent || "DRAFT LOTTERY"}</div>
+              <div>{NEXT_GAME.venue || "CHICAGO · ESPN"}</div>
+            </div>
+          </div>
+        </div>
+        <aside>
+          <div style={{
+            fontFamily: "'JetBrains Mono', monospace", fontSize: 10,
+            color: C.volt, letterSpacing: 2, marginBottom: 14,
+          }}>// SOURCES · PARTIAL LIST</div>
+          <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
+            {sources.map((s) => (
+              <span key={s} style={{
+                fontFamily: "'JetBrains Mono', monospace", fontSize: 10,
+                color: C.ivory, padding: "5px 9px",
+                border: `1px solid ${C.hair}`, letterSpacing: 1.2,
+              }}>{s}</span>
+            ))}
+          </div>
+        </aside>
+      </div>
+
+      <div style={{
+        marginTop: m ? 32 : 48, paddingTop: m ? 18 : 24,
+        borderTop: `1px solid ${C.hair}`,
+        display: "flex", justifyContent: "space-between", alignItems: "baseline",
+        gap: 16, flexWrap: "wrap",
+        fontFamily: "'JetBrains Mono', monospace", fontSize: 10,
+        color: C.mute, letterSpacing: 2,
+      }}>
+        <span>// END OF ISSUE</span>
+        <span style={{ color: C.red }}>■</span>
+        <span>// THANK YOU FOR READING</span>
+      </div>
+    </section>
+  );
+}
+
 // ─── Player Modal ───────────────────────────────────────────────
 function PlayerModal({ id, onClose }) {
   const m = useIsMobile();
-  const p = PLAYERS.find(x => x.id === id);
+  const { bw } = useTweaks();
+  const p = PLAYERS.find((x) => x.id === id);
   useEffect(() => {
     const k = (e) => { if (e.key === "Escape") onClose(); };
     window.addEventListener("keydown", k);
@@ -1003,7 +1735,6 @@ function PlayerModal({ id, onClose }) {
           gridTemplateColumns: m ? "1fr" : "1fr 1.2fr",
           gap: 0, minHeight: m ? 0 : 560,
         }}>
-          {/* Left: portrait + jersey */}
           <div style={{
             position: "relative", background: C.panel, overflow: "hidden",
             borderRight: m ? "none" : `1px solid ${C.hair}`,
@@ -1020,10 +1751,10 @@ function PlayerModal({ id, onClose }) {
               position: "absolute", bottom: 0, left: "50%",
               transform: "translateX(-50%)",
               width: "95%", maxHeight: "95%", objectFit: "contain", zIndex: 2,
+              filter: bwFilter(bw),
             }}/>
           </div>
 
-          {/* Right: data */}
           <div style={{ padding: m ? "24px 18px 24px" : "40px 40px 32px" }}>
             <div style={{
               fontFamily: "'JetBrains Mono', monospace", fontSize: 11,
@@ -1043,9 +1774,9 @@ function PlayerModal({ id, onClose }) {
               }}>{p.injuryNote}</div>
             )}
 
-            {/* season line */}
             <div style={{
-              marginTop: 28, display: "grid", gridTemplateColumns: "repeat(4, 1fr)",
+              marginTop: 28, display: "grid",
+              gridTemplateColumns: "repeat(4, 1fr)",
               border: `1px solid ${C.hair}`,
             }}>
               {[
@@ -1070,7 +1801,6 @@ function PlayerModal({ id, onClose }) {
               ))}
             </div>
 
-            {/* Shooting */}
             <div style={{ marginTop: 24 }}>
               <div style={{
                 fontFamily: "'JetBrains Mono', monospace", fontSize: 10,
@@ -1081,16 +1811,16 @@ function PlayerModal({ id, onClose }) {
                 { l: "3-POINT", v: p.threePointPct, max: 50 },
                 { l: "FREE THROW", v: p.freeThrowPct, max: 100 },
                 { l: "TRUE SHOOTING", v: p.trueShootingPct, max: 70 },
-              ].map(b => (
+              ].map((b) => (
                 <div key={b.l} style={{ marginBottom: 10 }}>
                   <div style={{
                     display: "flex", justifyContent: "space-between", marginBottom: 4,
                     fontFamily: "'JetBrains Mono', monospace", fontSize: 11,
                   }}>
                     <span style={{ color: C.mute, letterSpacing: 1.5 }}>{b.l}</span>
-                    <span style={{
-                      color: C.ivory, fontVariantNumeric: "tabular-nums",
-                    }}>{b.v.toFixed(1)}%</span>
+                    <span style={{ color: C.ivory, fontVariantNumeric: "tabular-nums" }}>
+                      {b.v.toFixed(1)}%
+                    </span>
                   </div>
                   <div style={{ height: 3, background: C.hair, position: "relative" }}>
                     <div style={{
@@ -1103,7 +1833,6 @@ function PlayerModal({ id, onClose }) {
               ))}
             </div>
 
-            {/* Phys */}
             <div style={{
               marginTop: 20, display: "flex", gap: 24,
               fontFamily: "'JetBrains Mono', monospace", fontSize: 11,
@@ -1118,7 +1847,6 @@ function PlayerModal({ id, onClose }) {
               }}>{p.plusMinus >= 0 ? "+" : ""}{p.plusMinus.toFixed(1)}</span></span>
             </div>
 
-            {/* Note */}
             {p.recentNotes && (
               <div style={{
                 marginTop: 24, padding: "16px 18px",
@@ -1135,106 +1863,68 @@ function PlayerModal({ id, onClose }) {
   );
 }
 
-// ─── Dashboard composition ──────────────────────────────────────
-function Dashboard({ onPlayer }) {
+// ─── Magazine shell ─────────────────────────────────────────────
+function MagazineApp() {
   const m = useIsMobile();
-  return (
-    <>
-      <SeasonBanner/>
-      <section style={{
-        padding: m ? "32px 16px" : "56px 40px", borderBottom: `1px solid ${C.hair}`,
-        display: "grid",
-        gridTemplateColumns: m ? "1fr" : "1.4fr 1fr",
-        gap: m ? 32 : 48,
-      }}>
-        <SeriesBox/>
-        <Standings/>
-      </section>
-      <AwardsStrip/>
-      <Roster onPlayer={onPlayer}/>
-      <Results/>
-    </>
-  );
-}
-
-// ─── App ────────────────────────────────────────────────────────
-export default function HawksTracker() {
-  const m = useIsMobile();
-  const [view, setView] = useState("dashboard");
+  const { rail } = useTweaks();
   const [modalId, setModalId] = useState(null);
+  const ids = useMemo(() => SECTIONS.map((s) => s.id), []);
+  const active = useScrollSpy(ids);
+
+  const showLeft = !m && rail;
+  const showRight = !m;
 
   return (
     <div style={{
       minHeight: "100vh", background: C.bg, color: C.ivory,
       fontFamily: "Inter, sans-serif",
     }}>
-      {/* Top nav */}
-      <nav style={{
-        display: "flex", alignItems: "center",
-        padding: m ? "12px 16px" : "18px 40px",
-        gap: m ? 16 : 32,
-        borderBottom: `1px solid ${C.hair}`, background: C.bg,
-        position: "sticky", top: 0, zIndex: 50,
+      <Masthead/>
+
+      <div style={{
+        display: "grid",
+        gridTemplateColumns: m
+          ? "1fr"
+          : `${showLeft ? "62px " : ""}1fr${showRight ? " 62px" : ""}`,
+        alignItems: "start",
       }}>
-        <div style={{
-          fontFamily: "'Anton', sans-serif",
-          fontSize: m ? 20 : 24, color: C.ivory,
-          textTransform: "uppercase", letterSpacing: "0.02em",
-        }}>
-          ATL<span style={{ color: C.red }}>/</span>26
-        </div>
-        <div style={{ flex: 1, display: "flex", gap: m ? 16 : 28 }}>
-          <Vlink active={view === "dashboard"} onClick={() => setView("dashboard")} size={m ? 12 : 13}>
-            {m ? "Dash" : "Dashboard"}
-          </Vlink>
-          <Vlink active={view === "rotation"} onClick={() => setView("rotation")} size={m ? 12 : 13}>
-            Rotation
-          </Vlink>
-          <Vlink active={view === "news"} onClick={() => setView("news")} size={m ? 12 : 13}>
-            News
-          </Vlink>
-          <Vlink active={view === "magazine"} onClick={() => setView("magazine")} size={m ? 12 : 13}>
-            {m ? "Mag" : "Magazine"}
-          </Vlink>
-        </div>
-        {!m && (
-          <div style={{
-            fontFamily: "'JetBrains Mono', monospace", fontSize: 11,
-            color: C.mute, letterSpacing: 1.8,
-          }}>
-            <span style={{ color: C.red }}>●</span> SEASON OVER · MAY 1 · 2026
-          </div>
-        )}
-      </nav>
+        {showLeft && <LeftRail active={active}/>}
 
-      {view === "dashboard" && <Hero/>}
-      {view === "dashboard" && <Dashboard onPlayer={setModalId}/>}
-      {view === "rotation" && <RotationView onPlayer={setModalId}/>}
-      {view === "news" && <NewsView/>}
-      {view === "magazine" && <MagazineView/>}
+        <main style={{ minWidth: 0 }}>
+          <Cover/>
+          <EditorsLetter/>
+          <Hardware/>
+          <Story/>
+          <Portfolio onPlayer={setModalId}/>
+          <Tactics onPlayer={setModalId}/>
+          <Numbers/>
+          <Ledger/>
+          <Wire/>
+          <BackPage/>
+        </main>
 
-      {/* Footer */}
-      <footer style={{
-        padding: m ? "32px 16px" : "48px 40px", display: "flex",
-        justifyContent: "space-between", alignItems: "center", gap: 24,
-        flexWrap: "wrap",
-      }}>
-        <div style={{
-          fontFamily: "'Anton', sans-serif",
-          fontSize: m ? 40 : 64, color: "#1d1d22",
-          textTransform: "uppercase", lineHeight: 0.85, letterSpacing: "-0.01em",
-        }}>TRUE TO ATL.</div>
-        <div style={{
-          fontFamily: "'JetBrains Mono', monospace", fontSize: 10, color: C.mute,
-          letterSpacing: 1.5, textAlign: "right",
-        }}>
-          // EOF · 2025–26<br/>
-          // ROSTER · 15 PLAYERS<br/>
-          // REC · 46–36
-        </div>
-      </footer>
+        {showRight && <RightRail/>}
+      </div>
 
+      <TweaksPanel/>
       {modalId && <PlayerModal id={modalId} onClose={() => setModalId(null)}/>}
+
+      <style>{`
+        html { scroll-behavior: smooth; }
+        section[id] { scroll-margin-top: 60px; }
+        @media (prefers-reduced-motion: reduce) {
+          html { scroll-behavior: auto; }
+        }
+      `}</style>
     </div>
+  );
+}
+
+// ─── Root ───────────────────────────────────────────────────────
+export default function HawksTracker() {
+  return (
+    <TweaksProvider>
+      <MagazineApp/>
+    </TweaksProvider>
   );
 }
