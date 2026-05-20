@@ -7,6 +7,7 @@ import {
   EAST_STANDINGS,
 } from "./playerData.js";
 import RotationView from "./RotationView.jsx";
+import MagazineView from "./MagazineView.jsx";
 
 // ─── Theme tokens ───────────────────────────────────────────────
 export const C = {
@@ -215,18 +216,17 @@ function Hero() {
         </div>
       </div>
 
-      {/* wordmark */}
+      {/* wordmark — stacks to two lines so it never clips off the right edge */}
       <div style={{ padding: m ? "14px 16px 0" : "18px 40px 0", position: "relative", zIndex: 3 }}>
         <h1 style={{
           fontFamily: "'Anton', 'Bebas Neue', sans-serif",
-          fontSize: m ? "clamp(54px, 17vw, 92px)" : "clamp(120px, 22vw, 360px)",
+          fontSize: m ? "clamp(54px, 17vw, 92px)" : "clamp(120px, 18vw, 280px)",
           lineHeight: 0.82, margin: 0, letterSpacing: "-0.025em",
           color: C.ivory, textTransform: "uppercase",
-          transform: m ? "none" : "translateX(-1%)",
-          whiteSpace: m ? "normal" : "nowrap",
+          whiteSpace: "normal",
         }}>
           HAWKS<span style={{ color: C.red }}>.</span>
-          {m && <br/>}
+          <br/>
           TRACKER<span style={{ color: C.volt }}>/</span>26
         </h1>
       </div>
@@ -1193,6 +1193,9 @@ export default function HawksTracker() {
           <Vlink active={view === "news"} onClick={() => setView("news")} size={m ? 12 : 13}>
             News
           </Vlink>
+          <Vlink active={view === "magazine"} onClick={() => setView("magazine")} size={m ? 12 : 13}>
+            {m ? "Mag" : "Magazine"}
+          </Vlink>
         </div>
         {!m && (
           <div style={{
@@ -1208,6 +1211,7 @@ export default function HawksTracker() {
       {view === "dashboard" && <Dashboard onPlayer={setModalId}/>}
       {view === "rotation" && <RotationView onPlayer={setModalId}/>}
       {view === "news" && <NewsView/>}
+      {view === "magazine" && <MagazineView/>}
 
       {/* Footer */}
       <footer style={{
