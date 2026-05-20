@@ -220,6 +220,7 @@ function Masthead() {
     <header style={{
       position: "sticky", top: 0, zIndex: 60,
       background: C.bg, borderBottom: `1px solid ${C.hair}`,
+      boxShadow: "0 2px 14px rgba(0,0,0,0.65)",
       padding: m ? "10px 14px" : "14px 28px",
       display: "grid",
       gridTemplateColumns: m ? "1fr auto" : "1fr 2fr 1fr",
@@ -252,8 +253,8 @@ function Masthead() {
 function LeftRail({ active }) {
   return (
     <aside style={{
-      position: "sticky", top: 54, alignSelf: "start",
-      height: "calc(100vh - 54px)",
+      position: "sticky", top: 56, alignSelf: "start",
+      height: "calc(100vh - 56px)",
       borderRight: `1px solid ${C.hair}`,
       background: C.bg,
       display: "flex", flexDirection: "column", justifyContent: "space-between",
@@ -313,8 +314,8 @@ function LeftRail({ active }) {
 function RightRail() {
   return (
     <aside style={{
-      position: "sticky", top: 54, alignSelf: "start",
-      height: "calc(100vh - 54px)",
+      position: "sticky", top: 56, alignSelf: "start",
+      height: "calc(100vh - 56px)",
       borderLeft: `1px solid ${C.hair}`,
       background: C.bg,
       display: "flex", alignItems: "center", justifyContent: "center",
@@ -361,12 +362,14 @@ function TweaksPanel() {
       {/* trigger */}
       <button onClick={() => setOpen((o) => !o)} style={{
         position: "fixed", bottom: 18, right: 18, zIndex: 80,
-        width: 44, height: 44,
+        width: 44, height: 44, borderRadius: "50%",
         background: open ? C.volt : C.panel,
         color: open ? "#000" : C.ivory,
         border: `1px solid ${open ? C.volt : C.hair}`,
         cursor: "pointer", fontFamily: "'JetBrains Mono', monospace",
-        fontSize: 11, fontWeight: 700, letterSpacing: 1,
+        fontSize: 18, fontWeight: 700, letterSpacing: 0,
+        boxShadow: "0 6px 20px rgba(0,0,0,0.5)",
+        display: "inline-flex", alignItems: "center", justifyContent: "center",
       }}>
         {open ? "×" : "⚙"}
       </button>
@@ -377,6 +380,7 @@ function TweaksPanel() {
           position: "fixed", bottom: 74, right: 18, zIndex: 80,
           width: 280, background: "#1d1d22",
           border: `1px solid ${C.hair}`, padding: "14px 16px",
+          borderRadius: 6,
           fontFamily: "Inter, sans-serif",
           boxShadow: "0 16px 40px rgba(0,0,0,0.5)",
         }}>
@@ -479,7 +483,9 @@ function Cover() {
                 fontFamily: "'Anton', sans-serif",
                 fontSize: m ? 19 : 22, lineHeight: 1.04,
                 color: C.ivory, textTransform: "uppercase",
-                letterSpacing: "-0.005em",
+                letterSpacing: "-0.015em",
+                display: "-webkit-box", WebkitBoxOrient: "vertical",
+                WebkitLineClamp: 3, overflow: "hidden",
               }}>{e.t}</div>
             </a>
           ))}
@@ -498,29 +504,30 @@ function Cover() {
               "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.9 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>\")",
           }}/>
 
-          {/* HAWK wordmark — massive, top */}
+          {/* HAWK wordmark — chunky blocky sans, top, clips off right */}
           <div style={{
             position: "absolute",
-            top: m ? 8 : 18, left: m ? -10 : -22,
-            right: m ? -10 : 0,
-            fontFamily: "'Anton', sans-serif",
-            fontSize: m ? "clamp(120px, 38vw, 220px)" : "clamp(280px, 28vw, 460px)",
+            top: m ? 4 : 14, left: m ? -14 : -36,
+            right: m ? -20 : -40,
+            fontFamily: '"Inter", "Arial Black", "Helvetica Neue", sans-serif',
+            fontSize: m ? "clamp(140px, 44vw, 260px)" : "clamp(340px, 34vw, 560px)",
             lineHeight: 0.82, color: C.ivory,
-            textTransform: "uppercase", letterSpacing: "-0.035em",
+            textTransform: "uppercase", letterSpacing: "-0.055em",
             whiteSpace: "nowrap", zIndex: 2, pointerEvents: "none",
-            fontWeight: 400,
+            fontWeight: 900,
           }}>HAWK</div>
 
-          {/* Vertical "ER/" — wordmark tail */}
+          {/* Vertical "ER/" — wordmark tail (smaller, reads as continuation) */}
           {!m && (
             <div style={{
-              position: "absolute", right: 8, top: "32%",
+              position: "absolute", right: 14, top: "38%",
               writingMode: "vertical-rl",
-              fontFamily: "'Anton', sans-serif",
-              fontSize: "clamp(80px, 8vw, 130px)",
+              fontFamily: '"Inter", "Arial Black", "Helvetica Neue", sans-serif',
+              fontSize: "clamp(54px, 5vw, 90px)",
               color: C.volt, lineHeight: 0.85,
-              textTransform: "uppercase", letterSpacing: "-0.02em",
+              textTransform: "uppercase", letterSpacing: "-0.04em",
               zIndex: 3, pointerEvents: "none",
+              fontWeight: 900,
             }}>ER<span style={{ color: C.red }}>/</span></div>
           )}
 
@@ -546,7 +553,7 @@ function Cover() {
             fontSize: m ? 11 : 13, fontWeight: 700,
             letterSpacing: m ? 2 : 3.5,
             textAlign: "center", lineHeight: 1.35,
-            boxShadow: "0 8px 24px rgba(224,58,62,0.35)",
+            boxShadow: "0 0 40px rgba(224,58,62,0.55), 0 8px 22px rgba(224,58,62,0.35)",
             maxWidth: m ? "calc(100% - 32px)" : "auto",
             whiteSpace: m ? "normal" : "nowrap",
           }}>
@@ -630,6 +637,57 @@ function EditorsLetter() {
 }
 
 // ─── Hardware (HRDW · awards) ───────────────────────────────────
+function AwardCard({ it, i, m }) {
+  const [h, setH] = useState(false);
+  const tc = it.tone === "volt" ? C.volt : it.tone === "red" ? C.red : C.ivory;
+  return (
+    <div
+      onMouseEnter={() => setH(true)}
+      onMouseLeave={() => setH(false)}
+      style={{
+        padding: m ? "26px 20px" : "36px 32px",
+        background: h ? C.panel2 : C.bg,
+        position: "relative", overflow: "hidden",
+        minHeight: m ? 200 : 280,
+        transform: h ? "translateY(-3px)" : "none",
+        transition: "transform .22s ease, background .22s ease",
+      }}
+    >
+      <div style={{
+        position: "absolute", top: m ? -16 : -48, right: m ? -8 : -24,
+        fontFamily: "'Anton', sans-serif",
+        fontSize: m ? 130 : 240, color: "#1c1c20",
+        lineHeight: 0.78, letterSpacing: "-0.04em",
+        pointerEvents: "none", fontWeight: 700,
+      }}>{String(i + 1).padStart(2, "0")}</div>
+      <div style={{ position: "relative", zIndex: 2 }}>
+        <div style={{
+          fontFamily: "'JetBrains Mono', monospace", fontSize: 10,
+          color: tc, letterSpacing: 2.5, marginBottom: m ? 12 : 16,
+        }}>// {it.kicker}</div>
+        <div style={{
+          fontFamily: "'Anton', sans-serif",
+          fontSize: m ? 32 : 54, color: C.ivory,
+          textTransform: "uppercase", lineHeight: 0.92,
+          letterSpacing: "-0.018em",
+        }}>{it.title}</div>
+        <div style={{
+          marginTop: m ? 14 : 20, fontFamily: "Inter, sans-serif",
+          fontSize: m ? 13 : 14, fontWeight: 700, color: tc,
+        }}>{it.who}</div>
+        <div style={{
+          marginTop: 8, fontSize: m ? 12 : 13,
+          color: C.mute, lineHeight: 1.55,
+        }}>{it.detail}</div>
+      </div>
+      <div style={{
+        position: "absolute", left: 0, right: 0, bottom: 0,
+        height: m ? 4 : 3, background: tc,
+      }}/>
+    </div>
+  );
+}
+
 function Hardware() {
   const m = useIsMobile();
   const items = [
@@ -662,50 +720,9 @@ function Hardware() {
       <div style={{
         display: "grid",
         gridTemplateColumns: m ? "1fr" : "repeat(3, 1fr)",
-        gap: 1, background: C.hair, border: `1px solid ${C.hair}`,
+        gap: 1, background: C.hair,
       }}>
-        {items.map((it, i) => {
-          const tc = it.tone === "volt" ? C.volt : it.tone === "red" ? C.red : C.ivory;
-          return (
-            <div key={i} style={{
-              padding: m ? "26px 20px" : "36px 32px", background: C.bg,
-              position: "relative", overflow: "hidden",
-              minHeight: m ? 180 : 280,
-            }}>
-              <div style={{
-                position: "absolute", top: m ? -16 : -34, right: m ? -8 : -18,
-                fontFamily: "'Anton', sans-serif",
-                fontSize: m ? 130 : 240, color: "#1c1c20",
-                lineHeight: 0.78, letterSpacing: "-0.04em",
-                pointerEvents: "none",
-              }}>{String(i + 1).padStart(2, "0")}</div>
-              <div style={{ position: "relative", zIndex: 2 }}>
-                <div style={{
-                  fontFamily: "'JetBrains Mono', monospace", fontSize: 10,
-                  color: tc, letterSpacing: 2.5, marginBottom: m ? 12 : 16,
-                }}>// {it.kicker}</div>
-                <div style={{
-                  fontFamily: "'Anton', sans-serif",
-                  fontSize: m ? 30 : 46, color: C.ivory,
-                  textTransform: "uppercase", lineHeight: 0.92,
-                  letterSpacing: "-0.012em",
-                }}>{it.title}</div>
-                <div style={{
-                  marginTop: m ? 14 : 20, fontFamily: "Inter, sans-serif",
-                  fontSize: m ? 13 : 14, fontWeight: 700, color: tc,
-                }}>{it.who}</div>
-                <div style={{
-                  marginTop: 8, fontSize: m ? 12 : 13,
-                  color: C.mute, lineHeight: 1.55,
-                }}>{it.detail}</div>
-              </div>
-              <div style={{
-                position: "absolute", left: 0, right: 0, bottom: 0,
-                height: 3, background: tc,
-              }}/>
-            </div>
-          );
-        })}
+        {items.map((it, i) => <AwardCard key={i} it={it} i={i} m={m}/>)}
       </div>
     </section>
   );
@@ -873,7 +890,8 @@ function PlayerCard({ p, onClick }) {
           style={{
             width: "100%", height: "100%", objectFit: "contain",
             objectPosition: "center bottom",
-            filter: p.status === "out" ? "grayscale(1) contrast(.95)" : bwFilter(bw),
+            filter: bwFilter(bw),
+            opacity: p.status === "out" ? 0.55 : 1,
           }}
           onError={(e) => { e.target.style.opacity = 0.15; }}
         />
@@ -1085,10 +1103,10 @@ function Tactics({ onPlayer }) {
                   display: "flex", justifyContent: "space-between",
                   marginTop: m ? 6 : 10,
                   fontFamily: "'JetBrains Mono', monospace",
-                  fontSize: m ? 9 : 10, color: C.mute,
+                  fontSize: m ? 8 : 10, color: C.mute,
                   letterSpacing: m ? 1 : 1.4,
                 }}>
-                  {!m && <span>{p.position}</span>}
+                  <span>{p.position}</span>
                   <span style={{ color: C.volt }}>{mpg.toFixed(1)} MPG</span>
                   <span style={{ color: C.ivory }}>{ppg.toFixed(1)} PPG</span>
                 </div>
@@ -1105,7 +1123,7 @@ function Tactics({ onPlayer }) {
           display: "grid",
           gridTemplateColumns: m
             ? "repeat(2, 1fr)"
-            : `repeat(${Math.max(bench.length, 1)}, 1fr)`,
+            : "repeat(auto-fit, minmax(150px, 1fr))",
           gap: 1, background: C.hair, border: `1px solid ${C.hair}`,
         }}>
           {bench.map((p) => (
@@ -1147,14 +1165,14 @@ function Tactics({ onPlayer }) {
       {out.length > 0 && (
         <div style={{ marginTop: 24 }}>
           <Folio code="OUT" kicker="UNAVAILABLE"/>
-          <div style={{ marginTop: 10 }}>
+          <div style={{ marginTop: 10, display: "flex", flexDirection: "column", gap: 8 }}>
             {out.map((p) => (
               <div key={p.id} style={{
                 border: `1px solid ${C.hair}`, borderLeft: `3px solid ${C.red}`,
                 background: C.bg,
                 padding: "14px 16px", display: "grid",
-                gridTemplateColumns: "60px 1fr auto", gap: 14, alignItems: "center",
-                marginBottom: 8,
+                gridTemplateColumns: m ? "44px 1fr" : "60px 1fr auto",
+                gap: 14, alignItems: "center",
               }}>
                 <span style={{
                   fontFamily: "'Anton', sans-serif", fontSize: 32,
@@ -1195,9 +1213,9 @@ function Numbers() {
     ["PACE",                  "99.8",                     "12th"],
     ["3-POINT %",             "38.1%",                    "3rd"],
     ["JJ STAT LINE",          "22.5 / 10.3 / 7.9",        "5th ever 22-10-7"],
-    ["R1 SCORING DIFF",       "−15.3",                    "four losses by 16+"],
-    ["GAME 6 MARGIN",         "−51",                      "T-6th largest in NBA history"],
-    ["HALFTIME DEFICIT, G6",  "−47",                      "largest in playoff history"],
+    ["R1 SCORING DIFF",       "-15.3",                    "four losses by 16+"],
+    ["GAME 6 MARGIN",         "-51",                      "T-6th largest in NBA history"],
+    ["HALFTIME DEFICIT, G6",  "-47",                      "largest in playoff history"],
     ["LOTTERY PICK",          "No. 8",                    "via NOP — most-likely outcome"],
     ["DAYS TO DRAFT",         "34",                       "June 23, 2026"],
     ["DAYS TO FA OPEN",       "42",                       "June 30, 6 PM ET"],
@@ -1231,7 +1249,7 @@ function Numbers() {
               }}>// {b.k}</div>
               <div style={{
                 fontFamily: "'Anton', sans-serif",
-                fontSize: m ? "clamp(44px, 13vw, 68px)" : "clamp(80px, 9vw, 148px)",
+                fontSize: m ? "clamp(50px, 15vw, 76px)" : "clamp(96px, 14vw, 168px)",
                 color: tc, lineHeight: 0.85, letterSpacing: "-0.025em",
                 fontVariantNumeric: "tabular-nums",
               }}>{b.v}</div>
@@ -1402,7 +1420,7 @@ function Ledger() {
       }}>// LAST 12 · REG + R1</div>
       <div style={{
         display: "grid",
-        gridTemplateColumns: m ? "repeat(2, 1fr)" : "repeat(auto-fill, minmax(220px, 1fr))",
+        gridTemplateColumns: m ? "repeat(2, 1fr)" : "repeat(4, 1fr)",
         gap: 1, background: C.hair, border: `1px solid ${C.hair}`,
       }}>
         {last12.map((r, i) => {
@@ -1483,6 +1501,15 @@ function Wire() {
   const sourceFrom = (detail = "") => {
     const mt = detail.match(/\(([^,)]+(?:\/[^,)]+)*)/);
     return mt ? mt[1].split("/").slice(0, 3).join(" / ").trim() : "WIRE · ATL";
+  };
+  const excerpt = (text = "", max = 360) => {
+    if (text.length <= max) return text;
+    const cut = text.slice(0, max);
+    const sentenceEnd = cut.search(/[.!?](?=\s|$)(?=[^.!?]*$)/);
+    const boundary = sentenceEnd > max * 0.55
+      ? sentenceEnd + 1
+      : Math.max(cut.lastIndexOf(" "), max * 0.85);
+    return cut.slice(0, boundary).trimEnd() + "…";
   };
   const ages = ["2H", "3H", "4H", "5H", "6H", "8H", "10H", "12H", "14H", "16H", "18H", "20H"];
 
@@ -1595,7 +1622,7 @@ function Wire() {
             <p style={{
               marginTop: 10, fontFamily: "Inter, sans-serif",
               fontSize: m ? 12 : 13, color: "#a8a8b0", lineHeight: 1.55,
-            }}>{(n.detail || "").slice(0, 360)}{(n.detail || "").length > 360 ? "…" : ""}</p>
+            }}>{excerpt(n.detail || "", 360)}</p>
             <div style={{
               marginTop: 12, fontFamily: "'JetBrains Mono', monospace",
               fontSize: 10, color: C.volt, letterSpacing: 1.8,
@@ -1911,7 +1938,7 @@ function MagazineApp() {
 
       <style>{`
         html { scroll-behavior: smooth; }
-        section[id] { scroll-margin-top: 60px; }
+        section[id] { scroll-margin-top: 64px; }
         @media (prefers-reduced-motion: reduce) {
           html { scroll-behavior: auto; }
         }
