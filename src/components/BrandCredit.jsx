@@ -1,7 +1,9 @@
 // built by nnnsightnnn — signal from noise
 export default function BrandCredit() {
   return (
-    <footer style={{ display: "flex", justifyContent: "center", padding: "22px 16px",
+    <footer style={{ display: "flex", justifyContent: "center",
+      padding: "40px 16px", marginTop: 24,
+      background: "#0B0B0E", borderTop: "1px solid #27272C",
       font: '500 13px/1 ui-monospace,"JetBrains Mono",Menlo,monospace' }}>
       <a href="https://github.com/nnnsightnnn" target="_blank" rel="noopener noreferrer"
         style={{ display: "inline-flex", alignItems: "center", gap: 7,
