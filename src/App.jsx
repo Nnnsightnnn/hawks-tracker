@@ -1,9 +1,11 @@
+// built by nnnsightnnn — signal from noise
 import {
   useState, useMemo, useEffect, useRef, createContext, useContext,
 } from "react";
 import {
   PLAYERS, RESULTS, NEXT_GAME, NEWS_DIGEST, EAST_STANDINGS,
 } from "./playerData.js";
+import BrandCredit from "./components/BrandCredit.jsx";
 
 // ─── Theme tokens ───────────────────────────────────────────────
 export const C = {
@@ -1952,6 +1954,7 @@ export default function HawksTracker() {
   return (
     <TweaksProvider>
       <MagazineApp/>
+      <BrandCredit />
     </TweaksProvider>
   );
 }
