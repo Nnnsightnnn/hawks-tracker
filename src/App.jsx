@@ -4,6 +4,9 @@ import {
 } from "react";
 import {
   PLAYERS, RESULTS, NEXT_GAME, NEWS_DIGEST, EAST_STANDINGS,
+  ISSUE, COVER_TOC, EDITORS_LETTER, HARDWARE,
+  NUMBERS_HERO, NUMBERS_LEDGER, KEY_DATES, PULL_QUOTES, BETS,
+  SCENARIOS, DRAFT_BOARD, TRADE_THREADS, GAME_LOGS,
 } from "./playerData.js";
 import BrandCredit from "./components/BrandCredit.jsx";
 
@@ -27,11 +30,15 @@ const SECTIONS = [
   { code: "IDX",  id: "idx",  page:  4, label: "INDEX" },
   { code: "PRE",  id: "pre",  page:  6, label: "PREVIEW" },
   { code: "HRDW", id: "hrdw", page:  8, label: "HARDWARE" },
+  { code: "CAL",  id: "cal",  page: 12, label: "CALENDAR" },
   { code: "STRY", id: "stry", page: 18, label: "STORY" },
+  { code: "DRFT", id: "drft", page: 28, label: "DRAFT" },
   { code: "PORT", id: "port", page: 32, label: "PORTFOLIO" },
   { code: "TACT", id: "tact", page: 46, label: "TACTICS" },
+  { code: "PATH", id: "path", page: 50, label: "PATHS" },
   { code: "NUM",  id: "num",  page: 54, label: "NUMBERS" },
   { code: "LDGR", id: "ldgr", page: 62, label: "LEDGER" },
+  { code: "THRD", id: "thrd", page: 64, label: "THREADS" },
   { code: "WIRE", id: "wire", page: 68, label: "WIRE" },
   { code: "BACK", id: "back", page: 80, label: "BACK" },
 ];
@@ -56,6 +63,33 @@ function countryName(p) {
 function countryShort(p) {
   const n = countryName(p);
   return COUNTRY_SHORT[n] || n.slice(0, 3).toUpperCase();
+}
+
+// ─── Date math (all dates are local Atlanta, ET) ────────────────
+function daysUntil(targetIso, fromIso = ISSUE.date) {
+  const a = new Date(fromIso.slice(0, 10) + "T12:00:00");
+  const b = new Date(targetIso.slice(0, 10) + "T12:00:00");
+  return Math.round((b - a) / 86400000);
+}
+function keyDate(id) { return KEY_DATES.find((k) => k.id === id); }
+function resolveTokens(str) {
+  // Resolves "{DAYS:fa-open}" → "32" using KEY_DATES and ISSUE.date
+  return str.replace(/\{DAYS:([a-z0-9-]+)\}/g, (_, id) => {
+    const k = keyDate(id);
+    return k ? String(daysUntil(k.date)) : "?";
+  });
+}
+
+// ─── Token renderer (for headlines / pull quotes) ────────────────
+// Accepts an array of strings | {red: "x"} | {volt: "x"} tokens, returns React nodes.
+function Tokens({ tokens }) {
+  if (!Array.isArray(tokens)) return tokens;
+  return tokens.map((t, i) => {
+    if (typeof t === "string") return <span key={i}>{t}</span>;
+    if (t && t.red)  return <span key={i} style={{ color: C.red  }}>{t.red}</span>;
+    if (t && t.volt) return <span key={i} style={{ color: C.volt }}>{t.volt}</span>;
+    return null;
+  });
 }
 
 // ─── Hooks ──────────────────────────────────────────────────────
@@ -236,11 +270,8 @@ function Masthead() {
         {!m && <span style={{ color: C.mute, fontWeight: 400, marginLeft: 12 }}>· THE MAGAZINE</span>}
       </div>
       {!m && (
-        <div style={{ textAlign: "center" }}>
-          VOL <span style={{ color: C.ivory }}>XXVI</span>
-          {" "}· ISSUE NO. <span style={{ color: C.ivory }}>06</span>
-          {" "}· MAY <span style={{ color: C.ivory }}>2026</span>
-          {" "}· ATL · USA
+        <div style={{ textAlign: "center", color: C.mute }}>
+          <span style={{ color: C.ivory }}>{ISSUE.mastheadLine}</span>
         </div>
       )}
       <div style={{ textAlign: "right" }}>
@@ -306,7 +337,7 @@ function LeftRail({ active }) {
         color: C.mute, letterSpacing: 3,
         alignSelf: "center", padding: "8px 0",
       }}>
-        ISSUE 06 · MAY 26
+        {ISSUE.railLabel}
       </div>
     </aside>
   );
@@ -330,7 +361,7 @@ function RightRail() {
         textTransform: "uppercase",
       }}>
         The <span style={{ color: C.ivory }}>Official</span> Hawks Tracker Magazine
-        {" "}· Atlanta · May 26
+        {" "}· {ISSUE.dateline}
       </div>
     </aside>
   );
@@ -431,15 +462,8 @@ function TweaksPanel() {
 function Cover() {
   const m = useIsMobile();
   const { bw } = useTweaks();
-  const star = PLAYERS.find((p) => p.id === 1) || PLAYERS[0];
-
-  const toc = [
-    { kicker: "FEATURE",   page: 18, t: "Jalen Johnson on the night the season ended" },
-    { kicker: "PORTFOLIO", page: 32, t: "The Fifteen — A Roster, in Portraits" },
-    { kicker: "REPORT",    page: 46, t: "MIP No. 2 — Alexander-Walker's 251 threes" },
-    { kicker: "COLUMN",    page: 54, t: "Why Atlanta should keep CJ McCollum" },
-    { kicker: "WIRE",      page: 62, t: "Saleh-to-Philly · Day 8 · The League bets no" },
-  ];
+  const star = PLAYERS.find((p) => p.id === ISSUE.coverStarId) || PLAYERS[0];
+  const toc = COVER_TOC;
 
   return (
     <section id="cov" style={{
@@ -466,9 +490,7 @@ function Cover() {
           <div style={{ height: 1, background: C.hair, marginBottom: m ? 18 : 26 }}/>
 
           {toc.map((e, i) => (
-            <a key={e.page} href={`#${
-              ["stry", "port", "hrdw", "stry", "wire"][i] || "stry"
-            }`} style={{
+            <a key={e.sectionId + i} href={`#${e.sectionId}`} style={{
               display: "block", textDecoration: "none",
               padding: m ? "12px 0" : "16px 0",
               borderBottom: i < toc.length - 1 ? `1px solid ${C.hair}80` : "none",
@@ -488,7 +510,7 @@ function Cover() {
                 letterSpacing: "-0.015em",
                 display: "-webkit-box", WebkitBoxOrient: "vertical",
                 WebkitLineClamp: 3, overflow: "hidden",
-              }}>{e.t}</div>
+              }}>{e.title}</div>
             </a>
           ))}
         </div>
@@ -559,7 +581,7 @@ function Cover() {
             maxWidth: m ? "calc(100% - 32px)" : "auto",
             whiteSpace: m ? "normal" : "nowrap",
           }}>
-            EXCLUSIVE · COVER STAR · JALEN JOHNSON
+            {ISSUE.coverRibbon}
           </div>
 
           {/* corner meta */}
@@ -568,8 +590,8 @@ function Cover() {
             fontFamily: "'JetBrains Mono', monospace", fontSize: 9,
             color: C.mute, letterSpacing: 2, zIndex: 6, textAlign: "right",
           }}>
-            <span style={{ color: C.red }}>●</span> SEASON OVER
-            <br/>ELIMINATED · R1 · 2–4 NYK
+            <span style={{ color: C.red }}>●</span> {ISSUE.coverStatusKicker}
+            <br/>{resolveTokens(ISSUE.coverStatusLine)}
           </div>
         </div>
       </div>
@@ -580,6 +602,9 @@ function Cover() {
 // ─── Editor's Letter (PRE) ──────────────────────────────────────
 function EditorsLetter() {
   const m = useIsMobile();
+  const body = EDITORS_LETTER.body || "";
+  const first = body.charAt(0) || "F";
+  const rest = body.slice(1);
   return (
     <section id="pre" style={{
       padding: m ? "44px 16px" : "72px 56px",
@@ -598,7 +623,9 @@ function EditorsLetter() {
             fontSize: m ? "clamp(42px, 12vw, 60px)" : "clamp(64px, 7vw, 130px)",
             color: C.ivory, textTransform: "uppercase",
             lineHeight: 0.85, margin: 0, letterSpacing: "-0.022em",
-          }}>The work<br/>doesn't end<br/>at <span style={{ color: C.red }}>89</span>.</h2>
+          }}>
+            <Tokens tokens={EDITORS_LETTER.headline}/>
+          </h2>
         </div>
         <div style={{
           paddingTop: m ? 0 : 12,
@@ -615,22 +642,16 @@ function EditorsLetter() {
               fontSize: m ? 56 : 84, lineHeight: 0.82,
               color: C.red, marginRight: 10, marginTop: 4,
               letterSpacing: "-0.02em",
-            }}>F</span>
-            orty-six wins. A Southeast banner. Back-to-back Most Improved
-            Players. And then — eighty-nine. The final score of the worst
-            night, set against the franchise's loudest spring in a decade.
-            This issue holds both at once: the dossier on what just
-            happened, and the road map for what's already underway. Lottery
-            slot at No. 8. McCollum back. Snyder extended. Saleh staying.
+            }}>{first}</span>
+            {rest}
           </p>
           <div style={{
             marginTop: 22, display: "flex", gap: 18,
             fontFamily: "'JetBrains Mono', monospace", fontSize: 10,
             color: C.mute, letterSpacing: 2, flexWrap: "wrap",
           }}>
-            <span style={{ color: C.volt }}>— THE EDITORS</span>
-            <span>·</span><span>ATLANTA</span>
-            <span>·</span><span>MAY 20, 2026</span>
+            <span style={{ color: C.volt }}>{EDITORS_LETTER.byline}</span>
+            <span>·</span><span>{ISSUE.dateline}</span>
           </div>
         </div>
       </div>
@@ -692,26 +713,8 @@ function AwardCard({ it, i, m }) {
 
 function Hardware() {
   const m = useIsMobile();
-  const items = [
-    {
-      kicker: "2025–26 NBA", title: "MOST IMPROVED PLAYER",
-      who: "Nickeil Alexander-Walker",
-      detail: "Back-to-back MIPs for the franchise · 251 threes (franchise record)",
-      tone: "volt",
-    },
-    {
-      kicker: "SOUTHEAST", title: "DIVISION CHAMPS",
-      who: "Atlanta Hawks · 46–36",
-      detail: "First SE crown since 2014–15",
-      tone: "red",
-    },
-    {
-      kicker: "BREAKOUT", title: "JJ ALL-STAR LEAP",
-      who: "Jalen Johnson · 22.5 / 10.3 / 7.9",
-      detail: "First All-Star nod · ESPN's Bontemps had him 2nd-team All-NBA",
-      tone: "ivory",
-    },
-  ];
+  const items = HARDWARE;
+  const cols = m ? "1fr" : items.length >= 4 ? "repeat(4, 1fr)" : "repeat(3, 1fr)";
   return (
     <section id="hrdw" style={{
       padding: m ? "44px 16px" : "72px 56px",
@@ -721,7 +724,7 @@ function Hardware() {
         title={<>BRIGHT<br/>SPOTS<span style={{ color: C.volt }}>.</span></>}/>
       <div style={{
         display: "grid",
-        gridTemplateColumns: m ? "1fr" : "repeat(3, 1fr)",
+        gridTemplateColumns: cols,
         gap: 1, background: C.hair,
       }}>
         {items.map((it, i) => <AwardCard key={i} it={it} i={i} m={m}/>)}
@@ -737,6 +740,7 @@ function Story() {
   const body = (lead.detail || "").trim();
   const first = body.charAt(0) || "T";
   const rest = body.slice(1);
+  const pullQuote = PULL_QUOTES.find((q) => q.category === lead.category) || PULL_QUOTES[0];
 
   return (
     <section id="stry" style={{
@@ -766,8 +770,7 @@ function Story() {
           color: C.mute, letterSpacing: 2,
         }}>
           <span>BY <span style={{ color: C.ivory }}>THE EDITORS</span></span>
-          <span>·</span><span>ATLANTA</span>
-          <span>·</span><span>MAY 20, 2026</span>
+          <span>·</span><span>{ISSUE.dateline}</span>
           <span>·</span><span style={{ color: C.volt }}>{(lead.category || "FEATURE").toUpperCase()}</span>
         </div>
       </div>
@@ -811,12 +814,11 @@ function Story() {
           color: C.ivory, textTransform: "uppercase",
           lineHeight: 0.98, letterSpacing: "-0.01em",
         }}>
-          "I don't really have any words for that.
-          {" "}<span style={{ color: C.red }}>Obviously, it sucks.</span>"
+          "<Tokens tokens={pullQuote.text}/>"
           <div style={{
             marginTop: 14, fontFamily: "'JetBrains Mono', monospace",
             fontSize: 11, color: C.mute, letterSpacing: 2,
-          }}>— JALEN JOHNSON · GAME 6 · APRIL 30</div>
+          }}>— {pullQuote.who} · {pullQuote.when}</div>
         </blockquote>
       </div>
     </section>
@@ -1203,25 +1205,19 @@ function Tactics({ onPlayer }) {
 // ─── Numbers (NUM · season ledger) ──────────────────────────────
 function Numbers() {
   const m = useIsMobile();
-  const big = [
-    { k: "RECORD",     v: "46–36",  tone: "ivory" },
-    { k: "SEED · E",   v: "6",      tone: "red" },
-    { k: "MIPs",       v: "2",      tone: "volt", sub: "back to back" },
-  ];
-  const ledger = [
-    ["MOST 3PM, SEASON",      "251 · Alexander-Walker",  "franchise record"],
-    ["OFFENSIVE RATING",      "118.4",                    "7th league-wide"],
-    ["DEFENSIVE RATING",      "114.2",                    "14th"],
-    ["PACE",                  "99.8",                     "12th"],
-    ["3-POINT %",             "38.1%",                    "3rd"],
-    ["JJ STAT LINE",          "22.5 / 10.3 / 7.9",        "5th ever 22-10-7"],
-    ["R1 SCORING DIFF",       "-15.3",                    "four losses by 16+"],
-    ["GAME 6 MARGIN",         "-51",                      "T-6th largest in NBA history"],
-    ["HALFTIME DEFICIT, G6",  "-47",                      "largest in playoff history"],
-    ["LOTTERY PICK",          "No. 8",                    "via NOP — most-likely outcome"],
-    ["DAYS TO DRAFT",         "34",                       "June 23, 2026"],
-    ["DAYS TO FA OPEN",       "42",                       "June 30, 6 PM ET"],
-  ];
+  const big = NUMBERS_HERO;
+  // Compute live countdown rows from KEY_DATES
+  const fmt = (k) => new Date(k.date.slice(0, 10) + "T12:00:00")
+    .toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" });
+  const dateRows = KEY_DATES
+    .filter((k) => daysUntil(k.date) >= 0)
+    .slice(0, 4)
+    .map((k) => [
+      `DAYS TO ${k.short}`,
+      String(daysUntil(k.date)),
+      fmt(k),
+    ]);
+  const ledger = [...NUMBERS_LEDGER, ...dateRows];
 
   return (
     <section id="num" style={{
@@ -1526,6 +1522,51 @@ function Wire() {
         title={<>News<span style={{ color: C.red }}>/</span>Feed</>}
       />
 
+      {/* Editor's bets strip */}
+      <div style={{
+        marginBottom: m ? 24 : 36, paddingTop: m ? 8 : 14,
+        borderTop: `1px solid ${C.hair}`, borderBottom: `1px solid ${C.hair}`,
+        padding: m ? "14px 0" : "18px 0",
+      }}>
+        <div style={{
+          fontFamily: "'JetBrains Mono', monospace", fontSize: 11,
+          color: C.volt, letterSpacing: 2.5, marginBottom: m ? 10 : 14,
+        }}>// EDITOR'S BETS · OFFSEASON BOARD</div>
+        <div style={{
+          display: "grid",
+          gridTemplateColumns: m ? "1fr" : "repeat(auto-fit, minmax(260px, 1fr))",
+          gap: m ? 10 : 14,
+        }}>
+          {BETS.map((b, i) => (
+            <div key={i} style={{
+              padding: m ? "10px 12px" : "12px 14px",
+              border: `1px solid ${C.hair}`, background: C.bg,
+            }}>
+              <div style={{
+                display: "flex", justifyContent: "space-between", alignItems: "baseline",
+                gap: 10, marginBottom: 8,
+              }}>
+                <span style={{
+                  fontFamily: "Inter, sans-serif", fontSize: m ? 12 : 13,
+                  color: C.ivory, fontWeight: 600, lineHeight: 1.3,
+                }}>{b.take}</span>
+                <span style={{
+                  fontFamily: "'JetBrains Mono', monospace", fontSize: 12,
+                  color: C.volt, fontWeight: 700, flexShrink: 0,
+                  fontVariantNumeric: "tabular-nums",
+                }}>{b.confidence}%</span>
+              </div>
+              <div style={{ height: 3, background: C.hair, position: "relative" }}>
+                <div style={{
+                  position: "absolute", left: 0, top: 0, bottom: 0,
+                  width: `${b.confidence}%`, background: C.volt,
+                }}/>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
       <article style={{
         paddingTop: m ? 16 : 28, borderTop: `1px solid ${C.hair}`,
         display: "grid",
@@ -1538,9 +1579,7 @@ function Wire() {
             fontSize: 11, color: C.mute, letterSpacing: 2, marginBottom: 18,
             flexWrap: "wrap",
           }}>
-            <span style={{ color: C.red }}>ATLANTA</span>
-            <span>—</span>
-            <span>MAY 20, 2026</span>
+            <span style={{ color: C.red }}>{ISSUE.dateline}</span>
             <span>—</span>
             <span>{(lead.category || "GENERAL").toUpperCase()}</span>
           </div>
@@ -1584,11 +1623,11 @@ function Wire() {
             fontFamily: "'Anton', sans-serif",
             fontSize: m ? 32 : 42, color: C.ivory, lineHeight: 1,
             textTransform: "uppercase", letterSpacing: "-0.005em",
-          }}>"OBVIOUSLY,<br/>IT <span style={{ color: C.red }}>SUCKS</span>."</div>
+          }}>"<Tokens tokens={(PULL_QUOTES.find(q => q.category === lead.category) || PULL_QUOTES[0]).text}/>"</div>
           <div style={{
             marginTop: 18, fontFamily: "Inter, sans-serif", fontSize: 13,
             color: C.mute, lineHeight: 1.5,
-          }}>— Jalen Johnson, postgame, after the 51-point closeout that ended the Hawks' season.</div>
+          }}>— {(PULL_QUOTES.find(q => q.category === lead.category) || PULL_QUOTES[0]).who}, {(PULL_QUOTES.find(q => q.category === lead.category) || PULL_QUOTES[0]).when.toLowerCase()}</div>
         </div>
       </article>
 
@@ -1668,8 +1707,7 @@ function BackPage() {
             display, <span style={{ color: C.ivory }}>Inter</span> for body, and
             {" "}<span style={{ color: C.ivory }}>JetBrains Mono</span> for the
             ledger marks and folios. Black field, ivory ink, red and volt for
-            the urgent and the unexpected. Next issue: after the lottery is
-            spent and the draft is on the board.
+            the urgent and the unexpected. {ISSUE.backTagline}
           </p>
           <div style={{
             marginTop: m ? 22 : 32,
@@ -1685,8 +1723,8 @@ function BackPage() {
             </div>
             <div>
               <div style={{ color: C.volt, marginBottom: 4 }}>// FREQUENCY</div>
-              <div>VOL XXVI · ISSUE 06</div>
-              <div>MAY 2026 · OFFSEASON</div>
+              <div>VOL XXVI · ISSUE {String(ISSUE.number).padStart(2, "0")}</div>
+              <div>{ISSUE.dateline.split(" · ")[1] || "MAY 2026"} · OFFSEASON</div>
             </div>
             <div>
               <div style={{ color: C.volt, marginBottom: 4 }}>// NEXT UP</div>
@@ -1876,6 +1914,77 @@ function PlayerModal({ id, onClose }) {
               }}>{p.plusMinus >= 0 ? "+" : ""}{p.plusMinus.toFixed(1)}</span></span>
             </div>
 
+            {/* Last-10 game-log sparkline + last-5 table */}
+            {GAME_LOGS[p.id] && GAME_LOGS[p.id].length > 0 && (() => {
+              const log = GAME_LOGS[p.id];
+              const last10 = log.slice(0, 10).slice().reverse(); // oldest→newest, left→right
+              const maxPts = Math.max(28, ...last10.map((g) => g.pts));
+              const last5 = log.slice(0, 5);
+              return (
+                <div style={{ marginTop: 24 }}>
+                  <div style={{
+                    display: "flex", justifyContent: "space-between", alignItems: "baseline",
+                    fontFamily: "'JetBrains Mono', monospace", fontSize: 10,
+                    color: C.mute, letterSpacing: 2, marginBottom: 10,
+                  }}>
+                    <span>// LAST 10 · PTS</span>
+                    <span>{last10[0]?.date.slice(5)} → {last10[last10.length - 1]?.date.slice(5)}</span>
+                  </div>
+                  <div style={{
+                    display: "grid",
+                    gridTemplateColumns: `repeat(${last10.length}, 1fr)`,
+                    gap: 4, alignItems: "flex-end",
+                    height: 64,
+                  }}>
+                    {last10.map((g, i) => (
+                      <div key={i} title={`${g.date} ${g.home ? "vs" : "at"} ${g.opp} · ${g.pts}p ${g.reb}r ${g.ast}a`} style={{
+                        height: `${Math.max(4, (g.pts / maxPts) * 100)}%`,
+                        background: g.result === "W" ? C.volt : C.red,
+                        opacity: 0.85,
+                      }}/>
+                    ))}
+                  </div>
+                  <div style={{
+                    marginTop: 16, border: `1px solid ${C.hair}`,
+                  }}>
+                    <div style={{
+                      display: "grid",
+                      gridTemplateColumns: "auto 1fr auto auto auto auto",
+                      gap: 10, padding: "8px 12px",
+                      background: C.panel,
+                      fontFamily: "'JetBrains Mono', monospace", fontSize: 9,
+                      color: C.mute, letterSpacing: 1.6,
+                    }}>
+                      <span>W/L</span><span>OPP</span>
+                      <span style={{ textAlign: "right" }}>MIN</span>
+                      <span style={{ textAlign: "right" }}>PTS</span>
+                      <span style={{ textAlign: "right" }}>3P%</span>
+                      <span style={{ textAlign: "right" }}>+/-</span>
+                    </div>
+                    {last5.map((g, i) => (
+                      <div key={i} style={{
+                        display: "grid",
+                        gridTemplateColumns: "auto 1fr auto auto auto auto",
+                        gap: 10, padding: "9px 12px",
+                        borderTop: `1px solid ${C.hair}`,
+                        fontFamily: "'JetBrains Mono', monospace", fontSize: 11,
+                        color: C.ivory, fontVariantNumeric: "tabular-nums",
+                      }}>
+                        <span style={{ color: g.result === "W" ? C.volt : C.red, fontWeight: 700 }}>{g.result}</span>
+                        <span style={{ color: C.ivory }}>{g.home ? "vs" : "@"} {g.opp}<span style={{ color: C.mute }}> · {g.date.slice(5)}</span></span>
+                        <span style={{ textAlign: "right" }}>{g.min}</span>
+                        <span style={{ textAlign: "right", color: C.volt }}>{g.pts}</span>
+                        <span style={{ textAlign: "right" }}>{g.threePct.toFixed(0)}</span>
+                        <span style={{ textAlign: "right", color: g.plusMinus >= 0 ? C.volt : C.red }}>
+                          {g.plusMinus >= 0 ? "+" : ""}{g.plusMinus}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              );
+            })()}
+
             {p.recentNotes && (
               <div style={{
                 marginTop: 24, padding: "16px 18px",
@@ -1889,6 +1998,480 @@ function PlayerModal({ id, onClose }) {
         </div>
       </div>
     </div>
+  );
+}
+
+// ─── Calendar (CAL · offseason timeline) ────────────────────────
+function Calendar() {
+  const m = useIsMobile();
+  // Time window: today → moratorium end (or last date), padded by ~5 days each side
+  const sorted = [...KEY_DATES].sort((a, b) => a.date.localeCompare(b.date));
+  const start = new Date(ISSUE.date.slice(0, 10) + "T12:00:00");
+  start.setDate(start.getDate() - 3);
+  const end = new Date(sorted[sorted.length - 1].date.slice(0, 10) + "T12:00:00");
+  end.setDate(end.getDate() + 5);
+  const span = (end - start) / 86400000;
+  const pos = (iso) => {
+    const d = new Date(iso.slice(0, 10) + "T12:00:00");
+    return ((d - start) / 86400000) / span;
+  };
+  const todayPos = pos(ISSUE.date);
+
+  const toneFor = (kind) => kind === "DEADLINE" ? C.red : kind === "DECISION" ? C.ivory : C.volt;
+  const [hover, setHover] = useState(null);
+  const focused = hover ? sorted.find((k) => k.id === hover) : null;
+
+  return (
+    <section id="cal" style={{
+      padding: m ? "44px 16px" : "72px 56px",
+      borderBottom: `1px solid ${C.hair}`, background: C.bg,
+    }}>
+      <SectionHeader code="CAL" page={12} kicker="THE JUNE GAUNTLET · OFFSEASON"
+        title={<>Six dates<span style={{ color: C.red }}>,</span><br/>one offseason<span style={{ color: C.volt }}>.</span></>}/>
+
+      {m ? (
+        // Mobile: vertical stack
+        <div style={{ display: "flex", flexDirection: "column", gap: 1, background: C.hair, border: `1px solid ${C.hair}` }}>
+          {sorted.map((k) => {
+            const d = daysUntil(k.date);
+            const past = d < 0;
+            const tone = toneFor(k.kind);
+            return (
+              <div key={k.id} style={{
+                background: C.bg, padding: "14px 14px",
+                borderLeft: `3px solid ${past ? C.mute : tone}`,
+                opacity: past ? 0.55 : 1,
+              }}>
+                <div style={{
+                  display: "flex", justifyContent: "space-between", alignItems: "baseline",
+                  marginBottom: 6,
+                }}>
+                  <span style={{
+                    fontFamily: "'JetBrains Mono', monospace", fontSize: 10,
+                    color: tone, letterSpacing: 2, fontWeight: 700,
+                  }}>{k.kind} · {k.short}</span>
+                  <span style={{
+                    fontFamily: "'JetBrains Mono', monospace", fontSize: 11,
+                    color: past ? C.mute : C.ivory, letterSpacing: 1.4,
+                    fontVariantNumeric: "tabular-nums",
+                  }}>{past ? "PAST" : `IN ${d}D`}</span>
+                </div>
+                <div style={{
+                  fontFamily: "'Anton', sans-serif", fontSize: 20, color: C.ivory,
+                  textTransform: "uppercase", lineHeight: 1, letterSpacing: "0.01em",
+                }}>{k.label}</div>
+                <div style={{
+                  marginTop: 8, fontSize: 12, color: "#a8a8b0",
+                  lineHeight: 1.5, fontFamily: "Inter, sans-serif",
+                }}>{k.hawksAngle}</div>
+              </div>
+            );
+          })}
+        </div>
+      ) : (
+        // Desktop: horizontal timeline
+        <div>
+          <div style={{
+            position: "relative", height: 220, marginTop: 14,
+            background: C.panel, border: `1px solid ${C.hair}`,
+          }}>
+            {/* axis */}
+            <div style={{
+              position: "absolute", left: 24, right: 24, top: "55%",
+              height: 1, background: C.hair,
+            }}/>
+            {/* today indicator */}
+            <div style={{
+              position: "absolute",
+              left: `calc(24px + ${todayPos * 100}% - ${todayPos * 48}px)`,
+              top: 16, bottom: 16, width: 2, background: C.volt, opacity: 0.7,
+            }}/>
+            <div style={{
+              position: "absolute",
+              left: `calc(24px + ${todayPos * 100}% - ${todayPos * 48}px)`,
+              top: 4, transform: "translateX(-50%)",
+              fontFamily: "'JetBrains Mono', monospace", fontSize: 10,
+              color: C.volt, letterSpacing: 1.8, fontWeight: 700,
+            }}>TODAY</div>
+
+            {sorted.map((k) => {
+              const p = pos(k.date);
+              const d = daysUntil(k.date);
+              const past = d < 0;
+              const tone = toneFor(k.kind);
+              const isFocus = hover === k.id;
+              const big = k.primary;
+              return (
+                <button key={k.id}
+                  onMouseEnter={() => setHover(k.id)}
+                  onMouseLeave={() => setHover((h) => h === k.id ? null : h)}
+                  style={{
+                    position: "absolute",
+                    left: `calc(24px + ${p * 100}% - ${p * 48}px)`,
+                    top: "55%", transform: "translate(-50%, -50%)",
+                    width: big ? 18 : 12, height: big ? 18 : 12,
+                    background: past ? C.mute : tone, border: "none",
+                    cursor: "pointer", padding: 0,
+                    boxShadow: isFocus ? `0 0 0 4px ${tone}33` : "none",
+                    transition: "box-shadow .15s",
+                  }}/>
+              );
+            })}
+            {sorted.map((k) => {
+              const p = pos(k.date);
+              const above = sorted.indexOf(k) % 2 === 0;
+              const tone = toneFor(k.kind);
+              const past = daysUntil(k.date) < 0;
+              return (
+                <div key={k.id + "-label"} style={{
+                  position: "absolute",
+                  left: `calc(24px + ${p * 100}% - ${p * 48}px)`,
+                  transform: "translateX(-50%)",
+                  top: above ? "16%" : "70%",
+                  textAlign: "center",
+                  pointerEvents: "none",
+                  opacity: past ? 0.55 : 1,
+                }}>
+                  <div style={{
+                    fontFamily: "'JetBrains Mono', monospace", fontSize: 9,
+                    color: tone, letterSpacing: 1.8, fontWeight: 700,
+                  }}>{k.short}</div>
+                  <div style={{
+                    fontFamily: "'JetBrains Mono', monospace", fontSize: 10,
+                    color: past ? C.mute : C.ivory, marginTop: 4,
+                    fontVariantNumeric: "tabular-nums",
+                  }}>{past ? "PAST" : `IN ${daysUntil(k.date)}D`}</div>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* hover detail panel */}
+          <div style={{
+            marginTop: 18, padding: "18px 20px",
+            border: `1px solid ${C.hair}`,
+            background: C.panel, minHeight: 96,
+          }}>
+            {focused ? (
+              <>
+                <div style={{
+                  fontFamily: "'JetBrains Mono', monospace", fontSize: 10,
+                  color: toneFor(focused.kind), letterSpacing: 2, fontWeight: 700,
+                  marginBottom: 8,
+                }}>// {focused.kind} · {focused.short}</div>
+                <div style={{
+                  fontFamily: "'Anton', sans-serif", fontSize: 32, color: C.ivory,
+                  textTransform: "uppercase", lineHeight: 1, letterSpacing: "-0.005em",
+                }}>{focused.label}</div>
+                <div style={{
+                  marginTop: 10, fontSize: 14, color: "#c5c5cc",
+                  lineHeight: 1.55, fontFamily: "Inter, sans-serif",
+                }}>{focused.hawksAngle}</div>
+              </>
+            ) : (
+              <div style={{
+                fontSize: 12, color: C.mute, letterSpacing: 1.5,
+                fontFamily: "'JetBrains Mono', monospace",
+              }}>// HOVER A MARKER FOR THE HAWKS ANGLE</div>
+            )}
+          </div>
+        </div>
+      )}
+    </section>
+  );
+}
+
+// ─── Draft Board (DRFT · prospects at #8) ───────────────────────
+function DraftBoard() {
+  const m = useIsMobile();
+  return (
+    <section id="drft" style={{
+      padding: m ? "44px 16px" : "72px 56px",
+      borderBottom: `1px solid ${C.hair}`, background: C.bg,
+    }}>
+      <SectionHeader code="DRFT" page={28} kicker="BOARD · ATL @ NO. 8"
+        title={<>Eight on the<br/>clock<span style={{ color: C.volt }}>.</span></>}/>
+      <div style={{ border: `1px solid ${C.hair}`, background: C.panel }}>
+        {DRAFT_BOARD.map((p, i) => (
+          <div key={p.rank} style={{
+            display: "grid",
+            gridTemplateColumns: m ? "44px 1fr" : "72px 1.4fr 1.4fr auto",
+            gap: m ? 12 : 24, alignItems: "center",
+            padding: m ? "16px 14px" : "20px 24px",
+            borderBottom: i < DRAFT_BOARD.length - 1 ? `1px solid ${C.hair}` : "none",
+            borderLeft: p.hawks_consensus ? `3px solid ${C.volt}` : "3px solid transparent",
+          }}>
+            <span style={{
+              fontFamily: "'Anton', sans-serif",
+              fontSize: m ? 32 : 56, color: p.hawks_consensus ? C.volt : C.mute,
+              lineHeight: 1, letterSpacing: "-0.02em",
+            }}>{String(p.rank).padStart(2, "0")}</span>
+            <div>
+              <div style={{
+                fontFamily: "'Anton', sans-serif", fontSize: m ? 20 : 28,
+                color: C.ivory, textTransform: "uppercase",
+                lineHeight: 1, letterSpacing: "-0.005em",
+              }}>{p.name}</div>
+              <div style={{
+                marginTop: 6, display: "flex", gap: m ? 8 : 14, flexWrap: "wrap",
+                fontFamily: "'JetBrains Mono', monospace", fontSize: 10,
+                color: C.mute, letterSpacing: 1.5,
+              }}>
+                <span style={{ color: C.red }}>{p.pos}</span>
+                <span>· {p.school}</span>
+                <span>· {p.ht} · AGE {p.age}</span>
+              </div>
+            </div>
+            {!m && (
+              <div style={{
+                fontSize: 13, color: "#c5c5cc", lineHeight: 1.5,
+                fontFamily: "Inter, sans-serif",
+              }}>{p.fit}</div>
+            )}
+            {!m && (
+              <div style={{
+                fontFamily: "'JetBrains Mono', monospace", fontSize: 10,
+                color: p.hawks_consensus ? C.volt : C.mute, letterSpacing: 1.8,
+                textAlign: "right", maxWidth: 160,
+              }}>{p.mock}</div>
+            )}
+            {m && (
+              <div style={{ gridColumn: "1 / -1", marginTop: 10 }}>
+                <div style={{
+                  fontSize: 12, color: "#c5c5cc", lineHeight: 1.5,
+                  fontFamily: "Inter, sans-serif",
+                }}>{p.fit}</div>
+                <div style={{
+                  marginTop: 6, fontFamily: "'JetBrains Mono', monospace",
+                  fontSize: 9, color: p.hawks_consensus ? C.volt : C.mute,
+                  letterSpacing: 1.6,
+                }}>// {p.mock}</div>
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+// ─── Scenarios (PATH · 4 offseason cap paths) ───────────────────
+function Scenarios() {
+  const m = useIsMobile();
+  return (
+    <section id="path" style={{
+      padding: m ? "44px 16px" : "72px 56px",
+      borderBottom: `1px solid ${C.hair}`, background: C.panel,
+    }}>
+      <SectionHeader code="PATH" page={50} kicker="OFFSEASON · CAP & ROSTER PATHS"
+        title={<>Four paths<span style={{ color: C.red }}>,</span><br/>one pick<span style={{ color: C.volt }}>.</span></>}/>
+      <div style={{
+        display: "grid",
+        gridTemplateColumns: m ? "1fr" : "repeat(4, 1fr)",
+        gap: 1, background: C.hair, border: `1px solid ${C.hair}`,
+      }}>
+        {SCENARIOS.map((s) => {
+          const rec = s.recommended;
+          return (
+            <div key={s.id} style={{
+              background: C.bg, padding: m ? "22px 18px" : "26px 22px",
+              borderTop: rec ? `3px solid ${C.volt}` : `3px solid transparent`,
+              position: "relative",
+            }}>
+              {rec && (
+                <div style={{
+                  position: "absolute", top: 10, right: 14,
+                  fontFamily: "'JetBrains Mono', monospace", fontSize: 9,
+                  color: C.volt, letterSpacing: 2, fontWeight: 700,
+                }}>// EDITOR'S PICK</div>
+              )}
+              <div style={{
+                fontFamily: "'JetBrains Mono', monospace", fontSize: 10,
+                color: C.mute, letterSpacing: 2, marginBottom: 8,
+              }}>// SCENARIO {String(SCENARIOS.indexOf(s) + 1).padStart(2, "0")}</div>
+              <div style={{
+                fontFamily: "'Anton', sans-serif", fontSize: m ? 26 : 30,
+                color: C.ivory, textTransform: "uppercase",
+                lineHeight: 1, letterSpacing: "-0.01em", marginBottom: 16,
+              }}>{s.label}</div>
+
+              <div style={{
+                fontFamily: "'JetBrains Mono', monospace", fontSize: 10,
+                color: C.red, letterSpacing: 1.8, marginBottom: 8,
+              }}>MOVES</div>
+              <ul style={{
+                margin: "0 0 18px 0", paddingLeft: 16,
+                fontSize: 12, color: "#c5c5cc", lineHeight: 1.55,
+                fontFamily: "Inter, sans-serif",
+              }}>
+                {s.moves.map((mv, i) => <li key={i} style={{ marginBottom: 4 }}>{mv}</li>)}
+              </ul>
+
+              <div style={{
+                paddingTop: 14, borderTop: `1px solid ${C.hair}`,
+                fontFamily: "'JetBrains Mono', monospace", fontSize: 9,
+                color: C.mute, letterSpacing: 1.8, marginBottom: 6,
+              }}>CAP ROOM</div>
+              <div style={{
+                fontFamily: "'Anton', sans-serif",
+                fontSize: m ? 36 : 44,
+                color: s.capRoomDelta.startsWith("+") ? C.volt
+                     : s.capRoomDelta.startsWith("-") ? C.red : C.ivory,
+                lineHeight: 1, letterSpacing: "-0.01em",
+                fontVariantNumeric: "tabular-nums",
+              }}>{s.capRoomDelta}</div>
+              <div style={{
+                marginTop: 4, fontSize: 11, color: C.mute,
+                fontFamily: "Inter, sans-serif", fontStyle: "italic",
+              }}>{s.capRoomNote}</div>
+
+              <div style={{
+                marginTop: 16, paddingTop: 14, borderTop: `1px solid ${C.hair}`,
+                fontSize: 12, color: "#c5c5cc", lineHeight: 1.55,
+                fontFamily: "Inter, sans-serif",
+              }}>
+                <div style={{ color: C.ivory, fontWeight: 600, marginBottom: 4 }}>{s.roster}</div>
+                <div style={{ color: C.mute, fontStyle: "italic" }}>{s.risk}</div>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </section>
+  );
+}
+
+// ─── Trade Threads (THRD · rumor mill tracker) ──────────────────
+function TradeThreads() {
+  const m = useIsMobile();
+  const statusColor = (s) => ({
+    HOT: C.red, WARM: C.amber, OPEN: C.ivory,
+    COLD: C.mute, BLOCKED: C.mute, CLOSED: C.mute,
+  }[s] || C.mute);
+  const dirChar = (d) => ({ IN: "↓", OUT: "↑", TARGET: "+" }[d] || "·");
+
+  return (
+    <section id="thrd" style={{
+      padding: m ? "44px 16px" : "72px 56px",
+      borderBottom: `1px solid ${C.hair}`, background: C.bg,
+    }}>
+      <SectionHeader code="THRD" page={64} kicker="THE RUMOR MILL · STATUS BOARD"
+        title={<>Trade<br/>threads<span style={{ color: C.red }}>.</span></>}/>
+
+      {!m && (
+        <div style={{
+          display: "grid",
+          gridTemplateColumns: "auto 1.4fr 1.4fr 1.8fr 1.2fr 0.8fr",
+          gap: 16, padding: "12px 16px",
+          background: C.panel, border: `1px solid ${C.hair}`,
+          borderBottom: "none",
+          fontFamily: "'JetBrains Mono', monospace", fontSize: 9,
+          color: C.mute, letterSpacing: 2,
+        }}>
+          <span>DIR</span><span>NAME</span><span>STATUS</span>
+          <span>TERMS</span><span>SOURCE</span><span style={{ textAlign: "right" }}>AS OF</span>
+        </div>
+      )}
+
+      <div style={{ border: `1px solid ${C.hair}`, background: C.bg }}>
+        {TRADE_THREADS.map((t, i) => {
+          const sc = statusColor(t.status);
+          const closed = t.status === "CLOSED";
+          return (
+            <div key={t.id} style={{
+              padding: m ? "16px 14px" : "18px 16px",
+              borderBottom: i < TRADE_THREADS.length - 1 ? `1px solid ${C.hair}` : "none",
+              opacity: closed ? 0.5 : 1,
+            }}>
+              <div style={{
+                display: "grid",
+                gridTemplateColumns: m ? "auto 1fr auto" : "auto 1.4fr 1.4fr 1.8fr 1.2fr 0.8fr",
+                gap: m ? 12 : 16, alignItems: "center",
+              }}>
+                <span style={{
+                  width: 26, height: 26, display: "inline-flex",
+                  alignItems: "center", justifyContent: "center",
+                  background: t.direction === "TARGET" ? C.volt : t.direction === "OUT" ? C.red : C.panel,
+                  color: t.direction === "TARGET" ? "#000" : t.direction === "OUT" ? "#fff" : C.ivory,
+                  border: t.direction === "IN" ? `1px solid ${C.hair}` : "none",
+                  fontFamily: "'JetBrains Mono', monospace", fontSize: 13,
+                  fontWeight: 700,
+                }}>{dirChar(t.direction)}</span>
+                <div>
+                  <div style={{
+                    fontFamily: "'Anton', sans-serif", fontSize: m ? 18 : 22,
+                    color: C.ivory, textTransform: "uppercase",
+                    lineHeight: 1, letterSpacing: "0.005em",
+                    textDecoration: closed ? "line-through" : "none",
+                  }}>{t.name}</div>
+                  <div style={{
+                    marginTop: 4, fontFamily: "'JetBrains Mono', monospace",
+                    fontSize: 9, color: C.mute, letterSpacing: 1.5,
+                  }}>{t.direction}</div>
+                </div>
+                {!m && (
+                  <span style={{
+                    fontFamily: "'JetBrains Mono', monospace", fontSize: 11,
+                    color: sc, fontWeight: 700, letterSpacing: 2,
+                    fontStyle: t.status === "BLOCKED" ? "italic" : "normal",
+                  }}>{t.status}</span>
+                )}
+                {!m && (
+                  <span style={{
+                    fontSize: 12, color: "#c5c5cc", lineHeight: 1.45,
+                    fontFamily: "Inter, sans-serif",
+                  }}>{t.terms}</span>
+                )}
+                {!m && (
+                  <span style={{
+                    fontFamily: "'JetBrains Mono', monospace", fontSize: 10,
+                    color: C.mute, letterSpacing: 1.4, lineHeight: 1.4,
+                  }}>{t.source}</span>
+                )}
+                {!m && (
+                  <span style={{
+                    fontFamily: "'JetBrains Mono', monospace", fontSize: 10,
+                    color: C.mute, textAlign: "right", letterSpacing: 1.4,
+                    fontVariantNumeric: "tabular-nums",
+                  }}>{t.updated.slice(5).replace("-", "/")}</span>
+                )}
+                {m && (
+                  <span style={{
+                    fontFamily: "'JetBrains Mono', monospace", fontSize: 10,
+                    color: sc, fontWeight: 700, letterSpacing: 1.8,
+                  }}>{t.status}</span>
+                )}
+              </div>
+
+              {m && (
+                <div style={{ marginTop: 10 }}>
+                  <div style={{
+                    fontSize: 12, color: "#c5c5cc", lineHeight: 1.5,
+                    fontFamily: "Inter, sans-serif",
+                  }}>{t.terms}</div>
+                  <div style={{
+                    marginTop: 6, fontFamily: "'JetBrains Mono', monospace",
+                    fontSize: 9, color: C.mute, letterSpacing: 1.4,
+                  }}>{t.source} · {t.updated}</div>
+                </div>
+              )}
+
+              <div style={{
+                marginTop: 10, paddingTop: 8,
+                borderTop: `1px dashed ${C.hair}`,
+                fontSize: 11, color: C.mute, lineHeight: 1.5,
+                fontFamily: "Inter, sans-serif", fontStyle: "italic",
+              }}>
+                <span style={{ color: C.volt, fontStyle: "normal", letterSpacing: 1.5 }}>
+                  TIP →{" "}
+                </span>
+                {t.tip}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </section>
   );
 }
 
@@ -1923,11 +2506,15 @@ function MagazineApp() {
           <Cover/>
           <EditorsLetter/>
           <Hardware/>
+          <Calendar/>
           <Story/>
+          <DraftBoard/>
           <Portfolio onPlayer={setModalId}/>
           <Tactics onPlayer={setModalId}/>
+          <Scenarios/>
           <Numbers/>
           <Ledger/>
+          <TradeThreads/>
           <Wire/>
           <BackPage/>
         </main>

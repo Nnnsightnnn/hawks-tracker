@@ -547,3 +547,374 @@ export const NEWS_DIGEST = {
     "Spotrac",
   ],
 };
+
+// ─── Issue metadata (drives datelines, cover star, masthead) ───────────────
+// Update `date` daily; everything else flows from KEY_DATES + NEWS_DIGEST.
+export const ISSUE = {
+  date: "2026-05-29",                              // YYYY-MM-DD — single source of truth
+  volume: 26,                                       // VOL XXVI
+  number: 8,                                        // Issue number (offseason cadence)
+  dateline: "ATLANTA · MAY 29, 2026",               // Pre-formatted for display
+  mastheadLine: "VOL XXVI · ISSUE NO. 08 · MAY 2026 · ATL · USA",
+  railLabel: "ISSUE 08 · MAY 29",
+  coverStarId: 1,                                   // PLAYERS[id] for the cover portrait
+  coverRibbon: "EXCLUSIVE · COVER STAR · JALEN JOHNSON",
+  coverStatusKicker: "OFFSEASON · DAY 29",          // top-right corner of cover
+  coverStatusLine: "DRAFT IN {DAYS:draft} · FA IN {DAYS:fa-open}", // {DAYS:id} resolves from KEY_DATES
+  backTagline: "Next issue: after Draft Night spends the lottery and the FA market opens.",
+};
+
+// ─── Cover TOC (table of contents on the cover) ────────────────────────────
+// Each entry points at a real section id; rotates as story rotates.
+export const COVER_TOC = [
+  { kicker: "FEATURE",  page: 18, sectionId: "stry", title: "Saleh elevated — POBO with a mandate" },
+  { kicker: "CALENDAR", page: 12, sectionId: "cal",  title: "The June gauntlet — six dates, one offseason" },
+  { kicker: "BOARD",    page: 28, sectionId: "drft", title: "Eight on the clock — the guard list" },
+  { kicker: "PATHS",    page: 50, sectionId: "path", title: "Four offseason scenarios, one editor's pick" },
+  { kicker: "WIRE",     page: 68, sectionId: "wire", title: "Brown chatter, Cameron Johnson thread, Risacher available" },
+];
+
+// ─── Editor's letter ───────────────────────────────────────────────────────
+// `headline` is a token array — strings render as ivory, { red: "x" } renders red.
+export const EDITORS_LETTER = {
+  headline: ["The work doesn't end at ", { red: "89" }, "."],
+  body: "Forty-six wins. A Southeast banner. Back-to-back Most Improved Players. An All-NBA Third Team nod for Jalen Johnson — the franchise's first since Trae Young. An All-Defensive Second Team finish for Dyson Daniels. And then — eighty-nine. The final score of the worst night, set against the loudest spring this franchise has produced in a decade. This issue holds both at once: the dossier on what just happened, and the road map for the six June dates that decide what happens next. Saleh in the chair. Snyder extended. McCollum on the table. Eight on the clock.",
+  byline: "— THE EDITORS",
+};
+
+// ─── Hardware (awards / honors) ────────────────────────────────────────────
+// Drop the early-May framing — Johnson's All-NBA Third Team is the lede now.
+export const HARDWARE = [
+  { kicker: "2025-26 NBA", title: "ALL-NBA THIRD TEAM", who: "Jalen Johnson",
+    detail: "First All-NBA selection of his career · first Hawk since Trae Young in 2022 · 5th ever 22-10-7 season",
+    tone: "volt" },
+  { kicker: "2025-26 NBA", title: "MOST IMPROVED PLAYER", who: "Nickeil Alexander-Walker",
+    detail: "Back-to-back MIPs for the franchise (Daniels won 24-25) · 251 threes — franchise record",
+    tone: "ivory" },
+  { kicker: "2025-26 NBA", title: "ALL-DEFENSIVE 2ND TEAM", who: "Dyson Daniels",
+    detail: "Second straight All-Def nod · tied for NBA lead in steals at 2.0",
+    tone: "red" },
+  { kicker: "SOUTHEAST",   title: "DIVISION CHAMPS", who: "Atlanta Hawks · 46-36",
+    detail: "First SE crown since 2014-15 · 6-seed in East",
+    tone: "ivory" },
+];
+
+// ─── Numbers (hero tiles + ledger rows) ────────────────────────────────────
+// Date-driven rows (DAYS TO X) are computed at render time from KEY_DATES.
+export const NUMBERS_HERO = [
+  { k: "RECORD",  v: "46–36", tone: "ivory" },
+  { k: "SEED·E",  v: "6",     tone: "red" },
+  { k: "MIPs",    v: "2",     tone: "volt", sub: "back to back" },
+];
+export const NUMBERS_LEDGER = [
+  ["MOST 3PM, SEASON",      "251 · Alexander-Walker", "franchise record"],
+  ["JJ STAT LINE",          "22.5 / 10.3 / 7.9",      "5th ever 22-10-7"],
+  ["DANIELS STEALS/G",      "2.0",                    "tied NBA lead"],
+  ["TEAM 3P%",              "38.1%",                  "3rd league-wide"],
+  ["OFFENSIVE RATING",      "118.4",                  "7th league-wide"],
+  ["DEFENSIVE RATING",      "114.2",                  "14th"],
+  ["R1 SCORING DIFF",       "-15.3",                  "four losses by 16+"],
+  ["GAME 6 MARGIN",         "-51",                    "T-6th largest in NBA history"],
+  ["HALFTIME DEFICIT, G6",  "-47",                    "largest in playoff history"],
+  ["LOTTERY PICK",          "No. 8",                  "via NOP — most-likely outcome"],
+];
+
+// ─── Key dates (the offseason spine) ───────────────────────────────────────
+// Drives Calendar viz AND date-derived rows in Numbers AND ISSUE.coverStatusLine.
+// kind:    EVENT (volt) | DEADLINE (red) | DECISION (ivory)
+// primary: render larger on the timeline
+export const KEY_DATES = [
+  { id: "wcf-g7",      date: "2026-05-30",
+    label: "WCF Game 7",          short: "WCF G7",      kind: "EVENT",
+    hawksAngle: "OKC/SAS winner decides Hartenstein option pressure (OKC declines = ATL has a path)" },
+  { id: "finals-g1",   date: "2026-06-03",
+    label: "NBA Finals Game 1",   short: "FINALS G1",   kind: "EVENT",
+    hawksAngle: "Knicks open on road — same team that ended ATL's season 4-2 in R1" },
+  { id: "draft",       date: "2026-06-23",
+    label: "Draft Night",         short: "DRAFT",       kind: "EVENT",      primary: true,
+    hawksAngle: "Hawks hold #8 (via NOP), #23, #57. Guard at #8 the post-combine consensus." },
+  { id: "hield-trig",  date: "2026-06-25",
+    label: "Hield $9.4M trigger", short: "HIELD",       kind: "DEADLINE",
+    hawksAngle: "Currently only $3M guaranteed · waive before trigger to save $6.4M, or hold as movable expiring" },
+  { id: "kuminga-opt", date: "2026-06-29",
+    label: "Kuminga option call", short: "KUMINGA",     kind: "DECISION",
+    hawksAngle: "$24.3M team option · decline-and-extend expected per Fischer · opens $15M+ cap room" },
+  { id: "fa-open",     date: "2026-06-30",
+    label: "FA market opens",     short: "FA OPEN",     kind: "EVENT",      primary: true,
+    hawksAngle: "6 PM ET · McCollum retention is the headline UFA · Hartenstein the wish-list big" },
+  { id: "moratorium",  date: "2026-07-06",
+    label: "Moratorium ends",     short: "MORATORIUM",  kind: "EVENT",
+    hawksAngle: "Signings official · sign-and-trades can finalize · cap holds release" },
+];
+
+// ─── Pull quotes (Story section picks one matching lead.category) ──────────
+// `text` is a token array — same convention as EDITORS_LETTER.headline.
+export const PULL_QUOTES = [
+  { category: "general",
+    text: ["I don't really have any words for that. ", { red: "Obviously, it sucks." }],
+    who: "JALEN JOHNSON", when: "GAME 6 · APRIL 30" },
+  { category: "trades",
+    text: ["We're in a ", { red: "good place" }, "."],
+    who: "ONSI SALEH · POBO", when: "AJC · MAY 8" },
+  { category: "games",
+    text: ["I think Quin is going to be part of our team for a ", { red: "very, very long time" }, "."],
+    who: "STEVE KOONIN · CEO", when: "680 THE FAN · MAY 22" },
+];
+
+// ─── Editor's bets (predictions strip at top of WIRE) ──────────────────────
+// confidence: 0-100; rendered as a horizontal volt bar.
+export const BETS = [
+  { take: "Snyder extension signs before Draft Night",          confidence: 80 },
+  { take: "Saleh declines Kuminga's $24.3M option",              confidence: 65 },
+  { take: "McCollum re-signs at 2yr / ~$36M",                    confidence: 70 },
+  { take: "No Jaylen Brown trade — Hawks pass on $53.1M",       confidence: 75 },
+  { take: "Hawks pick a guard at #8 (Brown Jr. or Flemings)",    confidence: 60 },
+  { take: "Hield gets waived before the June 25 trigger",        confidence: 55 },
+];
+
+// ─── Scenarios (PATH section · cap & roster paths) ─────────────────────────
+// `recommended: true` gets the volt border + "EDITOR'S PICK" kicker.
+export const SCENARIOS = [
+  {
+    id: "status-quo", label: "Status Quo", recommended: false,
+    moves: [
+      "Exercise Kuminga option ($24.3M)",
+      "Let Hield's trigger fire ($9.4M)",
+      "Re-sign McCollum at 2yr/$36M",
+    ],
+    capRoomDelta: "$0M room",
+    capRoomNote: "over cap · use MLE only",
+    roster: "16 deep · old core preserved · no big FA add",
+    risk: "No swing · same R1 ceiling",
+  },
+  {
+    id: "decline-extend", label: "Decline + Extend", recommended: true,
+    moves: [
+      "Decline Kuminga option → 4yr/$72M extension",
+      "Waive Hield before June 25 trigger",
+      "Re-sign McCollum at 2yr/$36M",
+    ],
+    capRoomDelta: "+$15.5M room",
+    capRoomNote: "afford MLE + min-bench reshuffle",
+    roster: "Bench thinner · cap flexibility at deadline",
+    risk: "Kuminga walks if extension talks collapse",
+  },
+  {
+    id: "brown-swing", label: "The Brown Swing", recommended: false,
+    moves: [
+      "3-team: Risacher + #8 + Hield + picks → Jaylen Brown",
+      "Decline Kuminga option",
+      "Re-sign McCollum",
+    ],
+    capRoomDelta: "-$53M",
+    capRoomNote: "into deep luxury · 2nd apron risk",
+    roster: "Brown-Johnson-Daniels core · loses youth + #8",
+    risk: "Tax hit · Cam Johnson alternative is cheaper",
+  },
+  {
+    id: "hartenstein-bet", label: "Hartenstein Bet", recommended: false,
+    moves: [
+      "Sign Hartenstein at $20-25M (if OKC declines option)",
+      "Decline Kuminga option",
+      "Let McCollum walk to Chicago",
+    ],
+    capRoomDelta: "+$2M room",
+    capRoomNote: "all-in on the frontcourt",
+    roster: "Hartenstein-Okongwu pair · no veteran PG creator",
+    risk: "Depends on OKC's option call · McCollum priority per reporting",
+  },
+];
+
+// ─── Draft Board at #8 (DRFT section) ──────────────────────────────────────
+// hawks_consensus: true → volt left border (post-combine convergence picks).
+export const DRAFT_BOARD = [
+  { rank: 1, name: "Mikel Brown Jr.",    school: "Louisville",  pos: "PG", ht: "6'4", age: 19,
+    mock: "CBS · ATL @ 8",
+    fit: "Lead guard creator post-Trae · 38% from 3 over last 20 · NBA.com consensus",
+    hawks_consensus: true },
+  { rank: 2, name: "Kingston Flemings",  school: "Houston",     pos: "PG", ht: "6'3", age: 19,
+    mock: "Ringer · ATL @ 8",
+    fit: "Best perimeter D of the guard trio · transition fit · Roundtable's preferred call",
+    hawks_consensus: true },
+  { rank: 3, name: "Aday Mara",          school: "UCLA",        pos: "C",  ht: "7'3", age: 21,
+    mock: "NBA.com consensus alt",
+    fit: "Size alternative if FA C path closes · pairs with Okongwu",
+    hawks_consensus: false },
+  { rank: 4, name: "Nate Ament",         school: "Tennessee",   pos: "SF", ht: "6'9", age: 18,
+    mock: "Hollinger linked",
+    fit: "Wing length insurance behind Johnson · highest-upside swing",
+    hawks_consensus: false },
+  { rank: 5, name: "Koa Peat",           school: "Arizona",     pos: "PF", ht: "6'8", age: 19,
+    mock: "ATL pre-draft workout",
+    fit: "Bully-ball PF · floor-raising motor · culture fit",
+    hawks_consensus: false },
+  { rank: 6, name: "Yaxel Lendeborg",    school: "UAB",         pos: "PF", ht: "6'9", age: 22,
+    mock: "ATL pre-draft workout",
+    fit: "Older prospect · ready-now switch defender · 4 years of college tape",
+    hawks_consensus: false },
+  { rank: 7, name: "Tre Johnson",        school: "Texas",       pos: "SG", ht: "6'5", age: 19,
+    mock: "Linked early via CBS · SI onsi",
+    fit: "Pure shooter · McCollum heir if he walks",
+    hawks_consensus: false },
+  { rank: 8, name: "Dailyn Swain",       school: "Xavier",      pos: "SF", ht: "6'7", age: 20,
+    mock: "Last Word linked",
+    fit: "Two-way wing depth · second-round value at 23",
+    hawks_consensus: false },
+];
+
+// ─── Trade Threads (THRD section · the offseason rumor mill) ───────────────
+// status: HOT | WARM | OPEN | COLD | BLOCKED | CLOSED
+// direction: IN (acquire) | OUT (trade away) | TARGET (FA / external)
+export const TRADE_THREADS = [
+  { id: "brown",    name: "Jaylen Brown",       direction: "IN",     status: "WARM",
+    terms: "$53.1M next year · 3-team with Boston needed",
+    source: "Mannix (98.5 The Sports Hub)", updated: "2026-05-24",
+    tip: "BOS post-Finals push + ATL willingness to take the money + Marietta ties" },
+  { id: "cam-john", name: "Cameron Johnson",    direction: "IN",     status: "OPEN",
+    terms: "DEN cap-cutter candidate · ~$22M",
+    source: "HoopsHype",                    updated: "2026-05-13",
+    tip: "Denver tax math + ATL declining Kuminga option opens fit" },
+  { id: "risacher", name: "Zaccharie Risacher", direction: "OUT",    status: "HOT",
+    terms: "Package with #8 to trade up the board",
+    source: "Hollinger (The Athletic)",     updated: "2026-05-23",
+    tip: "Top 5-7 board falls Hawks' way · or Brown framework absorbs him" },
+  { id: "kispert",  name: "Corey Kispert",      direction: "OUT",    status: "WARM",
+    terms: "$14.6M salary filler · likely summer chip",
+    source: "Hollinger (The Athletic)",     updated: "2026-05-21",
+    tip: "Larger framework needs the $13M+ slot to match" },
+  { id: "harten",   name: "Isaiah Hartenstein", direction: "TARGET", status: "BLOCKED",
+    terms: "Only available if OKC declines ~$29M option",
+    source: "Yardbarker / SI onsi",         updated: "2026-05-22",
+    tip: "OKC's WCF run tightens cap math against Williams/Holmgren extensions" },
+  { id: "grimes",   name: "Quentin Grimes",     direction: "TARGET", status: "OPEN",
+    terms: "MLE target · 'dream' add per SI onsi",
+    source: "SI onsi",                      updated: "2026-05-08",
+    tip: "PHI cap squeeze + ATL clearing room for a guard creator" },
+  { id: "saleh-phi", name: "Saleh to 76ers",    direction: "OUT",    status: "CLOSED",
+    terms: "ATL denied permission · promoted Saleh to POBO May 27",
+    source: "ESPN / WaPo / Yahoo / SI",     updated: "2026-05-27",
+    tip: "Thread is dead · Saleh extended long-term" },
+];
+
+// ─── Per-player game logs (PlayerModal sparkline + last-5 table) ───────────
+// Keyed by player id. Newest first. Only filled for core rotation players.
+// `pts/min/3pPct` drive the sparkline; full row shown in last-5 table.
+export const GAME_LOGS = {
+  // Jalen Johnson (id 1)
+  1: [
+    { date: "2026-04-30", opp: "NYK", home: true,  result: "L", min: 36, pts: 21, reb: 5,  ast: 3,  fgPct: 41.7, threePct: 22.2, plusMinus: -32, comp: "R1G6" },
+    { date: "2026-04-28", opp: "NYK", home: false, result: "L", min: 38, pts: 18, reb: 10, ast: 6,  fgPct: 44.0, threePct: 33.3, plusMinus: -20, comp: "R1G5" },
+    { date: "2026-04-25", opp: "NYK", home: true,  result: "L", min: 40, pts: 14, reb: 10, ast: 10, fgPct: 35.0, threePct: 25.0, plusMinus: -12, comp: "R1G4" },
+    { date: "2026-04-23", opp: "NYK", home: true,  result: "W", min: 39, pts: 24, reb: 10, ast: 8,  fgPct: 48.0, threePct: 40.0, plusMinus: 9,   comp: "R1G3" },
+    { date: "2026-04-20", opp: "NYK", home: false, result: "W", min: 38, pts: 17, reb: 8,  ast: 3,  fgPct: 42.9, threePct: 33.3, plusMinus: 4,   comp: "R1G2" },
+    { date: "2026-04-18", opp: "NYK", home: false, result: "L", min: 37, pts: 23, reb: 9,  ast: 4,  fgPct: 46.2, threePct: 37.5, plusMinus: -8,  comp: "R1G1" },
+    { date: "2026-04-12", opp: "MIA", home: true,  result: "L", min: 35, pts: 24, reb: 11, ast: 9,  fgPct: 50.0, threePct: 40.0, plusMinus: -18, comp: "REG"  },
+    { date: "2026-04-10", opp: "CLE", home: true,  result: "W", min: 36, pts: 28, reb: 13, ast: 8,  fgPct: 56.5, threePct: 42.9, plusMinus: 17,  comp: "REG"  },
+    { date: "2026-04-08", opp: "CLE", home: false, result: "L", min: 35, pts: 26, reb: 9,  ast: 7,  fgPct: 47.8, threePct: 35.7, plusMinus: -6,  comp: "REG"  },
+    { date: "2026-04-06", opp: "NYK", home: false, result: "L", min: 34, pts: 19, reb: 8,  ast: 6,  fgPct: 42.1, threePct: 27.3, plusMinus: -4,  comp: "REG"  },
+  ],
+  // Dyson Daniels (id 2)
+  2: [
+    { date: "2026-04-30", opp: "NYK", home: true,  result: "L", min: 15, pts: 3,  reb: 2,  ast: 3, fgPct: 25.0, threePct: 0.0,  plusMinus: -22, comp: "R1G6" },
+    { date: "2026-04-28", opp: "NYK", home: false, result: "L", min: 33, pts: 17, reb: 7,  ast: 5, fgPct: 63.6, threePct: 33.3, plusMinus: -10, comp: "R1G5" },
+    { date: "2026-04-25", opp: "NYK", home: true,  result: "L", min: 32, pts: 7,  reb: 5,  ast: 6, fgPct: 30.0, threePct: 0.0,  plusMinus: -8,  comp: "R1G4" },
+    { date: "2026-04-23", opp: "NYK", home: true,  result: "W", min: 31, pts: 8,  reb: 5,  ast: 4, fgPct: 36.4, threePct: 20.0, plusMinus: 6,   comp: "R1G3" },
+    { date: "2026-04-20", opp: "NYK", home: false, result: "W", min: 28, pts: 6,  reb: 7,  ast: 4, fgPct: 33.3, threePct: 25.0, plusMinus: 3,   comp: "R1G2" },
+    { date: "2026-04-18", opp: "NYK", home: false, result: "L", min: 25, pts: 9,  reb: 9,  ast: 11,fgPct: 40.0, threePct: 0.0,  plusMinus: -4,  comp: "R1G1" },
+    { date: "2026-04-12", opp: "MIA", home: true,  result: "L", min: 33, pts: 12, reb: 6,  ast: 7, fgPct: 50.0, threePct: 25.0, plusMinus: -14, comp: "REG"  },
+    { date: "2026-04-10", opp: "CLE", home: true,  result: "W", min: 32, pts: 11, reb: 8,  ast: 6, fgPct: 46.2, threePct: 0.0,  plusMinus: 12,  comp: "REG"  },
+    { date: "2026-04-08", opp: "CLE", home: false, result: "L", min: 34, pts: 14, reb: 7,  ast: 5, fgPct: 50.0, threePct: 16.7, plusMinus: -5,  comp: "REG"  },
+    { date: "2026-04-06", opp: "NYK", home: false, result: "L", min: 33, pts: 10, reb: 6,  ast: 7, fgPct: 41.7, threePct: 0.0,  plusMinus: -3,  comp: "REG"  },
+  ],
+  // Nickeil Alexander-Walker (id 3)
+  3: [
+    { date: "2026-04-30", opp: "NYK", home: true,  result: "L", min: 32, pts: 11, reb: 2, ast: 3, fgPct: 36.4, threePct: 25.0, plusMinus: -26, comp: "R1G6" },
+    { date: "2026-04-28", opp: "NYK", home: false, result: "L", min: 35, pts: 16, reb: 3, ast: 4, fgPct: 45.5, threePct: 40.0, plusMinus: -15, comp: "R1G5" },
+    { date: "2026-04-25", opp: "NYK", home: true,  result: "L", min: 36, pts: 15, reb: 4, ast: 3, fgPct: 42.9, threePct: 33.3, plusMinus: -9,  comp: "R1G4" },
+    { date: "2026-04-23", opp: "NYK", home: true,  result: "W", min: 34, pts: 13, reb: 2, ast: 4, fgPct: 41.7, threePct: 40.0, plusMinus: 8,   comp: "R1G3" },
+    { date: "2026-04-20", opp: "NYK", home: false, result: "W", min: 36, pts: 14, reb: 3, ast: 2, fgPct: 50.0, threePct: 40.0, plusMinus: 5,   comp: "R1G2" },
+    { date: "2026-04-18", opp: "NYK", home: false, result: "L", min: 34, pts: 11, reb: 2, ast: 3, fgPct: 40.0, threePct: 33.3, plusMinus: -6,  comp: "R1G1" },
+    { date: "2026-04-10", opp: "CLE", home: true,  result: "W", min: 34, pts: 22, reb: 4, ast: 4, fgPct: 50.0, threePct: 50.0, plusMinus: 14,  comp: "REG"  },
+    { date: "2026-04-06", opp: "NYK", home: false, result: "L", min: 35, pts: 23, reb: 4, ast: 4, fgPct: 47.8, threePct: 41.7, plusMinus: -4,  comp: "REG"  },
+    { date: "2026-04-03", opp: "BKN", home: true,  result: "W", min: 28, pts: 18, reb: 3, ast: 3, fgPct: 55.6, threePct: 50.0, plusMinus: 22,  comp: "REG"  },
+    { date: "2026-04-01", opp: "ORL", home: true,  result: "W", min: 30, pts: 19, reb: 4, ast: 3, fgPct: 52.6, threePct: 44.4, plusMinus: 18,  comp: "REG"  },
+  ],
+  // CJ McCollum (id 4)
+  4: [
+    { date: "2026-04-30", opp: "NYK", home: true,  result: "L", min: 30, pts: 11, reb: 1, ast: 2, fgPct: 33.3, threePct: 25.0, plusMinus: -28, comp: "R1G6" },
+    { date: "2026-04-28", opp: "NYK", home: false, result: "L", min: 34, pts: 13, reb: 3, ast: 4, fgPct: 41.2, threePct: 28.6, plusMinus: -18, comp: "R1G5" },
+    { date: "2026-04-25", opp: "NYK", home: true,  result: "L", min: 35, pts: 17, reb: 2, ast: 2, fgPct: 47.4, threePct: 0.0,  plusMinus: -10, comp: "R1G4" },
+    { date: "2026-04-23", opp: "NYK", home: true,  result: "W", min: 35, pts: 23, reb: 3, ast: 3, fgPct: 50.0, threePct: 42.9, plusMinus: 7,   comp: "R1G3" },
+    { date: "2026-04-20", opp: "NYK", home: false, result: "W", min: 34, pts: 32, reb: 4, ast: 1, fgPct: 56.5, threePct: 50.0, plusMinus: 6,   comp: "R1G2" },
+    { date: "2026-04-18", opp: "NYK", home: false, result: "L", min: 30, pts: 26, reb: 2, ast: 1, fgPct: 50.0, threePct: 42.9, plusMinus: -3,  comp: "R1G1" },
+    { date: "2026-04-12", opp: "MIA", home: true,  result: "L", min: 30, pts: 18, reb: 2, ast: 4, fgPct: 43.5, threePct: 33.3, plusMinus: -16, comp: "REG"  },
+    { date: "2026-04-03", opp: "BKN", home: true,  result: "W", min: 28, pts: 22, reb: 3, ast: 5, fgPct: 53.8, threePct: 50.0, plusMinus: 19,  comp: "REG"  },
+    { date: "2026-03-30", opp: "BOS", home: true,  result: "W", min: 30, pts: 16, reb: 2, ast: 6, fgPct: 44.4, threePct: 40.0, plusMinus: 8,   comp: "REG"  },
+    { date: "2026-03-28", opp: "SAC", home: false, result: "W", min: 31, pts: 17, reb: 3, ast: 4, fgPct: 47.1, threePct: 33.3, plusMinus: 11,  comp: "REG"  },
+  ],
+  // Onyeka Okongwu (id 5)
+  5: [
+    { date: "2026-04-30", opp: "NYK", home: true,  result: "L", min: 22, pts: 7,  reb: 4, ast: 1, fgPct: 42.9, threePct: 0.0,  plusMinus: -28, comp: "R1G6" },
+    { date: "2026-04-28", opp: "NYK", home: false, result: "L", min: 30, pts: 16, reb: 8, ast: 2, fgPct: 53.8, threePct: 33.3, plusMinus: -8,  comp: "R1G5" },
+    { date: "2026-04-25", opp: "NYK", home: true,  result: "L", min: 28, pts: 12, reb: 6, ast: 1, fgPct: 50.0, threePct: 0.0,  plusMinus: -11, comp: "R1G4" },
+    { date: "2026-04-23", opp: "NYK", home: true,  result: "W", min: 31, pts: 14, reb: 7, ast: 2, fgPct: 53.8, threePct: 33.3, plusMinus: 8,   comp: "R1G3" },
+    { date: "2026-04-20", opp: "NYK", home: false, result: "W", min: 30, pts: 10, reb: 6, ast: 3, fgPct: 41.7, threePct: 0.0,  plusMinus: 7,   comp: "R1G2" },
+    { date: "2026-04-18", opp: "NYK", home: false, result: "L", min: 30, pts: 9,  reb: 3, ast: 1, fgPct: 50.0, threePct: 0.0,  plusMinus: -7,  comp: "R1G1" },
+    { date: "2026-04-10", opp: "CLE", home: true,  result: "W", min: 32, pts: 18, reb: 9, ast: 4, fgPct: 53.3, threePct: 50.0, plusMinus: 15,  comp: "REG"  },
+    { date: "2026-04-08", opp: "CLE", home: false, result: "L", min: 30, pts: 15, reb: 8, ast: 2, fgPct: 50.0, threePct: 0.0,  plusMinus: -5,  comp: "REG"  },
+    { date: "2026-04-03", opp: "BKN", home: true,  result: "W", min: 28, pts: 14, reb: 9, ast: 3, fgPct: 55.6, threePct: 0.0,  plusMinus: 18,  comp: "REG"  },
+    { date: "2026-04-01", opp: "ORL", home: true,  result: "W", min: 29, pts: 17, reb: 8, ast: 2, fgPct: 60.0, threePct: 50.0, plusMinus: 14,  comp: "REG"  },
+  ],
+  // Risacher (id 6) — fell out of rotation in R1
+  6: [
+    { date: "2026-04-18", opp: "NYK", home: false, result: "L", min: 3,  pts: 0,  reb: 2, ast: 0, fgPct: 0.0,  threePct: 0.0,  plusMinus: -2,  comp: "R1G1" },
+    { date: "2026-04-12", opp: "MIA", home: true,  result: "L", min: 12, pts: 4,  reb: 2, ast: 0, fgPct: 33.3, threePct: 25.0, plusMinus: -8,  comp: "REG"  },
+    { date: "2026-04-10", opp: "CLE", home: true,  result: "W", min: 14, pts: 6,  reb: 3, ast: 1, fgPct: 40.0, threePct: 33.3, plusMinus: 4,   comp: "REG"  },
+    { date: "2026-04-06", opp: "NYK", home: false, result: "L", min: 11, pts: 4,  reb: 2, ast: 0, fgPct: 33.3, threePct: 0.0,  plusMinus: -3,  comp: "REG"  },
+    { date: "2026-04-03", opp: "BKN", home: true,  result: "W", min: 18, pts: 11, reb: 4, ast: 1, fgPct: 50.0, threePct: 50.0, plusMinus: 12,  comp: "REG"  },
+    { date: "2026-04-01", opp: "ORL", home: true,  result: "W", min: 16, pts: 8,  reb: 3, ast: 1, fgPct: 44.4, threePct: 40.0, plusMinus: 9,   comp: "REG"  },
+    { date: "2026-03-30", opp: "BOS", home: true,  result: "W", min: 17, pts: 9,  reb: 4, ast: 1, fgPct: 50.0, threePct: 33.3, plusMinus: 6,   comp: "REG"  },
+    { date: "2026-03-28", opp: "SAC", home: false, result: "W", min: 19, pts: 12, reb: 5, ast: 1, fgPct: 50.0, threePct: 40.0, plusMinus: 4,   comp: "REG"  },
+    { date: "2026-03-23", opp: "MEM", home: true,  result: "W", min: 21, pts: 13, reb: 4, ast: 2, fgPct: 50.0, threePct: 42.9, plusMinus: 16,  comp: "REG"  },
+    { date: "2026-03-21", opp: "GSW", home: true,  result: "W", min: 22, pts: 14, reb: 5, ast: 2, fgPct: 50.0, threePct: 40.0, plusMinus: 11,  comp: "REG"  },
+  ],
+  // Kuminga (id 7)
+  7: [
+    { date: "2026-04-30", opp: "NYK", home: true,  result: "L", min: 24, pts: 11, reb: 3, ast: 1, fgPct: 41.7, threePct: 25.0, plusMinus: -22, comp: "R1G6" },
+    { date: "2026-04-28", opp: "NYK", home: false, result: "L", min: 28, pts: 11, reb: 4, ast: 1, fgPct: 40.0, threePct: 28.6, plusMinus: -13, comp: "R1G5" },
+    { date: "2026-04-25", opp: "NYK", home: true,  result: "L", min: 26, pts: 9,  reb: 4, ast: 0, fgPct: 36.4, threePct: 20.0, plusMinus: -7,  comp: "R1G4" },
+    { date: "2026-04-23", opp: "NYK", home: true,  result: "W", min: 28, pts: 21, reb: 3, ast: 1, fgPct: 53.3, threePct: 50.0, plusMinus: 10,  comp: "R1G3" },
+    { date: "2026-04-20", opp: "NYK", home: false, result: "W", min: 25, pts: 19, reb: 4, ast: 1, fgPct: 53.8, threePct: 50.0, plusMinus: 8,   comp: "R1G2" },
+    { date: "2026-04-18", opp: "NYK", home: false, result: "L", min: 23, pts: 9,  reb: 4, ast: 0, fgPct: 40.0, threePct: 20.0, plusMinus: -5,  comp: "R1G1" },
+    { date: "2026-04-12", opp: "MIA", home: true,  result: "L", min: 26, pts: 14, reb: 5, ast: 2, fgPct: 46.7, threePct: 33.3, plusMinus: -10, comp: "REG"  },
+    { date: "2026-04-10", opp: "CLE", home: true,  result: "W", min: 27, pts: 17, reb: 6, ast: 2, fgPct: 50.0, threePct: 40.0, plusMinus: 13,  comp: "REG"  },
+    { date: "2026-04-03", opp: "BKN", home: true,  result: "W", min: 24, pts: 16, reb: 5, ast: 2, fgPct: 53.3, threePct: 50.0, plusMinus: 19,  comp: "REG"  },
+    { date: "2026-04-01", opp: "ORL", home: true,  result: "W", min: 26, pts: 18, reb: 6, ast: 2, fgPct: 55.6, threePct: 40.0, plusMinus: 14,  comp: "REG"  },
+  ],
+  // Hield (id 8) — barely played in R1
+  8: [
+    { date: "2026-04-20", opp: "NYK", home: false, result: "W", min: 6,  pts: 4,  reb: 0, ast: 0, fgPct: 50.0, threePct: 50.0, plusMinus: 2,   comp: "R1G2" },
+    { date: "2026-04-18", opp: "NYK", home: false, result: "L", min: 6,  pts: 4,  reb: 1, ast: 1, fgPct: 50.0, threePct: 50.0, plusMinus: -3,  comp: "R1G1" },
+    { date: "2026-04-12", opp: "MIA", home: true,  result: "L", min: 18, pts: 8,  reb: 3, ast: 2, fgPct: 33.3, threePct: 33.3, plusMinus: -10, comp: "REG"  },
+    { date: "2026-04-10", opp: "CLE", home: true,  result: "W", min: 20, pts: 13, reb: 2, ast: 1, fgPct: 50.0, threePct: 50.0, plusMinus: 8,   comp: "REG"  },
+    { date: "2026-04-08", opp: "CLE", home: false, result: "L", min: 22, pts: 11, reb: 3, ast: 1, fgPct: 42.9, threePct: 42.9, plusMinus: -4,  comp: "REG"  },
+    { date: "2026-04-06", opp: "NYK", home: false, result: "L", min: 21, pts: 9,  reb: 2, ast: 2, fgPct: 40.0, threePct: 40.0, plusMinus: -6,  comp: "REG"  },
+    { date: "2026-04-03", opp: "BKN", home: true,  result: "W", min: 22, pts: 16, reb: 3, ast: 2, fgPct: 55.6, threePct: 55.6, plusMinus: 15,  comp: "REG"  },
+    { date: "2026-04-01", opp: "ORL", home: true,  result: "W", min: 23, pts: 14, reb: 3, ast: 3, fgPct: 50.0, threePct: 50.0, plusMinus: 12,  comp: "REG"  },
+    { date: "2026-03-30", opp: "BOS", home: true,  result: "W", min: 24, pts: 18, reb: 2, ast: 2, fgPct: 55.6, threePct: 50.0, plusMinus: 10,  comp: "REG"  },
+    { date: "2026-03-28", opp: "SAC", home: false, result: "W", min: 22, pts: 13, reb: 2, ast: 1, fgPct: 46.2, threePct: 42.9, plusMinus: 9,   comp: "REG"  },
+  ],
+  // Kispert (id 9)
+  9: [
+    { date: "2026-04-25", opp: "NYK", home: true,  result: "L", min: 7,  pts: 2,  reb: 1, ast: 0, fgPct: 33.3, threePct: 0.0,  plusMinus: -4,  comp: "R1G4" },
+    { date: "2026-04-23", opp: "NYK", home: true,  result: "W", min: 10, pts: 3,  reb: 2, ast: 0, fgPct: 40.0, threePct: 33.3, plusMinus: 3,   comp: "R1G3" },
+    { date: "2026-04-20", opp: "NYK", home: false, result: "W", min: 9,  pts: 0,  reb: 1, ast: 1, fgPct: 0.0,  threePct: 0.0,  plusMinus: -1,  comp: "R1G2" },
+    { date: "2026-04-12", opp: "MIA", home: true,  result: "L", min: 19, pts: 9,  reb: 2, ast: 1, fgPct: 50.0, threePct: 50.0, plusMinus: -8,  comp: "REG"  },
+    { date: "2026-04-10", opp: "CLE", home: true,  result: "W", min: 21, pts: 11, reb: 3, ast: 1, fgPct: 50.0, threePct: 50.0, plusMinus: 9,   comp: "REG"  },
+    { date: "2026-04-06", opp: "NYK", home: false, result: "L", min: 20, pts: 8,  reb: 2, ast: 1, fgPct: 44.4, threePct: 33.3, plusMinus: -5,  comp: "REG"  },
+    { date: "2026-04-03", opp: "BKN", home: true,  result: "W", min: 22, pts: 13, reb: 3, ast: 2, fgPct: 55.6, threePct: 50.0, plusMinus: 14,  comp: "REG"  },
+    { date: "2026-04-01", opp: "ORL", home: true,  result: "W", min: 21, pts: 9,  reb: 2, ast: 1, fgPct: 50.0, threePct: 33.3, plusMinus: 11,  comp: "REG"  },
+    { date: "2026-03-30", opp: "BOS", home: true,  result: "W", min: 23, pts: 12, reb: 3, ast: 1, fgPct: 50.0, threePct: 42.9, plusMinus: 8,   comp: "REG"  },
+    { date: "2026-03-28", opp: "SAC", home: false, result: "W", min: 22, pts: 10, reb: 2, ast: 1, fgPct: 50.0, threePct: 33.3, plusMinus: 6,   comp: "REG"  },
+  ],
+};
