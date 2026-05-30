@@ -8,55 +8,57 @@
     <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Peachtree '70s heritage type: Fredoka (rounded display, Bauhaus/Cooper feel),
+         Hanken Grotesk (warm body), Roboto Slab (scorecard numerals) -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Hanken+Grotesk:wght@400;500;600;700&family=Roboto+Slab:wght@500;600;700&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="https://nnnsightnnn.github.io/tracker-shared/live-scores.css" />
     <style>
       * { margin: 0; padding: 0; box-sizing: border-box; }
-      html, body { background: #0B0B0E; color: #F5F1E8; -webkit-font-smoothing: antialiased; }
-      body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; overflow-x: hidden; }
+      html, body { background: #F6E7CE; color: #2A211A; -webkit-font-smoothing: antialiased; }
+      body { font-family: 'Hanken Grotesk', -apple-system, BlinkMacSystemFont, sans-serif; overflow-x: hidden; }
       ::-webkit-scrollbar { width: 10px; height: 10px; }
-      ::-webkit-scrollbar-track { background: #0B0B0E; }
-      ::-webkit-scrollbar-thumb { background: #27272C; }
-      ::-webkit-scrollbar-thumb:hover { background: #E03A3E; }
-      ::selection { background: #C8FB37; color: #000; }
+      ::-webkit-scrollbar-track { background: #F6E7CE; }
+      ::-webkit-scrollbar-thumb { background: #CDB389; }
+      ::-webkit-scrollbar-thumb:hover { background: #CE2B37; }
+      ::selection { background: #E8A93C; color: #2A211A; }
       button { font-family: inherit; }
       @keyframes tick {
         0%   { transform: translateX(0); }
         100% { transform: translateX(-50%); }
       }
 
-      /* ── Live Score Box · Hawks site-template overrides ─────────────────── */
+      /* ── Live Score Box · Hawks heritage overrides ─────────────────── */
       .ls-card {
-        background: #16161A;
-        border: 1px solid #27272C;
-        border-radius: 0;
+        background: #EFD9B8;
+        border: 1px solid #CDB389;
+        border-radius: 8px;
         padding: 14px 18px;
-        color: #F5F1E8;
-        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        color: #2A211A;
+        font-family: 'Hanken Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
         box-shadow: none;
       }
       .ls-card[data-state="in"] {
-        border-left: 3px solid #E03A3E;
+        border-left: 4px solid #CE2B37;
       }
-      .ls-card[data-state="post"] { border-left: 3px solid #C8FB37; }
-      .ls-card[data-state="pre"]  { border-left: 3px solid #27272C; }
+      .ls-card[data-state="post"] { border-left: 4px solid #1F6F5C; }
+      .ls-card[data-state="pre"]  { border-left: 4px solid #CDB389; }
 
       .ls-status {
-        font-family: 'JetBrains Mono', monospace;
+        font-family: 'Hanken Grotesk', sans-serif;
         font-size: 10px;
-        color: #C8FB37;
+        color: #1F6F5C;
         text-transform: uppercase;
         letter-spacing: 2px;
-        font-weight: 600;
+        font-weight: 700;
         margin-bottom: 10px;
         display: flex;
         align-items: center;
         gap: 8px;
       }
-      .ls-card[data-state="pre"] .ls-status { color: #7A7A82; }
+      .ls-card[data-state="pre"] .ls-status { color: #8A7B66; }
 
       .ls-teams { display: flex; flex-direction: column; gap: 6px; }
       .ls-team {
@@ -64,51 +66,51 @@
         justify-content: space-between;
         align-items: center;
         padding: 8px 12px;
-        background: #0B0B0E;
-        border: 1px solid #27272C;
-        border-radius: 0;
+        background: #F6E7CE;
+        border: 1px solid #CDB389;
+        border-radius: 6px;
       }
       .ls-abbr {
-        font-family: 'Anton', sans-serif;
-        font-weight: 400;
+        font-family: 'Fredoka', sans-serif;
+        font-weight: 600;
         font-size: 18px;
-        letter-spacing: 0.04em;
-        color: #F5F1E8;
+        letter-spacing: 0.02em;
+        color: #2A211A;
         text-transform: uppercase;
       }
       .ls-score {
-        font-family: 'JetBrains Mono', monospace;
+        font-family: 'Roboto Slab', serif;
         font-variant-numeric: tabular-nums;
         font-weight: 700;
         font-size: 22px;
-        color: #F5F1E8;
+        color: #2A211A;
       }
 
       .ls-live {
         display: inline-block;
         width: 9px;
         height: 9px;
-        background: #E03A3E;
+        background: #CE2B37;
         border-radius: 50%;
         animation: ls-pulse 1.2s infinite;
-        box-shadow: 0 0 8px #E03A3E;
+        box-shadow: none;
       }
 
       .ls-events {
         list-style: none;
         padding: 10px 0 0 0;
         margin-top: 10px;
-        border-top: 1px solid #27272C;
-        font-family: 'JetBrains Mono', monospace;
+        border-top: 1px solid #CDB389;
+        font-family: 'Hanken Grotesk', sans-serif;
         font-size: 11px;
-        color: #7A7A82;
-        letter-spacing: 1px;
+        color: #8A7B66;
+        letter-spacing: 0.5px;
       }
       .ls-events li { padding: 3px 0; }
 
       .ls-empty {
-        color: #7A7A82;
-        font-family: 'JetBrains Mono', monospace;
+        color: #8A7B66;
+        font-family: 'Hanken Grotesk', sans-serif;
         font-size: 11px;
         text-transform: uppercase;
         letter-spacing: 2px;
@@ -118,6 +120,41 @@
       }
 
       @keyframes ls-pulse { 50% { opacity: 0.3; } }
+
+      /* ── Peachtree design: animations ─────────────────────────────── */
+      @keyframes hawksFlutter {
+        0%, 100% { transform: translateY(0); }
+        50%      { transform: translateY(-2px); }
+      }
+      .hawks-flutter { animation: hawksFlutter 3.6s ease-in-out infinite; }
+      @media (prefers-reduced-motion: reduce) {
+        .hawks-flutter { animation: none; }
+      }
+
+      @keyframes hawksFadeIn {
+        from { transform: translateY(6px); }
+        to   { transform: translateY(0); }
+      }
+      .hawks-fadein { animation: hawksFadeIn .26s ease-out; }
+      @media (prefers-reduced-motion: reduce) {
+        .hawks-fadein { animation: none; }
+      }
+
+      /* ── Peachtree design: responsive collapses ───────────────────── */
+      @media (max-width: 820px) {
+        .results-grid, .wire-grid { grid-template-columns: 1fr !important; }
+        .feature-grid { grid-template-columns: 1fr !important; }
+        .feature-quote { grid-template-columns: 1fr !important; gap: 12px !important; }
+      }
+      @media (max-width: 560px) {
+        .feature-also { grid-template-columns: 1fr !important; }
+        .feature-also button { border-right: none !important; padding-right: 0 !important;
+          border-bottom: 1px solid #CDB389; padding-bottom: 18px; }
+      }
+      @media (max-width: 680px) {
+        .starters-grid { grid-template-columns: repeat(2, 1fr) !important; }
+      }
+      .wire-columns { orphans: 2; widows: 2; }
     </style>
   </head>
   <body>
