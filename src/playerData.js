@@ -658,6 +658,84 @@ export const KEY_DATES = [
     hawksAngle: "Signings official · sign-and-trades can finalize · cap holds release" },
 ];
 
+// ─── Draft Watch (2026 NBA Draft · June 23-24 · Barclays Center) ───────────
+// Powers the Draft view. Refreshed alongside NEWS_DIGEST on the morning run.
+// heat: "hot" (most-mocked) | "warm" (in range) | "cool" (dark horse / trade-down) | "fading" (likely gone before ATL picks)
+export const DRAFT_DATA = {
+  generatedAt: "2026-06-19T13:30:00Z",
+  draftDate: "2026-06-23",
+  venue: "Barclays Center · Brooklyn",
+  broadcast: "ABC / ESPN",
+  picks: [
+    { round: 1, overall: 8,  via: "via New Orleans", note: "Atlanta's headline selection. Mocks split between a lead guard (Brown Jr., Flemings) and trading down for size (Mara). Front office is open to moving up or down." },
+    { round: 1, overall: 23, via: "own", note: "League sources say Atlanta will field offers for this pick. Jake Fischer reports the Hawks are open to making just one first-round selection." },
+    { round: 2, overall: 57, via: "own", note: "Late second-round flier. Workout names (Bidunga, Onyenso, Suder, Uzan) profile as targets in the 23 / 57 range." },
+  ],
+  bigBoard: [
+    {
+      rank: 1, name: "Mikel Brown Jr.", pos: "PG", school: "Louisville", classYr: "Freshman",
+      height: "6'3", age: 19, heat: "hot", mockRange: "6-10",
+      statline: "18.2 PPG · 4.7 APG · 3.3 RPG · 41.0 FG% · 34.4 3P% · 84.4 FT%",
+      fit: "The most-mocked answer to Atlanta's lead-guard hole post-Trae. Scoring shotmaker with clever passing, needs touches and playmaking help. A fresh CBS Sports mock sends him back to the Hawks at No. 8.",
+      flag: "Most-mocked",
+    },
+    {
+      rank: 2, name: "Kingston Flemings", pos: "PG", school: "Houston", classYr: "Freshman",
+      height: "6'3", age: 19, heat: "hot", mockRange: "7-12",
+      statline: "Consensus Second-Team All-American",
+      fit: "Two-way lead guard with franchise-PG traits. Adds half-court shot creation plus pesky perimeter defense next to Daniels and Alexander-Walker. CBS Sports' latest mock pairs him with Atlanta at No. 8.",
+      flag: "Two-way upside",
+    },
+    {
+      rank: 3, name: "Darius Acuff Jr.", pos: "PG", school: "Arkansas", classYr: "Freshman",
+      height: "6'2", age: 19, heat: "fading", mockRange: "5-8",
+      statline: "23.5 PPG · 6.4 APG · 3.1 RPG · 48.4 FG% · 44.0 3P% · 80.9 FT%",
+      fit: "Explosive scoring guard, SEC Player of the Year and Consensus All-American as a freshman. The catch: Bleacher Report says the Kings at No. 7 view him as their draft 'floor,' so he may be gone before Atlanta is on the clock.",
+      flag: "May not last to 8",
+    },
+    {
+      rank: 4, name: "Aday Mara", pos: "C", school: "Michigan", classYr: "Sophomore",
+      height: "7'3", age: 20, heat: "cool", mockRange: "8-16",
+      statline: "7'3 rim-protecting big",
+      fit: "The size-need dark horse if Atlanta trades down. Cleanest answer to the interior-defense problem the Knicks series exposed. ESPN's Jeremy Woo lists him as a live option; a Brett Siegel mock sends him to the Hawks.",
+      flag: "Size if ATL trades down",
+    },
+    {
+      rank: 5, name: "Yaxel Lendeborg", pos: "F", school: "Michigan", classYr: "Senior",
+      height: "6'9", age: 22, heat: "cool", mockRange: "10-22",
+      statline: "Two-way forward",
+      fit: "A rising fit alongside Daniels and Alexander-Walker, adding positional size and defensive versatility on the wing. Surfaces in several mocks in Atlanta's range.",
+      flag: "Wing depth",
+    },
+  ],
+  scenarios: [
+    {
+      title: "The Jaylen Brown Domino",
+      heat: "developing",
+      detail: "If Boston wins the Giannis race, a Celtics package would likely be built around Jaylen Brown, draft capital and a role player or two (Hauser or Pritchard), and that frees Brown. Marc Stein lists the Hawks, Rockets and Trail Blazers as suitors. Brown grew up in the Atlanta area, so a homecoming fits, but the salary (three years, roughly $183M) would force Atlanta to package picks plus filler and could reshape its draft night.",
+    },
+    {
+      title: "Trade Down for Size",
+      heat: "live",
+      detail: "ClutchPoints reports Saleh could move down slightly from No. 8 to land Aday Mara or Illinois big Morez Johnson Jr. plus extra capital, especially if the guard run starts early at picks 6 and 7. The Knicks series exposed Atlanta's lack of interior size.",
+    },
+    {
+      title: "Field Offers for No. 23",
+      heat: "live",
+      detail: "League sources say Atlanta has told rival teams it will happily field offers for the No. 23 pick. Jake Fischer reports the Hawks are open to making just one first-round selection, consolidating into a single higher-upside swing or future capital.",
+    },
+    {
+      title: "Trade Up",
+      heat: "watch",
+      detail: "If guards fly off the board at 6 and 7, Atlanta could package the No. 8 pick with Zaccharie Risacher to move up. Hollinger tags Risacher and Corey Kispert as the Hawks' likeliest summer trade chips.",
+    },
+  ],
+  sources: [
+    "ESPN", "Yahoo Sports", "CBS Sports", "Bleacher Report", "ClutchPoints",
+    "HoopsHype", "The Stein Line", "NBC Sports", "SI (onsi)", "Peachtree Hoops",
+  ],
+};
+
 // ─── Pull quotes (Story section picks one matching lead.category) ──────────
 // `text` is a token array — same convention as EDITORS_LETTER.headline.
 export const PULL_QUOTES = [

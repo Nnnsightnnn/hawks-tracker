@@ -4,6 +4,7 @@ import { useState, useEffect, useMemo, useRef } from "react";
 import {
   PLAYERS, RESULTS, EAST_STANDINGS, NEWS_DIGEST,
   ISSUE as RAW_ISSUE, NUMBERS_LEDGER, BETS as RAW_BETS, KEY_DATES,
+  DRAFT_DATA,
 } from "./playerData.js";
 import BrandCredit from "./components/BrandCredit.jsx";
 
@@ -431,6 +432,7 @@ const TABS = [
   { id: "roster",  label: "Roster"  },
   { id: "rotation",label: "Rotation"},
   { id: "results", label: "Results" },
+  { id: "draft",   label: "Draft"   },
   { id: "news",    label: "News"    },
 ];
 
@@ -1260,12 +1262,203 @@ function NewsView({ tweaks }) {
   );
 }
 
+// ─── Draft Watch ────────────────────────────────────────────────
+const HEAT = {
+  hot:        { c: C.red,   label: "HOT" },
+  warm:       { c: C.gold,  label: "WARM" },
+  cool:       { c: C.pine,  label: "DARK HORSE" },
+  fading:     { c: C.taupe, label: "MAY BE GONE" },
+  developing: { c: C.red,   label: "DEVELOPING" },
+  live:       { c: C.pine,  label: "LIVE" },
+  watch:      { c: C.gold,  label: "WATCH" },
+};
+
+function daysBetween(fromISO, toISO) {
+  return Math.max(0, Math.round(
+    (new Date(toISO + "T12:00:00") - new Date(fromISO + "T12:00:00")) / 86400000
+  ));
+}
+
+function HeatTag({ heat }) {
+  const h = HEAT[heat] || HEAT.watch;
+  return (
+    <span style={{
+      display: "inline-flex", alignItems: "center", gap: 5,
+      fontFamily: FONT.body, fontWeight: 700, fontSize: 9.5, letterSpacing: 1.2,
+      textTransform: "uppercase", color: h.c, whiteSpace: "nowrap",
+    }}>
+      <span style={{ width: 6, height: 6, borderRadius: "50%", background: h.c, flexShrink: 0 }}/>
+      {h.label}
+    </span>
+  );
+}
+
+function DraftView({ tweaks }) {
+  const pad = tweaks.density === "airy" ? 30 : 18;
+  const d = DRAFT_DATA;
+  const days = daysBetween(RAW_ISSUE.date, d.draftDate);
+  const gates = KEY_DATES.filter((k) => ["draft", "hield-trig", "kuminga-opt", "fa-open"].includes(k.id));
+
+  return (
+    <div style={{ maxWidth: 1180, margin: "0 auto", padding: `${pad + 8}px clamp(20px,5vw,64px) 80px` }}>
+      {/* Masthead */}
+      <div style={{
+        display: "flex", alignItems: "center", gap: 18, flexWrap: "wrap",
+        borderBottom: `3px solid ${C.ink}`, paddingBottom: 16,
+      }}>
+        <div style={{
+          background: C.red, color: C.cream, borderRadius: 12,
+          padding: "10px 22px", display: "flex", alignItems: "center", gap: 12, flexShrink: 0,
+        }}>
+          <HawkMark color={C.cream} style={{ width: 30, height: 30, flexShrink: 0 }}/>
+          <span style={{ fontFamily: FONT.disp, fontWeight: 700, fontSize: "clamp(28px,4vw,44px)", letterSpacing: 0.5, lineHeight: 1, whiteSpace: "nowrap" }}>
+            Draft Watch
+          </span>
+        </div>
+        <div style={{ flex: 1, minWidth: 180 }}>
+          <div style={{ fontFamily: FONT.body, fontWeight: 600, fontSize: 12, letterSpacing: 1, color: C.ink }}>
+            2026 NBA Draft · June 23-24
+          </div>
+          <div style={{ fontFamily: FONT.body, fontWeight: 400, fontSize: 11.5, color: C.taupe, marginTop: 2 }}>
+            {d.venue} · {d.broadcast}
+          </div>
+        </div>
+        <div style={{
+          textAlign: "center", background: C.ink, color: C.cream, borderRadius: 12,
+          padding: "8px 20px", flexShrink: 0,
+        }}>
+          <div style={{ fontFamily: FONT.num, fontWeight: 700, fontSize: 30, lineHeight: 1, fontVariantNumeric: "tabular-nums" }}>{days}</div>
+          <div style={{ fontFamily: FONT.body, fontWeight: 600, fontSize: 9.5, letterSpacing: 1.4, textTransform: "uppercase", marginTop: 2 }}>
+            {days === 1 ? "Day Out" : "Days Out"}
+          </div>
+        </div>
+      </div>
+
+      {/* Atlanta's picks */}
+      <div style={{ marginTop: tweaks.density === "airy" ? 34 : 26 }}>
+        <Kicker color={C.pine}>Atlanta's Picks</Kicker>
+        <div style={{
+          marginTop: 14, display: "grid",
+          gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: 14,
+        }}>
+          {d.picks.map((p) => (
+            <div key={p.overall} style={{
+              border: `2px solid ${C.ink}`, borderRadius: 12, overflow: "hidden", background: C.panel,
+              display: "flex", flexDirection: "column",
+            }}>
+              <div style={{ display: "flex", alignItems: "baseline", gap: 10, padding: "14px 16px 8px" }}>
+                <span style={{ fontFamily: FONT.num, fontWeight: 700, fontSize: 38, lineHeight: 1, color: C.red, fontVariantNumeric: "tabular-nums" }}>
+                  {p.overall}
+                </span>
+                <div style={{ display: "flex", flexDirection: "column" }}>
+                  <span style={{ fontFamily: FONT.body, fontWeight: 700, fontSize: 11, letterSpacing: 1, textTransform: "uppercase", color: C.ink }}>
+                    Round {p.round}
+                  </span>
+                  <span style={{ fontFamily: FONT.body, fontWeight: 500, fontSize: 10.5, color: C.taupe }}>{p.via}</span>
+                </div>
+              </div>
+              <div style={{
+                padding: "8px 16px 14px", borderTop: `1px solid ${C.hair}`,
+                fontFamily: FONT.body, fontWeight: 400, fontSize: 12, lineHeight: 1.5, color: C.ink,
+              }}>{p.note}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Big board + scenarios */}
+      <div style={{
+        marginTop: tweaks.density === "airy" ? 40 : 32,
+        display: "grid", gridTemplateColumns: "minmax(0,1.9fr) minmax(240px,1fr)",
+        gap: tweaks.density === "airy" ? 40 : 30, alignItems: "start",
+      }} className="wire-grid">
+        {/* Big board */}
+        <div>
+          <Kicker color={C.red}>The Big Board · Targets at No. 8</Kicker>
+          <div style={{ marginTop: 16, display: "flex", flexDirection: "column", gap: 14 }}>
+            {d.bigBoard.map((pr) => (
+              <div key={pr.rank} style={{
+                display: "flex", gap: 14, alignItems: "stretch",
+                border: `1px solid ${C.hair}`, borderRadius: 12, overflow: "hidden", background: C.cream,
+              }}>
+                <div style={{
+                  flexShrink: 0, width: 52, background: C.ink, color: C.cream,
+                  display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center",
+                }}>
+                  <span style={{ fontFamily: FONT.body, fontWeight: 600, fontSize: 8.5, letterSpacing: 1, opacity: 0.7 }}>RK</span>
+                  <span style={{ fontFamily: FONT.num, fontWeight: 700, fontSize: 26, lineHeight: 1, fontVariantNumeric: "tabular-nums" }}>{pr.rank}</span>
+                </div>
+                <div style={{ flex: 1, padding: "12px 16px 13px", minWidth: 0 }}>
+                  <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", gap: 10, flexWrap: "wrap" }}>
+                    <span style={{ fontFamily: FONT.disp, fontWeight: 700, fontSize: 19, color: C.ink, lineHeight: 1.1 }}>{pr.name}</span>
+                    <HeatTag heat={pr.heat}/>
+                  </div>
+                  <div style={{ fontFamily: FONT.body, fontWeight: 600, fontSize: 11, color: C.pine, letterSpacing: 0.4, marginTop: 3 }}>
+                    {pr.pos} · {pr.school} · {pr.classYr} · {pr.height} · Age {pr.age} · Mock {pr.mockRange}
+                  </div>
+                  <div style={{
+                    fontFamily: FONT.num, fontWeight: 700, fontSize: 12, color: C.red, marginTop: 7,
+                    fontVariantNumeric: "tabular-nums",
+                  }}>{pr.statline}</div>
+                  <div style={{ fontFamily: FONT.body, fontWeight: 400, fontSize: 12, lineHeight: 1.5, color: C.ink, marginTop: 7 }}>{pr.fit}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Scenarios + gates */}
+        <aside style={{ position: "sticky", top: 84 }}>
+          <div style={{ border: `2px solid ${C.ink}`, borderRadius: 10, overflow: "hidden", background: C.panel }}>
+            <div style={{
+              background: C.ink, color: C.cream, padding: "11px 16px",
+              fontFamily: FONT.disp, fontWeight: 700, fontSize: 16, letterSpacing: 0.4,
+            }}>Draft-Night Scenarios</div>
+            <div style={{ padding: "4px 16px 12px" }}>
+              {d.scenarios.map((s, i) => (
+                <div key={i} style={{ padding: "13px 0", borderBottom: i < d.scenarios.length - 1 ? `1px solid ${C.hair}` : "none" }}>
+                  <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 8, marginBottom: 6 }}>
+                    <span style={{ fontFamily: FONT.disp, fontWeight: 700, fontSize: 14, color: C.ink, lineHeight: 1.15 }}>{s.title}</span>
+                    <HeatTag heat={s.heat}/>
+                  </div>
+                  <div style={{ fontFamily: FONT.body, fontWeight: 400, fontSize: 11.5, lineHeight: 1.5, color: C.ink }}>{s.detail}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div style={{ marginTop: 16, border: `1px solid ${C.hair}`, borderRadius: 10, overflow: "hidden", background: C.bg }}>
+            <div style={{
+              background: C.gold, color: C.ink, padding: "10px 16px",
+              fontFamily: FONT.disp, fontWeight: 700, fontSize: 15,
+            }}>Offseason Gates</div>
+            <div style={{ padding: "4px 16px 12px" }}>
+              {gates.map((k, i) => (
+                <div key={k.id} style={{ padding: "10px 0", borderBottom: i < gates.length - 1 ? `1px dotted ${C.hair}` : "none" }}>
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", gap: 10 }}>
+                    <span style={{ fontFamily: FONT.body, fontWeight: 700, fontSize: 11.5, color: C.ink, letterSpacing: 0.3 }}>{k.label}</span>
+                    <span style={{ fontFamily: FONT.num, fontWeight: 700, fontSize: 12, color: C.red, whiteSpace: "nowrap", fontVariantNumeric: "tabular-nums" }}>
+                      {daysBetween(RAW_ISSUE.date, k.date)}d
+                    </span>
+                  </div>
+                  <div style={{ fontFamily: FONT.body, fontWeight: 400, fontSize: 10.5, color: C.taupe, marginTop: 2, fontStyle: "italic" }}>{k.hawksAngle}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  );
+}
+
 // ─── App shell ──────────────────────────────────────────────────
 const VIEWS = {
   feature: FeatureView,
   roster: RosterView,
   rotation: RotationView,
   results: ResultsView,
+  draft: DraftView,
   news: NewsView,
 };
 
