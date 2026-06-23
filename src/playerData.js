@@ -392,7 +392,7 @@ export const NEXT_GAME = {
   competition: "OFFSEASON",
   venue: "Barclays Center (Brooklyn)",
   broadcast: "ABC / ESPN",
-  seriesContext: "MONDAY JUNE 22, 1 DAY TO THE DRAFT. ATLANTA'S NEWS IS FINALLY TRANSACTIONS, NOT RUMORS. The Hawks made two real moves Monday: they ACQUIRED WING AARON WIGGINS from Oklahoma City for two second-round picks (Atlanta's 2030 and the least favorable Hawks/Lakers 2032), a 3-and-D rotation wing off a 2025 title run while OKC banks tax relief, and they RE-SIGNED CJ McCOLLUM to a one-year, roughly $21M extension with a 7.5% trade kicker, keeping him off the June 30 open market (ESPN / NBA.com / Bleacher Report / NBC Sports / SI onsi / ClutchPoints, Jun 22). THE LIVE THREAD IS STILL THE GIANNIS MARKET AND ATLANTA'S PLACE IN IT: multiple reports say the Bucks are 'comfortable' with MIAMI's package built around Tyler Herro, Kel'el Ware and Jaime Jaquez Jr. plus capital, but want a THIRD TEAM to absorb salary, with DETROIT emerging to take on Herro. Miami stays the clear frontrunner and Giannis's reported preference, Boston the only other team in the race, and a decision is still expected on or before the June 23 draft. Atlanta's stake holds: if Boston wins the race it would likely move JAYLEN BROWN, and Marc Stein lists the Hawks, Rockets and Trail Blazers as Brown suitors, though POBO Onsi Saleh holds this roster is 'not one player away.' CAP CALENDAR, post-McCollum: Atlanta is weighing Jonathan Kuminga's $24.3M option, with a decline-and-re-sign on a longer multi-year deal the reported lean. THE BACKDROP: the New York Knicks are NBA champions, the team that ended Atlanta's season, closing San Antonio 94-90 in Game 5 to take the Finals 4-1, JALEN BRUNSON 45 and Finals MVP. DRAFT BOARD: mocks split between Louisville PG MIKEL BROWN JR. and Houston PG KINGSTON FLEMINGS at No. 8, with 7'3 ADAY MARA the size-need answer if Atlanta trades down; league sources say the Hawks will happily field offers for No. 23. KEY OFFSEASON DATES: Draft Night June 23 (1 day) · Hield $9.66M full-guarantee trigger June 25 (3 days) · Kuminga $24.3M team-option call by June 29 (7 days) · FA market opens June 30 6 PM ET (8 days) · Free agency moratorium July 6.",
+  seriesContext: "TUESDAY JUNE 23, DRAFT DAY (8 PM ET, ABC/ESPN). THE BIG DOMINO FELL OVERNIGHT: GIANNIS ANTETOKOUNMPO IS A MIAMI HEAT. Milwaukee agreed late Monday to trade the two-time MVP, plus Bobby Portis, to Miami for Tyler Herro, Kel'el Ware, Jaime Jaquez Jr., Kasparas Jakucionis and a haul of picks (the No. 13 pick tonight, unprotected 2031 and 2033 firsts, a 2030 swap, a 2033 second), ending a roughly 13-month saga on the eve of the draft (ESPN / CBS Sports / Yahoo Sports, Jun 23). FOR ATLANTA, THE GIANNIS-TO-BOSTON LANE IS NOW CLOSED: the Celtics pushed a Jaylen Brown-centered package and missed, so the cleanest near-term path that would have shaken Brown loose is gone. Brown stays a Boston Celtic for now, though Marc Stein still lists the Hawks among his general suitors and separate Clippers and Bucks interest lingers, all hypothetical. THE HAWKS' OWN MOVES still stand: Monday they ACQUIRED WING AARON WIGGINS from Oklahoma City for two second-round picks (Atlanta's 2030 and the least favorable Hawks/Lakers 2032), a 3-and-D rotation wing off a 2025 title run while OKC banks tax relief, and they RE-SIGNED CJ McCOLLUM to a one-year, roughly $21M extension with a 7.5% trade kicker, keeping him off the open market. CAP CALENDAR, post-McCollum: Atlanta weighs Jonathan Kuminga's $24.3M option (call by June 29), with a decline-and-re-sign on a longer multi-year deal the reported lean. THE BACKDROP: the New York Knicks are NBA champions, the team that ended Atlanta's season, closing San Antonio 94-90 in Game 5 to take the Finals 4-1, JALEN BRUNSON 45 and Finals MVP. DRAFT BOARD: mocks split between Louisville PG MIKEL BROWN JR. and Houston PG KINGSTON FLEMINGS at No. 8, with 7'3 ADAY MARA the size-need answer if Atlanta trades down; the Kings at No. 7 may take Darius Acuff Jr. before the Hawks pick; league sources say Atlanta will happily field offers for No. 23. KEY OFFSEASON DATES: Draft Night TONIGHT June 23 · Hield $9.66M full-guarantee trigger June 25 (2 days) · Kuminga $24.3M team-option call by June 29 (6 days) · FA market opens June 30 6 PM ET (7 days) · Free agency moratorium July 6.",
 };
 
 // ─── Game Results (2025-26 regular season · last 16 games) ─────────────────
@@ -441,10 +441,22 @@ export const EAST_STANDINGS = [
 
 // ─── AI News Digest (generated from live web search) ───────────────────────
 export const NEWS_DIGEST = {
-  generatedAt: "2026-06-22T13:30:00Z",
+  generatedAt: "2026-06-23T08:45:00Z",
   summary:
-    "OFFSEASON, Monday June 22, one day to the draft, and for the first time this summer Atlanta's news is transactions, not rumors. The Hawks made two real moves Monday. They acquired 27-year-old wing AARON WIGGINS from the Oklahoma City Thunder for two second-round picks (Atlanta's 2030 and the least favorable of the Hawks' or Lakers' 2032), adding a 3-and-D rotation wing fresh off a 2025 title run while OKC sheds his $9.2M salary for tax relief. And they re-signed guard CJ McCOLLUM to a one-year, roughly $21M extension that includes a 7.5% trade kicker, keeping him off the open market that would have opened June 30. McCollum, who came over in January's Trae Young trade, averaged 18.7 points in 41 Hawks games and hit the Game 3 dagger that gave Atlanta a 2-1 lead on the eventual champion Knicks. THE LIVE THREAD remains the Giannis Antetokounmpo market and Atlanta's place in it: multiple reports say the Bucks are 'comfortable' with Miami's package (Tyler Herro, Kel'el Ware, Jaime Jaquez Jr. plus capital) but want a third team to absorb salary, with DETROIT emerging to take on Herro. Miami is the frontrunner and Giannis's reported preference, Boston the only other team in the race, and a decision is expected on or before the June 23 draft. The Boston lane is Atlanta's: a Celtics package for Giannis would likely free JAYLEN BROWN, and Marc Stein still lists the Hawks among Brown's suitors, though POBO ONSI SALEH insists this roster is 'not one player away.' CAP CALENDAR, post-McCollum: Buddy Hield's $9.66M full guarantee triggers June 25 (3 days, waiver expected), and Atlanta must call Jonathan Kuminga's $24.3M team option by June 29 (7 days), with reporting pointing to a decline-and-re-sign on a longer deal; the McCollum money is framed as a fresh squeeze on that math. ON THE BOARD: mocks split between Louisville PG MIKEL BROWN JR. and Houston PG KINGSTON FLEMINGS at No. 8, with 7'3 ADAY MARA the size-need answer if Atlanta trades down. THE BACKDROP: the New York Knicks are NBA champions (Brunson 45, Finals MVP, closed San Antonio 4-1), the team that ended Atlanta's season in Round 1.",
+    "OFFSEASON, Tuesday June 23, DRAFT DAY (8 PM ET, ABC/ESPN), and the league woke up changed. GIANNIS ANTETOKOUNMPO IS A MIAMI HEAT. Milwaukee agreed late Monday night to trade the two-time MVP, along with Bobby Portis, to Miami for Tyler Herro, Kel'el Ware, Jaime Jaquez Jr., Kasparas Jakucionis and a pick haul that includes tonight's No. 13 selection, unprotected 2031 and 2033 firsts, a 2030 swap and a 2033 second, ending a roughly 13-month saga on the eve of the draft. FOR ATLANTA, THE TRADE QUIETLY CLOSES A DOOR: Boston pushed a Jaylen Brown-centered package for Giannis and lost, so the cleanest near-term path that would have pried JAYLEN BROWN loose is gone. Brown stays a Celtic for now; Marc Stein still lists the Hawks among his broad suitors and separate Clippers and Bucks interest lingers, but all of it is hypothetical and POBO ONSI SALEH keeps insisting this roster is 'not one player away.' ATLANTA'S OWN WORK still holds from Monday: the Hawks acquired 27-year-old wing AARON WIGGINS from Oklahoma City for two second-round picks (Atlanta's 2030 and the least favorable Hawks/Lakers 2032), a 3-and-D rotation wing off a 2025 title run, and re-signed CJ McCOLLUM to a one-year, roughly $21M extension with a 7.5% trade kicker, keeping him off the open market. CAP CALENDAR: Buddy Hield's $9.66M full guarantee triggers June 25 (2 days, waiver expected), and Atlanta must call Jonathan Kuminga's $24.3M team option by June 29 (6 days), with reporting pointing to a decline-and-re-sign on a longer deal. ON THE BOARD TONIGHT: mocks split between Louisville PG MIKEL BROWN JR. and Houston PG KINGSTON FLEMINGS at No. 8, with 7'3 ADAY MARA the size-need answer if Atlanta trades down, and the Kings at No. 7 may grab Darius Acuff Jr. before the Hawks pick. THE BACKDROP: the New York Knicks are NBA champions (Brunson 45, Finals MVP, closed San Antonio 4-1), the team that ended Atlanta's season in Round 1.",
   keyTopics: [
+    {
+      title: "BLOCKBUSTER: Giannis Antetokounmpo Traded to the Miami Heat Late Monday, Ending a 13-Month Saga on the Eve of the Draft",
+      detail:
+        "The biggest story of the offseason broke overnight: the Milwaukee Bucks agreed late Monday, June 22, to trade two-time MVP GIANNIS ANTETOKOUNMPO, along with forward Bobby Portis, to the MIAMI HEAT, closing a saga that had simmered for roughly 13 months (ESPN / CBS Sports / Yahoo Sports / Bleacher Report, Jun 23). Milwaukee's return is built around Tyler Herro, young big Kel'el Ware, wing Jaime Jaquez Jr. and guard Kasparas Jakucionis, plus a heavy pick package reported to include Miami's No. 13 selection tonight, unprotected 2031 and 2033 first-rounders, a 2030 first-round swap and a 2033 second. Miami had been the frontrunner and Giannis's reported preference throughout; the Boston Celtics were the only other team in the race and ultimately missed out. The deal lands the night before the 2026 draft and immediately reshapes the East's title picture, with the champion Knicks, the new Giannis-led Heat and the Cavaliers headlining the conference Atlanta has to climb.",
+      category: "trades",
+    },
+    {
+      title: "DRAFT DAY: Hawks On the Clock Tonight at No. 8, With No. 23 Up for Offers and a Trade-Down for Size in Play",
+      detail:
+        "It's here. The 2026 NBA Draft runs tonight, Tuesday June 23 (Round 1, 8 PM ET, ABC/ESPN) and Wednesday June 24 at Barclays Center, and Atlanta holds picks Nos. 8, 23 and 57 (NBA.com / ESPN / SI onsi / ClutchPoints, Jun 23). At No. 8 the consensus still splits between Louisville lead guard MIKEL BROWN JR. and Houston PG KINGSTON FLEMINGS, with 7'3 Michigan center ADAY MARA the size-need answer if the front office trades down for extra capital, and Michigan two-way forward Yaxel Lendeborg a rising fit. The squeeze from above persists: Bleacher Report says the Kings at No. 7 view Arkansas guard DARIUS ACUFF JR. as their draft 'floor,' so the explosive scorer often mocked into Atlanta's range may be gone before the Hawks are on the clock. League sources say Atlanta has told rivals it will happily field offers for No. 23, with Jake Fischer reporting the win-now Hawks would prefer to make just one first-round pick rather than bring in two rookies. POBO Onsi Saleh has signaled the front office is 'open for business' on both picks.",
+      category: "general",
+    },
     {
       title: "DONE: Hawks Make First Offseason Move, Acquire Wing Aaron Wiggins From Oklahoma City for Two Second-Round Picks",
       detail:
@@ -458,9 +470,9 @@ export const NEWS_DIGEST = {
       category: "trades",
     },
     {
-      title: "Jaylen Brown Watch: Bucks 'Comfortable' With Miami's Giannis Package but Want a Third Team, Detroit Emerges to Take Herro; Brown Deal 'Nearing Clarity'",
+      title: "Jaylen Brown Watch Cools: Giannis to Miami Means Boston Missed, Closing the Cleanest Path That Would Have Freed Brown",
       detail:
-        "Atlanta's hottest trade thread is the closest thing the offseason has to live action, and Monday's read has the Giannis market closing on a framework one day before the draft. Multiple reports say the Bucks are 'comfortable' with the Miami Heat's package, built around Tyler Herro, young big Kel'el Ware, wing Jaime Jaquez Jr., a younger guard (Pelle Larsson or Kasparas Jakucionis) and draft capital up to three first-round picks, but want a THIRD TEAM to absorb salary before committing (ClutchPoints / CBS Sports / SI onsi / Heavy / NBC Sports, Jun 18-21). Marc Stein reports DETROIT has emerged as the likeliest facilitator to take on Herro and clean up the money, and a new NBC Sports read cautions that GM Jon Horst's asking price may be high enough to strip an acquiring team of the assets it would need to contend. Miami stays the clear frontrunner and Giannis's reported preferred destination, with Boston the only other team in the race and the Orlando Magic surfacing as a dark-horse, and co-owner Jimmy Haslam still wants resolution on or before the June 23 draft. Atlanta's stake is the Boston lane: a Celtics package for Giannis would likely require JAYLEN BROWN plus draft capital and a role player or two (Sam Hauser or Payton Pritchard), the domino that frees Brown, and one insider says a Brown deal is 'nearing clarity' with the Hawks floated as a possible third team. Eric Pincus's latest three-team concept routes Brown to Atlanta and Andre Jackson Jr. from Milwaukee while sending Giannis to Boston; Marc Stein still lists the Hawks, Rockets and Trail Blazers as Brown's suitors. The Atlanta case is real: a deep asset base, two firsts this year (Nos. 8 and 23), and Brown grew up in the Atlanta area, so a homecoming as the No. 1 option fits. The hurdles are just as real: Brown, who turns 30 in October, is owed three years and roughly $183M, the salary math forces Atlanta to package picks plus filler, and POBO Onsi Saleh keeps insisting this roster is 'not one player away.' Nothing is signed.",
+        "The thread that drove Atlanta's offseason just lost its engine. With GIANNIS ANTETOKOUNMPO traded to MIAMI late Monday, the Boston Celtics, who had pushed a JAYLEN BROWN-centered package, missed out, removing the domino that would most plausibly have shaken Brown loose (CBS Sports / ESPN / Hardwood Houdini, Jun 23). After losing the Giannis race, Boston is under no obligation to move Brown and may instead focus on repairing a relationship strained by the failed pursuit, so for now Brown stays a Celtic. The Hawks remain on Marc Stein's broad list of Brown suitors alongside the Rockets and Trail Blazers, and separate reporting keeps the Clippers and Bucks tied to Brown interest, but every version of it is now speculative rather than imminent. The Atlanta case never went away on paper: a deep asset base, two firsts tonight (Nos. 8 and 23), and Brown grew up in the Atlanta area, so a homecoming as a No. 1 option fits. The hurdles are just as real: Brown, who turns 30 in October, is owed three years and roughly $183M, the salary math would force Atlanta to package picks plus filler, and POBO Onsi Saleh keeps insisting this roster is 'not one player away.' Nothing is close.",
       category: "trades",
     },
     {
@@ -557,21 +569,22 @@ export const NEWS_DIGEST = {
     "VSiN",
     "Odds Shark",
     "NetsDaily",
+    "Hardwood Houdini",
   ],
 };
 
 // ─── Issue metadata (drives datelines, cover star, masthead) ───────────────
 // Update `date` daily; everything else flows from KEY_DATES + NEWS_DIGEST.
 export const ISSUE = {
-  date: "2026-06-22",                              // YYYY-MM-DD — single source of truth
+  date: "2026-06-23",                              // YYYY-MM-DD — single source of truth
   volume: 26,                                       // VOL XXVI
   number: 12,                                       // Issue number (offseason cadence)
-  dateline: "ATLANTA · JUNE 22, 2026",              // Pre-formatted for display
+  dateline: "ATLANTA · JUNE 23, 2026",              // Pre-formatted for display
   mastheadLine: "VOL XXVI · ISSUE NO. 12 · JUNE 2026 · ATL · USA",
-  railLabel: "ISSUE 12 · JUNE 22",
+  railLabel: "ISSUE 12 · JUNE 23",
   coverStarId: 1,                                   // PLAYERS[id] for the cover portrait
   coverRibbon: "EXCLUSIVE · COVER STAR · JALEN JOHNSON",
-  coverStatusKicker: "OFFSEASON · DAY 53",          // top-right corner of cover
+  coverStatusKicker: "OFFSEASON · DAY 54",          // top-right corner of cover
   coverStatusLine: "DRAFT IN {DAYS:draft} · FA IN {DAYS:fa-open}", // {DAYS:id} resolves from KEY_DATES
   backTagline: "Next issue: after Draft Night spends the lottery and the FA market opens.",
 };
@@ -644,7 +657,7 @@ export const KEY_DATES = [
     hawksAngle: "Knicks open on road — same team that ended ATL's season 4-2 in R1" },
   { id: "draft",       date: "2026-06-23",
     label: "Draft Night",         short: "DRAFT",       kind: "EVENT",      primary: true,
-    hawksAngle: "Hawks hold #8 (via NOP), #23, #57. ATL 'loves' Wagler + Brown Jr. (ClutchPoints Jun 9); Mara the size dark horse; trade-back in play." },
+    hawksAngle: "TONIGHT 8 PM ET. Hawks hold #8 (via NOP), #23, #57. Brown Jr. / Flemings the No. 8 consensus; Mara the size dark horse; Acuff may go to SAC at 7; ATL fielding offers on #23, trade-back in play." },
   { id: "hield-trig",  date: "2026-06-25",
     label: "Hield $9.4M trigger", short: "HIELD",       kind: "DEADLINE",
     hawksAngle: "Currently only $3M guaranteed · waive before trigger to save $6.4M, or hold as movable expiring" },
@@ -663,7 +676,7 @@ export const KEY_DATES = [
 // Powers the Draft view. Refreshed alongside NEWS_DIGEST on the morning run.
 // heat: "hot" (most-mocked) | "warm" (in range) | "cool" (dark horse / trade-down) | "fading" (likely gone before ATL picks)
 export const DRAFT_DATA = {
-  generatedAt: "2026-06-22T13:30:00Z",
+  generatedAt: "2026-06-23T08:45:00Z",
   draftDate: "2026-06-23",
   venue: "Barclays Center · Brooklyn",
   broadcast: "ABC / ESPN",
