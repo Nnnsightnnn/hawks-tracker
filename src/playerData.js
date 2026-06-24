@@ -38,7 +38,7 @@ export const PLAYERS = [
     fieldGoalPct: 49.0, threePointPct: 36.2, freeThrowPct: 78.4,
     trueShootingPct: 58.2, plusMinus: 5.6,
     form: 6.9, status: "active", injuryNote: null,
-    recentNotes: "SUNDAY JUNE 21 — FRESH LEAD: PRESIDENT OF BASKETBALL OPS ONSI SALEH (promoted from GM and extended long-term Wed May 27 per ESPN / Washington Post / Yahoo / SI onsi / Hoops Rumors) now runs Johnson's offseason; the Executive-of-the-Year runner-up turned away Philadelphia to lock in the architecture around the franchise focal point. ALL-NBA THIRD TEAM (announced Sun May 24) holds as the franchise headline — Johnson's first All-NBA selection of his career and the first for ANY Hawk since Trae Young in 2022 (NBA.com / SI onsi 'Jalen Johnson's Rise To Stardom Continues' / Yahoo Sports / Soaring Down South). He joins Tyrese Maxey, Jamal Murray, Chet Holmgren and Jalen Duren on the Third Team; his 22.5/10.3/7.9 across 72 games made him just the fifth player in NBA history to average 22+/10+/7+ for a full season (after Oscar Robertson, Wilt Chamberlain, Jokic and Westbrook), and the first Hawk ever to rank top-20 league-wide in all three. The nod completes Atlanta's offseason awards sweep — NAW won Most Improved, Daniels made All-Defensive Second Team — and cements Johnson as the one Hawk firmly OFF the trade board as Jaylen Brown rumors swirl. AROUND THE LEAGUE: the KNICKS, the team that ended Atlanta's season, now lead the Finals 3-1 after erasing a 29-point halftime deficit Wed Jun 10 to win Game 4 107-106 on Anunoby's tip-in with 1.2 seconds left, the largest comeback in Finals history (Anunoby 33, Brunson 31); Knicks closed it out 4-1 Sat Jun 13. On a $150M rookie extension through 2029-30 at ~$30M/yr per Spotrac — locked in; final R1 line settled at 19.5/8.3/5.5.",
+    recentNotes: "WEDNESDAY JUNE 24 — DRAFT FALLOUT: Atlanta spent the No. 8 pick on Houston PG Kingston Flemings, a downhill shot creator to grow alongside the franchise focal point, and added St. John's big Zuby Ejiofor at No. 23. PRESIDENT OF BASKETBALL OPS ONSI SALEH (promoted from GM and extended long-term Wed May 27 per ESPN / Washington Post / Yahoo / SI onsi / Hoops Rumors) now runs Johnson's offseason; the Executive-of-the-Year runner-up turned away Philadelphia to lock in the architecture around the franchise focal point. ALL-NBA THIRD TEAM (announced Sun May 24) holds as the franchise headline — Johnson's first All-NBA selection of his career and the first for ANY Hawk since Trae Young in 2022 (NBA.com / SI onsi 'Jalen Johnson's Rise To Stardom Continues' / Yahoo Sports / Soaring Down South). He joins Tyrese Maxey, Jamal Murray, Chet Holmgren and Jalen Duren on the Third Team; his 22.5/10.3/7.9 across 72 games made him just the fifth player in NBA history to average 22+/10+/7+ for a full season (after Oscar Robertson, Wilt Chamberlain, Jokic and Westbrook), and the first Hawk ever to rank top-20 league-wide in all three. The nod completes Atlanta's offseason awards sweep — NAW won Most Improved, Daniels made All-Defensive Second Team — and cements Johnson as the one Hawk firmly OFF the trade board as Jaylen Brown rumors swirl. AROUND THE LEAGUE: the KNICKS, the team that ended Atlanta's season, now lead the Finals 3-1 after erasing a 29-point halftime deficit Wed Jun 10 to win Game 4 107-106 on Anunoby's tip-in with 1.2 seconds left, the largest comeback in Finals history (Anunoby 33, Brunson 31); Knicks closed it out 4-1 Sat Jun 13. On a $150M rookie extension through 2029-30 at ~$30M/yr per Spotrac — locked in; final R1 line settled at 19.5/8.3/5.5.",
     playoffStats: { gamesPlayed: 6, minutesPerGame: 35.0, pointsPerGame: 19.5, reboundsPerGame: 8.3, assistsPerGame: 5.5 },
     playoffSeries: null,
     minutesTrend: "down",
@@ -57,7 +57,7 @@ export const PLAYERS = [
     fieldGoalPct: 47.1, threePointPct: 18.8, freeThrowPct: 76.2,
     trueShootingPct: 56.8, plusMinus: 4.3,
     form: 6.7, status: "active", injuryNote: null,
-    recentNotes: "SUNDAY JUNE 21 — Daniels' offseason boss is now PRESIDENT OF BASKETBALL OPS ONSI SALEH (promoted from GM + extended long-term Wed May 27 per ESPN / Washington Post / Yahoo / SI onsi / Hoops Rumors). NBA ALL-DEFENSIVE SECOND TEAM nod (announced Fri May 22; NBA.com / AJC / Atlanta News First / Roundtable) is his second straight year on an All-Defense team after making FIRST TEAM in 24-25. He drew 9 first-place and 32 second-place votes from the 100-member global media panel (50 points, 10th in overall voting) and tied for the NBA lead in steals per game at 2.0 with OKC's Cason Wallace; Atlanta posted a top-10 defensive rating for the first time in nearly a decade with Daniels as the primary point-of-attack defender. The Second-Team finish — down from First Team a year ago — tracks a hard offensive year: his three-point shooting cratered to 18.8% (22-of-117), and Daniels has spoken candidly about getting into a 'dark place' mentally, planning an LA summer to rebuild the jumper and 'get stronger.' Victor Wembanyama was the unanimous DPOY and lone unanimous All-Defense 1st-teamer; Daniels was not a 2026 DPOY finalist after finishing runner-up in 25. AROUND THE LEAGUE: THE KNICKS ARE 2026 CHAMPIONS, closing San Antonio 94-90 in Game 5 Sat Jun 13 to take the Finals 4-1 (NY's first title since 1973), Brunson 45 and Finals MVP; the same team that ended Atlanta's season in six finished the job. Regular-season line of 11.9/6.8/5.9 on 2.0 stl across 80 games (76 starts) is the locked baseline; four-year, $100M rookie extension (signed Oct 2025 per ESPN / NBA.com) kicks in next season; not trade-eligible until July 1, 2026.",
+    recentNotes: "WEDNESDAY JUNE 24 — With Houston PG Kingston Flemings drafted at No. 8 to add backcourt creation, Daniels' offseason boss is now PRESIDENT OF BASKETBALL OPS ONSI SALEH (promoted from GM + extended long-term Wed May 27 per ESPN / Washington Post / Yahoo / SI onsi / Hoops Rumors). NBA ALL-DEFENSIVE SECOND TEAM nod (announced Fri May 22; NBA.com / AJC / Atlanta News First / Roundtable) is his second straight year on an All-Defense team after making FIRST TEAM in 24-25. He drew 9 first-place and 32 second-place votes from the 100-member global media panel (50 points, 10th in overall voting) and tied for the NBA lead in steals per game at 2.0 with OKC's Cason Wallace; Atlanta posted a top-10 defensive rating for the first time in nearly a decade with Daniels as the primary point-of-attack defender. The Second-Team finish — down from First Team a year ago — tracks a hard offensive year: his three-point shooting cratered to 18.8% (22-of-117), and Daniels has spoken candidly about getting into a 'dark place' mentally, planning an LA summer to rebuild the jumper and 'get stronger.' Victor Wembanyama was the unanimous DPOY and lone unanimous All-Defense 1st-teamer; Daniels was not a 2026 DPOY finalist after finishing runner-up in 25. AROUND THE LEAGUE: THE KNICKS ARE 2026 CHAMPIONS, closing San Antonio 94-90 in Game 5 Sat Jun 13 to take the Finals 4-1 (NY's first title since 1973), Brunson 45 and Finals MVP; the same team that ended Atlanta's season in six finished the job. Regular-season line of 11.9/6.8/5.9 on 2.0 stl across 80 games (76 starts) is the locked baseline; four-year, $100M rookie extension (signed Oct 2025 per ESPN / NBA.com) kicks in next season; not trade-eligible until July 1, 2026.",
     playoffStats: { gamesPlayed: 6, minutesPerGame: 27.4, pointsPerGame: 7.8, reboundsPerGame: 5.8, assistsPerGame: 4.7 },
     playoffSeries: null,
     minutesTrend: "down",
@@ -385,14 +385,14 @@ export const TEAM_LOGOS = {
 // Season ended Apr 30 in Game 6 elimination by the Knicks. Next on the calendar:
 // 2026 NBA Draft Lottery on May 10 (ATL holds the more-favorable of NOP/MIL plus CLE No. 24).
 export const NEXT_GAME = {
-  opponent: "2026 NBA Draft (Brooklyn)",
-  shortName: "DRAFT",
+  opponent: "NBA Draft Round 2 + Free Agency",
+  shortName: "OFFSEASON",
   home: false,
-  date: "2026-06-23T20:00:00-04:00",
+  date: "2026-06-24T16:00:00-04:00",
   competition: "OFFSEASON",
-  venue: "Barclays Center (Brooklyn)",
-  broadcast: "ABC / ESPN",
-  seriesContext: "TUESDAY JUNE 23, DRAFT DAY (8 PM ET, ABC/ESPN). THE BIG DOMINO FELL OVERNIGHT: GIANNIS ANTETOKOUNMPO IS A MIAMI HEAT. Milwaukee agreed late Monday to trade the two-time MVP, plus Bobby Portis, to Miami for Tyler Herro, Kel'el Ware, Jaime Jaquez Jr., Kasparas Jakucionis and a haul of picks (the No. 13 pick tonight, unprotected 2031 and 2033 firsts, a 2030 swap, a 2033 second), ending a roughly 13-month saga on the eve of the draft (ESPN / CBS Sports / Yahoo Sports, Jun 23). FOR ATLANTA, THE GIANNIS-TO-BOSTON LANE IS NOW CLOSED: the Celtics pushed a Jaylen Brown-centered package and missed, so the cleanest near-term path that would have shaken Brown loose is gone. Brown stays a Boston Celtic for now, though Marc Stein still lists the Hawks among his general suitors and separate Clippers and Bucks interest lingers, all hypothetical. THE HAWKS' OWN MOVES still stand: Monday they ACQUIRED WING AARON WIGGINS from Oklahoma City for two second-round picks (Atlanta's 2030 and the least favorable Hawks/Lakers 2032), a 3-and-D rotation wing off a 2025 title run while OKC banks tax relief, and they RE-SIGNED CJ McCOLLUM to a one-year, roughly $21M extension with a 7.5% trade kicker, keeping him off the open market. CAP CALENDAR, post-McCollum: Atlanta weighs Jonathan Kuminga's $24.3M option (call by June 29), with a decline-and-re-sign on a longer multi-year deal the reported lean. THE BACKDROP: the New York Knicks are NBA champions, the team that ended Atlanta's season, closing San Antonio 94-90 in Game 5 to take the Finals 4-1, JALEN BRUNSON 45 and Finals MVP. DRAFT BOARD: mocks split between Louisville PG MIKEL BROWN JR. and Houston PG KINGSTON FLEMINGS at No. 8, with 7'3 ADAY MARA the size-need answer if Atlanta trades down; the Kings at No. 7 may take Darius Acuff Jr. before the Hawks pick; league sources say Atlanta will happily field offers for No. 23. KEY OFFSEASON DATES: Draft Night TONIGHT June 23 · Hield $9.66M full-guarantee trigger June 25 (2 days) · Kuminga $24.3M team-option call by June 29 (6 days) · FA market opens June 30 6 PM ET (7 days) · Free agency moratorium July 6.",
+  venue: "Barclays Center (Brooklyn) / FA market",
+  broadcast: "ESPN",
+  seriesContext: "WEDNESDAY JUNE 24, MORNING AFTER ROUND 1. ATLANTA GOT ITS GUARD OF THE FUTURE: the Hawks selected HOUSTON PG KINGSTON FLEMINGS at No. 8, a 6'4 two-way lead guard (20.3 PPG, 6.6 APG, 1.9 SPG, Consensus Second-Team All-American) who profiles as CJ McCollum's eventual successor and drew an A grade from CBS Sports (CBS Sports / SI / Peachtree Hoops / Bleacher Report, Jun 23). At No. 23, Atlanta took ST. JOHN'S F/C ZUBY EJIOFOR (16.3 PPG, 7.3 RPG), an energy-and-defense big who adds the interior physicality the Knicks series exposed (CBS Sports / Bleacher Report, Jun 23). ROUND 2 RESUMES TODAY (4 PM ET), where the Hawks hold No. 57 (via Boston). THE LEAGUE BACKDROP: Giannis Antetokounmpo was traded to Miami late Monday, which closed the Boston path that would most plausibly have freed JAYLEN BROWN; Brown stays a Celtic for now and the Hawks' interest is hypothetical. ATLANTA'S DONE MOVES still stand: wing AARON WIGGINS acquired from OKC for two seconds, CJ McCOLLUM re-signed (1yr, ~$21M, 7.5% trade kicker), and Quin Snyder extended Jun 8. CAP CALENDAR AHEAD: Buddy Hield's $9.66M full guarantee triggers June 25 (waiver expected), Jonathan Kuminga's $24.3M team option must be called by June 29 (decline-and-re-sign the reported lean), the FA market opens June 30 at 6 PM ET, and the moratorium ends July 6.",
 };
 
 // ─── Game Results (2025-26 regular season · last 16 games) ─────────────────
@@ -441,21 +441,27 @@ export const EAST_STANDINGS = [
 
 // ─── AI News Digest (generated from live web search) ───────────────────────
 export const NEWS_DIGEST = {
-  generatedAt: "2026-06-23T08:45:00Z",
+  generatedAt: "2026-06-24T12:30:00Z",
   summary:
-    "OFFSEASON, Tuesday June 23, DRAFT DAY (8 PM ET, ABC/ESPN), and the league woke up changed. GIANNIS ANTETOKOUNMPO IS A MIAMI HEAT. Milwaukee agreed late Monday night to trade the two-time MVP, along with Bobby Portis, to Miami for Tyler Herro, Kel'el Ware, Jaime Jaquez Jr., Kasparas Jakucionis and a pick haul that includes tonight's No. 13 selection, unprotected 2031 and 2033 firsts, a 2030 swap and a 2033 second, ending a roughly 13-month saga on the eve of the draft. FOR ATLANTA, THE TRADE QUIETLY CLOSES A DOOR: Boston pushed a Jaylen Brown-centered package for Giannis and lost, so the cleanest near-term path that would have pried JAYLEN BROWN loose is gone. Brown stays a Celtic for now; Marc Stein still lists the Hawks among his broad suitors and separate Clippers and Bucks interest lingers, but all of it is hypothetical and POBO ONSI SALEH keeps insisting this roster is 'not one player away.' ATLANTA'S OWN WORK still holds from Monday: the Hawks acquired 27-year-old wing AARON WIGGINS from Oklahoma City for two second-round picks (Atlanta's 2030 and the least favorable Hawks/Lakers 2032), a 3-and-D rotation wing off a 2025 title run, and re-signed CJ McCOLLUM to a one-year, roughly $21M extension with a 7.5% trade kicker, keeping him off the open market. CAP CALENDAR: Buddy Hield's $9.66M full guarantee triggers June 25 (2 days, waiver expected), and Atlanta must call Jonathan Kuminga's $24.3M team option by June 29 (6 days), with reporting pointing to a decline-and-re-sign on a longer deal. ON THE BOARD TONIGHT: mocks split between Louisville PG MIKEL BROWN JR. and Houston PG KINGSTON FLEMINGS at No. 8, with 7'3 ADAY MARA the size-need answer if Atlanta trades down, and the Kings at No. 7 may grab Darius Acuff Jr. before the Hawks pick. THE BACKDROP: the New York Knicks are NBA champions (Brunson 45, Finals MVP, closed San Antonio 4-1), the team that ended Atlanta's season in Round 1.",
+    "OFFSEASON, Wednesday June 24, the morning after Round 1, and Atlanta walked away with a backcourt of the future. The Hawks drafted HOUSTON PG KINGSTON FLEMINGS at No. 8, a 6'4 two-way lead guard who averaged 20.3 points, 6.6 assists and 1.9 steals as a Consensus Second-Team All-American freshman, projecting as CJ McCollum's eventual successor and the half-court shot creation Atlanta has lacked since the Trae Young trade. CBS Sports handed the pick an A, praising Flemings' surgical midrange touch and true point-guard vision while flagging his 183-pound frame and midrange-heavy game as the questions to answer against NBA length. At No. 23 Atlanta added ST. JOHN'S F/C ZUBY EJIOFOR (16.3 points, 7.3 rebounds), an energy-and-defense big who brings the interior physicality the Knicks series exposed. ROUND 2 RESUMES TODAY at 4 PM ET, where the Hawks hold the No. 57 pick via Boston. THE LEAGUE BACKDROP STILL SHAPES ATLANTA: Giannis Antetokounmpo's trade to Miami late Monday closed the Boston path that would most plausibly have shaken JAYLEN BROWN loose, so Brown stays a Celtic for now and every Hawks-Brown thread is hypothetical. Atlanta's done work holds: AARON WIGGINS acquired from OKC for two seconds, CJ McCOLLUM re-signed at one year and roughly $21M, and Quin Snyder extended on June 8. THE CAP GATES NOW DOMINATE: Buddy Hield's $9.66M full guarantee triggers June 25 (waiver expected), Jonathan Kuminga's $24.3M team option must be called by June 29 with a decline-and-re-sign the reported lean, and the FA market opens June 30 at 6 PM ET.",
   keyTopics: [
     {
-      title: "BLOCKBUSTER: Giannis Antetokounmpo Traded to the Miami Heat Late Monday, Ending a 13-Month Saga on the Eve of the Draft",
+      title: "PICK: Hawks Draft Houston PG Kingston Flemings at No. 8, Their Guard of the Future and an A-Grade Swing",
       detail:
-        "The biggest story of the offseason broke overnight: the Milwaukee Bucks agreed late Monday, June 22, to trade two-time MVP GIANNIS ANTETOKOUNMPO, along with forward Bobby Portis, to the MIAMI HEAT, closing a saga that had simmered for roughly 13 months (ESPN / CBS Sports / Yahoo Sports / Bleacher Report, Jun 23). Milwaukee's return is built around Tyler Herro, young big Kel'el Ware, wing Jaime Jaquez Jr. and guard Kasparas Jakucionis, plus a heavy pick package reported to include Miami's No. 13 selection tonight, unprotected 2031 and 2033 first-rounders, a 2030 first-round swap and a 2033 second. Miami had been the frontrunner and Giannis's reported preference throughout; the Boston Celtics were the only other team in the race and ultimately missed out. The deal lands the night before the 2026 draft and immediately reshapes the East's title picture, with the champion Knicks, the new Giannis-led Heat and the Cavaliers headlining the conference Atlanta has to climb.",
-      category: "trades",
+        "Atlanta's headline pick is in. The Hawks selected HOUSTON point guard KINGSTON FLEMINGS with the No. 8 overall pick Tuesday night, a 6'4 San Antonio native who averaged 20.3 points (56% true shooting), 6.6 assists and 1.9 steals as a freshman and earned Consensus Second-Team All-American honors (CBS Sports / SI / Peachtree Hoops / Bleacher Report / FOX 5 Atlanta, Jun 23). Scouts pin franchise-point-guard traits on him: a quick first step, surgical midrange touch and true playmaking vision, plus pesky on-ball defense that fits cleanly next to Dyson Daniels and Nickeil Alexander-Walker. He fills Atlanta's most glaring need, half-court shot creation that has been thin since the Trae Young trade, and profiles as CJ McCollum's eventual successor (McCollum just re-signed for one year). CBS Sports graded the pick an A while flagging the real questions: Flemings is listed at 183 pounds, his game skews midrange in a three-point league, and his efficiency dipped against the toughest late-season competition. Flemings said he is 'ready to work for Atlanta.' He likely comes off the bench early behind McCollum.",
+      category: "general",
     },
     {
-      title: "DRAFT DAY: Hawks On the Clock Tonight at No. 8, With No. 23 Up for Offers and a Trade-Down for Size in Play",
+      title: "PICK + TODAY: Hawks Add St. John's Big Zuby Ejiofor at No. 23; Round 2 Resumes This Afternoon With Atlanta at No. 57",
       detail:
-        "It's here. The 2026 NBA Draft runs tonight, Tuesday June 23 (Round 1, 8 PM ET, ABC/ESPN) and Wednesday June 24 at Barclays Center, and Atlanta holds picks Nos. 8, 23 and 57 (NBA.com / ESPN / SI onsi / ClutchPoints, Jun 23). At No. 8 the consensus still splits between Louisville lead guard MIKEL BROWN JR. and Houston PG KINGSTON FLEMINGS, with 7'3 Michigan center ADAY MARA the size-need answer if the front office trades down for extra capital, and Michigan two-way forward Yaxel Lendeborg a rising fit. The squeeze from above persists: Bleacher Report says the Kings at No. 7 view Arkansas guard DARIUS ACUFF JR. as their draft 'floor,' so the explosive scorer often mocked into Atlanta's range may be gone before the Hawks are on the clock. League sources say Atlanta has told rivals it will happily field offers for No. 23, with Jake Fischer reporting the win-now Hawks would prefer to make just one first-round pick rather than bring in two rookies. POBO Onsi Saleh has signaled the front office is 'open for business' on both picks.",
+        "Atlanta used its second first-rounder on interior toughness. With the No. 23 pick the Hawks took ST. JOHN'S forward/center ZUBY EJIOFOR, a 6'7.5 energy big who averaged 16.3 points and 7.3 rebounds and built his game on physicality, hustle and rim defense while expanding into a more capable post scorer and passer (CBS Sports / Bleacher Report, Jun 23). The selection directly targets the interior size and physicality the Knicks exposed in the first round and adds a developmental frontcourt body behind Onyeka Okongwu. Round 2 resumes today, Wednesday June 24 at 4 PM ET, where Atlanta still holds the No. 57 pick via Boston; pre-draft workout names (Bidunga, Onyenso, Suder, Uzan) profiled as targets in this range. Note that Jake Fischer had reported the win-now Hawks were open to making just one first-round pick, so keeping both Nos. 8 and 23 signals the front office liked the value on the board over a consolidation trade.",
       category: "general",
+    },
+    {
+      title: "Giannis Antetokounmpo Traded to the Miami Heat, Reshaping the East Atlanta Has to Climb",
+      detail:
+        "The biggest league story of the offseason landed late Monday, June 22: the Milwaukee Bucks traded two-time MVP GIANNIS ANTETOKOUNMPO, along with Bobby Portis, to the MIAMI HEAT, closing a saga that simmered for roughly 13 months (ESPN / CBS Sports / Yahoo Sports / Bleacher Report, Jun 23). Milwaukee's return is built around Tyler Herro, Kel'el Ware, Jaime Jaquez Jr. and Kasparas Jakucionis, plus a heavy pick package. Miami had been the frontrunner and Giannis's reported preference throughout; Boston was the only other finalist and missed. The deal lands a Giannis-led Heat alongside the champion Knicks and the Cavaliers atop the East, the conference Atlanta has to climb, and its direct Hawks ripple is on the Jaylen Brown front below: Boston's miss removed the cleanest path that would have freed Brown.",
+      category: "trades",
     },
     {
       title: "DONE: Hawks Make First Offseason Move, Acquire Wing Aaron Wiggins From Oklahoma City for Two Second-Round Picks",
@@ -482,9 +488,9 @@ export const NEWS_DIGEST = {
       category: "general",
     },
     {
-      title: "Workout Wire: Bidunga, Onyenso, Suder, Uzan Through the Building; Okorie Visits, Cameron Carr Profiled for the 23 Range (Draft 1 Day Out)",
+      title: "What the Picks Mean: Flemings Slots Behind McCollum as the PG Heir, Ejiofor Adds the Frontcourt Body the Knicks Exposed",
       detail:
-        "The draft machine is visible. SI's onsi reports the Hawks brought in four prospects for pre-draft workouts: Kansas big FLORY BIDUNGA, Virginia shot-blocker UGONNA ONYENSO, Miami (OH) wing PETER SUDER and Houston guard MILOS UZAN, among the reported visits of Atlanta's draft cycle (SI onsi / Yahoo Sports draft workout tracker, Jun). The group skews toward second-unit size and depth, profiling as targets for No. 23 or No. 57 rather than the No. 8 pick. Bidunga and Onyenso both fit the rim-protection need the Knicks series exposed, and Uzan adds to the point-guard survey the front office is running at the top of the board. Two newer threads: late-lottery riser EBUKA OKORIE has worked out for the Hawks, Mavericks and Bulls (NetsDaily draft roundup, Jun 11), and Peachtree Hoops profiles 6'5 combine standout CAMERON CARR, who dropped 30 in the combine scrimmage, as a shooting-plus-defense fit projected anywhere from the lottery to the early 20s. With the draft 1 day out (June 23-24, Barclays Center), expect the workout cadence to accelerate.",
+        "Reading Atlanta's draft, the two selections fit a clear plan. KINGSTON FLEMINGS gives the Hawks a downhill ballhandler and shot creator on a rookie scale, the younger guard reporting had said the front office still wanted even after re-signing CJ McCollum, who at 34 now profiles as a one-year bridge and mentor rather than a long-term answer (SI / Peachtree Hoops, Jun 23-24). ZUBY EJIOFOR addresses the same interior-physicality problem that drove the offseason center search: a hustle-and-defense big behind Onyeka Okongwu who can develop while Atlanta also shops the veteran market. Keeping both first-rounders rather than consolidating suggests POBO Onsi Saleh valued the board over a trade-down, and it leaves the bigger swings, the Kuminga decision and any veteran-center addition, to the cap gates and free agency that open over the next week.",
       category: "general",
     },
     {
@@ -518,9 +524,9 @@ export const NEWS_DIGEST = {
       category: "trades",
     },
     {
-      title: "Draft Board: Kings View Darius Acuff Jr. as Their 'Floor' at No. 7, He May Be Gone Before Atlanta Picks; Brown Jr. / Flemings the Consensus at No. 8",
+      title: "How the Board Fell: Atlanta Stayed at No. 8 and Took Flemings Over Brown Jr., Passed on a Trade-Down for Size",
       detail:
-        "1 day out, and two ClutchPoints wrinkles lead the board talk: with clear frontcourt needs, Saleh could TRADE DOWN slightly from No. 8 to land ADAY MARA or Illinois big MOREZ JOHNSON JR. plus extra capital if the guard run starts early, and league sources say Atlanta has informed rival teams it will happily field offers for No. 23 (ClutchPoints, Jun 11-12). The squeeze from above is unchanged: Bleacher Report reports the Sacramento Kings, picking one spot ahead at No. 7, view Arkansas SEC Player of the Year DARIUS ACUFF JR. as their draft 'floor' — meaning the explosive guard most often mocked into Atlanta's range could be off the board before the Hawks are on the clock (Bleacher Report / Heavy / CBS Sports / Soaring Down South, Jun 2-7). Acuff averaged 23.5 points, 3.1 rebounds and 6.4 assists on 48.4/44.0/80.9 splits as a freshman, earning SEC Player of the Year, SEC Rookie of the Year and Consensus All-American honors while leading the Razorbacks to the Sweet 16. If he's gone, NBA.com's post-Combine consensus still most often slots Louisville PG MIKEL BROWN JR. to Atlanta, with 7'3 Michigan center ADAY MARA the size-need dark horse appearing in several mocks and Michigan two-way forward YAXEL LENDEBORG a rising fit alongside Daniels and Alexander-Walker; HoopsHype's Michael Scotto reports rival execs expect the Hawks to target either a point guard or Mara, and a Brett Siegel ClutchPoints mock sends Mara to Atlanta to address the interior defense the Knicks exposed. The rest of the guard lane — KINGSTON FLEMINGS, KEATON WAGLER — and defensive-anchor big JAYDEN QUAINTANCE round out the board. Atlanta could also trade back if guards fly off at 6 and 7, potentially packaging the pick with Risacher to move up. The Hawks hold Nos. 8, 23 and 57; the draft runs June 23-24 at Barclays Center.",
+        "The pre-draft scenarios mostly did not materialize. Atlanta stayed put at No. 8 rather than trading down for a center like Aday Mara, and chose KINGSTON FLEMINGS over the other most-mocked lead guard, Louisville's Mikel Brown Jr. (CBS Sports / SI / Peachtree Hoops, Jun 23). The squeeze from above that scouts feared, with Sacramento at No. 7 reportedly viewing Arkansas guard Darius Acuff Jr. as its 'floor,' played out enough that Flemings was Atlanta's pick when the Hawks came on the clock. League sources had said Atlanta would field offers on No. 23 and that Jake Fischer reported openness to making just one first-rounder, but the Hawks kept the pick and used it on St. John's big Zuby Ejiofor for frontcourt depth. The remaining draft business is the No. 57 selection in Round 2 today and any post-draft trade fallout; the bigger roster swings shift to the Hield, Kuminga and free-agency dates ahead.",
       category: "general",
     },
     {
@@ -576,17 +582,17 @@ export const NEWS_DIGEST = {
 // ─── Issue metadata (drives datelines, cover star, masthead) ───────────────
 // Update `date` daily; everything else flows from KEY_DATES + NEWS_DIGEST.
 export const ISSUE = {
-  date: "2026-06-23",                              // YYYY-MM-DD — single source of truth
+  date: "2026-06-24",                              // YYYY-MM-DD — single source of truth
   volume: 26,                                       // VOL XXVI
-  number: 12,                                       // Issue number (offseason cadence)
-  dateline: "ATLANTA · JUNE 23, 2026",              // Pre-formatted for display
-  mastheadLine: "VOL XXVI · ISSUE NO. 12 · JUNE 2026 · ATL · USA",
-  railLabel: "ISSUE 12 · JUNE 23",
+  number: 13,                                       // Issue number (offseason cadence)
+  dateline: "ATLANTA · JUNE 24, 2026",              // Pre-formatted for display
+  mastheadLine: "VOL XXVI · ISSUE NO. 13 · JUNE 2026 · ATL · USA",
+  railLabel: "ISSUE 13 · JUNE 24",
   coverStarId: 1,                                   // PLAYERS[id] for the cover portrait
-  coverRibbon: "EXCLUSIVE · COVER STAR · JALEN JOHNSON",
-  coverStatusKicker: "OFFSEASON · DAY 54",          // top-right corner of cover
-  coverStatusLine: "DRAFT IN {DAYS:draft} · FA IN {DAYS:fa-open}", // {DAYS:id} resolves from KEY_DATES
-  backTagline: "Next issue: after Draft Night spends the lottery and the FA market opens.",
+  coverRibbon: "DRAFT NIGHT · FLEMINGS AT 8, EJIOFOR AT 23",
+  coverStatusKicker: "OFFSEASON · DAY 55",          // top-right corner of cover
+  coverStatusLine: "KUMINGA IN {DAYS:kuminga-opt} · FA IN {DAYS:fa-open}", // {DAYS:id} resolves from KEY_DATES
+  backTagline: "Next issue: after the Hield trigger, the Kuminga call, and the FA market opens.",
 };
 
 // ─── Cover TOC (table of contents on the cover) ────────────────────────────
@@ -594,7 +600,7 @@ export const ISSUE = {
 export const COVER_TOC = [
   { kicker: "FEATURE",  page: 18, sectionId: "stry", title: "Saleh elevated — POBO with a mandate" },
   { kicker: "CALENDAR", page: 12, sectionId: "cal",  title: "The June gauntlet — six dates, one offseason" },
-  { kicker: "BOARD",    page: 28, sectionId: "drft", title: "Eight on the clock — the guard list" },
+  { kicker: "DRAFT",    page: 28, sectionId: "drft", title: "Flemings at 8 — the guard of the future" },
   { kicker: "PATHS",    page: 50, sectionId: "path", title: "Four offseason scenarios, one editor's pick" },
   { kicker: "WIRE",     page: 68, sectionId: "wire", title: "Wiggins acquired, McCollum re-signed, Brown chatter" },
 ];
@@ -603,7 +609,7 @@ export const COVER_TOC = [
 // `headline` is a token array — strings render as ivory, { red: "x" } renders red.
 export const EDITORS_LETTER = {
   headline: ["The work doesn't end at ", { red: "89" }, "."],
-  body: "Forty-six wins. A Southeast banner. Back-to-back Most Improved Players. An All-NBA Third Team nod for Jalen Johnson — the franchise's first since Trae Young. An All-Defensive Second Team finish for Dyson Daniels. And then — eighty-nine. The final score of the worst night, set against the loudest spring this franchise has produced in a decade. This issue holds both at once: the dossier on what just happened, and the road map for the six June dates that decide what happens next. Saleh in the chair. Snyder extended. McCollum re-signed, Wiggins in. Eight on the clock.",
+  body: "Forty-six wins. A Southeast banner. Back-to-back Most Improved Players. An All-NBA Third Team nod for Jalen Johnson — the franchise's first since Trae Young. An All-Defensive Second Team finish for Dyson Daniels. And then — eighty-nine. The final score of the worst night, set against the loudest spring this franchise has produced in a decade. This issue holds both at once: the dossier on what just happened, and the road map for the six June dates that decide what happens next. Saleh in the chair. Snyder extended. McCollum re-signed, Wiggins in. And now Flemings at eight, Ejiofor at twenty-three.",
   byline: "— THE EDITORS",
 };
 
@@ -657,7 +663,7 @@ export const KEY_DATES = [
     hawksAngle: "Knicks open on road — same team that ended ATL's season 4-2 in R1" },
   { id: "draft",       date: "2026-06-23",
     label: "Draft Night",         short: "DRAFT",       kind: "EVENT",      primary: true,
-    hawksAngle: "TONIGHT 8 PM ET. Hawks hold #8 (via NOP), #23, #57. Brown Jr. / Flemings the No. 8 consensus; Mara the size dark horse; Acuff may go to SAC at 7; ATL fielding offers on #23, trade-back in play." },
+    hawksAngle: "DONE (R1). Hawks took Houston PG Kingston Flemings at #8 and St. John's F/C Zuby Ejiofor at #23; Round 2 (#57 via Boston) resumes today, June 24." },
   { id: "hield-trig",  date: "2026-06-25",
     label: "Hield $9.4M trigger", short: "HIELD",       kind: "DEADLINE",
     hawksAngle: "Currently only $3M guaranteed · waive before trigger to save $6.4M, or hold as movable expiring" },
@@ -676,14 +682,14 @@ export const KEY_DATES = [
 // Powers the Draft view. Refreshed alongside NEWS_DIGEST on the morning run.
 // heat: "hot" (most-mocked) | "warm" (in range) | "cool" (dark horse / trade-down) | "fading" (likely gone before ATL picks)
 export const DRAFT_DATA = {
-  generatedAt: "2026-06-23T08:45:00Z",
+  generatedAt: "2026-06-24T12:30:00Z",
   draftDate: "2026-06-23",
   venue: "Barclays Center · Brooklyn",
   broadcast: "ABC / ESPN",
   picks: [
-    { round: 1, overall: 8,  via: "via New Orleans", note: "Atlanta's headline selection. Mocks split between a lead guard (Brown Jr., Flemings) and trading down for size (Mara). Front office is open to moving up or down." },
-    { round: 1, overall: 23, via: "own", note: "League sources say Atlanta will field offers for this pick. Jake Fischer reports the Hawks are open to making just one first-round selection." },
-    { round: 2, overall: 57, via: "own", note: "Late second-round flier. Workout names (Bidunga, Onyenso, Suder, Uzan) profile as targets in the 23 / 57 range." },
+    { round: 1, overall: 8,  via: "via New Orleans", made: true, selection: "Kingston Flemings · PG · Houston", note: "SELECTED: Houston PG Kingston Flemings, a 6'4 two-way lead guard (20.3 PPG, 6.6 APG, 1.9 SPG, Consensus Second-Team All-American). CJ McCollum's eventual successor; CBS Sports graded it an A." },
+    { round: 1, overall: 23, via: "own", made: true, selection: "Zuby Ejiofor · F/C · St. John's", note: "SELECTED: St. John's F/C Zuby Ejiofor (16.3 PPG, 7.3 RPG), an energy-and-defense big who adds the interior physicality the Knicks series exposed." },
+    { round: 2, overall: 57, via: "via Boston", made: false, selection: null, note: "Round 2 today (Wed June 24, 4 PM ET). Late second-round flier; workout names (Bidunga, Onyenso, Suder, Uzan) profiled as targets in this range." },
   ],
   bigBoard: [
     {
@@ -771,7 +777,7 @@ export const BETS = [
   { take: "Saleh declines Kuminga's $24.3M option",              confidence: 65 },
   { take: "McCollum re-signs at 2yr / ~$36M",                    confidence: 70 },
   { take: "No Jaylen Brown trade — Hawks pass on $53.1M",       confidence: 75 },
-  { take: "Hawks pick a guard at #8 (Brown Jr. or Flemings)",    confidence: 60 },
+  { take: "Hawks pick a guard at #8 (Brown Jr. or Flemings) ✓ HIT (Flemings)", confidence: 100 },
   { take: "Hield gets waived before the June 25 trigger",        confidence: 55 },
 ];
 
