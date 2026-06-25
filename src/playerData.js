@@ -385,14 +385,14 @@ export const TEAM_LOGOS = {
 // Season ended Apr 30 in Game 6 elimination by the Knicks. Next on the calendar:
 // 2026 NBA Draft Lottery on May 10 (ATL holds the more-favorable of NOP/MIL plus CLE No. 24).
 export const NEXT_GAME = {
-  opponent: "NBA Draft Round 2 + Free Agency",
+  opponent: "Free Agency + Cap Decisions",
   shortName: "OFFSEASON",
   home: false,
-  date: "2026-06-24T16:00:00-04:00",
+  date: "2026-06-25T12:00:00-04:00",
   competition: "OFFSEASON",
-  venue: "Barclays Center (Brooklyn) / FA market",
-  broadcast: "ESPN",
-  seriesContext: "WEDNESDAY JUNE 24, MORNING AFTER ROUND 1. ATLANTA GOT ITS GUARD OF THE FUTURE: the Hawks selected HOUSTON PG KINGSTON FLEMINGS at No. 8, a 6'4 two-way lead guard (20.3 PPG, 6.6 APG, 1.9 SPG, Consensus Second-Team All-American) who profiles as CJ McCollum's eventual successor and drew an A grade from CBS Sports (CBS Sports / SI / Peachtree Hoops / Bleacher Report, Jun 23). At No. 23, Atlanta took ST. JOHN'S F/C ZUBY EJIOFOR (16.3 PPG, 7.3 RPG), an energy-and-defense big who adds the interior physicality the Knicks series exposed (CBS Sports / Bleacher Report, Jun 23). ROUND 2 RESUMES TODAY (4 PM ET), where the Hawks hold No. 57 (via Boston). THE LEAGUE BACKDROP: Giannis Antetokounmpo was traded to Miami late Monday, which closed the Boston path that would most plausibly have freed JAYLEN BROWN; Brown stays a Celtic for now and the Hawks' interest is hypothetical. ATLANTA'S DONE MOVES still stand: wing AARON WIGGINS acquired from OKC for two seconds, CJ McCOLLUM re-signed (1yr, ~$21M, 7.5% trade kicker), and Quin Snyder extended Jun 8. CAP CALENDAR AHEAD: Buddy Hield's $9.66M full guarantee triggers June 25 (waiver expected), Jonathan Kuminga's $24.3M team option must be called by June 29 (decline-and-re-sign the reported lean), the FA market opens June 30 at 6 PM ET, and the moratorium ends July 6.",
+  venue: "FA market / cap calendar",
+  broadcast: "—",
+  seriesContext: "THURSDAY JUNE 25, DECISION DAY. THE DRAFT IS DONE AND ATLANTA GOT ITS CENTER: in Round 2 the Hawks traded the No. 57 pick (which became Narcisse Ngoy) plus cash to the LA Clippers to move up to No. 52 and select NORTH CAROLINA C HENRI VEESAAR, a 7-footer who shot 43% from three on a breakout senior season (17.0 PPG, 8.7 RPG, 1.2 BPG) and gives Atlanta the kind of stretch-five body fans had hoped for, though scouts flag thin strength, poor lateral defense and 61.5% free-throw shooting (NBA.com / SI / Peachtree Hoops / Bleacher Report, Jun 24). With Flemings (No. 8) and Ejiofor (No. 23), that completes a three-pick class. TODAY'S CAP GATE: Buddy Hield's $9.66M salary fully guarantees June 25, only $3M is currently protected, and reporting expects Atlanta to waive him before the trigger to save roughly $6M and clear room (SI onsi / Hoops Rumors, Jun 22-24). FRONT OFFICE: ESPN's TIM BONTEMPS is in advanced talks to join the Hawks' front office (Front Office Sports, Jun 24). NEXT GATES: Jonathan Kuminga's $24.3M team option must be called by June 29 (decline-and-re-sign the reported lean, 4 days out), the FA market opens June 30 at 6 PM ET, and the moratorium ends July 6. ATLANTA'S DONE WORK still stands: wing AARON WIGGINS from OKC for two seconds, CJ McCOLLUM re-signed (1yr, ~$21M, 7.5% trade kicker), and Quin Snyder extended Jun 8.",
 };
 
 // ─── Game Results (2025-26 regular season · last 16 games) ─────────────────
@@ -441,10 +441,28 @@ export const EAST_STANDINGS = [
 
 // ─── AI News Digest (generated from live web search) ───────────────────────
 export const NEWS_DIGEST = {
-  generatedAt: "2026-06-24T12:30:00Z",
+  generatedAt: "2026-06-25T08:15:00Z",
   summary:
-    "OFFSEASON, Wednesday June 24, the morning after Round 1, and Atlanta walked away with a backcourt of the future. The Hawks drafted HOUSTON PG KINGSTON FLEMINGS at No. 8, a 6'4 two-way lead guard who averaged 20.3 points, 6.6 assists and 1.9 steals as a Consensus Second-Team All-American freshman, projecting as CJ McCollum's eventual successor and the half-court shot creation Atlanta has lacked since the Trae Young trade. CBS Sports handed the pick an A, praising Flemings' surgical midrange touch and true point-guard vision while flagging his 183-pound frame and midrange-heavy game as the questions to answer against NBA length. At No. 23 Atlanta added ST. JOHN'S F/C ZUBY EJIOFOR (16.3 points, 7.3 rebounds), an energy-and-defense big who brings the interior physicality the Knicks series exposed. ROUND 2 RESUMES TODAY at 4 PM ET, where the Hawks hold the No. 57 pick via Boston. THE LEAGUE BACKDROP STILL SHAPES ATLANTA: Giannis Antetokounmpo's trade to Miami late Monday closed the Boston path that would most plausibly have shaken JAYLEN BROWN loose, so Brown stays a Celtic for now and every Hawks-Brown thread is hypothetical. Atlanta's done work holds: AARON WIGGINS acquired from OKC for two seconds, CJ McCOLLUM re-signed at one year and roughly $21M, and Quin Snyder extended on June 8. THE CAP GATES NOW DOMINATE: Buddy Hield's $9.66M full guarantee triggers June 25 (waiver expected), Jonathan Kuminga's $24.3M team option must be called by June 29 with a decline-and-re-sign the reported lean, and the FA market opens June 30 at 6 PM ET.",
+    "OFFSEASON, Thursday June 25, decision day. The draft is in the books and Atlanta landed the center it spent the spring searching for. In Round 2 the Hawks dealt the No. 57 pick (which became Narcisse Ngoy) plus cash to the LA Clippers to climb to No. 52 and select NORTH CAROLINA C HENRI VEESAAR, a 7-footer fresh off a breakout senior season (17.0 points, 8.7 rebounds, 1.2 blocks, 43% from three) who gives Atlanta a mobile, stretch-shooting five behind Onyeka Okongwu. The scouting report is split: scoring touch, length and passing on the plus side, with thin strength, poor lateral quickness and 61.5% free-throw shooting as the questions. Veesaar completes a three-man class alongside Flemings (No. 8) and Ejiofor (No. 23). TODAY'S CAP GATE is Buddy Hield: his $9.66M salary fully guarantees June 25 with only $3M currently protected, and reporting expects Atlanta to waive him before the trigger to bank roughly $6M and a roster spot. The front office is also adding a voice, as ESPN's TIM BONTEMPS is in advanced talks to join the Hawks' basketball-operations staff. THE NEXT GATES line up fast: Jonathan Kuminga's $24.3M team option must be called by June 29 with a decline-and-re-sign the reported lean (4 days out), the FA market opens June 30 at 6 PM ET, and the moratorium ends July 6. Atlanta's done work holds: AARON WIGGINS acquired from OKC for two seconds, CJ McCOLLUM re-signed at one year and roughly $21M, and Quin Snyder extended on June 8.",
   keyTopics: [
+    {
+      title: "DONE: Hawks Trade Up in Round 2 for North Carolina 7-Footer Henri Veesaar, the Stretch-Five They Hunted All Spring",
+      detail:
+        "Atlanta closed the draft by going up the board for size. In Round 2 Wednesday night the Hawks traded the No. 57 pick (which the Clippers used on guard Narcisse Ngoy) plus cash considerations to LA to move up to No. 52 and select NORTH CAROLINA center HENRI VEESAAR (NBA.com / SI / Bleacher Report / Peachtree Hoops / Tar Heel Blog, Jun 24). The 7-foot Estonian, an Arizona transfer who nearly doubled his scoring at UNC, posted 17.0 points, 8.7 rebounds and 1.2 blocks on 43% from three as a senior, profiling as a mobile, stretch-shooting five who can dive to the rim, space the floor and pass out of the midpost behind Onyeka Okongwu. The concerns are real and were why he slid: a thin frame, poor lateral quickness as a rim protector, trouble defending in space, and 61.5% free-throw shooting that NBA defenses can hunt. SI graded the value of the No. 52 selection favorably as the kind of skill-and-size swing worth a late-second flier. Veesaar joins Flemings (No. 8) and Ejiofor (No. 23) to complete Atlanta's three-pick class.",
+      category: "general",
+    },
+    {
+      title: "TODAY: Buddy Hield's $9.66M Guarantee Triggers June 25, Atlanta Expected to Waive Him to Clear Roughly $6M and a Roster Spot",
+      detail:
+        "Decision day has arrived. Buddy Hield's $9,658,536 salary for 2026-27 becomes fully guaranteed today, Thursday June 25, with only $3M currently protected, so Atlanta can save roughly $6M by waiving him before the trigger (SI onsi cap tracker / Hoops Rumors / Box Score, Jun 22-24). Reporting expects exactly that: Hield is not seen as part of the plan after barely playing once he arrived in the Kristaps Porzingis deal, logging 71 games and 12 starts at 11.8/2.8/2.1 on 39.8% from three but just 6 minutes a night across two first-round games. Waiving him is one of the levers, alongside the Kuminga option, that POBO Onsi Saleh can pull to push Atlanta toward roughly $29M in cap room. The alternative, keeping the full number as a movable expiring, looks unlikely given the front office's stated push for flexibility.",
+      category: "trades",
+    },
+    {
+      title: "FRONT OFFICE: ESPN's Tim Bontemps in Advanced Talks to Join the Hawks' Basketball-Operations Staff",
+      detail:
+        "Atlanta is reshaping the room where decisions get made. Veteran ESPN NBA reporter TIM BONTEMPS is in advanced talks to join the Hawks' front office, though a deal is not yet finalized, one source said (Front Office Sports, Jun 24). The move would add an experienced, well-connected league voice to POBO Onsi Saleh's group as Atlanta heads into a pivotal week of cap decisions and free agency. It follows Saleh's late-May elevation to President of Basketball Operations and the Snyder extension, signaling continued retooling of the org chart under new leadership.",
+      category: "general",
+    },
     {
       title: "PICK: Hawks Draft Houston PG Kingston Flemings at No. 8, Their Guard of the Future and an A-Grade Swing",
       detail:
@@ -452,9 +470,9 @@ export const NEWS_DIGEST = {
       category: "general",
     },
     {
-      title: "PICK + TODAY: Hawks Add St. John's Big Zuby Ejiofor at No. 23; Round 2 Resumes This Afternoon With Atlanta at No. 57",
+      title: "PICK: Hawks Add St. John's Big Zuby Ejiofor at No. 23, Targeting the Interior Physicality the Knicks Exposed",
       detail:
-        "Atlanta used its second first-rounder on interior toughness. With the No. 23 pick the Hawks took ST. JOHN'S forward/center ZUBY EJIOFOR, a 6'7.5 energy big who averaged 16.3 points and 7.3 rebounds and built his game on physicality, hustle and rim defense while expanding into a more capable post scorer and passer (CBS Sports / Bleacher Report, Jun 23). The selection directly targets the interior size and physicality the Knicks exposed in the first round and adds a developmental frontcourt body behind Onyeka Okongwu. Round 2 resumes today, Wednesday June 24 at 4 PM ET, where Atlanta still holds the No. 57 pick via Boston; pre-draft workout names (Bidunga, Onyenso, Suder, Uzan) profiled as targets in this range. Note that Jake Fischer had reported the win-now Hawks were open to making just one first-round pick, so keeping both Nos. 8 and 23 signals the front office liked the value on the board over a consolidation trade.",
+        "Atlanta used its second first-rounder on interior toughness. With the No. 23 pick the Hawks took ST. JOHN'S forward/center ZUBY EJIOFOR, a 6'7.5 energy big who averaged 16.3 points and 7.3 rebounds and built his game on physicality, hustle and rim defense while expanding into a more capable post scorer and passer (CBS Sports / Bleacher Report, Jun 23). The selection directly targets the interior size and physicality the Knicks exposed in the first round and adds a developmental frontcourt body behind Onyeka Okongwu. With the No. 52 trade-up for Henri Veesaar in Round 2, Atlanta closed the night with three picks, and Jake Fischer had reported the win-now Hawks were open to making just one first-rounder, so keeping both Nos. 8 and 23 signals the front office liked the value on the board over a consolidation trade.",
       category: "general",
     },
     {
@@ -502,13 +520,7 @@ export const NEWS_DIGEST = {
     {
       title: "Kuminga's $24.3M Team Option: Reporting Points to a Decline-and-Re-Sign Over a Straight Pickup; June 29 Deadline, 7 Days Out",
       detail:
-        "Atlanta's biggest cap question stays Jonathan Kuminga, and the read leans toward a negotiated outcome rather than a simple yes or no. ClutchPoints and HoopsHype report that the Hawks and Kuminga are BOTH interested in working out a new long-term deal this summer, the path Jake Fischer has favored: decline the $24.3M 2026-27 team option, then re-sign him to a multi-year contract at a lower first-year number (Kuminga is not extension-eligible). John Hollinger of The Athletic still predicts Atlanta declines the option outright, valuing the 23-year-old near $9.4M in the BORD$ model, well short of $24.3M, and BlueManHoop notes Monday's CJ McCollum extension tightens the money beneath the decision. The team-option deadline is June 29, 7 days out. Atlanta has also done its due diligence and gauged Kuminga's value on the trade market ahead of the draft, but the prevailing read is that he returns. The alternatives remain exercising the one-year option as a tradable expiring or letting him walk for nothing. Kuminga averaged 14.9/5.1/2.2 across 16 Hawks regular-season games and 13.4 PPG in the Knicks series.",
-      category: "trades",
-    },
-    {
-      title: "Buddy Hield's $9.66M Decision: June 25 Full-Guarantee Trigger, 3 Days Out, Return Not Expected",
-      detail:
-        "Buddy Hield's $9,658,536 ($9.66M) 2026-27 contract becomes fully guaranteed on June 25, only $3M is currently protected, so Atlanta could save roughly $6M by waiving him before the date (SI onsi cap tracker / Hoops Rumors / SportsTalk ATL, Apr 28-Jun 22). The trigger is now 3 days out. Atlanta can let the full number trigger and keep it as a movable expiring, waive him before the date to save the difference, or include him in a pre-trigger trade. Reporting suggests Hield is not expected back given how little he played after arriving in the Porzingis deal: 71 games, 12 starts at 11.8/2.8/2.1 on 39.8% from three, then just 6 mpg in two first-round games.",
+        "Atlanta's biggest cap question stays Jonathan Kuminga, and the read leans toward a negotiated outcome rather than a simple yes or no. ClutchPoints and HoopsHype report that the Hawks and Kuminga are BOTH interested in working out a new long-term deal this summer, the path Jake Fischer has favored: decline the $24.3M 2026-27 team option, then re-sign him to a multi-year contract at a lower first-year number (Kuminga is not extension-eligible). John Hollinger of The Athletic still predicts Atlanta declines the option outright, valuing the 23-year-old near $9.4M in the BORD$ model, well short of $24.3M, and BlueManHoop notes the CJ McCollum extension tightens the money beneath the decision. The team-option deadline is June 29, now 4 days out. Atlanta has also done its due diligence and gauged Kuminga's value on the trade market ahead of the draft, but the prevailing read is that he returns. The alternatives remain exercising the one-year option as a tradable expiring or letting him walk for nothing. Kuminga averaged 14.9/5.1/2.2 across 16 Hawks regular-season games and 13.4 PPG in the Knicks series.",
       category: "trades",
     },
     {
@@ -526,7 +538,7 @@ export const NEWS_DIGEST = {
     {
       title: "How the Board Fell: Atlanta Stayed at No. 8 and Took Flemings Over Brown Jr., Passed on a Trade-Down for Size",
       detail:
-        "The pre-draft scenarios mostly did not materialize. Atlanta stayed put at No. 8 rather than trading down for a center like Aday Mara, and chose KINGSTON FLEMINGS over the other most-mocked lead guard, Louisville's Mikel Brown Jr. (CBS Sports / SI / Peachtree Hoops, Jun 23). The squeeze from above that scouts feared, with Sacramento at No. 7 reportedly viewing Arkansas guard Darius Acuff Jr. as its 'floor,' played out enough that Flemings was Atlanta's pick when the Hawks came on the clock. League sources had said Atlanta would field offers on No. 23 and that Jake Fischer reported openness to making just one first-rounder, but the Hawks kept the pick and used it on St. John's big Zuby Ejiofor for frontcourt depth. The remaining draft business is the No. 57 selection in Round 2 today and any post-draft trade fallout; the bigger roster swings shift to the Hield, Kuminga and free-agency dates ahead.",
+        "The pre-draft scenarios mostly did not materialize. Atlanta stayed put at No. 8 rather than trading down for a center like Aday Mara, and chose KINGSTON FLEMINGS over the other most-mocked lead guard, Louisville's Mikel Brown Jr. (CBS Sports / SI / Peachtree Hoops, Jun 23). The squeeze from above that scouts feared, with Sacramento at No. 7 reportedly viewing Arkansas guard Darius Acuff Jr. as its 'floor,' played out enough that Flemings was Atlanta's pick when the Hawks came on the clock. League sources had said Atlanta would field offers on No. 23 and that Jake Fischer reported openness to making just one first-rounder, but the Hawks kept the pick and used it on St. John's big Zuby Ejiofor for frontcourt depth. In Round 2 the Hawks then traded up from No. 57 to No. 52 to grab UNC center Henri Veesaar, so the draft is now closed; the bigger roster swings shift to the Hield, Kuminga and free-agency dates ahead.",
       category: "general",
     },
     {
@@ -576,23 +588,26 @@ export const NEWS_DIGEST = {
     "Odds Shark",
     "NetsDaily",
     "Hardwood Houdini",
+    "Front Office Sports",
+    "Tar Heel Blog",
+    "WSB-TV",
   ],
 };
 
 // ─── Issue metadata (drives datelines, cover star, masthead) ───────────────
 // Update `date` daily; everything else flows from KEY_DATES + NEWS_DIGEST.
 export const ISSUE = {
-  date: "2026-06-24",                              // YYYY-MM-DD — single source of truth
+  date: "2026-06-25",                              // YYYY-MM-DD — single source of truth
   volume: 26,                                       // VOL XXVI
-  number: 13,                                       // Issue number (offseason cadence)
-  dateline: "ATLANTA · JUNE 24, 2026",              // Pre-formatted for display
-  mastheadLine: "VOL XXVI · ISSUE NO. 13 · JUNE 2026 · ATL · USA",
-  railLabel: "ISSUE 13 · JUNE 24",
+  number: 14,                                       // Issue number (offseason cadence)
+  dateline: "ATLANTA · JUNE 25, 2026",              // Pre-formatted for display
+  mastheadLine: "VOL XXVI · ISSUE NO. 14 · JUNE 2026 · ATL · USA",
+  railLabel: "ISSUE 14 · JUNE 25",
   coverStarId: 1,                                   // PLAYERS[id] for the cover portrait
-  coverRibbon: "DRAFT NIGHT · FLEMINGS AT 8, EJIOFOR AT 23",
-  coverStatusKicker: "OFFSEASON · DAY 55",          // top-right corner of cover
+  coverRibbon: "DRAFT DONE · VEESAAR AT 52 · HIELD DECISION DAY",
+  coverStatusKicker: "OFFSEASON · DAY 56",          // top-right corner of cover
   coverStatusLine: "KUMINGA IN {DAYS:kuminga-opt} · FA IN {DAYS:fa-open}", // {DAYS:id} resolves from KEY_DATES
-  backTagline: "Next issue: after the Hield trigger, the Kuminga call, and the FA market opens.",
+  backTagline: "Next issue: after the Hield waiver, the Kuminga call, and the FA market opens.",
 };
 
 // ─── Cover TOC (table of contents on the cover) ────────────────────────────
@@ -663,10 +678,10 @@ export const KEY_DATES = [
     hawksAngle: "Knicks open on road — same team that ended ATL's season 4-2 in R1" },
   { id: "draft",       date: "2026-06-23",
     label: "Draft Night",         short: "DRAFT",       kind: "EVENT",      primary: true,
-    hawksAngle: "DONE (R1). Hawks took Houston PG Kingston Flemings at #8 and St. John's F/C Zuby Ejiofor at #23; Round 2 (#57 via Boston) resumes today, June 24." },
+    hawksAngle: "DONE. Hawks took Houston PG Kingston Flemings at #8, St. John's F/C Zuby Ejiofor at #23, and traded up from #57 to #52 for UNC C Henri Veesaar in Round 2." },
   { id: "hield-trig",  date: "2026-06-25",
-    label: "Hield $9.4M trigger", short: "HIELD",       kind: "DEADLINE",
-    hawksAngle: "Currently only $3M guaranteed · waive before trigger to save $6.4M, or hold as movable expiring" },
+    label: "Hield $9.66M trigger", short: "HIELD",       kind: "DEADLINE",
+    hawksAngle: "TODAY. Only $3M guaranteed · Atlanta expected to waive before the trigger to save ~$6M and a roster spot" },
   { id: "kuminga-opt", date: "2026-06-29",
     label: "Kuminga option call", short: "KUMINGA",     kind: "DECISION",
     hawksAngle: "$24.3M team option · decline-and-extend expected per Fischer · opens $15M+ cap room" },
@@ -682,14 +697,14 @@ export const KEY_DATES = [
 // Powers the Draft view. Refreshed alongside NEWS_DIGEST on the morning run.
 // heat: "hot" (most-mocked) | "warm" (in range) | "cool" (dark horse / trade-down) | "fading" (likely gone before ATL picks)
 export const DRAFT_DATA = {
-  generatedAt: "2026-06-24T12:30:00Z",
+  generatedAt: "2026-06-25T08:15:00Z",
   draftDate: "2026-06-23",
   venue: "Barclays Center · Brooklyn",
   broadcast: "ABC / ESPN",
   picks: [
     { round: 1, overall: 8,  via: "via New Orleans", made: true, selection: "Kingston Flemings · PG · Houston", note: "SELECTED: Houston PG Kingston Flemings, a 6'4 two-way lead guard (20.3 PPG, 6.6 APG, 1.9 SPG, Consensus Second-Team All-American). CJ McCollum's eventual successor; CBS Sports graded it an A." },
     { round: 1, overall: 23, via: "own", made: true, selection: "Zuby Ejiofor · F/C · St. John's", note: "SELECTED: St. John's F/C Zuby Ejiofor (16.3 PPG, 7.3 RPG), an energy-and-defense big who adds the interior physicality the Knicks series exposed." },
-    { round: 2, overall: 57, via: "via Boston", made: false, selection: null, note: "Round 2 today (Wed June 24, 4 PM ET). Late second-round flier; workout names (Bidunga, Onyenso, Suder, Uzan) profiled as targets in this range." },
+    { round: 2, overall: 52, via: "via LA Clippers (traded up from No. 57)", made: true, selection: "Henri Veesaar · C · North Carolina", note: "SELECTED: traded No. 57 (became Narcisse Ngoy) plus cash to the Clippers to move up. Veesaar is a 7-foot stretch big (17.0 PPG, 8.7 RPG, 1.2 BPG, 43% 3P as a UNC senior). Plus: scoring touch, length, passing. Minus: thin frame, poor lateral D, 61.5% FT." },
   ],
   bigBoard: [
     {
