@@ -765,9 +765,81 @@ export const DRAFT_DATA = {
       detail: "If guards fly off the board at 6 and 7, Atlanta could package the No. 8 pick with Zaccharie Risacher to move up. Hollinger tags Risacher and Corey Kispert as the Hawks' likeliest summer trade chips.",
     },
   ],
+  // ─── Draft Class · scouting reports + combine measurables ────────────────
+  // The three players Atlanta actually drafted. Measurables are 2026 NBA
+  // Draft Combine numbers (barefoot height + reach where reported).
+  draftClass: [
+    {
+      overall: 8, round: 1, name: "Kingston Flemings", pos: "PG", school: "Houston",
+      classYr: "Freshman", age: 19, via: "via New Orleans", grade: "A",
+      statline: "20.3 PPG · 6.6 APG · 1.9 SPG · 56% TS",
+      accolade: "Consensus Second-Team All-American",
+      measurables: {
+        heightBarefoot: "6'2.5\"", weight: "183 lb", wingspan: "6'3.5\"",
+        standingReach: "8'2.5\"", maxVert: "40.5\"", noStepVert: "33.5\"",
+      },
+      strengths: [
+        "Surgical midrange touch and true point-guard vision",
+        "Quick first step and downhill shot creation Atlanta has lacked since Trae",
+        "Pesky on-ball defender who fits next to Daniels and Alexander-Walker",
+      ],
+      weaknesses: [
+        "Thin 183-lb frame, below-average length (6'3.5\" wingspan) for an NBA guard",
+        "Game skews midrange in a three-point league",
+        "Efficiency dipped against the toughest late-season competition",
+      ],
+      fit: "Profiles as CJ McCollum's eventual successor and the half-court creator the Hawks have missed. Likely opens behind McCollum, who is on a one-year bridge deal.",
+      sources: "CBS Sports / SI / Peachtree Hoops / DraftExpress combine",
+    },
+    {
+      overall: 23, round: 1, name: "Zuby Ejiofor", pos: "F/C", school: "St. John's",
+      classYr: "Senior", age: 22, via: "own", grade: "B+",
+      statline: "16.3 PPG · 7.3 RPG · 30.5% 3P",
+      accolade: "Big East defensive anchor",
+      measurables: {
+        heightBarefoot: "6'7.5\"", weight: "245 lb", wingspan: "7'2\"",
+        standingReach: "8'11\"", maxVert: "38\"", noStepVert: null,
+      },
+      strengths: [
+        "Plays with force that should translate immediately: rebounds, contests, runs the floor",
+        "7'2\" wingspan and 245-lb frame give him real interior physicality",
+        "Improved into a more capable post scorer and passer as a senior",
+      ],
+      weaknesses: [
+        "Just 6'7.5\" barefoot, short for a true NBA center",
+        "Jumper still theoretical (30.5% from three) and limits floor spacing",
+        "A developmental body behind Okongwu, not a ready starter",
+      ],
+      fit: "Directly targets the interior toughness the Knicks series exposed. Energy-and-defense big who can grow behind Onyeka Okongwu while Atlanta also shops the veteran-center market.",
+      sources: "CBS Sports / Bleacher Report / Yahoo combine",
+    },
+    {
+      overall: 52, round: 2, name: "Henri Veesaar", pos: "C", school: "North Carolina",
+      classYr: "Senior", age: 21, via: "via LAC (up from No. 57)", grade: "B",
+      statline: "17.0 PPG · 8.7 RPG · 1.2 BPG · 43% 3P",
+      accolade: "Estonia · Arizona transfer breakout",
+      measurables: {
+        heightBarefoot: "6'11.25\"", weight: "227 lb", wingspan: "7'2\"",
+        standingReach: "9'3\"", maxVert: null, noStepVert: null,
+      },
+      strengths: [
+        "7-footer who shot 43% from three: rare stretch-five spacing",
+        "Mobile rim-diver and finisher; passes out of the midpost",
+        "Uses 7'2\" length as a help-side shot challenger",
+      ],
+      weaknesses: [
+        "Thin 227-lb frame; gets bullied by stronger NBA bigs",
+        "Poor lateral quickness, struggles to defend in space, foul-prone",
+        "61.5% free-throw shooting NBA defenses can hunt",
+      ],
+      fit: "The stretch-five fans hoped for, worth a late-second trade-up. Spaces the floor next to Okongwu in theory; the defense and strength are multi-year projects.",
+      sources: "SI / Bleacher Report / Peachtree Hoops / Tar Heel Blog",
+    },
+  ],
   sources: [
     "ESPN", "Yahoo Sports", "CBS Sports", "Bleacher Report", "ClutchPoints",
     "HoopsHype", "The Stein Line", "NBC Sports", "SI (onsi)", "Peachtree Hoops",
+    "DraftExpress", "Tankathon", "Tar Heel Blog",
   ],
 };
 

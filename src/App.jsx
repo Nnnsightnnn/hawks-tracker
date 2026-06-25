@@ -1366,6 +1366,107 @@ function DraftView({ tweaks }) {
         </div>
       </div>
 
+      {/* Draft Class · scouting reports + measurables */}
+      {Array.isArray(d.draftClass) && d.draftClass.length > 0 && (
+        <div style={{ marginTop: tweaks.density === "airy" ? 40 : 32 }}>
+          <Kicker color={C.red}>Draft Class · Scouting Reports & Measurables</Kicker>
+          <div style={{ marginTop: 16, display: "flex", flexDirection: "column", gap: 16 }}>
+            {d.draftClass.map((pl) => {
+              const m = pl.measurables || {};
+              const tiles = [
+                { k: "HT", v: m.heightBarefoot }, { k: "WT", v: m.weight },
+                { k: "WING", v: m.wingspan }, { k: "REACH", v: m.standingReach },
+                { k: "MAX VERT", v: m.maxVert },
+              ].filter((t) => t.v);
+              return (
+                <div key={pl.overall} style={{
+                  border: `2px solid ${C.ink}`, borderRadius: 14, overflow: "hidden", background: C.panel,
+                }}>
+                  {/* header band */}
+                  <div style={{
+                    display: "flex", alignItems: "center", gap: 14, flexWrap: "wrap",
+                    background: C.ink, color: C.cream, padding: "12px 18px",
+                  }}>
+                    <span style={{ fontFamily: FONT.num, fontWeight: 700, fontSize: 30, lineHeight: 1, color: C.gold, fontVariantNumeric: "tabular-nums", flexShrink: 0 }}>
+                      #{pl.overall}
+                    </span>
+                    <div style={{ flex: 1, minWidth: 160 }}>
+                      <div style={{ fontFamily: FONT.disp, fontWeight: 700, fontSize: 22, lineHeight: 1.05 }}>{pl.name}</div>
+                      <div style={{ fontFamily: FONT.body, fontWeight: 500, fontSize: 11, letterSpacing: 0.4, opacity: 0.85, marginTop: 2 }}>
+                        {pl.pos} · {pl.school} · {pl.classYr} · Age {pl.age} · R{pl.round} {pl.via}
+                      </div>
+                    </div>
+                    {pl.grade && (
+                      <div style={{ textAlign: "center", flexShrink: 0 }}>
+                        <div style={{ fontFamily: FONT.num, fontWeight: 700, fontSize: 24, lineHeight: 1, color: C.cream }}>{pl.grade}</div>
+                        <div style={{ fontFamily: FONT.body, fontWeight: 600, fontSize: 8, letterSpacing: 1.2, opacity: 0.7 }}>GRADE</div>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* measurables strip */}
+                  <div style={{
+                    display: "grid", gridTemplateColumns: `repeat(${tiles.length}, 1fr)`,
+                    borderBottom: `1px solid ${C.hair}`, background: C.bg,
+                  }}>
+                    {tiles.map((t, i) => (
+                      <div key={t.k} style={{
+                        padding: "10px 8px", textAlign: "center",
+                        borderRight: i < tiles.length - 1 ? `1px solid ${C.hair}` : "none",
+                      }}>
+                        <div style={{ fontFamily: FONT.num, fontWeight: 700, fontSize: 15, color: C.ink, fontVariantNumeric: "tabular-nums" }}>{t.v}</div>
+                        <div style={{ fontFamily: FONT.body, fontWeight: 600, fontSize: 8.5, letterSpacing: 1, color: C.taupe, marginTop: 2 }}>{t.k}</div>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* body */}
+                  <div style={{ padding: "14px 18px 16px" }}>
+                    <div style={{ display: "flex", alignItems: "baseline", gap: 10, flexWrap: "wrap", marginBottom: 4 }}>
+                      <span style={{ fontFamily: FONT.num, fontWeight: 700, fontSize: 13, color: C.red, fontVariantNumeric: "tabular-nums" }}>{pl.statline}</span>
+                      {pl.accolade && (
+                        <span style={{ fontFamily: FONT.body, fontWeight: 600, fontSize: 10.5, color: C.pine, letterSpacing: 0.3 }}>· {pl.accolade}</span>
+                      )}
+                    </div>
+
+                    <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: "8px 26px", marginTop: 10 }}>
+                      <div>
+                        <div style={{ fontFamily: FONT.body, fontWeight: 700, fontSize: 9.5, letterSpacing: 1.2, textTransform: "uppercase", color: C.pine, marginBottom: 5 }}>Strengths</div>
+                        {pl.strengths.map((s, i) => (
+                          <div key={i} style={{ display: "flex", gap: 7, fontFamily: FONT.body, fontSize: 11.5, lineHeight: 1.45, color: C.ink, marginBottom: 4 }}>
+                            <span style={{ color: C.pine, fontWeight: 700, flexShrink: 0 }}>+</span><span>{s}</span>
+                          </div>
+                        ))}
+                      </div>
+                      <div>
+                        <div style={{ fontFamily: FONT.body, fontWeight: 700, fontSize: 9.5, letterSpacing: 1.2, textTransform: "uppercase", color: C.red, marginBottom: 5 }}>Questions</div>
+                        {pl.weaknesses.map((w, i) => (
+                          <div key={i} style={{ display: "flex", gap: 7, fontFamily: FONT.body, fontSize: 11.5, lineHeight: 1.45, color: C.ink, marginBottom: 4 }}>
+                            <span style={{ color: C.red, fontWeight: 700, flexShrink: 0 }}>–</span><span>{w}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div style={{
+                      marginTop: 12, paddingTop: 11, borderTop: `1px dotted ${C.hair}`,
+                      fontFamily: FONT.body, fontSize: 11.5, lineHeight: 1.5, color: C.ink,
+                    }}>
+                      <span style={{ fontWeight: 700, color: C.ink }}>Hawks fit: </span>{pl.fit}
+                    </div>
+                    {pl.sources && (
+                      <div style={{ fontFamily: FONT.body, fontWeight: 400, fontSize: 9.5, color: C.taupe, fontStyle: "italic", marginTop: 7 }}>
+                        Sources: {pl.sources}
+                      </div>
+                    )}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      )}
+
       {/* Big board + scenarios */}
       <div style={{
         marginTop: tweaks.density === "airy" ? 40 : 32,
@@ -1374,7 +1475,7 @@ function DraftView({ tweaks }) {
       }} className="wire-grid">
         {/* Big board */}
         <div>
-          <Kicker color={C.red}>The Big Board · Targets at No. 8</Kicker>
+          <Kicker color={C.red}>Pre-Draft Big Board · How the No. 8 Targets Stacked Up</Kicker>
           <div style={{ marginTop: 16, display: "flex", flexDirection: "column", gap: 14 }}>
             {d.bigBoard.map((pr) => (
               <div key={pr.rank} style={{
