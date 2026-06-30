@@ -162,7 +162,7 @@ export const PLAYERS = [
     fieldGoalPct: 47.2, threePointPct: 33.6, freeThrowPct: 70.1,
     trueShootingPct: 55.1, plusMinus: 2.4,
     form: 6.4, status: "active", injuryNote: null,
-    recentNotes: "SUNDAY JUNE 28 (offseason) — DECISION TOMORROW: Atlanta must call Kuminga's $24.3M 26-27 team option by Monday June 29 (1 day out), with the reported lean a decline-and-re-sign at a lower first-year number (both sides interested in a longer-term deal per ClutchPoints / HoopsHype) rather than a straight pickup; Hollinger still predicts a flat decline, valuing him near $9.4M in BORD$. The free-agency window opens the next night, Tuesday June 30 at 6 PM ET. Biggest cap decision of the offseason, Saleh's first major call as POBO, on the $24.3M 26-27 team option (Heavy / ClutchPoints / ESPN's Bobby Marks, Apr 30-May 24). FRESH (Jun 16-17): John Hollinger now PREDICTS Atlanta declines the option, noting the BORD$ model values Kuminga near $9.4M, well short of the $24.3M figure, while HoopsHype sources still call a return 'a real possibility' and say the Hawks have canvassed his trade market. Most recent reporting (Yahoo Sports 'Hawks face key decision on Jonathan Kuminga's future', El-Balad, ClutchPoints 'Insider believes Kuminga will return', May 11) is the mixed-signal cluster: Jake Fischer holds the line on mutual interest in DECLINING the option for a longer-term deal, but Brett Siegel reports Atlanta could exercise the option to preserve a tradable expiring for the in-season market. NEW LAYER (May 12-13 carry-through): SI onsi report linking Atlanta to Austin Reaves AND fresh May 13 chatter linking ATL to Denver's Cameron Johnson (HoopsHype rumors) both make the option-decline more likely — declining Kuminga is the cleanest single move to open cap room for either lane per Larry Brown Sports / SportsTalkATL / Soaring Down South. Hollinger had already endorsed the decline-and-extend path. Without a deal he could walk for nothing. Six-game R1 line landed around 13.4 PPG with a three-point shot that never recovered (sub-30% over the last four). Regular-season Hawks line of 14.9/5.1/2.2 in 16 games left both a clear ceiling (Game 3's 21-off-bench Q1 hero arc) and a clear coaching project for the summer. Soaring Down South (Jun 10) adds that the June 23 draft, six days before the deadline, could let Atlanta see how the board falls before locking the call.",
+    recentNotes: "MONDAY JUNE 29 (offseason) — OPTION DECLINED: Atlanta declined Kuminga's $24.3M 26-27 team option (Shams, ESPN), making him an unrestricted free agent for the second straight summer. The front office had canvassed his trade value and Hollinger's BORD$ model valued him near $9.4M, so wiping the number off the books was the cleaner flexibility play. Sacramento is among the expected suitors; a return to Atlanta on a smaller deal is still possible but no longer the base case. Hawks regular-season line of 12.3 PPG / 5.3 RPG in 22.1 mpg across 16 games (27 in his debut) with a three-point shot that never settled, and a 5-of-24 stretch from deep in the Knicks series that echoed the same questions from his Golden State years.",
     playoffStats: { gamesPlayed: 6, minutesPerGame: 25.7, pointsPerGame: 13.4, reboundsPerGame: 3.6, assistsPerGame: 0.8 },
     playoffSeries: null,
     minutesTrend: "down",
@@ -388,11 +388,11 @@ export const NEXT_GAME = {
   opponent: "Free Agency + Cap Decisions",
   shortName: "OFFSEASON",
   home: false,
-  date: "2026-06-29T12:00:00-04:00",
+  date: "2026-06-30T18:00:00-04:00",
   competition: "OFFSEASON",
   venue: "FA market / cap calendar",
   broadcast: "—",
-  seriesContext: "MONDAY JUNE 29, decision week's second gate. FIRST GATE CLEARED: Atlanta fully GUARANTEED Buddy Hield's $9.66M salary for 2026-27 on Sunday Jun 28, keeping the proven shooter rather than waiving him to the $3M floor (ClutchPoints / Heavy), a flexibility play that also leaves a movable expiring as trade filler. TODAY IS KUMINGA: his $24.3M team option must be called by end of day Monday Jun 29, with a decline-and-re-sign the reported lean (ClutchPoints / HoopsHype) over a straight pickup; John Hollinger of The Athletic still predicts an outright decline, valuing him near $9.4M. TOMORROW THE MARKET: free agency opens Tuesday Jun 30 at 6 PM ET (1 day out); moratorium ends July 6. CENTER BOARD: Isaiah Hartenstein is OFF the board (re-signed OKC, 3yr ~$75M), so Atlanta's frontcourt hunt centers on a trade, with Milwaukee's MYLES TURNER the name to watch (Fischer / Stein) though the Bucks aren't actively shopping him; New Orleans' Missi, Orlando's Bitadze and Dallas' Gafford are other targets. SUMMER LEAGUE SET: Atlanta opens Salt Lake City July 4 vs Utah (also July 6, 7), then plays Las Vegas; Flemings, Ejiofor, Veesaar and Asa Newell headline. DONE WORK holds: AARON WIGGINS from OKC for two seconds, GUEYE'S $2.41M option picked up, CJ McCOLLUM re-signed (1yr, ~$21M), and Quin Snyder extended Jun 8.",
+  seriesContext: "TUESDAY JUNE 30, free agency opens TONIGHT at 6 PM ET (moratorium runs through July 6). KUMINGA CALL MADE: Atlanta DECLINED Jonathan Kuminga's $24.3M team option Monday Jun 29 (Shams, ESPN), making the 23-year-old an unrestricted free agent for the second straight summer; Sacramento is among the expected suitors, though a return to Atlanta on a smaller number is not ruled out. NEW DEPTH: the Hawks acquired guard DEVIN CARTER and a 2033 second-round pick from Sacramento on Monday in what is essentially a Kings salary dump (NBA.com / SI onsi), adding a 24-year-old defender behind McCollum, Daniels and NAW. EARLIER GATE: Atlanta fully guaranteed Buddy Hield's $9.66M salary on Sunday Jun 28, keeping the shooter as a movable expiring. CENTER BOARD: with Hartenstein re-signed in OKC, the frontcourt hunt is a trade story; Milwaukee's MYLES TURNER is the name to watch (Fischer / Stein), with New Orleans' Missi, Orlando's Bitadze and Dallas' Gafford as other targets. SUMMER LEAGUE: Atlanta opens Salt Lake City July 4 vs Utah (also Jul 6, 7), then Las Vegas (opens Jul 9, ESPN2); Flemings, Ejiofor, Veesaar and Asa Newell headline. DONE WORK holds: Wiggins from OKC, Gueye's $2.41M option in, McCollum re-signed (1yr, ~$21M), Snyder extended Jun 8.",
 };
 
 // ─── Game Results (2025-26 regular season · last 16 games) ─────────────────
@@ -441,20 +441,32 @@ export const EAST_STANDINGS = [
 
 // ─── AI News Digest (generated from live web search) ───────────────────────
 export const NEWS_DIGEST = {
-  generatedAt: "2026-06-29T13:00:00Z",
+  generatedAt: "2026-06-30T13:00:00Z",
   summary:
-    "OFFSEASON, Monday June 29, decision week's second gate. The first gate cleared overnight: Atlanta fully GUARANTEED Buddy Hield's $9.66M salary for 2026-27 on Sunday June 28, choosing to keep one of the NBA's most proven shooters rather than waive him down to the $3M floor (ClutchPoints, Heavy). Reporting frames it as a flexibility play as much as a basketball one, a reliable bench shooter who doubles as a fully guaranteed, movable expiring useful as salary filler in a larger trade. Today the bigger call comes due: Jonathan Kuminga's $24.3M team option must be exercised or declined by end of day Monday June 29, with a decline-and-re-sign at a lower number the reported lean over a straight pickup (ClutchPoints, HoopsHype), though John Hollinger of The Athletic still predicts an outright decline, valuing the 23-year-old near $9.4M in his BORD$ model. Then the market: free agency opens Tuesday June 30 at 6 PM ET (1 day out), with the moratorium running through July 6. The center board stays a trade story: Isaiah Hartenstein re-signed with Oklahoma City (three years, roughly $75M) and is off the menu, so the frontcourt hunt centers on the trade market, where Milwaukee's Myles Turner is the name to watch even though the Bucks are not actively shopping him, with New Orleans' Yves Missi, Orlando's Goga Bitadze and Dallas' Daniel Gafford as the other names floated. Summer League is set, Atlanta opens Salt Lake City July 4 against Utah, with Kingston Flemings, Zuby Ejiofor, Henri Veesaar and Asa Newell headlining. Atlanta's done work holds: AARON WIGGINS acquired from OKC for two seconds, Gueye's $2.41M option picked up, CJ McCOLLUM re-signed at one year and roughly $21M, and Quin Snyder extended on June 8. POBO Onsi Saleh keeps preaching patience: not one player away, guard the cap room, and find the next Nickeil.",
+    "OFFSEASON, Tuesday June 30, and the market opens tonight. Free agency's negotiating window cracks at 6 PM ET, with the moratorium running through July 6. Atlanta walks in with its biggest cap call already answered: the Hawks DECLINED Jonathan Kuminga's $24.3M team option Monday June 29 (Shams Charania, ESPN), making the 23-year-old an unrestricted free agent for the second straight summer rather than carrying him at a number John Hollinger's BORD$ model valued near $9.4M. Sacramento is among the expected suitors, though a return to Atlanta at a lower figure is not off the table. The Hawks also kept moving on the margins, acquiring guard DEVIN CARTER and a 2033 second-round pick from the Kings on Monday in what reads as a Sacramento salary dump (NBA.com, SI onsi): a 24-year-old, the No. 13 pick in 2024, who adds perimeter defense and cheap depth behind CJ McCollum, Dyson Daniels and Nickeil Alexander-Walker. The earlier gate holds, Atlanta fully guaranteed Buddy Hield's $9.66M salary Sunday June 28, keeping a proven shooter who doubles as a movable expiring. The center board stays a trade story now that Isaiah Hartenstein re-signed in Oklahoma City, with Milwaukee's Myles Turner the name to watch (Fischer, Stein) and New Orleans' Yves Missi, Orlando's Goga Bitadze and Dallas' Daniel Gafford behind him. Summer League is set, Atlanta opens Salt Lake City July 4 against Utah then heads to Las Vegas. POBO Onsi Saleh keeps preaching patience: not one player away, guard the cap room, find the next Nickeil.",
   keyTopics: [
     {
-      title: "FRESH: Hawks Guarantee Buddy Hield's $9.66M Salary, Keep the Proven Shooter Rather Than Waive Him at Sunday's Deadline",
+      title: "FRESH: Hawks DECLINE Kuminga's $24.3M Team Option, Sending the Former Warrior to Unrestricted Free Agency",
       detail:
-        "Decision week's first gate is settled, and Atlanta kept him. The Hawks fully guaranteed Buddy Hield's $9.66M salary for 2026-27 at Sunday June 28's pushed-back deadline, choosing to retain one of the league's most proven 3-point shooters instead of waiving him down to the $3M already guaranteed (ClutchPoints, Heavy, Jun 28). Reporting reads it as flexibility as much as fit: Hield barely played after arriving in the Kristaps Porzingis deal and the backcourt is crowded behind Aaron Wiggins and No. 8 pick Kingston Flemings, but a fully guaranteed, expiring contract is exactly the kind of movable salary filler Atlanta would want on the books if it swings a larger trade for a center. Heavy notes the guarantee is not necessarily a signal Hield finishes the offseason in Atlanta, since the Hawks have been tied to several trade scenarios that could route his number elsewhere. The call clears the way for the bigger one due today.",
+        "Atlanta's biggest cap call is answered. The Hawks declined Jonathan Kuminga's $24.3M team option for 2026-27 on Monday June 29, ESPN's Shams Charania reported, making the 23-year-old an unrestricted free agent (ESPN / SI onsi / theScore / Atlanta News First, Jun 29). The front office had canvassed the league on Kuminga's trade value in recent weeks, and John Hollinger's BORD$ system valued him well below the option figure, near $9.4M, so wiping the number off the books was the cleaner flexibility play for POBO Onsi Saleh. Kuminga averaged 12.3 points and 5.3 rebounds in 22.1 minutes across 16 games after arriving from Golden State in February, scoring 27 in his Hawks debut before his production leveled off, and a 5-of-24 stretch from three in the Knicks series underlined the same questions that followed him out of the Bay. Sacramento is expected to be among his suitors as he hits the open market for the second summer running; a return to Atlanta on a smaller deal is still possible but no longer the base case.",
       category: "trades",
     },
     {
-      title: "TODAY: Kuminga's $24.3M Team Option Due Monday, Reporting Leans to a Decline-and-Re-Sign Over a Straight Pickup",
+      title: "FRESH: Hawks Add Guard Devin Carter and a 2033 Second-Rounder From Sacramento in a Kings Salary Dump",
       detail:
-        "Atlanta's biggest cap call is due today, Monday June 29. ClutchPoints and HoopsHype report mutual interest between the Hawks and Jonathan Kuminga in working out a new long-term deal, the path Jake Fischer has favored: decline the $24.3M 2026-27 team option, then re-sign him at a lower first-year number (he is not extension-eligible, so a decline is the mechanism). John Hollinger of The Athletic still predicts a straight decline, valuing the 23-year-old near $9.4M in his BORD$ model, well short of $24.3M, and BlueManHoop frames the CJ McCollum re-signing as a fresh squeeze on the money beneath the decision. Michael Scotto adds that Atlanta has canvassed Kuminga's trade value around the league, but a return next season remains a real possibility. The alternatives are exercising the option as a tradable expiring or letting him walk for nothing. Kuminga averaged 14.9 points, 5.1 rebounds and 2.2 assists across 16 Hawks regular-season games and 13.4 a night in the Knicks series.",
+        "Atlanta deepened its bench on Monday. The Hawks acquired 24-year-old guard DEVIN CARTER and a 2033 second-round pick from the Sacramento Kings, a deal widely read as a straight Sacramento salary dump to duck under the luxury tax (NBA.com / SI onsi / NBC Sports / Atlanta News First, Jun 29). Carter, the No. 13 overall pick in 2024, has averaged 6.4 points, 2.7 rebounds and 1.9 assists across his first two NBA seasons on a $5.1M salary for the coming year. For Atlanta he profiles as cheap perimeter-defense depth behind a backcourt of CJ McCollum, Dyson Daniels and Nickeil Alexander-Walker, with Kingston Flemings and Aaron Wiggins also in the mix, the kind of low-cost value add POBO Onsi Saleh has prioritized over a splashy strike. Picking up a useful young guard and a future pick for taking on one expiring year is the sort of margin work a flexible cap sheet is built to enable.",
+      category: "trades",
+    },
+    {
+      title: "Free Agency Opens TONIGHT at 6 PM ET: Atlanta Operates Over the Cap, the Non-Taxpayer Mid-Level Is the Tool to Watch",
+      detail:
+        "The negotiating window opens Tuesday June 30 at 6 PM ET, with the moratorium running through July 6, and Atlanta heads in as an over-the-cap team with no meaningful room to renounce into (Spotrac / Bleacher Report, Jun 30). With McCollum re-signed and Kuminga's option off the books, the Hawks are most likely working with the Non-Taxpayer Mid-Level, near $15M, plus minimum deals to round out the bench rather than chasing a max signing. That math is why POBO Onsi Saleh keeps framing the plan as patience over splash: add depth, guard the cap sheet, and let the young core grow rather than overpay into the tax. The center pursuit and any Hield resolution all flow through the same limited toolbox, so expect targeted value adds, not headline strikes, when the market opens tonight.",
+      category: "general",
+    },
+    {
+      title: "Hawks Guarantee Buddy Hield's $9.66M Salary, Keeping the Proven Shooter Rather Than Waiving Him",
+      detail:
+        "Decision week's first gate settled in Atlanta's favor. The Hawks fully guaranteed Buddy Hield's $9.66M salary for 2026-27 at Sunday June 28's pushed-back deadline, choosing to retain one of the league's most proven 3-point shooters instead of waiving him down to the $3M already guaranteed (ClutchPoints, Heavy, Jun 28). Reporting reads it as flexibility as much as fit: Hield barely played after arriving in the Kristaps Porzingis deal and the backcourt is crowded, but a fully guaranteed, expiring contract is exactly the movable salary filler Atlanta would want if it swings a larger trade for a center. Heavy notes the guarantee is not necessarily a signal Hield finishes the offseason in Atlanta, since the Hawks have been tied to several scenarios that could route his number elsewhere.",
       category: "trades",
     },
     {
@@ -530,12 +542,6 @@ export const NEWS_DIGEST = {
       category: "general",
     },
     {
-      title: "Free Agency Opens Tuesday: Atlanta Operates Over the Cap, the Non-Taxpayer Mid-Level Is the Tool to Watch",
-      detail:
-        "The negotiating window opens Tuesday June 30 at 6 PM ET, with the moratorium running through July 6, and Atlanta heads in as an over-the-cap team, meaning no meaningful room to renounce its way into (Spotrac / Bleacher Report, Jun). If McCollum and Kuminga both stick, the Hawks are most likely working with the Non-Taxpayer Mid-Level, near $15M, plus minimum deals to fill out the bench, rather than chasing a max signing. That math is why POBO Onsi Saleh keeps framing the plan as patience over splash: add depth, guard the cap sheet, and let the young core grow rather than overpay into the tax. The center pursuit and any Kuminga or Hield resolution all flow through the same limited toolbox, so expect targeted value adds, not headline free-agent strikes.",
-      category: "general",
-    },
-    {
       title: "Knicks Are 2026 NBA Champions: Brunson 45 and Finals MVP as New York Closes the Spurs 4-1",
       detail:
         "Settled over the weekend: the New York Knicks are champions for the first time since 1973, closing out San Antonio 94-90 in Game 5 on Saturday, June 13, to take the Finals 4-1. JALEN BRUNSON scored 45, including 13 straight in the fourth quarter, and was named Finals MVP after New York rallied from a double-digit hole in all four of its wins (down 16 on Saturday). The Atlanta resonance is direct and pointed: the same Brunson-led team that eliminated the Hawks in six in the first round on Apr 30 finished the job all the way to the ring (ESPN / NBA.com / FOX Sports, Jun 13-14). With the season officially over leaguewide, Atlanta's calendar now belongs entirely to the draft (June 23) and the Hield, Kuminga and McCollum decisions that follow.",
@@ -567,6 +573,7 @@ export const NEWS_DIGEST = {
     "Bleacher Report",
     "NBC Sports",
     "NBC Sports Boston",
+    "theScore",
     "AJC",
     "Atlanta News First",
     "Sports Illustrated (SI/onsi)",
@@ -610,17 +617,17 @@ export const NEWS_DIGEST = {
 // ─── Issue metadata (drives datelines, cover star, masthead) ───────────────
 // Update `date` daily; everything else flows from KEY_DATES + NEWS_DIGEST.
 export const ISSUE = {
-  date: "2026-06-28",                              // YYYY-MM-DD — single source of truth
+  date: "2026-06-30",                              // YYYY-MM-DD — single source of truth
   volume: 26,                                       // VOL XXVI
-  number: 15,                                       // Issue number (offseason cadence)
-  dateline: "ATLANTA · JUNE 28, 2026",              // Pre-formatted for display
-  mastheadLine: "VOL XXVI · ISSUE NO. 14 · JUNE 2026 · ATL · USA",
-  railLabel: "ISSUE 14 · JUNE 27",
+  number: 16,                                       // Issue number (offseason cadence)
+  dateline: "ATLANTA · JUNE 30, 2026",              // Pre-formatted for display
+  mastheadLine: "VOL XXVI · ISSUE NO. 16 · JUNE 2026 · ATL · USA",
+  railLabel: "ISSUE 16 · JUNE 30",
   coverStarId: 1,                                   // PLAYERS[id] for the cover portrait
-  coverRibbon: "GUEYE OPTION IN · KUMINGA CALL MON · FA OPENS TUE",
-  coverStatusKicker: "OFFSEASON · DAY 58",          // top-right corner of cover
-  coverStatusLine: "KUMINGA IN {DAYS:kuminga-opt} · FA IN {DAYS:fa-open}", // {DAYS:id} resolves from KEY_DATES
-  backTagline: "Next issue: after the Kuminga call and the free-agency market opens.",
+  coverRibbon: "KUMINGA OPTION DECLINED · CARTER ACQUIRED · FA OPENS 6PM ET",
+  coverStatusKicker: "OFFSEASON · DAY 59",          // top-right corner of cover
+  coverStatusLine: "FA OPENS {DAYS:fa-open} · MORATORIUM {DAYS:moratorium}", // {DAYS:id} resolves from KEY_DATES
+  backTagline: "Next issue: once the free-agency market opens and the first signings land.",
 };
 
 // ─── Cover TOC (table of contents on the cover) ────────────────────────────
@@ -694,13 +701,13 @@ export const KEY_DATES = [
     hawksAngle: "DONE. Hawks took Houston PG Kingston Flemings at #8, St. John's F/C Zuby Ejiofor at #23, and traded up from #57 to #52 for UNC C Henri Veesaar in Round 2." },
   { id: "hield-trig",  date: "2026-06-25",
     label: "Hield $9.66M trigger", short: "HIELD",       kind: "DEADLINE",
-    hawksAngle: "TODAY. Only $3M guaranteed · Atlanta expected to waive before the trigger to save ~$6M and a roster spot" },
+    hawksAngle: "DONE. Atlanta fully guaranteed Hield's $9.66M on Jun 28, keeping the shooter as a movable expiring" },
   { id: "kuminga-opt", date: "2026-06-29",
     label: "Kuminga option call", short: "KUMINGA",     kind: "DECISION",
-    hawksAngle: "$24.3M team option · decline-and-extend expected per Fischer · opens $15M+ cap room" },
+    hawksAngle: "DECLINED (Shams, Jun 29). $24.3M option off the books · Kuminga to unrestricted FA · Kings a suitor" },
   { id: "fa-open",     date: "2026-06-30",
     label: "FA market opens",     short: "FA OPEN",     kind: "EVENT",      primary: true,
-    hawksAngle: "6 PM ET · McCollum retention resolved (re-signed Jun 22, 1yr/~$21M) · Hartenstein the wish-list big" },
+    hawksAngle: "TODAY, 6 PM ET · over the cap, Non-Taxpayer MLE (~$15M) the tool · center trade the priority" },
   { id: "moratorium",  date: "2026-07-06",
     label: "Moratorium ends",     short: "MORATORIUM",  kind: "EVENT",
     hawksAngle: "Signings official · sign-and-trades can finalize · cap holds release" },
