@@ -323,8 +323,8 @@ export const PLAYERS = [
     stealsPerGame: 0.3, blocksPerGame: 0.5, turnoversPerGame: 0.8,
     fieldGoalPct: 54.8, threePointPct: 32.1, freeThrowPct: 78.2,
     trueShootingPct: 58.4, plusMinus: -0.3,
-    form: 5.0, status: "out", injuryNote: "Right high-ankle sprain (Apr 1) — missed the entire first round (all 6 games); will be a UFA after the season ends, with full health expected by training camp",
-    recentNotes: "SUNDAY JUNE 21 (offseason — PRESIDENT OF BASKETBALL OPS ONSI SALEH promoted + extended Wed May 27 per ESPN / Washington Post / Yahoo / SI onsi / Hoops Rumors; SPURS TOOK WCF GAME 7 111-103 Sat May 30 (Wembanyama 22-7), ousting OKC to reach the Finals; THE KNICKS ARE 2026 CHAMPIONS, closing San Antonio 94-90 in Game 5 Sat Jun 13 to take the Finals 4-1 (NY's first title since 1973), Brunson 45 and Finals MVP; the same team that ended Atlanta's season in six finished the job) — Missed the entire first round of the playoffs after the Apr 1 right high-ankle sprain (Heavy/CBS, Apr 24). UFA per Bleacher Report cap notes. Offseason story is whether the new POBO re-signs the third center or pivots to the lottery picks (No. 8 secured May 10) or to Hartenstein-tier FA money for help up front; the Hartenstein chase (per Soaring Down South 'top free-agency frontcourt target', May 11) directly competes with re-signing Landale.",
+    form: 5.0, status: "active", injuryNote: null,
+    recentNotes: "RE-SIGNED. Landale and Atlanta agreed on a one-year, $14M deal to return, reported Tuesday June 30 on the first night of free agency (AP / Washington Post / SI onsi / Peachtree Hoops, Jun 30). The signing cannot be made official until July 6 when the moratorium lifts. He is fully recovered from the Apr 1 right high-ankle sprain that cost him the entire Knicks series, and slots back in as Onyeka Okongwu's veteran backup while Atlanta keeps hunting a bigger center on the trade market (Myles Turner the name to watch). SI onsi graded the return as steady, cost-controlled frontcourt insurance rather than a splash.",
     playoffStats: null,
     playoffSeries: null,
     minutesTrend: null,
@@ -385,14 +385,14 @@ export const TEAM_LOGOS = {
 // Season ended Apr 30 in Game 6 elimination by the Knicks. Next on the calendar:
 // 2026 NBA Draft Lottery on May 10 (ATL holds the more-favorable of NOP/MIL plus CLE No. 24).
 export const NEXT_GAME = {
-  opponent: "Free Agency + Cap Decisions",
-  shortName: "OFFSEASON",
+  opponent: "Summer League vs Utah (Salt Lake City)",
+  shortName: "SLC SL",
   home: false,
-  date: "2026-06-30T18:00:00-04:00",
+  date: "2026-07-04T00:00:00-04:00",
   competition: "OFFSEASON",
-  venue: "FA market / cap calendar",
-  broadcast: "—",
-  seriesContext: "TUESDAY JUNE 30, free agency opens TONIGHT at 6 PM ET (moratorium runs through July 6). KUMINGA CALL MADE: Atlanta DECLINED Jonathan Kuminga's $24.3M team option Monday Jun 29 (Shams, ESPN), making the 23-year-old an unrestricted free agent for the second straight summer; Sacramento is among the expected suitors, though a return to Atlanta on a smaller number is not ruled out. NEW DEPTH: the Hawks acquired guard DEVIN CARTER and a 2033 second-round pick from Sacramento on Monday in what is essentially a Kings salary dump (NBA.com / SI onsi), adding a 24-year-old defender behind McCollum, Daniels and NAW. EARLIER GATE: Atlanta fully guaranteed Buddy Hield's $9.66M salary on Sunday Jun 28, keeping the shooter as a movable expiring. CENTER BOARD: with Hartenstein re-signed in OKC, the frontcourt hunt is a trade story; Milwaukee's MYLES TURNER is the name to watch (Fischer / Stein), with New Orleans' Missi, Orlando's Bitadze and Dallas' Gafford as other targets. SUMMER LEAGUE: Atlanta opens Salt Lake City July 4 vs Utah (also Jul 6, 7), then Las Vegas (opens Jul 9, ESPN2); Flemings, Ejiofor, Veesaar and Asa Newell headline. DONE WORK holds: Wiggins from OKC, Gueye's $2.41M option in, McCollum re-signed (1yr, ~$21M), Snyder extended Jun 8.",
+  venue: "Jon M. Huntsman Center, Salt Lake City",
+  broadcast: "ESPN family",
+  seriesContext: "WEDNESDAY JULY 1, one night into free agency. FIRST STRIKE: Atlanta agreed to bring back center JOCK LANDALE on a one-year, $14M deal Tuesday Jun 30 (AP / Washington Post / SI onsi / Peachtree Hoops); it cannot be official until the moratorium lifts July 6. Landale is healthy after the Apr 1 ankle sprain and profiles as Okongwu's veteran backup. KUMINGA STILL UNSIGNED: after Atlanta declined his $24.3M option Jun 29 (Shams, ESPN), the UFA remains on the market, with Sacramento, the Clippers and Cleveland floated as suitors (Bleacher Report). CENTER BOARD: still a trade story now that Robert Williams III went to Portland and Hartenstein re-signed in OKC; Milwaukee's MYLES TURNER is the name to watch (Fischer / Stein). SUMMER LEAGUE: Atlanta opens Salt Lake City Saturday July 4 vs Utah (also Jul 6, 7), then Las Vegas (opens Jul 9, ESPN2); Flemings, Ejiofor, Veesaar, Asa Newell and Exhibit 10 signee Isaac McKneely headline. LEAGUE DAY 1: LeBron left the Lakers, Kawhi traded to Toronto, Ja Morant to Portland. DONE WORK holds: Carter + 2033 second from SAC, Hield's $9.66M guaranteed, Wiggins from OKC, Gueye's $2.41M option in, McCollum re-signed (1yr, ~$21M), Snyder extended Jun 8.",
 };
 
 // ─── Game Results (2025-26 regular season · last 16 games) ─────────────────
@@ -441,26 +441,32 @@ export const EAST_STANDINGS = [
 
 // ─── AI News Digest (generated from live web search) ───────────────────────
 export const NEWS_DIGEST = {
-  generatedAt: "2026-06-30T13:00:00Z",
+  generatedAt: "2026-07-01T08:15:00Z",
   summary:
-    "OFFSEASON, Tuesday June 30, and the market opens tonight. Free agency's negotiating window cracks at 6 PM ET, with the moratorium running through July 6. Atlanta walks in with its biggest cap call already answered: the Hawks DECLINED Jonathan Kuminga's $24.3M team option Monday June 29 (Shams Charania, ESPN), making the 23-year-old an unrestricted free agent for the second straight summer rather than carrying him at a number John Hollinger's BORD$ model valued near $9.4M. Sacramento is among the expected suitors, though a return to Atlanta at a lower figure is not off the table. The Hawks also kept moving on the margins, acquiring guard DEVIN CARTER and a 2033 second-round pick from the Kings on Monday in what reads as a Sacramento salary dump (NBA.com, SI onsi): a 24-year-old, the No. 13 pick in 2024, who adds perimeter defense and cheap depth behind CJ McCollum, Dyson Daniels and Nickeil Alexander-Walker. The earlier gate holds, Atlanta fully guaranteed Buddy Hield's $9.66M salary Sunday June 28, keeping a proven shooter who doubles as a movable expiring. The center board stays a trade story now that Isaiah Hartenstein re-signed in Oklahoma City, with Milwaukee's Myles Turner the name to watch (Fischer, Stein) and New Orleans' Yves Missi, Orlando's Goga Bitadze and Dallas' Daniel Gafford behind him. Summer League is set, Atlanta opens Salt Lake City July 4 against Utah then heads to Las Vegas. POBO Onsi Saleh keeps preaching patience: not one player away, guard the cap room, find the next Nickeil.",
+    "OFFSEASON, Wednesday July 1, one night into free agency. Atlanta's first move of the open market is a familiar face: the Hawks agreed to bring back center JOCK LANDALE on a one-year, $14M deal, reported Tuesday June 30 on the opening night of free agency (AP / Washington Post / SI onsi / Peachtree Hoops). Landale, fully recovered from the Apr 1 right high-ankle sprain that cost him the entire Knicks series, returns as Onyeka Okongwu's veteran backup, though the signing cannot become official until the moratorium lifts July 6. The bigger center swing is still a trade story: Milwaukee's MYLES TURNER remains the name to watch (Fischer, Stein), now that Robert Williams III went to Portland and Isaiah Hartenstein re-signed in Oklahoma City. Two days earlier Atlanta answered its biggest cap call, DECLINING Jonathan Kuminga's $24.3M team option Monday June 29 (Shams Charania, ESPN) to make the 23-year-old an unrestricted free agent; he remains unsigned, with Sacramento, the Clippers and Cleveland floated as suitors and a cheaper Atlanta return not ruled out. Around the edges the Hawks added guard DEVIN CARTER and a 2033 second from the Kings, guaranteed Buddy Hield's $9.66M as a movable expiring, and inked Louisville guard Isaac McKneely to an Exhibit 10. Summer League opens Saturday July 4 in Salt Lake City against Utah, with Flemings, Ejiofor, Veesaar and Asa Newell headlining. Leaguewide, Day 1 was chaos: LeBron James left the Lakers, Kawhi Leonard was traded to Toronto, Ja Morant to Portland. POBO Onsi Saleh keeps preaching patience: not one player away, guard the cap room, find the next Nickeil.",
   keyTopics: [
     {
-      title: "FRESH: Hawks DECLINE Kuminga's $24.3M Team Option, Sending the Former Warrior to Unrestricted Free Agency",
+      title: "FRESH: Hawks Re-Sign Center Jock Landale to a One-Year, $14M Deal on the Opening Night of Free Agency",
       detail:
-        "Atlanta's biggest cap call is answered. The Hawks declined Jonathan Kuminga's $24.3M team option for 2026-27 on Monday June 29, ESPN's Shams Charania reported, making the 23-year-old an unrestricted free agent (ESPN / SI onsi / theScore / Atlanta News First, Jun 29). The front office had canvassed the league on Kuminga's trade value in recent weeks, and John Hollinger's BORD$ system valued him well below the option figure, near $9.4M, so wiping the number off the books was the cleaner flexibility play for POBO Onsi Saleh. Kuminga averaged 12.3 points and 5.3 rebounds in 22.1 minutes across 16 games after arriving from Golden State in February, scoring 27 in his Hawks debut before his production leveled off, and a 5-of-24 stretch from three in the Knicks series underlined the same questions that followed him out of the Bay. Sacramento is expected to be among his suitors as he hits the open market for the second summer running; a return to Atlanta on a smaller deal is still possible but no longer the base case.",
+        "Atlanta's first strike of the open market brings back a familiar body up front. Center JOCK LANDALE agreed to a one-year, $14M deal to re-sign with the Hawks, reported Tuesday June 30 on the first night of free agency (AP / Washington Post / SI onsi / Peachtree Hoops, Jun 30). The agreement cannot be signed or announced officially until the moratorium lifts July 6. The 30-year-old Australian is fully recovered from the Apr 1 right high-ankle sprain that cost him the entire first-round series against the Knicks, and he profiles as Onyeka Okongwu's veteran backup after averaging 6.1 points and 4.2 rebounds on 54.8% shooting across 52 games last season. SI onsi graded the move as steady, cost-controlled frontcourt insurance rather than a splash, and it does not close the door on Atlanta's bigger center pursuit: the front office is still working the trade market, with Milwaukee's Myles Turner the name to watch.",
       category: "trades",
     },
     {
-      title: "FRESH: Hawks Add Guard Devin Carter and a 2033 Second-Rounder From Sacramento in a Kings Salary Dump",
+      title: "Kuminga Still Unsigned: Former Warrior Hits the Open Market, Kings, Clippers and Cavaliers Floated as Suitors",
+      detail:
+        "Atlanta's biggest cap call is answered. The Hawks declined Jonathan Kuminga's $24.3M team option for 2026-27 on Monday June 29, ESPN's Shams Charania reported, making the 23-year-old an unrestricted free agent (ESPN / SI onsi / theScore / Atlanta News First, Jun 29). The front office had canvassed the league on Kuminga's trade value in recent weeks, and John Hollinger's BORD$ system valued him well below the option figure, near $9.4M, so wiping the number off the books was the cleaner flexibility play for POBO Onsi Saleh. Kuminga averaged 12.3 points and 5.3 rebounds in 22.1 minutes across 16 games after arriving from Golden State in February, scoring 27 in his Hawks debut before his production leveled off, and a 5-of-24 stretch from three in the Knicks series underlined the same questions that followed him out of the Bay. One night into free agency he remains unsigned: Sacramento is expected to pursue him but stays over the tax and cash-strapped, while Bleacher Report ranks the cap-space Clippers and the Cavaliers among his likelier landing spots. A return to Atlanta on a smaller number is still possible but no longer the base case.",
+      category: "trades",
+    },
+    {
+      title: "Hawks Add Guard Devin Carter and a 2033 Second-Rounder From Sacramento in a Kings Salary Dump",
       detail:
         "Atlanta deepened its bench on Monday. The Hawks acquired 24-year-old guard DEVIN CARTER and a 2033 second-round pick from the Sacramento Kings, a deal widely read as a straight Sacramento salary dump to duck under the luxury tax (NBA.com / SI onsi / NBC Sports / Atlanta News First, Jun 29). Carter, the No. 13 overall pick in 2024, has averaged 6.4 points, 2.7 rebounds and 1.9 assists across his first two NBA seasons on a $5.1M salary for the coming year. For Atlanta he profiles as cheap perimeter-defense depth behind a backcourt of CJ McCollum, Dyson Daniels and Nickeil Alexander-Walker, with Kingston Flemings and Aaron Wiggins also in the mix, the kind of low-cost value add POBO Onsi Saleh has prioritized over a splashy strike. Picking up a useful young guard and a future pick for taking on one expiring year is the sort of margin work a flexible cap sheet is built to enable.",
       category: "trades",
     },
     {
-      title: "Free Agency Opens TONIGHT at 6 PM ET: Atlanta Operates Over the Cap, the Non-Taxpayer Mid-Level Is the Tool to Watch",
+      title: "Free Agency Day 1: Atlanta Opens With the Landale Re-Sign, Works the Non-Taxpayer Mid-Level as Its Main Tool",
       detail:
-        "The negotiating window opens Tuesday June 30 at 6 PM ET, with the moratorium running through July 6, and Atlanta heads in as an over-the-cap team with no meaningful room to renounce into (Spotrac / Bleacher Report, Jun 30). With McCollum re-signed and Kuminga's option off the books, the Hawks are most likely working with the Non-Taxpayer Mid-Level, near $15M, plus minimum deals to round out the bench rather than chasing a max signing. That math is why POBO Onsi Saleh keeps framing the plan as patience over splash: add depth, guard the cap sheet, and let the young core grow rather than overpay into the tax. The center pursuit and any Hield resolution all flow through the same limited toolbox, so expect targeted value adds, not headline strikes, when the market opens tonight.",
+        "The negotiating window opened Tuesday June 30 at 6 PM ET, with the moratorium running through July 6, and Atlanta opened as expected: over the cap, no meaningful room, leaning on the Non-Taxpayer Mid-Level near $15M plus minimums (Spotrac / Bleacher Report, Jun 30). The first move was the Jock Landale re-sign, a piece of the same patience-over-splash script POBO Onsi Saleh keeps repeating: add depth, guard the cap sheet, let the young core grow rather than overpay into the tax. With McCollum re-signed and Kuminga's option off the books, the bigger swings, the center pursuit and any Hield resolution, still flow through the same limited toolbox and, most likely, the trade market rather than a headline free-agent strike.",
       category: "general",
     },
     {
@@ -569,6 +575,8 @@ export const NEWS_DIGEST = {
   sources: [
     "NBA.com",
     "ESPN",
+    "Associated Press",
+    "Washington Post",
     "Yahoo Sports",
     "Bleacher Report",
     "NBC Sports",
