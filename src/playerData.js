@@ -38,7 +38,7 @@ export const PLAYERS = [
     fieldGoalPct: 49.0, threePointPct: 36.2, freeThrowPct: 78.4,
     trueShootingPct: 58.2, plusMinus: 5.6,
     form: 6.9, status: "active", injuryNote: null,
-    recentNotes: "WEDNESDAY JUNE 24 — DRAFT FALLOUT: Atlanta spent the No. 8 pick on Houston PG Kingston Flemings, a downhill shot creator to grow alongside the franchise focal point, and added St. John's big Zuby Ejiofor at No. 23. PRESIDENT OF BASKETBALL OPS ONSI SALEH (promoted from GM and extended long-term Wed May 27 per ESPN / Washington Post / Yahoo / SI onsi / Hoops Rumors) now runs Johnson's offseason; the Executive-of-the-Year runner-up turned away Philadelphia to lock in the architecture around the franchise focal point. ALL-NBA THIRD TEAM (announced Sun May 24) holds as the franchise headline — Johnson's first All-NBA selection of his career and the first for ANY Hawk since Trae Young in 2022 (NBA.com / SI onsi 'Jalen Johnson's Rise To Stardom Continues' / Yahoo Sports / Soaring Down South). He joins Tyrese Maxey, Jamal Murray, Chet Holmgren and Jalen Duren on the Third Team; his 22.5/10.3/7.9 across 72 games made him just the fifth player in NBA history to average 22+/10+/7+ for a full season (after Oscar Robertson, Wilt Chamberlain, Jokic and Westbrook), and the first Hawk ever to rank top-20 league-wide in all three. The nod completes Atlanta's offseason awards sweep — NAW won Most Improved, Daniels made All-Defensive Second Team — and cements Johnson as the one Hawk firmly OFF the trade board as Jaylen Brown rumors swirl. AROUND THE LEAGUE: the KNICKS, the team that ended Atlanta's season, now lead the Finals 3-1 after erasing a 29-point halftime deficit Wed Jun 10 to win Game 4 107-106 on Anunoby's tip-in with 1.2 seconds left, the largest comeback in Finals history (Anunoby 33, Brunson 31); Knicks closed it out 4-1 Sat Jun 13. On a $150M rookie extension through 2029-30 at ~$30M/yr per Spotrac — locked in; final R1 line settled at 19.5/8.3/5.5.",
+    recentNotes: "FRIDAY JULY 3 (offseason): the offseason is being built around him. The Kuminga sign-and-trade talks (Cavs, Bucks), the Hield-salary trade scenarios and the Turner-led center hunt are all about finding Johnson a sturdier supporting cast, with No. 8 pick Kingston Flemings drafted as backcourt creation to grow alongside him. All-NBA Third Team (first Hawk honored since Trae Young in 2022) after a 22.5/10.3/7.9 season, just the fifth player ever to average 22-10-7; locked in on his ~$30M/yr extension through 2029-30. Jaylen Brown, the perennial rumored co-star, went to Philadelphia instead Thursday, so internal growth plus one more trade is the plan.",
     playoffStats: { gamesPlayed: 6, minutesPerGame: 35.0, pointsPerGame: 19.5, reboundsPerGame: 8.3, assistsPerGame: 5.5 },
     playoffSeries: null,
     minutesTrend: "down",
@@ -100,7 +100,7 @@ export const PLAYERS = [
     fieldGoalPct: 45.2, threePointPct: 38.1, freeThrowPct: 82.7,
     trueShootingPct: 57.4, plusMinus: 3.1,
     form: 6.5, status: "active", injuryNote: null,
-    recentNotes: "SUNDAY JUNE 21 (offseason — PRESIDENT OF BASKETBALL OPS ONSI SALEH promoted + extended Wed May 27 per ESPN / Washington Post / Yahoo / SI onsi / Hoops Rumors; SPURS TOOK WCF GAME 7 111-103 Sat May 30, ousting OKC to reach the Finals; THE KNICKS ARE 2026 CHAMPIONS, closing San Antonio 94-90 in Game 5 Sat Jun 13 to take the Finals 4-1 (NY's first title since 1973), Brunson 45 and Finals MVP; the same team that ended Atlanta's season in six finished the job) — Headline UFA, and Saleh is now the executive directly negotiating the re-up. SI onsi 'Atlanta Is Expected to Bring Back McCollum Next Season' / Soaring Down South / Hoops Rumors / HoopsHype / Bleacher Report / Yahoo Sports 'Hawks plan to bring back CJ McCollum in free agency' (Apr 28-May 23) align: Atlanta plans to bring him back on a multi-year deal, with offers expected 'slightly above the mid-level exception' — most execs pegging 2yr/$35-40M as the fair range, though ESPN's Bobby Marks has floated a 3yr/$115.9M extension as an outside ceiling. HoopsHype confirmed mutual interest May 23 and reiterated Wed Jun 17 that the Hawks 'hope to re-sign' him, projecting a return near $20M per year. McCollum 'likely will have other suitors' as he hits UFA per Bleacher Report May 14. Chicago's NBA-high $58M cap room under ex-ATL EVP Bryson Graham (Sun-Times, May 5) is the named external risk — they have the cleanest single-team path to top guards at the $30-40M/yr tier. McCollum publicly confirmed a 'productive conversation' with the front office (Heavy, May 4). Hollinger's Athletic preview flags age (34, turning 35) as the structural risk. UFA market opens June 30, 6 PM ET, now 9 days out. Final regular-season line: 18.7 / 3.1 / 4.1 on 45.2/38.1/82.7 across 41 Hawks games post-Jan 8 trade (25 starts), then 19.2 PPG / 49% FG / 31% 3P across the six R1 games.",
+    recentNotes: "FRIDAY JULY 3 (offseason): LOCKED IN. McCollum re-signed on a one-year, roughly $21M extension with a 7.5% trade kicker back on Jun 22 (ESPN / NBA.com / Yahoo Sports), skipping free agency entirely; the paperwork becomes official as the moratorium lifts Jul 6. He returns as the bridge point guard and mentor for No. 8 pick Kingston Flemings, drafted as his eventual successor. Final regular-season line: 18.7/3.1/4.1 on 45.2/38.1/82.7 across 41 Hawks games after the January trade, then 19.2 PPG in the six-game Knicks series. Turns 35 in September; the one-year structure keeps the books flexible.",
     playoffStats: { gamesPlayed: 6, minutesPerGame: 33.0, pointsPerGame: 19.2, reboundsPerGame: 3.2, assistsPerGame: 2.5 },
     playoffSeries: null,
     usageRate: 31.8,
@@ -122,7 +122,7 @@ export const PLAYERS = [
     fieldGoalPct: 48.0, threePointPct: 37.6, freeThrowPct: 75.7,
     trueShootingPct: 59.4, plusMinus: 3.8,
     form: 6.6, status: "active", injuryNote: null,
-    recentNotes: "SUNDAY JUNE 21 (offseason — PRESIDENT OF BASKETBALL OPS ONSI SALEH promoted + extended Wed May 27 per ESPN / Washington Post / Yahoo / SI onsi / Hoops Rumors; SPURS TOOK WCF GAME 7 111-103 Sat May 30, ousting OKC to reach the Finals vs the Knicks, who won the title 4-1, clinching 94-90 in Game 5 Sat Jun 13 behind Brunson 45 and Finals MVP) — Career-best 25-26 season locks in his role as the post-Trae starting C: 15.2/7.6/3.1 on 48.0% FG with 1.1 blk and 1.1 stl across 74 games and 31 mpg (basketball-reference / RotoWire / Spotrac confirmed May 11). Two years left on his 4yr/$62M extension at $16.1M in 26-27. Atlanta has resisted prior trade interest (Pacers reportedly called pre-deadline per Yahoo) and Hollinger's preview treats the C role as locked. Yardbarker / SI onsi / Soaring Down South (May 5-22) re-cite Isaiah Hartenstein as the top FA frontcourt target IF Atlanta can clear room — would pair WITH Okongwu, not replace him. STRUCTURAL CATCH still active: OKC holds a $28.5M team option on Hartenstein for 26-27 and may decline because of cap pressure from Jalen Williams / Chet Holmgren extensions kicking in (Thunderous Intentions / Yardbarker, May 11). OKC's early exit (eliminated May 30) reopened the Thunder's offseason math, but reporting still expects them to retain Hartenstein, keeping the pursuit a long shot. Six-game R1 line was ~11.3/5.7/1.7 played through right-knee inflammation diagnosed after Game 1 — KAT's two triple-doubles were the series-defining mismatch ATL never solved.",
+    recentNotes: "FRIDAY JULY 3 (offseason): EXTENSION-ELIGIBLE as of Jul 1 on top of the two years (~$33M) left on his deal (Soaring Down South / Spotrac); no talks reported yet, but with Kuminga's $24.3M off the books, locking in the career-best starting center (15.2/7.6/3.1 on 48.0% FG with 1.1 blk across 74 games) is Atlanta's next contract conversation. Landale returns behind him on a 1yr/$14M deal, and the front office keeps hunting a bigger frontcourt partner on the trade market (Myles Turner the name to watch), which would pair WITH Okongwu, not replace him. Played R1 through right-knee inflammation (11.3/5.7/1.7).",
     playoffStats: { gamesPlayed: 6, minutesPerGame: 28.5, pointsPerGame: 11.3, reboundsPerGame: 5.7, assistsPerGame: 1.7 },
     playoffSeries: null,
     minutesTrend: "down",
@@ -162,7 +162,7 @@ export const PLAYERS = [
     fieldGoalPct: 47.2, threePointPct: 33.6, freeThrowPct: 70.1,
     trueShootingPct: 55.1, plusMinus: 2.4,
     form: 6.4, status: "active", injuryNote: null,
-    recentNotes: "MONDAY JUNE 29 (offseason) — OPTION DECLINED: Atlanta declined Kuminga's $24.3M 26-27 team option (Shams, ESPN), making him an unrestricted free agent for the second straight summer. The front office had canvassed his trade value and Hollinger's BORD$ model valued him near $9.4M, so wiping the number off the books was the cleaner flexibility play. Sacramento is among the expected suitors; a return to Atlanta on a smaller deal is still possible but no longer the base case. Hawks regular-season line of 12.3 PPG / 5.3 RPG in 22.1 mpg across 16 games (27 in his debut) with a three-point shot that never settled, and a 5-of-24 stretch from deep in the Knicks series that echoed the same questions from his Golden State years.",
+    recentNotes: "FRIDAY JULY 3 (offseason): SIGN-AND-TRADE TALKS. The Cavaliers and Bucks have discussed possible sign-and-trade scenarios with Atlanta, which holds Kuminga's Non-Bird rights (Michael Scotto, HoopsHype / Hoops Rumors, Jul 2); Sacramento has circled back and the Lakers are giving him serious consideration next to Luka Doncic (Cavaliers Nation / Bleacher Report, Jul 2-3). Atlanta declined his $24.3M option Jun 29 (Shams, ESPN); an S&T returns the Hawks an asset instead of losing him for nothing, and a cheaper straight re-sign remains technically open. Hawks line: 12.3 PPG / 5.3 RPG in 22.1 mpg across 16 games, with a 5-of-24 stretch from deep in the Knicks series.",
     playoffStats: { gamesPlayed: 6, minutesPerGame: 25.7, pointsPerGame: 13.4, reboundsPerGame: 3.6, assistsPerGame: 0.8 },
     playoffSeries: null,
     minutesTrend: "down",
@@ -182,7 +182,7 @@ export const PLAYERS = [
     fieldGoalPct: 42.4, threePointPct: 39.8, freeThrowPct: 86.2,
     trueShootingPct: 58.6, plusMinus: 0.9,
     form: 5.7, status: "active", injuryNote: null,
-    recentNotes: "SUNDAY JUNE 28 (offseason) — DEADLINE DAY: the pushed-back guarantee date for Hield's $9.66M 26-27 salary lands TODAY (Brad Rowland / Hoops Rumors / Yahoo Sports), so Atlanta must decide by end of day whether to lock it in or waive him down to the $3M already guaranteed and reclaim roughly $6M plus a roster spot. Both sides moved the date back from June 25 to buy time on the call. Just $3M stays fully guaranteed regardless, so all three Hawks paths Saleh owns remain live: keep as a movable expiring, waive later to save roughly $6.4M, or include as salary filler in a trade. A crowded backcourt after the Aaron Wiggins trade and the Flemings pick is the squeeze. Hoops Rumors lists Hield as a likely offseason discussion piece, especially as salary filler in any Jaylen Brown framework that resurfaced over the weekend. Regular-season line of 11.8/2.8/2.1 on 39.8% from three across 71 games (12 starts), but R1 role was largely abandoned (6 mpg in 2 games). Decision sequence: Draft Night Jun 23 → Hield's June 25 trigger → Kuminga's June 29 option → McCollum FA opens June 30.",
+    recentNotes: "FRIDAY JULY 3 (offseason): TRADE-SCENARIO CENTERPIECE. Jake Fischer reported Thursday the Hawks are involved in several trade scenarios that could use Hield's salary for 2026-27 (The Stein Line, Jul 2). Atlanta fully guaranteed the $9.66M on Jun 28, so he is now a clean, movable expiring, the obvious matching money in any center swing (Turner, or the previously pursued Missi / Bitadze / Gafford). With Flemings, Carter and Wiggins added, the crowded backcourt makes a trade likelier than a rotation role. Season line: 11.8/2.8/2.1 on 39.8% from three across 71 games (12 starts).",
     playoffStats: { gamesPlayed: 2, minutesPerGame: 6.0, pointsPerGame: 4.0, reboundsPerGame: 0.5, assistsPerGame: 0.5 },
     playoffSeries: null,
     minutesTrend: "down",
@@ -224,7 +224,7 @@ export const PLAYERS = [
     fieldGoalPct: 40.6, threePointPct: 34.8, freeThrowPct: 82.1,
     trueShootingPct: 52.4, plusMinus: -0.8,
     form: 5.2, status: "active", injuryNote: null,
-    recentNotes: "SUNDAY JUNE 21 (offseason — PRESIDENT OF BASKETBALL OPS ONSI SALEH promoted + extended Wed May 27 per ESPN / Washington Post / Yahoo / SI onsi / Hoops Rumors; SPURS TOOK WCF GAME 7 111-103 Sat May 30 (Wembanyama 22-7), ousting OKC to reach the Finals; THE KNICKS ARE 2026 CHAMPIONS, closing San Antonio 94-90 in Game 5 Sat Jun 13 to take the Finals 4-1 (NY's first title since 1973), Brunson 45 and Finals MVP; the same team that ended Atlanta's season in six finished the job) — UFA whose renewal price came down after Round 1. Six-game R1 line: ~2.8 PPG on a series-long shooting slump. Regular season was a steady veteran backup role (7.4/1.8/2.9) over 58 games but the playoff sample raises questions on terms. Hoops Rumors offseason brief tags him as a role-player filler the new POBO can shop on minimums or replace via the MLE; UFA market opens June 30, 6 PM ET, now 10 days out.",
+    recentNotes: "FRIDAY JULY 3 (offseason): UNSIGNED UFA four days into free agency, with no reported Hawks offer. Atlanta's guard room got even more crowded via Flemings, Carter and Wiggins, so a return looks unlikely unless it comes on a minimum. Regular season was a steady veteran backup line (7.4/1.8/2.9 over 58 games), but the six-game Knicks series (~2.8 PPG on a long shooting slump) cut into his market.",
     playoffStats: { gamesPlayed: 6, minutesPerGame: 16.0, pointsPerGame: 2.8, reboundsPerGame: 1.3, assistsPerGame: 1.0 },
     playoffSeries: null,
     minutesTrend: "down",
@@ -283,7 +283,7 @@ export const PLAYERS = [
     fieldGoalPct: 53.8, threePointPct: 38.7, freeThrowPct: 55.2,
     trueShootingPct: 58.3, plusMinus: -0.4,
     form: 5.7, status: "active", injuryNote: null,
-    recentNotes: "SUNDAY JUNE 21 (offseason — PRESIDENT OF BASKETBALL OPS ONSI SALEH promoted + extended Wed May 27 per ESPN / Washington Post / Yahoo / SI onsi / Hoops Rumors; SPURS TOOK WCF GAME 7 111-103 Sat May 30 (Wembanyama 22-7), ousting OKC to reach the Finals; THE KNICKS ARE 2026 CHAMPIONS, closing San Antonio 94-90 in Game 5 Sat Jun 13 to take the Finals 4-1 (NY's first title since 1973), Brunson 45 and Finals MVP; the same team that ended Atlanta's season in six finished the job) — Rookie offseason story, and Saleh's development bet: regular-season line via SI onsi / Peachtree Hoops / Soaring Down South was 44 GP / 5.2 PPG / 2.2 RPG / 0.6 APG on 53.8% FG and 38.7% from three in 11.4 mpg (leads all rookies in 3P% at min 10 attempts). Made his NBA debut Oct 24, 2025 after Atlanta traded back to draft him at No. 23 out of Georgia. Multiple G League assignments and rotation gaps through the year — the development arc the now-POBO referenced ('best version of ourselves is yet to come') runs directly through this summer's Summer League and a bigger third-string spell-PF role.",
+    recentNotes: "FRIDAY JULY 3 (offseason): SUMMER LEAGUE HEADLINER. Newell is on the official Summer League roster announced this week (Hawks.com / AJC) and opens Salt Lake City play TOMORROW, Sat Jul 4 vs Utah, 5 PM ET, alongside rookies Flemings, Ejiofor and Veesaar. After a rookie year of 44 games, 5.2 PPG and 38.7% from three (led all rookies at min 10 attempts), this is his stage to claim a bigger third-big role, especially with Kuminga off the books and the frontcourt down to Okongwu, Landale, Gueye and rookie Ejiofor ahead of him.",
     playoffStats: { gamesPlayed: 1, minutesPerGame: 5.0, pointsPerGame: 2.0, reboundsPerGame: 1.0, assistsPerGame: 0 },
     playoffSeries: null,
     minutesTrend: "up",
@@ -324,7 +324,7 @@ export const PLAYERS = [
     fieldGoalPct: 54.8, threePointPct: 32.1, freeThrowPct: 78.2,
     trueShootingPct: 58.4, plusMinus: -0.3,
     form: 5.0, status: "active", injuryNote: null,
-    recentNotes: "RE-SIGNED. Landale and Atlanta agreed on a one-year, $14M deal to return, reported Tuesday June 30 on the first night of free agency (AP / Washington Post / SI onsi / Peachtree Hoops, Jun 30). The signing cannot be made official until July 6 when the moratorium lifts. He is fully recovered from the Apr 1 right high-ankle sprain that cost him the entire Knicks series, and slots back in as Onyeka Okongwu's veteran backup while Atlanta keeps hunting a bigger center on the trade market (Myles Turner the name to watch). SI onsi graded the return as steady, cost-controlled frontcourt insurance rather than a splash.",
+    recentNotes: "RE-SIGNED: one year, $14M, agreed Tue Jun 30 (AP / Washington Post / SI onsi / Peachtree Hoops). New detail Jul 1-2: because his Non-Bird rights are too low, Atlanta will use nearly all of its ~$15M Non-Taxpayer Mid-Level to complete the deal (Hoops Rumors / Spotrac), which closes the Hawks' main free-agent tool. Official Monday Jul 6 when the moratorium lifts. Fully recovered from the Apr 1 right high-ankle sprain; slots back in as Okongwu's veteran backup while the center hunt continues on the trade market.",
     playoffStats: null,
     playoffSeries: null,
     minutesTrend: null,
@@ -392,7 +392,7 @@ export const NEXT_GAME = {
   competition: "OFFSEASON",
   venue: "Jon M. Huntsman Center, Salt Lake City",
   broadcast: "ESPN family",
-  seriesContext: "WEDNESDAY JULY 1, one night into free agency. FIRST STRIKE: Atlanta agreed to bring back center JOCK LANDALE on a one-year, $14M deal Tuesday Jun 30 (AP / Washington Post / SI onsi / Peachtree Hoops); it cannot be official until the moratorium lifts July 6. Landale is healthy after the Apr 1 ankle sprain and profiles as Okongwu's veteran backup. KUMINGA STILL UNSIGNED: after Atlanta declined his $24.3M option Jun 29 (Shams, ESPN), the UFA remains on the market, with Sacramento, the Clippers and Cleveland floated as suitors (Bleacher Report). CENTER BOARD: still a trade story now that Robert Williams III went to Portland and Hartenstein re-signed in OKC; Milwaukee's MYLES TURNER is the name to watch (Fischer / Stein). SUMMER LEAGUE: Atlanta opens Salt Lake City Saturday July 4 vs Utah (also Jul 6, 7), then Las Vegas (opens Jul 9, ESPN2); Flemings, Ejiofor, Veesaar, Asa Newell and Exhibit 10 signee Isaac McKneely headline. LEAGUE DAY 1: LeBron left the Lakers, Kawhi traded to Toronto, Ja Morant to Portland. DONE WORK holds: Carter + 2033 second from SAC, Hield's $9.66M guaranteed, Wiggins from OKC, Gueye's $2.41M option in, McCollum re-signed (1yr, ~$21M), Snyder extended Jun 8.",
+  seriesContext: "FRIDAY JULY 3: basketball returns TOMORROW. Atlanta opens Salt Lake City Summer League Sat Jul 4 vs Utah, 5 PM ET, Jon M. Huntsman Center (also Jul 6, 7; Vegas opens Jul 9 on ESPN2). Official 16-man roster is out: Flemings, Ejiofor, Veesaar, Asa Newell and Isaac McKneely headline (Hawks.com / SI onsi / AJC). KUMINGA: sign-and-trade talks with Cleveland and Milwaukee reported (Scotto, Jul 2); the Kings circled back and the Lakers lurk; Atlanta holds his Non-Bird rights. HIELD: Fischer says the Hawks are in several trade scenarios using his $9.66M expiring (Jul 2), fueling the center hunt (Turner the name to watch, Bucks not shopping; Missi / Bitadze / Gafford the fallbacks). LEAGUE: Jaylen Brown to Philadelphia for Paul George and picks, Kessler to the Lakers, ex-Hawk John Collins to Detroit. Landale (1yr, $14M, eating nearly the full MLE) and McCollum (1yr, ~$21M) become official Mon Jul 6.",
 };
 
 // ─── Game Results (2025-26 regular season · last 16 games) ─────────────────
@@ -441,21 +441,57 @@ export const EAST_STANDINGS = [
 
 // ─── AI News Digest (generated from live web search) ───────────────────────
 export const NEWS_DIGEST = {
-  generatedAt: "2026-07-01T08:15:00Z",
+  generatedAt: "2026-07-03T09:10:00Z",
   summary:
-    "OFFSEASON, Wednesday July 1, one night into free agency. Atlanta's first move of the open market is a familiar face: the Hawks agreed to bring back center JOCK LANDALE on a one-year, $14M deal, reported Tuesday June 30 on the opening night of free agency (AP / Washington Post / SI onsi / Peachtree Hoops). Landale, fully recovered from the Apr 1 right high-ankle sprain that cost him the entire Knicks series, returns as Onyeka Okongwu's veteran backup, though the signing cannot become official until the moratorium lifts July 6. The bigger center swing is still a trade story: Milwaukee's MYLES TURNER remains the name to watch (Fischer, Stein), now that Robert Williams III went to Portland and Isaiah Hartenstein re-signed in Oklahoma City. Two days earlier Atlanta answered its biggest cap call, DECLINING Jonathan Kuminga's $24.3M team option Monday June 29 (Shams Charania, ESPN) to make the 23-year-old an unrestricted free agent; he remains unsigned, with Sacramento, the Clippers and Cleveland floated as suitors and a cheaper Atlanta return not ruled out. Around the edges the Hawks added guard DEVIN CARTER and a 2033 second from the Kings, guaranteed Buddy Hield's $9.66M as a movable expiring, and inked Louisville guard Isaac McKneely to an Exhibit 10. Summer League opens Saturday July 4 in Salt Lake City against Utah, with Flemings, Ejiofor, Veesaar and Asa Newell headlining. Leaguewide, Day 1 was chaos: LeBron James left the Lakers, Kawhi Leonard was traded to Toronto, Ja Morant to Portland. POBO Onsi Saleh keeps preaching patience: not one player away, guard the cap room, find the next Nickeil.",
+    "OFFSEASON, Friday July 3, day four of free agency and one day out from basketball returning: the Hawks open Salt Lake City Summer League TOMORROW, Saturday July 4 at 5 PM ET against the host Jazz at the Jon M. Huntsman Center, and the official 16-man roster is out, headlined by all three 2026 picks (Kingston Flemings, Zuby Ejiofor, Henri Veesaar) plus second-year forward Asa Newell and Exhibit 10 signee Isaac McKneely (Hawks.com / SI onsi / AJC). The JONATHAN KUMINGA story has moved from waiting to dealmaking: Cleveland and Milwaukee have discussed sign-and-trade scenarios with Atlanta, which holds his Non-Bird rights, while Sacramento has circled back and the Lakers are giving him serious consideration (Michael Scotto, HoopsHype / Hoops Rumors, Jul 2). Jake Fischer reported Thursday that Atlanta is involved in several trade scenarios built on BUDDY HIELD's freshly guaranteed $9.66M expiring, the clearest signal yet that the front office is still hunting a center by trade, with Milwaukee's Myles Turner interest real but the Bucks not actively shopping him. Leaguewide the board kept moving: JAYLEN BROWN, the longest-running Hawks trade hypothetical, went to Philadelphia for Paul George and picks, Walker Kessler was dealt to the Lakers, and ex-Hawk John Collins signed in Detroit. The Landale (1yr, $14M, eating nearly the full mid-level) and McCollum (1yr, ~$21M) agreements become official when the moratorium lifts Monday July 6.",
   keyTopics: [
     {
-      title: "FRESH: Hawks Re-Sign Center Jock Landale to a One-Year, $14M Deal on the Opening Night of Free Agency",
+      title: "TOMORROW: Hawks Open Salt Lake City Summer League vs Utah, Official Roster Headlined by Flemings, Ejiofor, Veesaar and Newell",
       detail:
-        "Atlanta's first strike of the open market brings back a familiar body up front. Center JOCK LANDALE agreed to a one-year, $14M deal to re-sign with the Hawks, reported Tuesday June 30 on the first night of free agency (AP / Washington Post / SI onsi / Peachtree Hoops, Jun 30). The agreement cannot be signed or announced officially until the moratorium lifts July 6. The 30-year-old Australian is fully recovered from the Apr 1 right high-ankle sprain that cost him the entire first-round series against the Knicks, and he profiles as Onyeka Okongwu's veteran backup after averaging 6.1 points and 4.2 rebounds on 54.8% shooting across 52 games last season. SI onsi graded the move as steady, cost-controlled frontcourt insurance rather than a splash, and it does not close the door on Atlanta's bigger center pursuit: the front office is still working the trade market, with Milwaukee's Myles Turner the name to watch.",
+        "Basketball returns Saturday July 4: the Hawks tip off the Salt Lake City Summer League against the host Jazz at 5 PM ET at the Jon M. Huntsman Center, the first of three SLC games (also Jul 6 and 7) before Las Vegas opens July 9 on ESPN2 (NBA.com / Yahoo Sports / Roundtable). Atlanta announced its official 16-man roster this week (Hawks.com / SI onsi / AJC): all three 2026 draft picks, No. 8 Kingston Flemings, No. 23 Zuby Ejiofor and No. 52 Henri Veesaar, plus last year's first-rounder Asa Newell and Exhibit 10 signee Isaac McKneely (Louisville). The rest of the group: Cameron Corhen, RayJ Dennis, Keshon Gilbert, Kobe Johnson, Kobe Knox, Devon Higgs, Gabe Madsen, Zeke Mayo, Eli Ndiaye, Jacob Toppin and Isaiah Wong. Flemings' downhill creation and Veesaar's stretch-five shooting are the most-watched developmental threads; for Newell it is the stage to claim a bigger third-big role.",
+      category: "games",
+    },
+    {
+      title: "Kuminga Latest: Cavaliers and Bucks Have Discussed Sign-and-Trades With Atlanta, Kings Circle Back, Lakers Lurk",
+      detail:
+        "The Jonathan Kuminga market moved from waiting to dealmaking. Michael Scotto reported Thursday that the Cavaliers and Bucks have discussed possible sign-and-trade scenarios with the Hawks, who hold Kuminga's Non-Bird rights after declining his $24.3M option June 29 (HoopsHype / Hoops Rumors, Jul 2). Cleveland's interest runs through coach Kenny Atkinson, who worked with Kuminga in Golden State, but the Cavs are pressed against the aprons and would need Atlanta's cooperation to make the money work. Sacramento, a primary suitor last summer, has circled back in recent days, and the Lakers are reportedly giving the 23-year-old serious consideration as an athletic wing next to Luka Doncic (Cavaliers Nation / Bleacher Report / Yahoo Sports, Jul 2-3). A sign-and-trade is the route that returns Atlanta an asset instead of losing him for nothing; a cheaper straight re-sign also remains technically open.",
       category: "trades",
     },
     {
-      title: "Kuminga Still Unsigned: Former Warrior Hits the Open Market, Kings, Clippers and Cavaliers Floated as Suitors",
+      title: "Fischer: Hawks Involved in Several Trade Scenarios Built on Buddy Hield's $9.66M Expiring Salary",
       detail:
-        "Atlanta's biggest cap call is answered. The Hawks declined Jonathan Kuminga's $24.3M team option for 2026-27 on Monday June 29, ESPN's Shams Charania reported, making the 23-year-old an unrestricted free agent (ESPN / SI onsi / theScore / Atlanta News First, Jun 29). The front office had canvassed the league on Kuminga's trade value in recent weeks, and John Hollinger's BORD$ system valued him well below the option figure, near $9.4M, so wiping the number off the books was the cleaner flexibility play for POBO Onsi Saleh. Kuminga averaged 12.3 points and 5.3 rebounds in 22.1 minutes across 16 games after arriving from Golden State in February, scoring 27 in his Hawks debut before his production leveled off, and a 5-of-24 stretch from three in the Knicks series underlined the same questions that followed him out of the Bay. One night into free agency he remains unsigned: Sacramento is expected to pursue him but stays over the tax and cash-strapped, while Bleacher Report ranks the cap-space Clippers and the Cavaliers among his likelier landing spots. A return to Atlanta on a smaller number is still possible but no longer the base case.",
+        "Jake Fischer reported Thursday he is 'definitely hearing the Hawks are involved in several trade scenarios that could end up utilizing Buddy Hield's salary for 2026-27' (The Stein Line, Jul 2). Atlanta guaranteed the full $9.66M on June 28 for exactly this: a proven shooter on a movable expiring is ideal matching salary in any larger swing, most obviously the center hunt. With the backcourt now crowded by Kingston Flemings, Devin Carter and Aaron Wiggins, reporting is close to unanimous that Hield's number is likelier to be traded than played (ClutchPoints / Yahoo Sports / SportsTalk ATL, Jul 2).",
       category: "trades",
+    },
+    {
+      title: "Jaylen Brown Traded to the 76ers for Paul George and Picks, Closing the Hawks' Longest-Running Trade Thread for Good",
+      detail:
+        "The thread that shadowed Atlanta's whole offseason is dead: Boston traded JAYLEN BROWN to Philadelphia on Thursday for Paul George, two first-round picks and two second-rounders (ESPN / Yahoo Sports / SI, Jul 2). The Atlanta-born star had been the Hawks' most-discussed hypothetical target since spring, with Marc Stein listing Atlanta among Brown suitors as recently as late June, but the Hawks never got close and POBO Onsi Saleh consistently pushed back on the 'one player away' framing. Brown instead lands with an East rival, joining a top of the conference that already includes the champion Knicks, Cleveland and a Giannis-led Heat, raising the degree of difficulty on Atlanta's climb.",
+      category: "trades",
+    },
+    {
+      title: "Landale Mechanics: Return Eats Nearly All of the $15M Non-Taxpayer Mid-Level, Official When the Moratorium Lifts July 6",
+      detail:
+        "New reporting fills in how the Jock Landale re-sign works: because Landale's Non-Bird rights are too low to reach $14M, Atlanta will use nearly all of its roughly $15M Non-Taxpayer Mid-Level Exception to complete the one-year deal (Hoops Rumors / Spotrac, Jul 1-2). That effectively closes the Hawks' main free-agent tool and confirms the rest of the offseason runs through the trade market. Landale, fully recovered from the Apr 1 right high-ankle sprain that cost him the Knicks series, slots back in as Onyeka Okongwu's veteran backup; the agreement becomes official Monday July 6.",
+      category: "trades",
+    },
+    {
+      title: "Center Board Check: Turner Interest Real but Bucks Not Shopping Him; Missi, Bitadze and Gafford the Previously Pursued Fallbacks",
+      detail:
+        "Where the center hunt stands as of Friday: Milwaukee has received interest in MYLES TURNER but is 'not actively engaged' in moving him and would need to be blown away to hurry, per Marc Stein and Jake Fischer (The Stein Line / Behind the Buck Pass, Jul 1-2). The Bucks' own center crunch (Turner, Kel'el Ware, Jericho Sims) keeps the door ajar, and Atlanta remains the most natural partner among teams hunting frontcourt help. If Turner stays put, SportsTalk ATL lists New Orleans' Yves Missi, Orlando's Goga Bitadze and Dallas' Daniel Gafford as centers Atlanta has pursued before who are generally regarded as available, with Hield's expiring the obvious matching salary.",
+      category: "trades",
+    },
+    {
+      title: "Okongwu Became Extension-Eligible July 1, and the Kuminga Exit Could Fund the Next Big Commitment",
+      detail:
+        "A quieter July 1 development with long-term stakes: ONYEKA OKONGWU is now eligible for a veteran extension on top of the two years and roughly $33M left on his current deal (Soaring Down South / Spotrac, Jul 1-2). Okongwu is coming off a career-best 15.2/7.6/3.1 season on 48% shooting as the post-Trae starting center, and with Kuminga's $24.3M off the books Atlanta has the medium-term flexibility to lock in its own. No talks have been reported yet; file it as the next contract conversation once the roster settles.",
+      category: "general",
+    },
+    {
+      title: "League Days 2-3: Kessler to the Lakers, John Collins to Detroit, Eason Stays in Houston as the East Arms Race Rolls On",
+      detail:
+        "The rest of the market kept moving Wednesday and Thursday: Utah traded shot-blocker WALKER KESSLER to the Lakers for unprotected 2031 and 2033 firsts plus two swaps, with a four-year, $130M deal to follow, replacing some of what LA lost when LeBron James walked (Yahoo Sports / NBC Sports, Jul 2). Ex-Hawk JOHN COLLINS agreed with Detroit on three years, $51M, Tari Eason re-signed in Houston on five years, $81.5M, and Philadelphia followed the Jaylen Brown strike by signing Dean Wade and Anfernee Simons (NBC Sports / Bleacher Report / SI, Jul 2). For Atlanta the read is unchanged: the East's top tier got heavier while the Hawks bet on internal growth plus one more trade.",
+      category: "general",
     },
     {
       title: "Hawks Add Guard Devin Carter and a 2033 Second-Rounder From Sacramento in a Kings Salary Dump",
@@ -464,58 +500,10 @@ export const NEWS_DIGEST = {
       category: "trades",
     },
     {
-      title: "Free Agency Day 1: Atlanta Opens With the Landale Re-Sign, Works the Non-Taxpayer Mid-Level as Its Main Tool",
-      detail:
-        "The negotiating window opened Tuesday June 30 at 6 PM ET, with the moratorium running through July 6, and Atlanta opened as expected: over the cap, no meaningful room, leaning on the Non-Taxpayer Mid-Level near $15M plus minimums (Spotrac / Bleacher Report, Jun 30). The first move was the Jock Landale re-sign, a piece of the same patience-over-splash script POBO Onsi Saleh keeps repeating: add depth, guard the cap sheet, let the young core grow rather than overpay into the tax. With McCollum re-signed and Kuminga's option off the books, the bigger swings, the center pursuit and any Hield resolution, still flow through the same limited toolbox and, most likely, the trade market rather than a headline free-agent strike.",
-      category: "general",
-    },
-    {
-      title: "Hawks Guarantee Buddy Hield's $9.66M Salary, Keeping the Proven Shooter Rather Than Waiving Him",
-      detail:
-        "Decision week's first gate settled in Atlanta's favor. The Hawks fully guaranteed Buddy Hield's $9.66M salary for 2026-27 at Sunday June 28's pushed-back deadline, choosing to retain one of the league's most proven 3-point shooters instead of waiving him down to the $3M already guaranteed (ClutchPoints, Heavy, Jun 28). Reporting reads it as flexibility as much as fit: Hield barely played after arriving in the Kristaps Porzingis deal and the backcourt is crowded, but a fully guaranteed, expiring contract is exactly the movable salary filler Atlanta would want if it swings a larger trade for a center. Heavy notes the guarantee is not necessarily a signal Hield finishes the offseason in Atlanta, since the Hawks have been tied to several scenarios that could route his number elsewhere.",
-      category: "trades",
-    },
-    {
-      title: "CENTER BOARD SHIFTS: Hartenstein Re-Signs With OKC and Comes Off Atlanta's Menu, Myles Turner Emerges as the Trade Name to Watch",
-      detail:
-        "The Hawks' frontcourt hunt lost its top external name and pivoted to the trade market. ISAIAH HARTENSTEIN, long Atlanta's dream pairing alongside Onyeka Okongwu, re-signed with Oklahoma City on a reported three-year, roughly $75M deal, taking him off the board (SI onsi / Hoops Rumors, late Jun). With free agency thin on impact bigs, NBA insiders Jake Fischer and Marc Stein report Atlanta is actively hunting frontcourt help on the trade market, and Milwaukee's MYLES TURNER has emerged as the name to watch: a floor-spacing rim protector with three years and about $83.5M left, coming off a down season, whose fit is real but whose contract could be a deal-breaker. The Bucks are not 'actively engaged' in moving him, so this is interest, not an imminent deal. Remaining free-agent center options if Atlanta uses the Non-Taxpayer Mid-Level include Nikola Vucevic, Jusuf Nurkic, Robert Williams III and Sandro Mamukelashvili.",
-      category: "trades",
-    },
-    {
-      title: "SUMMER LEAGUE SET: Hawks Open Salt Lake City July 4 vs Utah, Open Las Vegas July 9 on ESPN2, Rookie Class Headlines",
-      detail:
-        "Atlanta's summer calendar is locked. The Hawks will play three games in the Salt Lake City Summer League at the Jon M. Huntsman Center, tipping off July 4 against the host Jazz and continuing July 6 and 7, then shift to Las Vegas where they open on the event's first day, July 9, in a game scheduled to air on ESPN2 (Yahoo Sports / AJC / NBA.com / Roundtable, Jun 25-27). Atlanta is guaranteed at least five games in Vegas. New draft picks KINGSTON FLEMINGS, ZUBY EJIOFOR and HENRI VEESAAR will headline the Summer League roster, the first real on-court look at the No. 8, No. 23 and No. 52 selections, with Flemings' downhill creation and Veesaar's stretch-five shooting the most-watched developmental threads behind the veteran core.",
-      category: "general",
-    },
-    {
-      title: "FRONT OFFICE: ESPN's Tim Bontemps in Advanced Talks to Join the Hawks' Basketball-Operations Staff",
-      detail:
-        "Atlanta is reshaping the room where decisions get made. Veteran ESPN NBA reporter TIM BONTEMPS is in advanced talks to join the Hawks' front office, though a deal is not yet finalized, one source said (Front Office Sports, Jun 24). The move would add an experienced, well-connected league voice to POBO Onsi Saleh's group as Atlanta heads into a pivotal week of cap decisions and free agency. It follows Saleh's late-May elevation to President of Basketball Operations and the Snyder extension, signaling continued retooling of the org chart under new leadership.",
-      category: "general",
-    },
-    {
       title: "PICK: Hawks Draft Houston PG Kingston Flemings at No. 8, Their Guard of the Future and an A-Grade Swing",
       detail:
         "Atlanta's headline pick is in. The Hawks selected HOUSTON point guard KINGSTON FLEMINGS with the No. 8 overall pick Tuesday night, a 6'4 San Antonio native who averaged 20.3 points (56% true shooting), 6.6 assists and 1.9 steals as a freshman and earned Consensus Second-Team All-American honors (CBS Sports / SI / Peachtree Hoops / Bleacher Report / FOX 5 Atlanta, Jun 23). Scouts pin franchise-point-guard traits on him: a quick first step, surgical midrange touch and true playmaking vision, plus pesky on-ball defense that fits cleanly next to Dyson Daniels and Nickeil Alexander-Walker. He fills Atlanta's most glaring need, half-court shot creation that has been thin since the Trae Young trade, and profiles as CJ McCollum's eventual successor (McCollum just re-signed for one year). CBS Sports graded the pick an A while flagging the real questions: Flemings is listed at 183 pounds, his game skews midrange in a three-point league, and his efficiency dipped against the toughest late-season competition. Flemings said he is 'ready to work for Atlanta.' He likely comes off the bench early behind McCollum.",
       category: "general",
-    },
-    {
-      title: "PICK: Hawks Add St. John's Big Zuby Ejiofor at No. 23, Targeting the Interior Physicality the Knicks Exposed",
-      detail:
-        "Atlanta used its second first-rounder on interior toughness. With the No. 23 pick the Hawks took ST. JOHN'S forward/center ZUBY EJIOFOR, a 6'7.5 energy big who averaged 16.3 points and 7.3 rebounds and built his game on physicality, hustle and rim defense while expanding into a more capable post scorer and passer (CBS Sports / Bleacher Report, Jun 23). The selection directly targets the interior size and physicality the Knicks exposed in the first round and adds a developmental frontcourt body behind Onyeka Okongwu. With the No. 52 trade-up for Henri Veesaar in Round 2, Atlanta closed the night with three picks, and Jake Fischer had reported the win-now Hawks were open to making just one first-rounder, so keeping both Nos. 8 and 23 signals the front office liked the value on the board over a consolidation trade.",
-      category: "general",
-    },
-    {
-      title: "Giannis Antetokounmpo Traded to the Miami Heat, Reshaping the East Atlanta Has to Climb",
-      detail:
-        "The biggest league story of the offseason landed late Monday, June 22: the Milwaukee Bucks traded two-time MVP GIANNIS ANTETOKOUNMPO, along with Bobby Portis, to the MIAMI HEAT, closing a saga that simmered for roughly 13 months (ESPN / CBS Sports / Yahoo Sports / Bleacher Report, Jun 23). Milwaukee's return is built around Tyler Herro, Kel'el Ware, Jaime Jaquez Jr. and Kasparas Jakucionis, plus a heavy pick package. Miami had been the frontrunner and Giannis's reported preference throughout; Boston was the only other finalist and missed. The deal lands a Giannis-led Heat alongside the champion Knicks and the Cavaliers atop the East, the conference Atlanta has to climb, and its direct Hawks ripple is on the Jaylen Brown front below: Boston's miss removed the cleanest path that would have freed Brown.",
-      category: "trades",
-    },
-    {
-      title: "DONE: Hawks Make First Offseason Move, Acquire Wing Aaron Wiggins From Oklahoma City for Two Second-Round Picks",
-      detail:
-        "Atlanta's quiet offseason got loud Monday. The Hawks acquired 27-year-old wing AARON WIGGINS from the Oklahoma City Thunder in exchange for two second-round picks: Atlanta's own 2030 second-rounder and the least favorable of the Hawks' or Lakers' 2032 second-rounder (Bleacher Report / NBC Sports / SI onsi / Yahoo Sports / ClutchPoints, Jun 22). The move reads as a clean win for both sides. Atlanta lands a rotation 3-and-D wing fresh off a 2025 title run with the Thunder, while OKC sheds Wiggins's $9.2M salary and trims a projected luxury-tax bill from roughly $213M to about $152M. Wiggins averaged 9.4 points, 3.1 rebounds and 1.7 assists in 21.8 minutes off the bench last season, though his role shrank to 5.8 minutes across 13 games in the 2026 playoffs. For Atlanta he profiles as bench-wing depth and shooting behind Jalen Johnson and Nickeil Alexander-Walker, addressing the thin second unit POBO Onsi Saleh flagged as a priority. The cost, two future seconds, is modest, and the deal does not touch Atlanta's three 2026 draft picks (Nos. 8, 23, 57).",
-      category: "trades",
     },
     {
       title: "DONE: CJ McCollum Re-Signs With Atlanta on a One-Year, Roughly $21M Extension, Avoiding Free Agency",
@@ -524,118 +512,56 @@ export const NEWS_DIGEST = {
       category: "trades",
     },
     {
-      title: "Jaylen Brown Watch Cools: Giannis to Miami Means Boston Missed, Closing the Cleanest Path That Would Have Freed Brown",
-      detail:
-        "The thread that drove Atlanta's offseason just lost its engine. With GIANNIS ANTETOKOUNMPO traded to MIAMI late Monday, the Boston Celtics, who had pushed a JAYLEN BROWN-centered package, missed out, removing the domino that would most plausibly have shaken Brown loose (CBS Sports / ESPN / Hardwood Houdini, Jun 23). After losing the Giannis race, Boston is under no obligation to move Brown and may instead focus on repairing a relationship strained by the failed pursuit, so for now Brown stays a Celtic. The Hawks remain on Marc Stein's broad list of Brown suitors alongside the Rockets and Trail Blazers, and separate reporting keeps the Clippers and Bucks tied to Brown interest, but every version of it is now speculative rather than imminent. The Atlanta case never went away on paper: a deep asset base, two firsts tonight (Nos. 8 and 23), and Brown grew up in the Atlanta area, so a homecoming as a No. 1 option fits. The hurdles are just as real: Brown, who turns 30 in October, is owed three years and roughly $183M, the salary math would force Atlanta to package picks plus filler, and POBO Onsi Saleh keeps insisting this roster is 'not one player away.' Nothing is close.",
-      category: "trades",
-    },
-    {
-      title: "OFFICIAL: Hawks Sign Quin Snyder to Multi-Year Extension, Saleh's First Marquee Move as POBO",
-      detail:
-        "It's done. The Atlanta Hawks and head coach QUIN SNYDER agreed to a multi-year contract extension on Monday June 8, converting months of 'inevitable' reporting into an official commitment (ESPN / NBA.com / NBC Sports / WSB-TV / Yahoo Sports / SI onsi, Jun 8). Terms were not disclosed by the team; it is Snyder's second extension since he joined Atlanta during the 2022-23 season. Snyder led the Hawks to a 46-36 record and the franchise's first outright playoff berth since 2020-21, improving the win total in each of his three seasons. The deal is the first headline move by ONSI SALEH since his late-May promotion to President of Basketball Operations, and it lands right on the reported timeline — finalized before the June 23 draft. With the coach locked in, attention turns fully to the roster: the No. 8 pick, McCollum's free agency, and the Hield (June 25) and Kuminga (June 29) cap gates.",
-      category: "general",
-    },
-    {
-      title: "What the Picks Mean: Flemings Slots Behind McCollum as the PG Heir, Ejiofor Adds the Frontcourt Body the Knicks Exposed",
-      detail:
-        "Reading Atlanta's draft, the two selections fit a clear plan. KINGSTON FLEMINGS gives the Hawks a downhill ballhandler and shot creator on a rookie scale, the younger guard reporting had said the front office still wanted even after re-signing CJ McCollum, who at 34 now profiles as a one-year bridge and mentor rather than a long-term answer (SI / Peachtree Hoops, Jun 23-24). ZUBY EJIOFOR addresses the same interior-physicality problem that drove the offseason center search: a hustle-and-defense big behind Onyeka Okongwu who can develop while Atlanta also shops the veteran market. Keeping both first-rounders rather than consolidating suggests POBO Onsi Saleh valued the board over a trade-down, and it leaves the bigger swings, the Kuminga decision and any veteran-center addition, to the cap gates and free agency that open over the next week.",
-      category: "general",
-    },
-    {
-      title: "Jalen Johnson Named All-NBA Third Team — First Career Selection, First Hawk Since Trae Young",
-      detail:
-        "Sunday May 24: JALEN JOHNSON was voted to the 2025-26 Kia All-NBA Third Team, the first All-NBA honor of his career and the first for any Atlanta Hawk since Trae Young in 2022 (NBA.com / SI onsi 'Jalen Johnson's Rise To Stardom Continues' / Yahoo Sports / Soaring Down South, May 24-25). Johnson joins Tyrese Maxey, Jamal Murray, Chet Holmgren and Jalen Duren on the Third Team. His 22.5/10.3/7.9 across 72 games made him just the fifth player in NBA history to average 22-plus points, 10-plus rebounds and 7-plus assists for a full season — after Oscar Robertson, Wilt Chamberlain, Nikola Jokic and Russell Westbrook — and the first Hawk ever to rank top-20 league-wide in all three. The nod completes an offseason awards sweep for Atlanta that already produced Nickeil Alexander-Walker's Most Improved Player trophy and Dyson Daniels' All-Defensive Second Team selection. Johnson is locked in long-term on the five-year, $150M rookie extension that runs through 2029-30.",
-      category: "general",
-    },
-    {
-      title: "Knicks Are 2026 NBA Champions: Brunson 45 and Finals MVP as New York Closes the Spurs 4-1",
-      detail:
-        "Settled over the weekend: the New York Knicks are champions for the first time since 1973, closing out San Antonio 94-90 in Game 5 on Saturday, June 13, to take the Finals 4-1. JALEN BRUNSON scored 45, including 13 straight in the fourth quarter, and was named Finals MVP after New York rallied from a double-digit hole in all four of its wins (down 16 on Saturday). The Atlanta resonance is direct and pointed: the same Brunson-led team that eliminated the Hawks in six in the first round on Apr 30 finished the job all the way to the ring (ESPN / NBA.com / FOX Sports, Jun 13-14). With the season officially over leaguewide, Atlanta's calendar now belongs entirely to the draft (June 23) and the Hield, Kuminga and McCollum decisions that follow.",
-      category: "games",
-    },
-    {
       title: "Risacher Trade Chatter Heats Up: Rival Teams Inquire, Sabonis Swap Floated, but Atlanta Holds Firm on an Anthony Davis Package",
       detail:
         "The Zaccharie Risacher market is active without being decided. Rival teams, Dallas among them, have called to inquire about the former No. 1 overall pick, and one analyst floated a Risacher-plus-No. 23 swing at Sacramento's Domantas Sabonis to solve the center need in one move (Pro Football Network / Roundtable / SI onsi, Jun). At the same time, Michael Scotto reports Atlanta is NOT offering Risacher plus the Pelicans' 2026 first-rounder to Dallas for Anthony Davis, a signal the front office still prizes the 21-year-old's upside. His value is the question: Risacher saw his role shrink in Year 2, averaging 9.6 points on 45% shooting across 66 games after a 12.6-point rookie season, lost his starting job after the All-Star break, and was out of the playoff rotation. The Aaron Wiggins addition further crowds his minutes, so the read stays the same: keep and develop first, but a larger deal can't be ruled out. He is owed $13.7M next season with a $17.8M team option for 2027-28.",
-      category: "trades",
-    },
-    {
-      title: "How the Board Fell: Atlanta Stayed at No. 8 and Took Flemings Over Brown Jr., Passed on a Trade-Down for Size",
-      detail:
-        "The pre-draft scenarios mostly did not materialize. Atlanta stayed put at No. 8 rather than trading down for a center like Aday Mara, and chose KINGSTON FLEMINGS over the other most-mocked lead guard, Louisville's Mikel Brown Jr. (CBS Sports / SI / Peachtree Hoops, Jun 23). The squeeze from above that scouts feared, with Sacramento at No. 7 reportedly viewing Arkansas guard Darius Acuff Jr. as its 'floor,' played out enough that Flemings was Atlanta's pick when the Hawks came on the clock. League sources had said Atlanta would field offers on No. 23 and that Jake Fischer reported openness to making just one first-rounder, but the Hawks kept the pick and used it on St. John's big Zuby Ejiofor for frontcourt depth. In Round 2 the Hawks then traded up from No. 57 to No. 52 to grab UNC center Henri Veesaar, so the draft is now closed; the bigger roster swings shift to the Hield, Kuminga and free-agency dates ahead.",
-      category: "general",
-    },
-    {
-      title: "Secondary FA Board: With the Backcourt Set, Atlanta Monitors Two-Way Wings and Cheap Veterans Around the Mid-Level",
-      detail:
-        "Beyond the center search, Atlanta's free-agent watch list skews to value wings and veteran depth now that CJ McCollum is re-signed and the backcourt headline is settled (SI onsi / Soaring Down South / Spotrac / Fadeaway World, May-Jun). SI onsi has named Philadelphia's QUENTIN GRIMES as a 'dream' two-way add to help replace shot creation lost in the Trae Young trade, with Harrison Barnes and Tyus Jones the kind of cheaper veterans Atlanta is likely to monitor on minimum or partial mid-level money. The constraint is the toolbox: operating over the cap with the Non-Taxpayer Mid-Level near $15M, any wing add competes for the same dollars as a center, and how much is left depends on the Hield decision today and the Kuminga call tomorrow. Expect Atlanta to prioritize the frontcourt first and round out the wing rotation with value signings after the top of the market clears.",
       category: "trades",
     },
   ],
   sources: [
     "NBA.com",
     "ESPN",
-    "Associated Press",
-    "Washington Post",
+    "Hawks.com",
+    "AJC",
     "Yahoo Sports",
     "Bleacher Report",
     "NBC Sports",
-    "NBC Sports Boston",
-    "theScore",
-    "AJC",
-    "Atlanta News First",
+    "CBS Sports",
     "Sports Illustrated (SI/onsi)",
-    "The Athletic",
-    "Heavy Sports",
     "Hoops Rumors",
-    "Hoops Wire",
     "HoopsHype",
-    "Yardbarker",
+    "The Stein Line",
+    "Cavaliers Nation",
+    "ClutchPoints",
     "Soaring Down South",
-    "BlueManHoop",
+    "SportsTalk ATL",
+    "Behind the Buck Pass",
     "Peachtree Hoops",
     "Roundtable",
-    "SportsTalk ATL",
-    "The Ringer",
-    "The Stein Line",
-    "ClutchPoints",
-    "RealGM",
-    "CBS Sports",
-    "98.5 The Sports Hub",
-    "Boston.com",
-    "KSAT",
-    "Fadeaway World",
+    "Atlanta News First",
+    "Pro Football Network",
+    "Hoops Wire",
+    "FOX 5 Atlanta",
+    "BlueManHoop",
     "Basketball-Reference",
     "Spotrac",
-    "FanDuel Research",
-    "Lineups",
-    "BetMGM",
-    "Covers",
-    "VSiN",
-    "Odds Shark",
-    "NetsDaily",
-    "Hardwood Houdini",
-    "Front Office Sports",
-    "Tar Heel Blog",
-    "247Sports",
-    "WSB-TV",
   ],
 };
 
 // ─── Issue metadata (drives datelines, cover star, masthead) ───────────────
 // Update `date` daily; everything else flows from KEY_DATES + NEWS_DIGEST.
 export const ISSUE = {
-  date: "2026-06-30",                              // YYYY-MM-DD — single source of truth
+  date: "2026-07-03",                              // YYYY-MM-DD — single source of truth
   volume: 26,                                       // VOL XXVI
-  number: 16,                                       // Issue number (offseason cadence)
-  dateline: "ATLANTA · JUNE 30, 2026",              // Pre-formatted for display
-  mastheadLine: "VOL XXVI · ISSUE NO. 16 · JUNE 2026 · ATL · USA",
-  railLabel: "ISSUE 16 · JUNE 30",
+  number: 17,                                       // Issue number (offseason cadence)
+  dateline: "ATLANTA · JULY 3, 2026",               // Pre-formatted for display
+  mastheadLine: "VOL XXVI · ISSUE NO. 17 · JULY 2026 · ATL · USA",
+  railLabel: "ISSUE 17 · JULY 3",
   coverStarId: 1,                                   // PLAYERS[id] for the cover portrait
-  coverRibbon: "KUMINGA OPTION DECLINED · CARTER ACQUIRED · FA OPENS 6PM ET",
-  coverStatusKicker: "OFFSEASON · DAY 59",          // top-right corner of cover
-  coverStatusLine: "FA OPENS {DAYS:fa-open} · MORATORIUM {DAYS:moratorium}", // {DAYS:id} resolves from KEY_DATES
-  backTagline: "Next issue: once the free-agency market opens and the first signings land.",
+  coverRibbon: "SUMMER LEAGUE OPENS TOMORROW · KUMINGA S&T TALKS · HIELD IN TRADE SCENARIOS",
+  coverStatusKicker: "OFFSEASON · DAY 62",          // top-right corner of cover
+  coverStatusLine: "SL OPENER {DAYS:sl-slc} · MORATORIUM {DAYS:moratorium}", // {DAYS:id} resolves from KEY_DATES
+  backTagline: "Next issue: after the Summer League opener in Salt Lake City.",
 };
 
 // ─── Cover TOC (table of contents on the cover) ────────────────────────────
@@ -645,7 +571,7 @@ export const COVER_TOC = [
   { kicker: "CALENDAR", page: 12, sectionId: "cal",  title: "The June gauntlet — six dates, one offseason" },
   { kicker: "DRAFT",    page: 28, sectionId: "drft", title: "Flemings at 8 — the guard of the future" },
   { kicker: "PATHS",    page: 50, sectionId: "path", title: "Four offseason scenarios, one editor's pick" },
-  { kicker: "WIRE",     page: 68, sectionId: "wire", title: "Wiggins acquired, McCollum re-signed, Brown chatter" },
+  { kicker: "WIRE",     page: 68, sectionId: "wire", title: "Landale back, Kuminga S&T talks, Hield in play" },
 ];
 
 // ─── Editor's letter ───────────────────────────────────────────────────────
@@ -715,10 +641,16 @@ export const KEY_DATES = [
     hawksAngle: "DECLINED (Shams, Jun 29). $24.3M option off the books · Kuminga to unrestricted FA · Kings a suitor" },
   { id: "fa-open",     date: "2026-06-30",
     label: "FA market opens",     short: "FA OPEN",     kind: "EVENT",      primary: true,
-    hawksAngle: "TODAY, 6 PM ET · over the cap, Non-Taxpayer MLE (~$15M) the tool · center trade the priority" },
+    hawksAngle: "DONE (Jun 30) · Landale 1yr/$14M ate nearly the full MLE · trade market now the tool" },
+  { id: "sl-slc",      date: "2026-07-04",
+    label: "SLC Summer League opener", short: "SL OPENER",  kind: "EVENT",      primary: true,
+    hawksAngle: "Hawks vs Jazz, 5 PM ET, Huntsman Center · Flemings / Ejiofor / Veesaar debut · also Jul 6, 7" },
   { id: "moratorium",  date: "2026-07-06",
     label: "Moratorium ends",     short: "MORATORIUM",  kind: "EVENT",
-    hawksAngle: "Signings official · sign-and-trades can finalize · cap holds release" },
+    hawksAngle: "Signings official · sign-and-trades can finalize (Kuminga watch) · cap holds release" },
+  { id: "sl-vegas",    date: "2026-07-09",
+    label: "Las Vegas SL opener", short: "VEGAS SL",    kind: "EVENT",
+    hawksAngle: "Hawks open Vegas on day one, ESPN2 · at least five games guaranteed" },
 ];
 
 // ─── Draft Watch (2026 NBA Draft · June 23-24 · Barclays Center) ───────────
