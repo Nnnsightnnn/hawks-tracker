@@ -38,7 +38,7 @@ export const PLAYERS = [
     fieldGoalPct: 49.0, threePointPct: 36.2, freeThrowPct: 78.4,
     trueShootingPct: 58.2, plusMinus: 5.6,
     form: 6.9, status: "active", injuryNote: null,
-    recentNotes: "FRIDAY JULY 3 (offseason): the offseason is being built around him. The Kuminga sign-and-trade talks (Cavs, Bucks), the Hield-salary trade scenarios and the Turner-led center hunt are all about finding Johnson a sturdier supporting cast, with No. 8 pick Kingston Flemings drafted as backcourt creation to grow alongside him. All-NBA Third Team (first Hawk honored since Trae Young in 2022) after a 22.5/10.3/7.9 season, just the fifth player ever to average 22-10-7; locked in on his ~$30M/yr extension through 2029-30. Jaylen Brown, the perennial rumored co-star, went to Philadelphia instead Thursday, so internal growth plus one more trade is the plan.",
+    recentNotes: "SATURDAY JULY 4 (offseason): the offseason is being built around him. Friday's Scotto report that Atlanta remains interested in Trey Murphy III names the cleanest fit yet: a 21.5 PPG two-way wing to ride shotgun. The Kuminga sign-and-trade talks (Cavs, Bucks), the Hield-salary trade scenarios and the Turner-led center hunt are all about finding Johnson a sturdier supporting cast, with No. 8 pick Kingston Flemings drafted as backcourt creation to grow alongside him. All-NBA Third Team (first Hawk honored since Trae Young in 2022) after a 22.5/10.3/7.9 season, just the fifth player ever to average 22-10-7; locked in on his ~$30M/yr extension through 2029-30. Jaylen Brown, the perennial rumored co-star, went to Philadelphia instead Thursday, so internal growth plus one more trade is the plan.",
     playoffStats: { gamesPlayed: 6, minutesPerGame: 35.0, pointsPerGame: 19.5, reboundsPerGame: 8.3, assistsPerGame: 5.5 },
     playoffSeries: null,
     minutesTrend: "down",
@@ -143,7 +143,7 @@ export const PLAYERS = [
     fieldGoalPct: 44.6, threePointPct: 37.2, freeThrowPct: 74.8,
     trueShootingPct: 55.9, plusMinus: 1.6,
     form: 4.5, status: "active", injuryNote: null,
-    recentNotes: "SUNDAY JUNE 21 (offseason — PRESIDENT OF BASKETBALL OPS ONSI SALEH promoted + extended Wed May 27 per ESPN / Washington Post / Yahoo / SI onsi / Hoops Rumors; SPURS TOOK WCF GAME 7 111-103 Sat May 30 (Wembanyama 22-7), ousting OKC to reach the Finals; THE KNICKS ARE 2026 CHAMPIONS, closing San Antonio 94-90 in Game 5 Sat Jun 13 to take the Finals 4-1 (NY's first title since 1973), Brunson 45 and Finals MVP; the same team that ended Atlanta's season in six finished the job) — UPDATE SUN JUN 28: the Risacher market is active without being decided. Rival teams, Dallas among them, have called to inquire, and a Risacher-plus-No. 23 swing for Sacramento's Domantas Sabonis has been floated to solve the center need in one move (Pro Football Network / Roundtable / SI onsi, Jun). Countering that, Michael Scotto reports Atlanta is NOT offering Risacher plus the Pelicans' 2026 first-rounder to Dallas for Anthony Davis, a signal the front office still prizes the 21-year-old's upside. Offseason trade-watch player No. 1, and now SALEH is the executive making the call. Risacher's future is the single biggest cap-and-rotation lever the new POBO holds. HOLLINGER (The Athletic via Hoops Wire 'Hawks could look to trade Zaccharie Risacher' / Lindys / Roundtable May 17-23): Atlanta moving Risacher 'can't be ruled out' after he lost his starting job post-All-Star and fell out of the rotation entirely in April. Risacher's uncertain future could let Atlanta 'package him alongside the No. 8 pick and additional draft compensation' to trade up the board on draft night. Wings/bigs on Atlanta's No. 8 board (Tre Johnson, Nate Ament, Koa Peat, Lendeborg, Mikel Brown Jr., Kingston Flemings, Aday Mara, Dailyn Swain per CBS / SI onsi / Last Word May 12-13) — exactly the names competing for the floor next year — wrapped their live-tape windows on May 14. Marc Stein reports the Hawks are 'open to trading Risacher if the right offer comes along' (Basketnews / Roundtable May 11). Hollinger's Athletic preview still tags Risacher (and Kispert) as the likeliest summer trade chip. Structural read: $13.7M next season then a $17.8M team option for 27-28. Sophomore line: 9.6/3.8/1.1 on 44.6% FG / 37.2% 3P across 66 games — regression from his 12.6 PPG rookie year as usage dropped from 21.6% to 17.7%. R1 floor time was just 2:30 across six games — one Game 1 cameo then five straight DNP-CDs.",
+    recentNotes: "SATURDAY JULY 4 (offseason): NEW, Risacher is on France's preliminary roster for this July's FIBA World Cup qualifying window (NewsCenter Maine / Hoops Rumors, early Jul), an offseason reps opportunity while his trade market simmers. The Risacher market is active without being decided. Rival teams, Dallas among them, have called to inquire, and a Risacher-plus-No. 23 swing for Sacramento's Domantas Sabonis has been floated to solve the center need in one move (Pro Football Network / Roundtable / SI onsi, Jun). Countering that, Michael Scotto reports Atlanta is NOT offering Risacher plus the Pelicans' 2026 first-rounder to Dallas for Anthony Davis, a signal the front office still prizes the 21-year-old's upside. Offseason trade-watch player No. 1, and now SALEH is the executive making the call. Risacher's future is the single biggest cap-and-rotation lever the new POBO holds. HOLLINGER (The Athletic via Hoops Wire 'Hawks could look to trade Zaccharie Risacher' / Lindys / Roundtable May 17-23): Atlanta moving Risacher 'can't be ruled out' after he lost his starting job post-All-Star and fell out of the rotation entirely in April. Risacher's uncertain future could let Atlanta 'package him alongside the No. 8 pick and additional draft compensation' to trade up the board on draft night. Wings/bigs on Atlanta's No. 8 board (Tre Johnson, Nate Ament, Koa Peat, Lendeborg, Mikel Brown Jr., Kingston Flemings, Aday Mara, Dailyn Swain per CBS / SI onsi / Last Word May 12-13) — exactly the names competing for the floor next year — wrapped their live-tape windows on May 14. Marc Stein reports the Hawks are 'open to trading Risacher if the right offer comes along' (Basketnews / Roundtable May 11). Hollinger's Athletic preview still tags Risacher (and Kispert) as the likeliest summer trade chip. Structural read: $13.7M next season then a $17.8M team option for 27-28. Sophomore line: 9.6/3.8/1.1 on 44.6% FG / 37.2% 3P across 66 games — regression from his 12.6 PPG rookie year as usage dropped from 21.6% to 17.7%. R1 floor time was just 2:30 across six games — one Game 1 cameo then five straight DNP-CDs.",
     playoffStats: { gamesPlayed: 1, minutesPerGame: 1.0, pointsPerGame: 0.0, reboundsPerGame: 2.0, assistsPerGame: 0.0 },
     playoffSeries: null,
     minutesTrend: "down",
@@ -162,7 +162,7 @@ export const PLAYERS = [
     fieldGoalPct: 47.2, threePointPct: 33.6, freeThrowPct: 70.1,
     trueShootingPct: 55.1, plusMinus: 2.4,
     form: 6.4, status: "active", injuryNote: null,
-    recentNotes: "FRIDAY JULY 3 (offseason): SIGN-AND-TRADE TALKS. The Cavaliers and Bucks have discussed possible sign-and-trade scenarios with Atlanta, which holds Kuminga's Non-Bird rights (Michael Scotto, HoopsHype / Hoops Rumors, Jul 2); Sacramento has circled back and the Lakers are giving him serious consideration next to Luka Doncic (Cavaliers Nation / Bleacher Report, Jul 2-3). Atlanta declined his $24.3M option Jun 29 (Shams, ESPN); an S&T returns the Hawks an asset instead of losing him for nothing, and a cheaper straight re-sign remains technically open. Hawks line: 12.3 PPG / 5.3 RPG in 22.1 mpg across 16 games, with a 5-of-24 stretch from deep in the Knicks series.",
+    recentNotes: "SATURDAY JULY 4 (offseason): SIGN-AND-TRADE TALKS ONGOING. The Cavaliers and Bucks have discussed S&T scenarios with Atlanta, which holds Kuminga's Non-Bird rights (Scotto, HoopsHype / Hoops Rumors, Jul 2); Sacramento circled back, and Friday reporting has the Lakers actively pursuing him alongside Rui Hachimura, though LA is down to minimum-salary tools (Bleacher Report / Yahoo / Silver Screen and Roll, Jul 3). An Atlanta return also remains possible per SI. The option was declined Jun 29; an S&T returns the Hawks an asset instead of losing him for nothing. Hawks line: 12.3 PPG / 5.3 RPG in 22.1 mpg across 16 games.",
     playoffStats: { gamesPlayed: 6, minutesPerGame: 25.7, pointsPerGame: 13.4, reboundsPerGame: 3.6, assistsPerGame: 0.8 },
     playoffSeries: null,
     minutesTrend: "down",
@@ -182,7 +182,7 @@ export const PLAYERS = [
     fieldGoalPct: 42.4, threePointPct: 39.8, freeThrowPct: 86.2,
     trueShootingPct: 58.6, plusMinus: 0.9,
     form: 5.7, status: "active", injuryNote: null,
-    recentNotes: "FRIDAY JULY 3 (offseason): TRADE-SCENARIO CENTERPIECE. Jake Fischer reported Thursday the Hawks are involved in several trade scenarios that could use Hield's salary for 2026-27 (The Stein Line, Jul 2). Atlanta fully guaranteed the $9.66M on Jun 28, so he is now a clean, movable expiring, the obvious matching money in any center swing (Turner, or the previously pursued Missi / Bitadze / Gafford). With Flemings, Carter and Wiggins added, the crowded backcourt makes a trade likelier than a rotation role. Season line: 11.8/2.8/2.1 on 39.8% from three across 71 games (12 starts).",
+    recentNotes: "SATURDAY JULY 4 (offseason): TRADE-SCENARIO CENTERPIECE. Fischer has the Hawks in several trade scenarios that could use Hield's $9.66M expiring (The Stein Line, Jul 2), and Scotto added Friday that Atlanta remains interested in Pelicans wing Trey Murphy III (Jul 3), a deal Hield's salary would help match. He is the obvious money in any center swing too (Turner, or the previously pursued Missi / Bitadze / Gafford). With Flemings, Carter and Wiggins added, the crowded backcourt makes a trade likelier than a rotation role. Season line: 11.8/2.8/2.1 on 39.8% from three across 71 games (12 starts).",
     playoffStats: { gamesPlayed: 2, minutesPerGame: 6.0, pointsPerGame: 4.0, reboundsPerGame: 0.5, assistsPerGame: 0.5 },
     playoffSeries: null,
     minutesTrend: "down",
@@ -283,7 +283,7 @@ export const PLAYERS = [
     fieldGoalPct: 53.8, threePointPct: 38.7, freeThrowPct: 55.2,
     trueShootingPct: 58.3, plusMinus: -0.4,
     form: 5.7, status: "active", injuryNote: null,
-    recentNotes: "FRIDAY JULY 3 (offseason): SUMMER LEAGUE HEADLINER. Newell is on the official Summer League roster announced this week (Hawks.com / AJC) and opens Salt Lake City play TOMORROW, Sat Jul 4 vs Utah, 5 PM ET, alongside rookies Flemings, Ejiofor and Veesaar. After a rookie year of 44 games, 5.2 PPG and 38.7% from three (led all rookies at min 10 attempts), this is his stage to claim a bigger third-big role, especially with Kuminga off the books and the frontcourt down to Okongwu, Landale, Gueye and rookie Ejiofor ahead of him.",
+    recentNotes: "SATURDAY JULY 4, GAME DAY: SUMMER LEAGUE HEADLINER. Newell opens Salt Lake City play TODAY vs Utah, 5 PM ET (Prime Video / ESPNU / League Pass), alongside rookies Flemings, Ejiofor and Veesaar, opposite Jazz No. 2 pick Darryn Peterson (Hawks.com / AJC / SLC Dunk). After a rookie year of 44 games, 5.2 PPG and 38.7% from three (led all rookies at min 10 attempts), this is his stage to claim a bigger third-big role, especially with Kuminga off the books and the frontcourt down to Okongwu, Landale, Gueye and rookie Ejiofor ahead of him.",
     playoffStats: { gamesPlayed: 1, minutesPerGame: 5.0, pointsPerGame: 2.0, reboundsPerGame: 1.0, assistsPerGame: 0 },
     playoffSeries: null,
     minutesTrend: "up",
@@ -391,8 +391,8 @@ export const NEXT_GAME = {
   date: "2026-07-04T00:00:00-04:00",
   competition: "OFFSEASON",
   venue: "Jon M. Huntsman Center, Salt Lake City",
-  broadcast: "ESPN family",
-  seriesContext: "FRIDAY JULY 3: basketball returns TOMORROW. Atlanta opens Salt Lake City Summer League Sat Jul 4 vs Utah, 5 PM ET, Jon M. Huntsman Center (also Jul 6, 7; Vegas opens Jul 9 on ESPN2). Official 16-man roster is out: Flemings, Ejiofor, Veesaar, Asa Newell and Isaac McKneely headline (Hawks.com / SI onsi / AJC). KUMINGA: sign-and-trade talks with Cleveland and Milwaukee reported (Scotto, Jul 2); the Kings circled back and the Lakers lurk; Atlanta holds his Non-Bird rights. HIELD: Fischer says the Hawks are in several trade scenarios using his $9.66M expiring (Jul 2), fueling the center hunt (Turner the name to watch, Bucks not shopping; Missi / Bitadze / Gafford the fallbacks). LEAGUE: Jaylen Brown to Philadelphia for Paul George and picks, Kessler to the Lakers, ex-Hawk John Collins to Detroit. Landale (1yr, $14M, eating nearly the full MLE) and McCollum (1yr, ~$21M) become official Mon Jul 6.",
+  broadcast: "Prime Video / ESPNU / NBA League Pass",
+  seriesContext: "SATURDAY JULY 4, GAME DAY: basketball is BACK. Atlanta opens the Salt Lake City Summer League TODAY vs the host Jazz, 5 PM ET (3 PM MT), Jon M. Huntsman Center, on Prime Video / ESPNU / League Pass (also Jul 6, 7; Vegas opens Jul 9 on ESPN2). All three 2026 picks debut: No. 8 Kingston Flemings, No. 23 Zuby Ejiofor, No. 52 Henri Veesaar, plus second-year F Asa Newell. Across the floor: Utah's No. 2 overall pick Darryn Peterson (Kansas) makes his Jazz debut. KUMINGA: sign-and-trade talks with Cleveland and Milwaukee (Scotto, Jul 2); Kings circled back, Lakers pursuing him alongside Rui Hachimura (Jul 3); Atlanta holds his Non-Bird rights. TRADE BOARD: Scotto reported Friday the Hawks REMAIN INTERESTED in Pelicans wing Trey Murphy III, reviving a pre-draft thread, and Fischer has Atlanta in several scenarios built on Hield's $9.66M expiring (center hunt: Turner the watch name; Missi / Bitadze / Gafford fallbacks). Landale (1yr, $14M) and McCollum (1yr, ~$21M) become official Mon Jul 6.",
 };
 
 // ─── Game Results (2025-26 regular season · last 16 games) ─────────────────
@@ -441,26 +441,32 @@ export const EAST_STANDINGS = [
 
 // ─── AI News Digest (generated from live web search) ───────────────────────
 export const NEWS_DIGEST = {
-  generatedAt: "2026-07-03T09:10:00Z",
+  generatedAt: "2026-07-04T09:15:00Z",
   summary:
-    "OFFSEASON, Friday July 3, day four of free agency and one day out from basketball returning: the Hawks open Salt Lake City Summer League TOMORROW, Saturday July 4 at 5 PM ET against the host Jazz at the Jon M. Huntsman Center, and the official 16-man roster is out, headlined by all three 2026 picks (Kingston Flemings, Zuby Ejiofor, Henri Veesaar) plus second-year forward Asa Newell and Exhibit 10 signee Isaac McKneely (Hawks.com / SI onsi / AJC). The JONATHAN KUMINGA story has moved from waiting to dealmaking: Cleveland and Milwaukee have discussed sign-and-trade scenarios with Atlanta, which holds his Non-Bird rights, while Sacramento has circled back and the Lakers are giving him serious consideration (Michael Scotto, HoopsHype / Hoops Rumors, Jul 2). Jake Fischer reported Thursday that Atlanta is involved in several trade scenarios built on BUDDY HIELD's freshly guaranteed $9.66M expiring, the clearest signal yet that the front office is still hunting a center by trade, with Milwaukee's Myles Turner interest real but the Bucks not actively shopping him. Leaguewide the board kept moving: JAYLEN BROWN, the longest-running Hawks trade hypothetical, went to Philadelphia for Paul George and picks, Walker Kessler was dealt to the Lakers, and ex-Hawk John Collins signed in Detroit. The Landale (1yr, $14M, eating nearly the full mid-level) and McCollum (1yr, ~$21M) agreements become official when the moratorium lifts Monday July 6.",
+    "GAME DAY, Saturday July 4: basketball is back. The Hawks open the Salt Lake City Summer League TODAY at 5 PM ET (3 PM MT) against the host Jazz at the Jon M. Huntsman Center, with all three 2026 picks (Kingston Flemings, Zuby Ejiofor, Henri Veesaar) and second-year forward Asa Newell debuting, and Utah's No. 2 overall pick Darryn Peterson making his Jazz debut across the floor (NBA.com / SLC Dunk / Deseret News). On the trade wire, Michael Scotto reported Friday that Atlanta REMAINS INTERESTED in Pelicans wing Trey Murphy III, reviving the pre-draft thread that once involved the No. 8 pick, alongside the ongoing JONATHAN KUMINGA sign-and-trade talks with Cleveland and Milwaukee (Sacramento circled back, and the Lakers are pursuing Kuminga along with Rui Hachimura per Friday reporting). Jake Fischer has Atlanta in several trade scenarios built on BUDDY HIELD's guaranteed $9.66M expiring, the front office's matching salary for the center hunt (Myles Turner the watch name; Missi, Bitadze and Gafford the fallbacks). The Landale (1yr, $14M) and McCollum (1yr, ~$21M) agreements, plus the Aaron Wiggins and Devin Carter trades, become official when the moratorium lifts Monday July 6.",
   keyTopics: [
     {
-      title: "TOMORROW: Hawks Open Salt Lake City Summer League vs Utah, Official Roster Headlined by Flemings, Ejiofor, Veesaar and Newell",
+      title: "TODAY, 5 PM ET: Hawks Open Salt Lake City Summer League vs Utah as Flemings, Ejiofor, Veesaar and Newell Debut Opposite No. 2 Pick Darryn Peterson",
       detail:
-        "Basketball returns Saturday July 4: the Hawks tip off the Salt Lake City Summer League against the host Jazz at 5 PM ET at the Jon M. Huntsman Center, the first of three SLC games (also Jul 6 and 7) before Las Vegas opens July 9 on ESPN2 (NBA.com / Yahoo Sports / Roundtable). Atlanta announced its official 16-man roster this week (Hawks.com / SI onsi / AJC): all three 2026 draft picks, No. 8 Kingston Flemings, No. 23 Zuby Ejiofor and No. 52 Henri Veesaar, plus last year's first-rounder Asa Newell and Exhibit 10 signee Isaac McKneely (Louisville). The rest of the group: Cameron Corhen, RayJ Dennis, Keshon Gilbert, Kobe Johnson, Kobe Knox, Devon Higgs, Gabe Madsen, Zeke Mayo, Eli Ndiaye, Jacob Toppin and Isaiah Wong. Flemings' downhill creation and Veesaar's stretch-five shooting are the most-watched developmental threads; for Newell it is the stage to claim a bigger third-big role.",
+        "Basketball is back TODAY, Saturday July 4: the Hawks tip off the Salt Lake City Summer League against the host Jazz at 5 PM ET (3 PM MT) at the Jon M. Huntsman Center, on Prime Video, ESPNU and League Pass, the first of three SLC games (also Jul 6 and 7) before Las Vegas opens July 9 on ESPN2 (NBA.com / SLC Dunk / Deseret News). Atlanta's 16-man roster is headlined by all three 2026 draft picks, No. 8 Kingston Flemings, No. 23 Zuby Ejiofor and No. 52 Henri Veesaar, plus last year's first-rounder Asa Newell and Exhibit 10 signee Isaac McKneely (Hawks.com / SI onsi / AJC). The marquee matchup within the game: Flemings' pro debut against Utah's No. 2 overall pick Darryn Peterson (Kansas), the SLC event's headline attraction. SI's three storylines to watch: how Flemings' three-point shot travels (38.7% at Houston but on just 2.9 attempts), whether Ejiofor contributes immediately in a thin frontcourt, and how many minutes the top prospects actually get (SI onsi / Soaring Down South, Jul 3).",
       category: "games",
     },
     {
       title: "Kuminga Latest: Cavaliers and Bucks Have Discussed Sign-and-Trades With Atlanta, Kings Circle Back, Lakers Lurk",
       detail:
-        "The Jonathan Kuminga market moved from waiting to dealmaking. Michael Scotto reported Thursday that the Cavaliers and Bucks have discussed possible sign-and-trade scenarios with the Hawks, who hold Kuminga's Non-Bird rights after declining his $24.3M option June 29 (HoopsHype / Hoops Rumors, Jul 2). Cleveland's interest runs through coach Kenny Atkinson, who worked with Kuminga in Golden State, but the Cavs are pressed against the aprons and would need Atlanta's cooperation to make the money work. Sacramento, a primary suitor last summer, has circled back in recent days, and the Lakers are reportedly giving the 23-year-old serious consideration as an athletic wing next to Luka Doncic (Cavaliers Nation / Bleacher Report / Yahoo Sports, Jul 2-3). A sign-and-trade is the route that returns Atlanta an asset instead of losing him for nothing; a cheaper straight re-sign also remains technically open.",
+        "The Jonathan Kuminga market stayed hot into the holiday weekend. Michael Scotto reported Thursday that the Cavaliers and Bucks have discussed possible sign-and-trade scenarios with the Hawks, who hold Kuminga's Non-Bird rights after declining his $24.3M option June 29 (HoopsHype / Hoops Rumors, Jul 2). Cleveland's interest runs through coach Kenny Atkinson, who worked with Kuminga in Golden State, but the Cavs are pressed against the aprons and would need Atlanta's cooperation to make the money work. Sacramento, a primary suitor last summer, has circled back, and Friday reporting has the Lakers actively pursuing Kuminga along with Rui Hachimura, though LA is down to minimum-salary tools after spending its cap room and room exception (Bleacher Report / Yahoo Sports / Silver Screen and Roll, Jul 3). An Atlanta return also remains on the table per SI, which notes three teams in the mix. A sign-and-trade is the route that returns the Hawks an asset instead of losing him for nothing.",
       category: "trades",
     },
     {
       title: "Fischer: Hawks Involved in Several Trade Scenarios Built on Buddy Hield's $9.66M Expiring Salary",
       detail:
         "Jake Fischer reported Thursday he is 'definitely hearing the Hawks are involved in several trade scenarios that could end up utilizing Buddy Hield's salary for 2026-27' (The Stein Line, Jul 2). Atlanta guaranteed the full $9.66M on June 28 for exactly this: a proven shooter on a movable expiring is ideal matching salary in any larger swing, most obviously the center hunt. With the backcourt now crowded by Kingston Flemings, Devin Carter and Aaron Wiggins, reporting is close to unanimous that Hield's number is likelier to be traded than played (ClutchPoints / Yahoo Sports / SportsTalk ATL, Jul 2).",
+      category: "trades",
+    },
+    {
+      title: "Scotto: Hawks Remain Interested in Trey Murphy III, Reviving the Pre-Draft Thread With New Orleans",
+      detail:
+        "Fresh Friday reporting from Michael Scotto: the Hawks REMAIN INTERESTED in trading for Pelicans wing Trey Murphy III, with several future first-round picks and movable contracts to dangle (HoopsHype via SI onsi / Roundtable / Soaring Down South, Jul 3). Atlanta and New Orleans discussed a Murphy deal built around the No. 8 pick before the draft; those talks died and the pick became Kingston Flemings, but the interest survived. Murphy, 26, averaged 21.5 points on 37.9% from three last season, would slot next to Jalen Johnson as the two-way wing the roster lacks, and has an existing rapport with CJ McCollum from their Pelicans years. Hield's $9.66M expiring and the stockpiled picks are the obvious framework pieces; Soaring Down South notes Atlanta holds an asset (its own future firsts plus the Pelicans' protections history) no rival suitor can match.",
       category: "trades",
     },
     {
@@ -506,12 +512,6 @@ export const NEWS_DIGEST = {
       category: "general",
     },
     {
-      title: "DONE: CJ McCollum Re-Signs With Atlanta on a One-Year, Roughly $21M Extension, Avoiding Free Agency",
-      detail:
-        "Atlanta settled its most important veteran question Monday. The Hawks and guard CJ McCOLLUM agreed to a one-year, roughly $21M contract extension that includes a 7.5% trade kicker, keeping him off the open market rather than letting him reach unrestricted free agency on June 30 (ESPN / NBA.com / Bleacher Report / Yahoo Sports / ClutchPoints, Jun 22). McCollum, who came to Atlanta in January's Trae Young trade with Washington, averaged 18.7 points on 35.7% from three across 41 regular-season games and was a central reason the Hawks took a 2-1 first-round lead on the eventual champion Knicks: his 15-foot fadeaway with 12.7 seconds left won Game 3, and his 32 points stole Game 2 in New York. The 13-year veteran turns 35 in September; the one-year structure keeps Atlanta's books flexible while preserving its most reliable shot-maker next to Jalen Johnson. The signing also reshapes the cap math below it: BlueManHoop frames the McCollum money as a fresh squeeze on the Jonathan Kuminga decision due June 29, and HoopsHype had noted Atlanta still wants a younger downhill ballhandler, so a draft guard Tuesday could share the backcourt plan.",
-      category: "trades",
-    },
-    {
       title: "Risacher Trade Chatter Heats Up: Rival Teams Inquire, Sabonis Swap Floated, but Atlanta Holds Firm on an Anthony Davis Package",
       detail:
         "The Zaccharie Risacher market is active without being decided. Rival teams, Dallas among them, have called to inquire about the former No. 1 overall pick, and one analyst floated a Risacher-plus-No. 23 swing at Sacramento's Domantas Sabonis to solve the center need in one move (Pro Football Network / Roundtable / SI onsi, Jun). At the same time, Michael Scotto reports Atlanta is NOT offering Risacher plus the Pelicans' 2026 first-rounder to Dallas for Anthony Davis, a signal the front office still prizes the 21-year-old's upside. His value is the question: Risacher saw his role shrink in Year 2, averaging 9.6 points on 45% shooting across 66 games after a 12.6-point rookie season, lost his starting job after the All-Star break, and was out of the playoff rotation. The Aaron Wiggins addition further crowds his minutes, so the read stays the same: keep and develop first, but a larger deal can't be ruled out. He is owed $13.7M next season with a $17.8M team option for 2027-28.",
@@ -542,6 +542,9 @@ export const NEWS_DIGEST = {
     "Pro Football Network",
     "Hoops Wire",
     "FOX 5 Atlanta",
+    "SLC Dunk",
+    "Deseret News",
+    "Silver Screen and Roll",
     "BlueManHoop",
     "Basketball-Reference",
     "Spotrac",
@@ -551,17 +554,17 @@ export const NEWS_DIGEST = {
 // ─── Issue metadata (drives datelines, cover star, masthead) ───────────────
 // Update `date` daily; everything else flows from KEY_DATES + NEWS_DIGEST.
 export const ISSUE = {
-  date: "2026-07-03",                              // YYYY-MM-DD — single source of truth
+  date: "2026-07-04",                              // YYYY-MM-DD — single source of truth
   volume: 26,                                       // VOL XXVI
-  number: 17,                                       // Issue number (offseason cadence)
-  dateline: "ATLANTA · JULY 3, 2026",               // Pre-formatted for display
-  mastheadLine: "VOL XXVI · ISSUE NO. 17 · JULY 2026 · ATL · USA",
-  railLabel: "ISSUE 17 · JULY 3",
+  number: 18,                                       // Issue number (offseason cadence)
+  dateline: "ATLANTA · JULY 4, 2026",               // Pre-formatted for display
+  mastheadLine: "VOL XXVI · ISSUE NO. 18 · JULY 2026 · ATL · USA",
+  railLabel: "ISSUE 18 · JULY 4",
   coverStarId: 1,                                   // PLAYERS[id] for the cover portrait
-  coverRibbon: "SUMMER LEAGUE OPENS TOMORROW · KUMINGA S&T TALKS · HIELD IN TRADE SCENARIOS",
-  coverStatusKicker: "OFFSEASON · DAY 62",          // top-right corner of cover
+  coverRibbon: "GAME DAY: SL OPENER vs UTAH 5PM ET · MURPHY III INTEREST · KUMINGA S&T TALKS",
+  coverStatusKicker: "OFFSEASON · DAY 63",          // top-right corner of cover
   coverStatusLine: "SL OPENER {DAYS:sl-slc} · MORATORIUM {DAYS:moratorium}", // {DAYS:id} resolves from KEY_DATES
-  backTagline: "Next issue: after the Summer League opener in Salt Lake City.",
+  backTagline: "Next issue: after the opener — the Flemings and Peterson box scores.",
 };
 
 // ─── Cover TOC (table of contents on the cover) ────────────────────────────
@@ -571,7 +574,7 @@ export const COVER_TOC = [
   { kicker: "CALENDAR", page: 12, sectionId: "cal",  title: "The June gauntlet — six dates, one offseason" },
   { kicker: "DRAFT",    page: 28, sectionId: "drft", title: "Flemings at 8 — the guard of the future" },
   { kicker: "PATHS",    page: 50, sectionId: "path", title: "Four offseason scenarios, one editor's pick" },
-  { kicker: "WIRE",     page: 68, sectionId: "wire", title: "Landale back, Kuminga S&T talks, Hield in play" },
+  { kicker: "WIRE",     page: 68, sectionId: "wire", title: "Murphy III interest, Kuminga S&T talks, Hield in play" },
 ];
 
 // ─── Editor's letter ───────────────────────────────────────────────────────
