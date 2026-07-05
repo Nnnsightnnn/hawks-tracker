@@ -162,7 +162,7 @@ export const PLAYERS = [
     fieldGoalPct: 47.2, threePointPct: 33.6, freeThrowPct: 70.1,
     trueShootingPct: 55.1, plusMinus: 2.4,
     form: 6.4, status: "active", injuryNote: null,
-    recentNotes: "SATURDAY JULY 4 (offseason): SIGN-AND-TRADE TALKS ONGOING. The Cavaliers and Bucks have discussed S&T scenarios with Atlanta, which holds Kuminga's Non-Bird rights (Scotto, HoopsHype / Hoops Rumors, Jul 2); Sacramento circled back, and Friday reporting has the Lakers actively pursuing him alongside Rui Hachimura, though LA is down to minimum-salary tools (Bleacher Report / Yahoo / Silver Screen and Roll, Jul 3). An Atlanta return also remains possible per SI. The option was declined Jun 29; an S&T returns the Hawks an asset instead of losing him for nothing. Hawks line: 12.3 PPG / 5.3 RPG in 22.1 mpg across 16 games.",
+    recentNotes: "SUNDAY JULY 5 (offseason): SUITOR LIST STILL GROWING. Weekend reporting adds the Bulls, Nets, Blazers and Clippers to a market that already included the Cavaliers and Bucks (S&T talks with Atlanta per Scotto, Jul 2), the Kings and the Lakers, who are placing 'significant consideration' on him as a perimeter-defense upgrade (Bleacher Report / Hoops Rumors / Pro Football Network, Jul 3-4). Cleveland's interest runs through Kenny Atkinson but the Cavs have apron math and other dominoes first (Fear The Sword). Atlanta holds his Non-Bird rights after declining the $24.3M option Jun 29, and a re-sign remains possible per Hoops Rumors; an S&T that returns an asset stays the cleanest path. Hawks line: 12.3 PPG / 5.3 RPG in 22.1 mpg across 16 games. Hawks line: 12.3 PPG / 5.3 RPG in 22.1 mpg across 16 games.",
     playoffStats: { gamesPlayed: 6, minutesPerGame: 25.7, pointsPerGame: 13.4, reboundsPerGame: 3.6, assistsPerGame: 0.8 },
     playoffSeries: null,
     minutesTrend: "down",
@@ -283,7 +283,7 @@ export const PLAYERS = [
     fieldGoalPct: 53.8, threePointPct: 38.7, freeThrowPct: 55.2,
     trueShootingPct: 58.3, plusMinus: -0.4,
     form: 5.7, status: "active", injuryNote: null,
-    recentNotes: "SATURDAY JULY 4, GAME DAY: SUMMER LEAGUE HEADLINER. Newell opens Salt Lake City play TODAY vs Utah, 5 PM ET (Prime Video / ESPNU / League Pass), alongside rookies Flemings, Ejiofor and Veesaar, opposite Jazz No. 2 pick Darryn Peterson (Hawks.com / AJC / SLC Dunk). After a rookie year of 44 games, 5.2 PPG and 38.7% from three (led all rookies at min 10 attempts), this is his stage to claim a bigger third-big role, especially with Kuminga off the books and the frontcourt down to Okongwu, Landale, Gueye and rookie Ejiofor ahead of him.",
+    recentNotes: "SUNDAY JULY 5 (Summer League): LED THE HAWKS IN THE OPENER. Newell scored a team-high 15 with 5 rebounds and 3 assists in Saturday's 103-102 OT loss to Utah in Salt Lake City (NBA.com / ESPN, Jul 4), sharing top-scorer honors with undrafted Gabe Madsen while rookies Flemings (14-9-4 steals) and Ejiofor (11 boards) debuted around him. Exactly the assertive showing his second summer needed: after a rookie year of 44 games, 5.2 PPG and 38.7% from three (led all rookies at min 10 attempts), he is making his case for a bigger third-big role with Kuminga off the books. Next: vs OKC Monday 7 PM ET, Memphis Tuesday, then Vegas.",
     playoffStats: { gamesPlayed: 1, minutesPerGame: 5.0, pointsPerGame: 2.0, reboundsPerGame: 1.0, assistsPerGame: 0 },
     playoffSeries: null,
     minutesTrend: "up",
@@ -385,14 +385,14 @@ export const TEAM_LOGOS = {
 // Season ended Apr 30 in Game 6 elimination by the Knicks. Next on the calendar:
 // 2026 NBA Draft Lottery on May 10 (ATL holds the more-favorable of NOP/MIL plus CLE No. 24).
 export const NEXT_GAME = {
-  opponent: "Summer League vs Utah (Salt Lake City)",
+  opponent: "Summer League vs Oklahoma City (Salt Lake City)",
   shortName: "SLC SL",
   home: false,
-  date: "2026-07-04T00:00:00-04:00",
+  date: "2026-07-06T19:00:00-04:00",
   competition: "OFFSEASON",
   venue: "Jon M. Huntsman Center, Salt Lake City",
-  broadcast: "Prime Video / ESPNU / NBA League Pass",
-  seriesContext: "SATURDAY JULY 4, GAME DAY: basketball is BACK. Atlanta opens the Salt Lake City Summer League TODAY vs the host Jazz, 5 PM ET (3 PM MT), Jon M. Huntsman Center, on Prime Video / ESPNU / League Pass (also Jul 6, 7; Vegas opens Jul 9 on ESPN2). All three 2026 picks debut: No. 8 Kingston Flemings, No. 23 Zuby Ejiofor, No. 52 Henri Veesaar, plus second-year F Asa Newell. Across the floor: Utah's No. 2 overall pick Darryn Peterson (Kansas) makes his Jazz debut. KUMINGA: sign-and-trade talks with Cleveland and Milwaukee (Scotto, Jul 2); Kings circled back, Lakers pursuing him alongside Rui Hachimura (Jul 3); Atlanta holds his Non-Bird rights. TRADE BOARD: Scotto reported Friday the Hawks REMAIN INTERESTED in Pelicans wing Trey Murphy III, reviving a pre-draft thread, and Fischer has Atlanta in several scenarios built on Hield's $9.66M expiring (center hunt: Turner the watch name; Missi / Bitadze / Gafford fallbacks). Landale (1yr, $14M) and McCollum (1yr, ~$21M) become official Mon Jul 6.",
+  broadcast: "NBA League Pass",
+  seriesContext: "MONDAY JULY 6, 7 PM ET: Hawks-Thunder in SLC Summer League game 2 (finale vs Memphis Tue Jul 7; Vegas opens Jul 9). Saturday's opener was a 103-102 OT loss to Utah in which Jazz No. 2 pick Darryn Peterson scored a game-high 28, including the go-ahead three in overtime. The Hawks' side of the ledger was encouraging: No. 8 pick Kingston Flemings had 14 points with game highs in assists (9) and steals (4) against 1 turnover, No. 23 Zuby Ejiofor grabbed 11 rebounds with 3 steals in 28 minutes, and Asa Newell led Atlanta with 15. Monday is also a front-office day: the moratorium lifts at 12:01 PM ET, making the McCollum (1yr, ~$21M) and Landale (1yr, $14M) deals plus the Wiggins and Carter trades official. KUMINGA: suitor list keeps growing (Cavs, Bucks, Lakers, Kings, plus Bulls, Nets and Blazers now linked); Atlanta holds his Non-Bird rights and a re-sign remains possible. TRADE BOARD: Trey Murphy III interest is live but crowded (Celtics, Pistons, Warriors, Clippers also in the mix); Hield's $9.66M expiring stays the matching salary; Turner the center watch name.",
 };
 
 // ─── Game Results (2025-26 regular season · last 16 games) ─────────────────
@@ -441,20 +441,26 @@ export const EAST_STANDINGS = [
 
 // ─── AI News Digest (generated from live web search) ───────────────────────
 export const NEWS_DIGEST = {
-  generatedAt: "2026-07-04T09:15:00Z",
+  generatedAt: "2026-07-05T08:20:00Z",
   summary:
-    "GAME DAY, Saturday July 4: basketball is back. The Hawks open the Salt Lake City Summer League TODAY at 5 PM ET (3 PM MT) against the host Jazz at the Jon M. Huntsman Center, with all three 2026 picks (Kingston Flemings, Zuby Ejiofor, Henri Veesaar) and second-year forward Asa Newell debuting, and Utah's No. 2 overall pick Darryn Peterson making his Jazz debut across the floor (NBA.com / SLC Dunk / Deseret News). On the trade wire, Michael Scotto reported Friday that Atlanta REMAINS INTERESTED in Pelicans wing Trey Murphy III, reviving the pre-draft thread that once involved the No. 8 pick, alongside the ongoing JONATHAN KUMINGA sign-and-trade talks with Cleveland and Milwaukee (Sacramento circled back, and the Lakers are pursuing Kuminga along with Rui Hachimura per Friday reporting). Jake Fischer has Atlanta in several trade scenarios built on BUDDY HIELD's guaranteed $9.66M expiring, the front office's matching salary for the center hunt (Myles Turner the watch name; Missi, Bitadze and Gafford the fallbacks). The Landale (1yr, $14M) and McCollum (1yr, ~$21M) agreements, plus the Aaron Wiggins and Devin Carter trades, become official when the moratorium lifts Monday July 6.",
+    "As of Sunday July 5, the story is Saturday's Summer League opener: the Hawks fell 103-102 in overtime to the host Jazz in Salt Lake City, where Utah's No. 2 overall pick Darryn Peterson poured in a game-high 28, including the go-ahead three in OT (ESPN / NBA.com / Deseret News). The silver linings were real: No. 8 pick KINGSTON FLEMINGS shook off a 4-of-16 shooting night to post 14 points with game highs in assists (9) and steals (4) against a single turnover, No. 23 Zuby Ejiofor grabbed 11 rebounds with 3 steals, and Asa Newell led Atlanta with 15 as the Hawks erased a 16-point deficit with a late 9-0 run before falling in the extra frame (NBA.com / Peachtree Hoops / Bleacher Report). Next up is a Monday doubleheader of sorts: Hawks-Thunder at 7 PM ET in SLC, hours after the moratorium lifts at 12:01 PM ET and the McCollum, Landale, Wiggins and Carter moves become official. On the trade wire, the JONATHAN KUMINGA suitor list keeps widening (Cavs, Bucks, Lakers and Kings, with the Bulls, Nets and Blazers also now linked), while the Trey Murphy III pursuit is live but crowded, with the Celtics, Pistons, Warriors and Clippers also in the mix and Hield's $9.66M expiring still Atlanta's obvious matching salary.",
   keyTopics: [
     {
-      title: "TODAY, 5 PM ET: Hawks Open Salt Lake City Summer League vs Utah as Flemings, Ejiofor, Veesaar and Newell Debut Opposite No. 2 Pick Darryn Peterson",
+      title: "SL Opener: Hawks Fall 103-102 in OT to Peterson's Jazz, but Flemings (14-9-4 Steals) and Ejiofor (11 Boards) Impress in Debuts",
       detail:
-        "Basketball is back TODAY, Saturday July 4: the Hawks tip off the Salt Lake City Summer League against the host Jazz at 5 PM ET (3 PM MT) at the Jon M. Huntsman Center, on Prime Video, ESPNU and League Pass, the first of three SLC games (also Jul 6 and 7) before Las Vegas opens July 9 on ESPN2 (NBA.com / SLC Dunk / Deseret News). Atlanta's 16-man roster is headlined by all three 2026 draft picks, No. 8 Kingston Flemings, No. 23 Zuby Ejiofor and No. 52 Henri Veesaar, plus last year's first-rounder Asa Newell and Exhibit 10 signee Isaac McKneely (Hawks.com / SI onsi / AJC). The marquee matchup within the game: Flemings' pro debut against Utah's No. 2 overall pick Darryn Peterson (Kansas), the SLC event's headline attraction. SI's three storylines to watch: how Flemings' three-point shot travels (38.7% at Houston but on just 2.9 attempts), whether Ejiofor contributes immediately in a thin frontcourt, and how many minutes the top prospects actually get (SI onsi / Soaring Down South, Jul 3).",
+        "Saturday's Salt Lake City opener went to the hosts: Utah 103, Atlanta 102 in overtime, with Jazz No. 2 overall pick Darryn Peterson scoring a game-high 28 (11-of-21, 4-of-7 from three) and burying the go-ahead three in the extra frame (ESPN / NBA.com / Yahoo Sports, Jul 4). The Hawks trailed by 16 midway through the second quarter, then forced five turnovers during a late 9-0 run to erase an 8-point deficit in the final 3:30 of regulation before Max Abmas' free throws sent it to OT. No. 8 pick Kingston Flemings shot just 4-of-16 but finished with 14 points and game highs in assists (9) and steals (4) against one turnover, exactly the lead-guard connective tissue Atlanta drafted him for (Peachtree Hoops / NBC Sports / RotoBaller, Jul 4). No. 23 Zuby Ejiofor stuffed the sheet with 8 points, 11 rebounds and 3 steals in 28 minutes; Asa Newell and undrafted Utah product Gabe Madsen led Atlanta with 15 apiece; No. 52 Henri Veesaar had a quiet 5 points in 18 minutes.",
       category: "games",
     },
     {
-      title: "Kuminga Latest: Cavaliers and Bucks Have Discussed Sign-and-Trades With Atlanta, Kings Circle Back, Lakers Lurk",
+      title: "Monday Doubleheader: Hawks-Thunder at 7 PM ET in SLC, Hours After the Moratorium Lifts and Four Moves Become Official",
       detail:
-        "The Jonathan Kuminga market stayed hot into the holiday weekend. Michael Scotto reported Thursday that the Cavaliers and Bucks have discussed possible sign-and-trade scenarios with the Hawks, who hold Kuminga's Non-Bird rights after declining his $24.3M option June 29 (HoopsHype / Hoops Rumors, Jul 2). Cleveland's interest runs through coach Kenny Atkinson, who worked with Kuminga in Golden State, but the Cavs are pressed against the aprons and would need Atlanta's cooperation to make the money work. Sacramento, a primary suitor last summer, has circled back, and Friday reporting has the Lakers actively pursuing Kuminga along with Rui Hachimura, though LA is down to minimum-salary tools after spending its cap room and room exception (Bleacher Report / Yahoo Sports / Silver Screen and Roll, Jul 3). An Atlanta return also remains on the table per SI, which notes three teams in the mix. A sign-and-trade is the route that returns the Hawks an asset instead of losing him for nothing.",
+        "Monday July 6 is the offseason's busiest day yet. On the floor, Atlanta faces Oklahoma City's summer squad at 7 PM ET at the Jon M. Huntsman Center, game 2 of 3 in Salt Lake City before Tuesday's finale vs Memphis and the Vegas opener July 9 (NBA.com / Peachtree Hoops). Off the floor, the moratorium lifts at 12:01 PM ET, making official the CJ McCollum extension (1yr, ~$21M with a 7.5% trade kicker), the Jock Landale return (1yr, $14M via nearly all of the Non-Taxpayer MLE), and the trades for Aaron Wiggins and Devin Carter (NBA.com / ClutchPoints / Bleacher Report free-agency trackers). Once the paperwork clears, Atlanta's larger trade machinery (Hield's expiring, the center hunt, any Kuminga sign-and-trade) can start executing rather than just talking.",
+      category: "games",
+    },
+    {
+      title: "Kuminga Suitor List Keeps Growing: Bulls, Nets and Blazers Now Linked Alongside Cavs, Bucks, Lakers and Kings",
+      detail:
+        "The Jonathan Kuminga market widened over the holiday weekend. Beyond the Cavaliers and Bucks sign-and-trade talks Scotto reported Thursday, weekend aggregation now also links the Bulls, Nets, Blazers and Clippers to the 23-year-old forward (Bleacher Report / Stadium Rant / Hoops Rumors, Jul 3-4). The Lakers are placing 'significant consideration' on him as a perimeter-defense upgrade, though LA is down to minimum-salary tools after the Kessler trade spending (Pro Football Network / heavy.com, Jul 4). Cleveland's interest runs through coach Kenny Atkinson from their Golden State overlap, but the Cavs are pressed against the aprons and have other dominoes to resolve first (Fear The Sword, Jul 4). Atlanta holds Kuminga's Non-Bird rights after declining the $24.3M option June 29, and Hoops Rumors notes a re-sign also remains on the table; with the roster effectively at 16 come Monday, a sign-and-trade that returns an asset stays the cleanest path.",
       category: "trades",
     },
     {
@@ -464,9 +470,9 @@ export const NEWS_DIGEST = {
       category: "trades",
     },
     {
-      title: "Scotto: Hawks Remain Interested in Trey Murphy III, Reviving the Pre-Draft Thread With New Orleans",
+      title: "Murphy Watch: Hawks Remain in the Mix, but the Field Is Crowded (Celtics, Pistons, Warriors, Clippers) and a Deal Looks Closer",
       detail:
-        "Fresh Friday reporting from Michael Scotto: the Hawks REMAIN INTERESTED in trading for Pelicans wing Trey Murphy III, with several future first-round picks and movable contracts to dangle (HoopsHype via SI onsi / Roundtable / Soaring Down South, Jul 3). Atlanta and New Orleans discussed a Murphy deal built around the No. 8 pick before the draft; those talks died and the pick became Kingston Flemings, but the interest survived. Murphy, 26, averaged 21.5 points on 37.9% from three last season, would slot next to Jalen Johnson as the two-way wing the roster lacks, and has an existing rapport with CJ McCollum from their Pelicans years. Hield's $9.66M expiring and the stockpiled picks are the obvious framework pieces; Soaring Down South notes Atlanta holds an asset (its own future firsts plus the Pelicans' protections history) no rival suitor can match.",
+        "The Trey Murphy III pursuit is live but contested. Scotto's Friday report that Atlanta remains interested now sits alongside weekend reporting that the Celtics, Pistons, Warriors and Clippers are also in the mix for the Pelicans wing, and Pelicans-side coverage says a trade 'appears closer than ever' with a frontrunner emerging (SI onsi / Roundtable / Pelican Debrief, Jul 3-4). Atlanta and New Orleans discussed a Murphy deal built around the No. 8 pick before the draft; those talks died and the pick became Kingston Flemings, but the interest survived. Murphy, 26, averaged 21.5 points on roughly 38% from three last season, would slot next to Jalen Johnson as the two-way wing the roster lacks, and has an existing rapport with CJ McCollum from their Pelicans years. Hield's $9.66M expiring and the stockpiled picks are the obvious framework pieces (Soaring Down South, Jul 4).",
       category: "trades",
     },
     {
@@ -491,12 +497,6 @@ export const NEWS_DIGEST = {
       title: "Okongwu Became Extension-Eligible July 1, and the Kuminga Exit Could Fund the Next Big Commitment",
       detail:
         "A quieter July 1 development with long-term stakes: ONYEKA OKONGWU is now eligible for a veteran extension on top of the two years and roughly $33M left on his current deal (Soaring Down South / Spotrac, Jul 1-2). Okongwu is coming off a career-best 15.2/7.6/3.1 season on 48% shooting as the post-Trae starting center, and with Kuminga's $24.3M off the books Atlanta has the medium-term flexibility to lock in its own. No talks have been reported yet; file it as the next contract conversation once the roster settles.",
-      category: "general",
-    },
-    {
-      title: "League Days 2-3: Kessler to the Lakers, John Collins to Detroit, Eason Stays in Houston as the East Arms Race Rolls On",
-      detail:
-        "The rest of the market kept moving Wednesday and Thursday: Utah traded shot-blocker WALKER KESSLER to the Lakers for unprotected 2031 and 2033 firsts plus two swaps, with a four-year, $130M deal to follow, replacing some of what LA lost when LeBron James walked (Yahoo Sports / NBC Sports, Jul 2). Ex-Hawk JOHN COLLINS agreed with Detroit on three years, $51M, Tari Eason re-signed in Houston on five years, $81.5M, and Philadelphia followed the Jaylen Brown strike by signing Dean Wade and Anfernee Simons (NBC Sports / Bleacher Report / SI, Jul 2). For Atlanta the read is unchanged: the East's top tier got heavier while the Hawks bet on internal growth plus one more trade.",
       category: "general",
     },
     {
@@ -531,8 +531,11 @@ export const NEWS_DIGEST = {
     "Hoops Rumors",
     "HoopsHype",
     "The Stein Line",
-    "Cavaliers Nation",
     "ClutchPoints",
+    "RotoBaller",
+    "Pelican Debrief",
+    "Fear The Sword",
+    "Stadium Rant",
     "Soaring Down South",
     "SportsTalk ATL",
     "Behind the Buck Pass",
@@ -554,17 +557,17 @@ export const NEWS_DIGEST = {
 // ─── Issue metadata (drives datelines, cover star, masthead) ───────────────
 // Update `date` daily; everything else flows from KEY_DATES + NEWS_DIGEST.
 export const ISSUE = {
-  date: "2026-07-04",                              // YYYY-MM-DD — single source of truth
+  date: "2026-07-05",                              // YYYY-MM-DD — single source of truth
   volume: 26,                                       // VOL XXVI
-  number: 18,                                       // Issue number (offseason cadence)
-  dateline: "ATLANTA · JULY 4, 2026",               // Pre-formatted for display
-  mastheadLine: "VOL XXVI · ISSUE NO. 18 · JULY 2026 · ATL · USA",
-  railLabel: "ISSUE 18 · JULY 4",
+  number: 19,                                       // Issue number (offseason cadence)
+  dateline: "ATLANTA · JULY 5, 2026",               // Pre-formatted for display
+  mastheadLine: "VOL XXVI · ISSUE NO. 19 · JULY 2026 · ATL · USA",
+  railLabel: "ISSUE 19 · JULY 5",
   coverStarId: 1,                                   // PLAYERS[id] for the cover portrait
-  coverRibbon: "GAME DAY: SL OPENER vs UTAH 5PM ET · MURPHY III INTEREST · KUMINGA S&T TALKS",
-  coverStatusKicker: "OFFSEASON · DAY 63",          // top-right corner of cover
-  coverStatusLine: "SL OPENER {DAYS:sl-slc} · MORATORIUM {DAYS:moratorium}", // {DAYS:id} resolves from KEY_DATES
-  backTagline: "Next issue: after the opener — the Flemings and Peterson box scores.",
+  coverRibbon: "SL OPENER: OT LOSS 103-102 · FLEMINGS 14-9-4 STL · THUNDER MONDAY 7PM ET",
+  coverStatusKicker: "OFFSEASON · DAY 64",          // top-right corner of cover
+  coverStatusLine: "MORATORIUM {DAYS:moratorium} · VEGAS SL {DAYS:sl-vegas}", // {DAYS:id} resolves from KEY_DATES
+  backTagline: "Next issue: Hawks-Thunder in SLC, plus four moves turn official at noon.",
 };
 
 // ─── Cover TOC (table of contents on the cover) ────────────────────────────
