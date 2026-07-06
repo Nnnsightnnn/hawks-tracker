@@ -162,7 +162,7 @@ export const PLAYERS = [
     fieldGoalPct: 47.2, threePointPct: 33.6, freeThrowPct: 70.1,
     trueShootingPct: 55.1, plusMinus: 2.4,
     form: 6.4, status: "active", injuryNote: null,
-    recentNotes: "SUNDAY JULY 5 (offseason): SUITOR LIST STILL GROWING. Weekend reporting adds the Bulls, Nets, Blazers and Clippers to a market that already included the Cavaliers and Bucks (S&T talks with Atlanta per Scotto, Jul 2), the Kings and the Lakers, who are placing 'significant consideration' on him as a perimeter-defense upgrade (Bleacher Report / Hoops Rumors / Pro Football Network, Jul 3-4). Cleveland's interest runs through Kenny Atkinson but the Cavs have apron math and other dominoes first (Fear The Sword). Atlanta holds his Non-Bird rights after declining the $24.3M option Jun 29, and a re-sign remains possible per Hoops Rumors; an S&T that returns an asset stays the cleanest path. Hawks line: 12.3 PPG / 5.3 RPG in 22.1 mpg across 16 games. Hawks line: 12.3 PPG / 5.3 RPG in 22.1 mpg across 16 games.",
+    recentNotes: "MONDAY JULY 6 (offseason): STILL UNSIGNED as the moratorium lifts at noon ET, the moment any sign-and-trade becomes executable. SUITOR LIST STILL GROWING. Weekend reporting adds the Bulls, Nets, Blazers and Clippers to a market that already included the Cavaliers and Bucks (S&T talks with Atlanta per Scotto, Jul 2), the Kings and the Lakers, who are placing 'significant consideration' on him as a perimeter-defense upgrade (Bleacher Report / Hoops Rumors / Pro Football Network, Jul 3-4). Cleveland's interest runs through Kenny Atkinson but the Cavs have apron math and other dominoes first (Fear The Sword). Atlanta holds his Non-Bird rights after declining the $24.3M option Jun 29, and a re-sign remains possible per Hoops Rumors; an S&T that returns an asset stays the cleanest path. Hawks line: 12.3 PPG / 5.3 RPG in 22.1 mpg across 16 games. Hawks line: 12.3 PPG / 5.3 RPG in 22.1 mpg across 16 games.",
     playoffStats: { gamesPlayed: 6, minutesPerGame: 25.7, pointsPerGame: 13.4, reboundsPerGame: 3.6, assistsPerGame: 0.8 },
     playoffSeries: null,
     minutesTrend: "down",
@@ -392,7 +392,7 @@ export const NEXT_GAME = {
   competition: "OFFSEASON",
   venue: "Jon M. Huntsman Center, Salt Lake City",
   broadcast: "NBA League Pass",
-  seriesContext: "MONDAY JULY 6, 7 PM ET: Hawks-Thunder in SLC Summer League game 2 (finale vs Memphis Tue Jul 7; Vegas opens Jul 9). Saturday's opener was a 103-102 OT loss to Utah in which Jazz No. 2 pick Darryn Peterson scored a game-high 28, including the go-ahead three in overtime. The Hawks' side of the ledger was encouraging: No. 8 pick Kingston Flemings had 14 points with game highs in assists (9) and steals (4) against 1 turnover, No. 23 Zuby Ejiofor grabbed 11 rebounds with 3 steals in 28 minutes, and Asa Newell led Atlanta with 15. Monday is also a front-office day: the moratorium lifts at 12:01 PM ET, making the McCollum (1yr, ~$21M) and Landale (1yr, $14M) deals plus the Wiggins and Carter trades official. KUMINGA: suitor list keeps growing (Cavs, Bucks, Lakers, Kings, plus Bulls, Nets and Blazers now linked); Atlanta holds his Non-Bird rights and a re-sign remains possible. TRADE BOARD: Trey Murphy III interest is live but crowded (Celtics, Pistons, Warriors, Clippers also in the mix); Hield's $9.66M expiring stays the matching salary; Turner the center watch name.",
+  seriesContext: "GAME DAY, MONDAY JULY 6, 7 PM ET: Hawks-Thunder in SLC Summer League game 2 at the Jon M. Huntsman Center (finale vs Memphis Tue Jul 7; Vegas opens Thu Jul 9). OKC counters with No. 12 pick Aday Mara, the 7'3 center from Michigan's national title team, plus No. 16 Bennett Stirtz (Iowa) and No. 41 Otega Oweh (Kentucky). Watch for: Kingston Flemings' jumper after a 4-of-16 opener he still stamped with 14 points, 9 assists and 4 steals; Zuby Ejiofor (11 boards, 3 steals Saturday) against Mara's size; Asa Newell building on his team-high 15 in the 103-102 OT loss to Utah. It is also paperwork day: the moratorium lifts at 12:01 PM ET, turning the McCollum extension (1yr, ~$21M), the Landale return (1yr, $14M) and the Wiggins and Carter trades official. KUMINGA: still unsigned, suitor list at least seven deep (Cavs, Bucks, Lakers, Kings, Bulls, Nets, Blazers); Atlanta holds his Non-Bird rights, and a sign-and-trade becomes executable once the moratorium lifts. TRADE BOARD: Murphy III interest live but crowded (Celtics, Pistons, Warriors, Clippers also in the mix); Hield's $9.66M expiring stays the matching salary; Turner the center watch name.",
 };
 
 // ─── Game Results (2025-26 regular season · last 16 games) ─────────────────
@@ -441,20 +441,26 @@ export const EAST_STANDINGS = [
 
 // ─── AI News Digest (generated from live web search) ───────────────────────
 export const NEWS_DIGEST = {
-  generatedAt: "2026-07-05T08:20:00Z",
+  generatedAt: "2026-07-06T08:25:00Z",
   summary:
-    "As of Sunday July 5, the story is Saturday's Summer League opener: the Hawks fell 103-102 in overtime to the host Jazz in Salt Lake City, where Utah's No. 2 overall pick Darryn Peterson poured in a game-high 28, including the go-ahead three in OT (ESPN / NBA.com / Deseret News). The silver linings were real: No. 8 pick KINGSTON FLEMINGS shook off a 4-of-16 shooting night to post 14 points with game highs in assists (9) and steals (4) against a single turnover, No. 23 Zuby Ejiofor grabbed 11 rebounds with 3 steals, and Asa Newell led Atlanta with 15 as the Hawks erased a 16-point deficit with a late 9-0 run before falling in the extra frame (NBA.com / Peachtree Hoops / Bleacher Report). Next up is a Monday doubleheader of sorts: Hawks-Thunder at 7 PM ET in SLC, hours after the moratorium lifts at 12:01 PM ET and the McCollum, Landale, Wiggins and Carter moves become official. On the trade wire, the JONATHAN KUMINGA suitor list keeps widening (Cavs, Bucks, Lakers and Kings, with the Bulls, Nets and Blazers also now linked), while the Trey Murphy III pursuit is live but crowded, with the Celtics, Pistons, Warriors and Clippers also in the mix and Hield's $9.66M expiring still Atlanta's obvious matching salary.",
+    "Monday July 6 is game day and paperwork day at once. On the floor, the Hawks face Oklahoma City's summer squad at 7 PM ET at the Jon M. Huntsman Center, game 2 of the Salt Lake City slate, looking to bounce back from Saturday's 103-102 OT loss to Utah in which No. 8 pick KINGSTON FLEMINGS shot 4-of-16 but still stamped the game with 14 points and game highs in assists (9) and steals (4); OKC counters with No. 12 pick Aday Mara, the 7'3 center from Michigan's national title team (NBA.com / SI onsi / Yahoo Sports). Off the floor, the moratorium lifts at 12:01 PM ET, turning the CJ McCollum extension, the Jock Landale return and the Aaron Wiggins and Devin Carter trades official and unlocking Atlanta's trade machinery. On the market there was no overnight movement: JONATHAN KUMINGA remains unsigned with a suitor list at least seven teams deep (Cavs, Bucks, Lakers, Kings, Bulls, Nets, Blazers), the Trey Murphy III field stays crowded (Celtics, Pistons, Warriors and Clippers alongside Atlanta), and Hield's $9.66M expiring remains the obvious matching salary in every scenario.",
   keyTopics: [
+    {
+      title: "Game Day: Hawks-Thunder at 7 PM ET in SLC, With Flemings' Shooting Bounce-Back and the Ejiofor vs Aday Mara Size Matchup to Watch",
+      detail:
+        "Tonight at 7 PM ET the Hawks meet Oklahoma City's summer squad at the Jon M. Huntsman Center, game 2 of 3 in Salt Lake City before Tuesday's finale vs Memphis; Vegas opens Thursday July 9 (NBA.com / Peachtree Hoops, Jul 5). The Thunder group is headlined by No. 12 pick Aday Mara, the 7'3 center who helped Michigan win the national championship this spring, alongside No. 16 Bennett Stirtz (Iowa) and No. 41 Otega Oweh (Kentucky) (SI onsi / Yahoo Sports, Jul 5). Atlanta's watch list: whether Kingston Flemings' jumper comes around after a 4-of-16 opener he still filled with 14 points, 9 assists and 4 steals, how Zuby Ejiofor (11 boards and 3 steals Saturday) handles Mara's size, and whether Asa Newell builds on his team-high 15. Broadcast: NBA League Pass.",
+      category: "games",
+    },
+    {
+      title: "Moratorium Lifts at 12:01 PM ET Today: McCollum, Landale, Wiggins and Carter Moves Turn Official, Unlocking the Trade Machinery",
+      detail:
+        "The offseason's paperwork logjam clears today. At 12:01 PM ET the July moratorium lifts, making official the CJ McCollum extension (1yr, ~$21M with a 7.5% trade kicker), the Jock Landale return (1yr, $14M via nearly all of the Non-Taxpayer MLE), and the trades for Aaron Wiggins (two future second-rounders to OKC) and Devin Carter (Kings salary dump that also sent Atlanta a 2033 second) (NBA.com / ESPN / Hoops Rumors free-agency trackers). Once the ink dries, Atlanta's larger machinery (Hield's expiring, the center hunt, any Kuminga sign-and-trade) can start executing rather than just talking.",
+      category: "trades",
+    },
     {
       title: "SL Opener: Hawks Fall 103-102 in OT to Peterson's Jazz, but Flemings (14-9-4 Steals) and Ejiofor (11 Boards) Impress in Debuts",
       detail:
         "Saturday's Salt Lake City opener went to the hosts: Utah 103, Atlanta 102 in overtime, with Jazz No. 2 overall pick Darryn Peterson scoring a game-high 28 (11-of-21, 4-of-7 from three) and burying the go-ahead three in the extra frame (ESPN / NBA.com / Yahoo Sports, Jul 4). The Hawks trailed by 16 midway through the second quarter, then forced five turnovers during a late 9-0 run to erase an 8-point deficit in the final 3:30 of regulation before Max Abmas' free throws sent it to OT. No. 8 pick Kingston Flemings shot just 4-of-16 but finished with 14 points and game highs in assists (9) and steals (4) against one turnover, exactly the lead-guard connective tissue Atlanta drafted him for (Peachtree Hoops / NBC Sports / RotoBaller, Jul 4). No. 23 Zuby Ejiofor stuffed the sheet with 8 points, 11 rebounds and 3 steals in 28 minutes; Asa Newell and undrafted Utah product Gabe Madsen led Atlanta with 15 apiece; No. 52 Henri Veesaar had a quiet 5 points in 18 minutes.",
-      category: "games",
-    },
-    {
-      title: "Monday Doubleheader: Hawks-Thunder at 7 PM ET in SLC, Hours After the Moratorium Lifts and Four Moves Become Official",
-      detail:
-        "Monday July 6 is the offseason's busiest day yet. On the floor, Atlanta faces Oklahoma City's summer squad at 7 PM ET at the Jon M. Huntsman Center, game 2 of 3 in Salt Lake City before Tuesday's finale vs Memphis and the Vegas opener July 9 (NBA.com / Peachtree Hoops). Off the floor, the moratorium lifts at 12:01 PM ET, making official the CJ McCollum extension (1yr, ~$21M with a 7.5% trade kicker), the Jock Landale return (1yr, $14M via nearly all of the Non-Taxpayer MLE), and the trades for Aaron Wiggins and Devin Carter (NBA.com / ClutchPoints / Bleacher Report free-agency trackers). Once the paperwork clears, Atlanta's larger trade machinery (Hield's expiring, the center hunt, any Kuminga sign-and-trade) can start executing rather than just talking.",
       category: "games",
     },
     {
@@ -473,12 +479,6 @@ export const NEWS_DIGEST = {
       title: "Murphy Watch: Hawks Remain in the Mix, but the Field Is Crowded (Celtics, Pistons, Warriors, Clippers) and a Deal Looks Closer",
       detail:
         "The Trey Murphy III pursuit is live but contested. Scotto's Friday report that Atlanta remains interested now sits alongside weekend reporting that the Celtics, Pistons, Warriors and Clippers are also in the mix for the Pelicans wing, and Pelicans-side coverage says a trade 'appears closer than ever' with a frontrunner emerging (SI onsi / Roundtable / Pelican Debrief, Jul 3-4). Atlanta and New Orleans discussed a Murphy deal built around the No. 8 pick before the draft; those talks died and the pick became Kingston Flemings, but the interest survived. Murphy, 26, averaged 21.5 points on roughly 38% from three last season, would slot next to Jalen Johnson as the two-way wing the roster lacks, and has an existing rapport with CJ McCollum from their Pelicans years. Hield's $9.66M expiring and the stockpiled picks are the obvious framework pieces (Soaring Down South, Jul 4).",
-      category: "trades",
-    },
-    {
-      title: "Jaylen Brown Traded to the 76ers for Paul George and Picks, Closing the Hawks' Longest-Running Trade Thread for Good",
-      detail:
-        "The thread that shadowed Atlanta's whole offseason is dead: Boston traded JAYLEN BROWN to Philadelphia on Thursday for Paul George, two first-round picks and two second-rounders (ESPN / Yahoo Sports / SI, Jul 2). The Atlanta-born star had been the Hawks' most-discussed hypothetical target since spring, with Marc Stein listing Atlanta among Brown suitors as recently as late June, but the Hawks never got close and POBO Onsi Saleh consistently pushed back on the 'one player away' framing. Brown instead lands with an East rival, joining a top of the conference that already includes the champion Knicks, Cleveland and a Giannis-led Heat, raising the degree of difficulty on Atlanta's climb.",
       category: "trades",
     },
     {
@@ -557,17 +557,17 @@ export const NEWS_DIGEST = {
 // ─── Issue metadata (drives datelines, cover star, masthead) ───────────────
 // Update `date` daily; everything else flows from KEY_DATES + NEWS_DIGEST.
 export const ISSUE = {
-  date: "2026-07-05",                              // YYYY-MM-DD — single source of truth
+  date: "2026-07-06",                              // YYYY-MM-DD — single source of truth
   volume: 26,                                       // VOL XXVI
-  number: 19,                                       // Issue number (offseason cadence)
-  dateline: "ATLANTA · JULY 5, 2026",               // Pre-formatted for display
-  mastheadLine: "VOL XXVI · ISSUE NO. 19 · JULY 2026 · ATL · USA",
-  railLabel: "ISSUE 19 · JULY 5",
+  number: 20,                                       // Issue number (offseason cadence)
+  dateline: "ATLANTA · JULY 6, 2026",               // Pre-formatted for display
+  mastheadLine: "VOL XXVI · ISSUE NO. 20 · JULY 2026 · ATL · USA",
+  railLabel: "ISSUE 20 · JULY 6",
   coverStarId: 1,                                   // PLAYERS[id] for the cover portrait
-  coverRibbon: "SL OPENER: OT LOSS 103-102 · FLEMINGS 14-9-4 STL · THUNDER MONDAY 7PM ET",
-  coverStatusKicker: "OFFSEASON · DAY 64",          // top-right corner of cover
+  coverRibbon: "GAME DAY: THUNDER 7PM ET · MORATORIUM LIFTS NOON · FOUR MOVES TURN OFFICIAL",
+  coverStatusKicker: "OFFSEASON · DAY 65",          // top-right corner of cover
   coverStatusLine: "MORATORIUM {DAYS:moratorium} · VEGAS SL {DAYS:sl-vegas}", // {DAYS:id} resolves from KEY_DATES
-  backTagline: "Next issue: Hawks-Thunder in SLC, plus four moves turn official at noon.",
+  backTagline: "Next issue: SLC finale vs Memphis, plus the first official signings land.",
 };
 
 // ─── Cover TOC (table of contents on the cover) ────────────────────────────
