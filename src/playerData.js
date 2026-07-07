@@ -100,7 +100,7 @@ export const PLAYERS = [
     fieldGoalPct: 45.2, threePointPct: 38.1, freeThrowPct: 82.7,
     trueShootingPct: 57.4, plusMinus: 3.1,
     form: 6.5, status: "active", injuryNote: null,
-    recentNotes: "FRIDAY JULY 3 (offseason): LOCKED IN. McCollum re-signed on a one-year, roughly $21M extension with a 7.5% trade kicker back on Jun 22 (ESPN / NBA.com / Yahoo Sports), skipping free agency entirely; the paperwork becomes official as the moratorium lifts Jul 6. He returns as the bridge point guard and mentor for No. 8 pick Kingston Flemings, drafted as his eventual successor. Final regular-season line: 18.7/3.1/4.1 on 45.2/38.1/82.7 across 41 Hawks games after the January trade, then 19.2 PPG in the six-game Knicks series. Turns 35 in September; the one-year structure keeps the books flexible.",
+    recentNotes: "TUESDAY JULY 7 (offseason): OFFICIAL. McCollum's one-year, roughly $21M extension with a trade kicker (agreed Jun 22 per ESPN / NBA.com / Yahoo Sports) was formally executed Monday when the moratorium lifted. He returns as the bridge point guard and mentor for No. 8 pick Kingston Flemings, drafted as his eventual successor. Final regular-season line: 18.7/3.1/4.1 on 45.2/38.1/82.7 across 41 Hawks games after the January trade, then 19.2 PPG in the six-game Knicks series. Turns 35 in September; the one-year structure keeps the books flexible.",
     playoffStats: { gamesPlayed: 6, minutesPerGame: 33.0, pointsPerGame: 19.2, reboundsPerGame: 3.2, assistsPerGame: 2.5 },
     playoffSeries: null,
     usageRate: 31.8,
@@ -162,7 +162,7 @@ export const PLAYERS = [
     fieldGoalPct: 47.2, threePointPct: 33.6, freeThrowPct: 70.1,
     trueShootingPct: 55.1, plusMinus: 2.4,
     form: 6.4, status: "active", injuryNote: null,
-    recentNotes: "MONDAY JULY 6 (offseason): STILL UNSIGNED as the moratorium lifts at noon ET, the moment any sign-and-trade becomes executable. SUITOR LIST STILL GROWING. Weekend reporting adds the Bulls, Nets, Blazers and Clippers to a market that already included the Cavaliers and Bucks (S&T talks with Atlanta per Scotto, Jul 2), the Kings and the Lakers, who are placing 'significant consideration' on him as a perimeter-defense upgrade (Bleacher Report / Hoops Rumors / Pro Football Network, Jul 3-4). Cleveland's interest runs through Kenny Atkinson but the Cavs have apron math and other dominoes first (Fear The Sword). Atlanta holds his Non-Bird rights after declining the $24.3M option Jun 29, and a re-sign remains possible per Hoops Rumors; an S&T that returns an asset stays the cleanest path. Hawks line: 12.3 PPG / 5.3 RPG in 22.1 mpg across 16 games. Hawks line: 12.3 PPG / 5.3 RPG in 22.1 mpg across 16 games.",
+    recentNotes: "TUESDAY JULY 7 (offseason): STILL UNSIGNED, and with the moratorium lifted Monday a sign-and-trade is now actually executable. THE LAKERS LOOK LIKE THE LEAD SUITOR: Dan Woike of The Athletic reports LA is placing 'significant consideration' on him, with back-of-rotation pieces (Vanderbilt, LaRavia, Knecht, Ayton) the plausible outbound salary in a framework (The Athletic via heavy.com, Jul 6). The wider market still runs at least seven deep (Cavs, Bucks, Kings, Bulls, Nets, Blazers), and Cleveland's interest runs through Kenny Atkinson (SI onsi / Hoops Rumors / Fear The Sword). Atlanta holds his Non-Bird rights after declining the $24.3M option Jun 29, and a re-sign remains possible per Hoops Rumors; with the roster officially at 16, an S&T that returns an asset stays the cleanest path. Hawks line: 12.3 PPG / 5.3 RPG in 22.1 mpg across 16 games.",
     playoffStats: { gamesPlayed: 6, minutesPerGame: 25.7, pointsPerGame: 13.4, reboundsPerGame: 3.6, assistsPerGame: 0.8 },
     playoffSeries: null,
     minutesTrend: "down",
@@ -283,7 +283,7 @@ export const PLAYERS = [
     fieldGoalPct: 53.8, threePointPct: 38.7, freeThrowPct: 55.2,
     trueShootingPct: 58.3, plusMinus: -0.4,
     form: 5.7, status: "active", injuryNote: null,
-    recentNotes: "SUNDAY JULY 5 (Summer League): LED THE HAWKS IN THE OPENER. Newell scored a team-high 15 with 5 rebounds and 3 assists in Saturday's 103-102 OT loss to Utah in Salt Lake City (NBA.com / ESPN, Jul 4), sharing top-scorer honors with undrafted Gabe Madsen while rookies Flemings (14-9-4 steals) and Ejiofor (11 boards) debuted around him. Exactly the assertive showing his second summer needed: after a rookie year of 44 games, 5.2 PPG and 38.7% from three (led all rookies at min 10 attempts), he is making his case for a bigger third-big role with Kuminga off the books. Next: vs OKC Monday 7 PM ET, Memphis Tuesday, then Vegas.",
+    recentNotes: "TUESDAY JULY 7 (Summer League): TWO STRONG GAMES IN. Newell followed his team-high 15 in the opener with 13 points, 7 rebounds and 3 assists in Monday's 82-77 comeback win over OKC, a steadying frontcourt presence while Ejiofor (19-15) stole the show (NBA.com / ESPN, Jul 6). Through two SLC games he is Atlanta's most consistent scorer, exactly the assertive summer his second year needed: after a rookie season of 44 games, 5.2 PPG and 38.7% from three (led all rookies at min 10 attempts), he is building a real case for the third-big role with Kuminga off the books. Next: the SLC finale vs Memphis and No. 3 pick Cameron Boozer tonight 7 PM ET, then Vegas opens Thursday.",
     playoffStats: { gamesPlayed: 1, minutesPerGame: 5.0, pointsPerGame: 2.0, reboundsPerGame: 1.0, assistsPerGame: 0 },
     playoffSeries: null,
     minutesTrend: "up",
@@ -324,7 +324,7 @@ export const PLAYERS = [
     fieldGoalPct: 54.8, threePointPct: 32.1, freeThrowPct: 78.2,
     trueShootingPct: 58.4, plusMinus: -0.3,
     form: 5.0, status: "active", injuryNote: null,
-    recentNotes: "RE-SIGNED: one year, $14M, agreed Tue Jun 30 (AP / Washington Post / SI onsi / Peachtree Hoops). New detail Jul 1-2: because his Non-Bird rights are too low, Atlanta will use nearly all of its ~$15M Non-Taxpayer Mid-Level to complete the deal (Hoops Rumors / Spotrac), which closes the Hawks' main free-agent tool. Official Monday Jul 6 when the moratorium lifts. Fully recovered from the Apr 1 right high-ankle sprain; slots back in as Okongwu's veteran backup while the center hunt continues on the trade market.",
+    recentNotes: "OFFICIAL AS OF MONDAY JULY 6: one year, $14M, agreed Jun 30 (AP / Shams / SI onsi / Peachtree Hoops) and executed when the moratorium lifted. Because his Non-Bird rights are too low, Atlanta used nearly all of its ~$15M Non-Taxpayer Mid-Level to complete the deal (Hoops Rumors / Spotrac), which closes the Hawks' main free-agent tool. Fully recovered from the Apr 1 right high-ankle sprain; slots back in as Okongwu's veteran backup while the center hunt continues on the trade market.",
     playoffStats: null,
     playoffSeries: null,
     minutesTrend: null,
@@ -385,14 +385,14 @@ export const TEAM_LOGOS = {
 // Season ended Apr 30 in Game 6 elimination by the Knicks. Next on the calendar:
 // 2026 NBA Draft Lottery on May 10 (ATL holds the more-favorable of NOP/MIL plus CLE No. 24).
 export const NEXT_GAME = {
-  opponent: "Summer League vs Oklahoma City (Salt Lake City)",
+  opponent: "Summer League vs Memphis (Salt Lake City finale)",
   shortName: "SLC SL",
   home: false,
-  date: "2026-07-06T19:00:00-04:00",
+  date: "2026-07-07T19:00:00-04:00",
   competition: "OFFSEASON",
   venue: "Jon M. Huntsman Center, Salt Lake City",
   broadcast: "NBA League Pass",
-  seriesContext: "GAME DAY, MONDAY JULY 6, 7 PM ET: Hawks-Thunder in SLC Summer League game 2 at the Jon M. Huntsman Center (finale vs Memphis Tue Jul 7; Vegas opens Thu Jul 9). OKC counters with No. 12 pick Aday Mara, the 7'3 center from Michigan's national title team, plus No. 16 Bennett Stirtz (Iowa) and No. 41 Otega Oweh (Kentucky). Watch for: Kingston Flemings' jumper after a 4-of-16 opener he still stamped with 14 points, 9 assists and 4 steals; Zuby Ejiofor (11 boards, 3 steals Saturday) against Mara's size; Asa Newell building on his team-high 15 in the 103-102 OT loss to Utah. It is also paperwork day: the moratorium lifts at 12:01 PM ET, turning the McCollum extension (1yr, ~$21M), the Landale return (1yr, $14M) and the Wiggins and Carter trades official. KUMINGA: still unsigned, suitor list at least seven deep (Cavs, Bucks, Lakers, Kings, Bulls, Nets, Blazers); Atlanta holds his Non-Bird rights, and a sign-and-trade becomes executable once the moratorium lifts. TRADE BOARD: Murphy III interest live but crowded (Celtics, Pistons, Warriors, Clippers also in the mix); Hield's $9.66M expiring stays the matching salary; Turner the center watch name.",
+  seriesContext: "GAME DAY, TUESDAY JULY 7, 7 PM ET: Hawks-Grizzlies in the Salt Lake City finale at the Jon M. Huntsman Center, with both teams at 1-1 (Vegas opens Thursday July 9 for Atlanta, ESPN2). Memphis brings the summer's headliner: No. 3 overall pick Cameron Boozer, who opened with 15-4-4 in a 111-74 rout of the Thunder and followed with 18 points, 7 boards and 4 assists on 6-of-9 shooting (4-of-5 from three) in Monday's loss to the Jazz, plus All-Rookie First Teamer Cedric Coward. Atlanta rides the momentum of Monday's 82-77 comeback win over OKC, erasing a 20-point deficit behind Zuby Ejiofor's 19-point, 15-rebound eruption with back-to-back fourth-quarter threes; Asa Newell added 13-7-3 and Kingston Flemings had 12 points, 5 assists and 3 blocks. Watch for: Ejiofor vs Boozer in the frontcourt, and whether Flemings' jumper (4-of-10 Monday after a 4-of-16 opener) keeps trending. PAPERWORK DONE: the moratorium lifted Monday noon, making the McCollum extension (1yr, ~$21M), the Landale return (1yr, $14M), and the Wiggins (two future seconds to OKC) and Carter trades official; the roster now sits at 16 and must trim to 15. KUMINGA: still unsigned, sign-and-trades now executable; the Lakers are giving him 'significant consideration' per The Athletic. TRADE BOARD: Pelicans' Murphy III ask reportedly down to about three first-round picks from four; Hield's $9.66M expiring stays the matching salary.",
 };
 
 // ─── Game Results (2025-26 regular season · last 16 games) ─────────────────
@@ -441,20 +441,26 @@ export const EAST_STANDINGS = [
 
 // ─── AI News Digest (generated from live web search) ───────────────────────
 export const NEWS_DIGEST = {
-  generatedAt: "2026-07-06T08:25:00Z",
+  generatedAt: "2026-07-07T08:30:00Z",
   summary:
-    "Monday July 6 is game day and paperwork day at once. On the floor, the Hawks face Oklahoma City's summer squad at 7 PM ET at the Jon M. Huntsman Center, game 2 of the Salt Lake City slate, looking to bounce back from Saturday's 103-102 OT loss to Utah in which No. 8 pick KINGSTON FLEMINGS shot 4-of-16 but still stamped the game with 14 points and game highs in assists (9) and steals (4); OKC counters with No. 12 pick Aday Mara, the 7'3 center from Michigan's national title team (NBA.com / SI onsi / Yahoo Sports). Off the floor, the moratorium lifts at 12:01 PM ET, turning the CJ McCollum extension, the Jock Landale return and the Aaron Wiggins and Devin Carter trades official and unlocking Atlanta's trade machinery. On the market there was no overnight movement: JONATHAN KUMINGA remains unsigned with a suitor list at least seven teams deep (Cavs, Bucks, Lakers, Kings, Bulls, Nets, Blazers), the Trey Murphy III field stays crowded (Celtics, Pistons, Warriors and Clippers alongside Atlanta), and Hield's $9.66M expiring remains the obvious matching salary in every scenario.",
+    "As of Tuesday July 7, the Hawks are riding their first summer win. Atlanta erased a 20-point deficit to beat Oklahoma City 82-77 Monday night in Salt Lake City, powered by No. 23 pick ZUBY EJIOFOR's 19-point, 15-rebound eruption that included back-to-back fourth-quarter threes; Asa Newell added 13-7-3 and Kingston Flemings chipped in 12 points, 5 assists and 3 blocks (NBA.com / ESPN / Yahoo Sports). Tonight at 7 PM ET the Hawks close the SLC slate against Memphis and No. 3 overall pick Cameron Boozer, with both teams 1-1 before Vegas opens Thursday. Off the floor, Monday's noon moratorium lift made the offseason official: the McCollum extension, the Landale return, and the Wiggins and Carter trades are all executed, which puts the roster at 16 and forces at least one trim to reach 15. On the market, the Lakers are giving JONATHAN KUMINGA 'significant consideration' per The Athletic (sign-and-trades are now executable), and the Pelicans' asking price for Trey Murphy III has reportedly dropped to about three first-round picks, with Hield's $9.66M expiring still the obvious matching salary in every scenario.",
   keyTopics: [
     {
-      title: "Game Day: Hawks-Thunder at 7 PM ET in SLC, With Flemings' Shooting Bounce-Back and the Ejiofor vs Aday Mara Size Matchup to Watch",
+      title: "Ejiofor Erupts for 19 and 15 as Hawks Storm Back From 20 Down to Beat the Thunder 82-77 in SLC Game 2",
       detail:
-        "Tonight at 7 PM ET the Hawks meet Oklahoma City's summer squad at the Jon M. Huntsman Center, game 2 of 3 in Salt Lake City before Tuesday's finale vs Memphis; Vegas opens Thursday July 9 (NBA.com / Peachtree Hoops, Jul 5). The Thunder group is headlined by No. 12 pick Aday Mara, the 7'3 center who helped Michigan win the national championship this spring, alongside No. 16 Bennett Stirtz (Iowa) and No. 41 Otega Oweh (Kentucky) (SI onsi / Yahoo Sports, Jul 5). Atlanta's watch list: whether Kingston Flemings' jumper comes around after a 4-of-16 opener he still filled with 14 points, 9 assists and 4 steals, how Zuby Ejiofor (11 boards and 3 steals Saturday) handles Mara's size, and whether Asa Newell builds on his team-high 15. Broadcast: NBA League Pass.",
+        "Monday night's 82-77 win over Oklahoma City was Atlanta's first of the summer, and it belonged to No. 23 pick Zuby Ejiofor: 19 points (5-13 FG, 3-8 from three, 4-5 FT), 15 rebounds, 3 assists and a block in 25 minutes, most of it after halftime, capped by back-to-back fourth-quarter threes that flipped the game (NBA.com / CBS Sports / NBC Sports, Jul 6). The Hawks trailed by 20 before outscoring OKC 50-32 across the second and third quarters, shooting 12-of-36 from deep while holding the Thunder to 5-of-15. Asa Newell added 13 points, 7 rebounds and 3 assists; Kingston Flemings finished with 12 points (4-10 FG), a game-high 5 assists and a team-best 3 blocks, the two-way lead-guard stamp Atlanta drafted at No. 8 (ESPN / SI onsi / Yahoo Sports, Jul 6). Payton Sandfort scored 25 off the OKC bench. Atlanta is 1-1 in Salt Lake City with the finale Tuesday.",
       category: "games",
     },
     {
-      title: "Moratorium Lifts at 12:01 PM ET Today: McCollum, Landale, Wiggins and Carter Moves Turn Official, Unlocking the Trade Machinery",
+      title: "Game Day: SLC Finale vs Memphis at 7 PM ET, With No. 3 Pick Cameron Boozer the Marquee Matchup Before Vegas Opens Thursday",
       detail:
-        "The offseason's paperwork logjam clears today. At 12:01 PM ET the July moratorium lifts, making official the CJ McCollum extension (1yr, ~$21M with a 7.5% trade kicker), the Jock Landale return (1yr, $14M via nearly all of the Non-Taxpayer MLE), and the trades for Aaron Wiggins (two future second-rounders to OKC) and Devin Carter (Kings salary dump that also sent Atlanta a 2033 second) (NBA.com / ESPN / Hoops Rumors free-agency trackers). Once the ink dries, Atlanta's larger machinery (Hield's expiring, the center hunt, any Kuminga sign-and-trade) can start executing rather than just talking.",
+        "Tonight at 7 PM ET the Hawks close the Salt Lake City slate against the Grizzlies at the Jon M. Huntsman Center, both teams 1-1 (NBA.com / Peachtree Hoops, Jul 6). Memphis brings the summer's headline rookie: No. 3 overall pick Cameron Boozer, who debuted with 15-4-4 in a 111-74 rout of the Thunder and followed with an efficient 18-7-4 (6-of-9 FG, 4-of-5 from three) in Monday's loss to Darryn Peterson's Jazz (Yahoo Sports / ClutchPoints / Yardbarker, Jul 6). All-Rookie First Teamer Cedric Coward is also on the Memphis roster. Atlanta's watch list: Ejiofor vs Boozer in the frontcourt after Monday's 19-15 breakout, and whether Flemings' jumper (4-of-10 Monday, up from 4-of-16 in the opener) keeps climbing. The Hawks then open Las Vegas Summer League Thursday July 9 on ESPN2. Broadcast tonight: NBA League Pass.",
+      category: "games",
+    },
+    {
+      title: "Moratorium Lifted Monday: McCollum, Landale, Wiggins and Carter Moves Now Official, and the 16-Man Roster Must Trim to 15",
+      detail:
+        "The offseason's paperwork logjam cleared Monday at 12:01 PM ET. Now official: the CJ McCollum extension (1yr, ~$21M with a trade kicker), the Jock Landale return (1yr, $14M via nearly all of the Non-Taxpayer MLE), and the trades for Aaron Wiggins (officially completed Monday, two future second-rounders to OKC per the Thunder's announcement) and Devin Carter (Kings salary dump that also sent Atlanta a 2033 second) (NBA.com / HoopsHype / News9, Jul 6). The consequence: Atlanta officially stands at 16 standard contracts after signing all three rookies, one over the regular-season limit of 15, and two over if Kuminga returns. A trade is the likeliest trim, with Corey Kispert the name most often flagged as the odd man out (SI onsi, Jul 6). With the ink dry, the larger machinery (Hield's expiring, the center hunt, any Kuminga sign-and-trade) can now execute rather than just talk.",
       category: "trades",
     },
     {
@@ -464,9 +470,9 @@ export const NEWS_DIGEST = {
       category: "games",
     },
     {
-      title: "Kuminga Suitor List Keeps Growing: Bulls, Nets and Blazers Now Linked Alongside Cavs, Bucks, Lakers and Kings",
+      title: "Kuminga Watch: Sign-and-Trades Now Executable, and the Lakers Are Giving Him 'Significant Consideration' Per The Athletic",
       detail:
-        "The Jonathan Kuminga market widened over the holiday weekend. Beyond the Cavaliers and Bucks sign-and-trade talks Scotto reported Thursday, weekend aggregation now also links the Bulls, Nets, Blazers and Clippers to the 23-year-old forward (Bleacher Report / Stadium Rant / Hoops Rumors, Jul 3-4). The Lakers are placing 'significant consideration' on him as a perimeter-defense upgrade, though LA is down to minimum-salary tools after the Kessler trade spending (Pro Football Network / heavy.com, Jul 4). Cleveland's interest runs through coach Kenny Atkinson from their Golden State overlap, but the Cavs are pressed against the aprons and have other dominoes to resolve first (Fear The Sword, Jul 4). Atlanta holds Kuminga's Non-Bird rights after declining the $24.3M option June 29, and Hoops Rumors notes a re-sign also remains on the table; with the roster effectively at 16 come Monday, a sign-and-trade that returns an asset stays the cleanest path.",
+        "With the moratorium lifted Monday, a Jonathan Kuminga sign-and-trade can now actually execute, and the Lakers look like the most engaged suitor. Dan Woike of The Athletic reports LA is placing 'significant consideration' on the 23-year-old as an athletic two-way forward, with back-of-rotation pieces like Jarred Vanderbilt, Jake LaRavia, Dalton Knecht or Deandre Ayton the plausible outbound salary in any framework (The Athletic via heavy.com, Jul 6). The wider market still runs at least seven deep (Cavs, Bucks, Kings, Bulls, Nets, Blazers alongside LA), Cleveland's interest runs through coach Kenny Atkinson, and SI has floated Cavs targets Atlanta could ask for in return (SI onsi / Hoops Rumors / Fear The Sword, Jul 4-6). Atlanta holds Kuminga's Non-Bird rights after declining the $24.3M option June 29, and a re-sign remains on the table per Hoops Rumors; with the roster now officially at 16, a sign-and-trade that returns an asset stays the cleanest path.",
       category: "trades",
     },
     {
@@ -476,15 +482,15 @@ export const NEWS_DIGEST = {
       category: "trades",
     },
     {
-      title: "Murphy Watch: Hawks Remain in the Mix, but the Field Is Crowded (Celtics, Pistons, Warriors, Clippers) and a Deal Looks Closer",
+      title: "Murphy Watch: Pelicans' Asking Price Reportedly Drops to About Three First-Round Picks, With Atlanta Still in a Crowded Field",
       detail:
-        "The Trey Murphy III pursuit is live but contested. Scotto's Friday report that Atlanta remains interested now sits alongside weekend reporting that the Celtics, Pistons, Warriors and Clippers are also in the mix for the Pelicans wing, and Pelicans-side coverage says a trade 'appears closer than ever' with a frontrunner emerging (SI onsi / Roundtable / Pelican Debrief, Jul 3-4). Atlanta and New Orleans discussed a Murphy deal built around the No. 8 pick before the draft; those talks died and the pick became Kingston Flemings, but the interest survived. Murphy, 26, averaged 21.5 points on roughly 38% from three last season, would slot next to Jalen Johnson as the two-way wing the roster lacks, and has an existing rapport with CJ McCollum from their Pelicans years. Hield's $9.66M expiring and the stockpiled picks are the obvious framework pieces (Soaring Down South, Jul 4).",
+        "Fresh movement on the Trey Murphy III front: league circles believe New Orleans' asking price has come down to the equivalent of roughly three first-round picks, from four, and people around the league are wondering if Murphy is the next notable trade candidate to move (Hoops Rumors, Jul 6). The field stays crowded (Celtics, Pistons, Warriors, Pacers, Blazers, Spurs and Lakers have all been connected at points, though some are believed out of the mix), and one insider framework floated a package of Zaccharie Risacher, Buddy Hield and multiple firsts (Yahoo Sports / Jake Weinbach, Jul 6). Atlanta and New Orleans discussed a Murphy deal built around the No. 8 pick before the draft; those talks died and the pick became Kingston Flemings, but the interest survived. Murphy, 26, averaged 21.5 points on roughly 38% from three last season, would slot next to Jalen Johnson as the two-way wing the roster lacks, and has an existing rapport with CJ McCollum from their Pelicans years. Hield's $9.66M expiring and the stockpiled picks remain the obvious framework pieces (Soaring Down South / Sam Amick, Jul 4-6).",
       category: "trades",
     },
     {
       title: "Landale Mechanics: Return Eats Nearly All of the $15M Non-Taxpayer Mid-Level, Official When the Moratorium Lifts July 6",
       detail:
-        "New reporting fills in how the Jock Landale re-sign works: because Landale's Non-Bird rights are too low to reach $14M, Atlanta will use nearly all of its roughly $15M Non-Taxpayer Mid-Level Exception to complete the one-year deal (Hoops Rumors / Spotrac, Jul 1-2). That effectively closes the Hawks' main free-agent tool and confirms the rest of the offseason runs through the trade market. Landale, fully recovered from the Apr 1 right high-ankle sprain that cost him the Knicks series, slots back in as Onyeka Okongwu's veteran backup; the agreement becomes official Monday July 6.",
+        "New reporting fills in how the Jock Landale re-sign works: because Landale's Non-Bird rights are too low to reach $14M, Atlanta will use nearly all of its roughly $15M Non-Taxpayer Mid-Level Exception to complete the one-year deal (Hoops Rumors / Spotrac, Jul 1-2). That effectively closes the Hawks' main free-agent tool and confirms the rest of the offseason runs through the trade market. Landale, fully recovered from the Apr 1 right high-ankle sprain that cost him the Knicks series, slots back in as Onyeka Okongwu's veteran backup; the deal became official Monday July 6 when the moratorium lifted.",
       category: "trades",
     },
     {
@@ -498,12 +504,6 @@ export const NEWS_DIGEST = {
       detail:
         "A quieter July 1 development with long-term stakes: ONYEKA OKONGWU is now eligible for a veteran extension on top of the two years and roughly $33M left on his current deal (Soaring Down South / Spotrac, Jul 1-2). Okongwu is coming off a career-best 15.2/7.6/3.1 season on 48% shooting as the post-Trae starting center, and with Kuminga's $24.3M off the books Atlanta has the medium-term flexibility to lock in its own. No talks have been reported yet; file it as the next contract conversation once the roster settles.",
       category: "general",
-    },
-    {
-      title: "Hawks Add Guard Devin Carter and a 2033 Second-Rounder From Sacramento in a Kings Salary Dump",
-      detail:
-        "Atlanta deepened its bench on Monday. The Hawks acquired 24-year-old guard DEVIN CARTER and a 2033 second-round pick from the Sacramento Kings, a deal widely read as a straight Sacramento salary dump to duck under the luxury tax (NBA.com / SI onsi / NBC Sports / Atlanta News First, Jun 29). Carter, the No. 13 overall pick in 2024, has averaged 6.4 points, 2.7 rebounds and 1.9 assists across his first two NBA seasons on a $5.1M salary for the coming year. For Atlanta he profiles as cheap perimeter-defense depth behind a backcourt of CJ McCollum, Dyson Daniels and Nickeil Alexander-Walker, with Kingston Flemings and Aaron Wiggins also in the mix, the kind of low-cost value add POBO Onsi Saleh has prioritized over a splashy strike. Picking up a useful young guard and a future pick for taking on one expiring year is the sort of margin work a flexible cap sheet is built to enable.",
-      category: "trades",
     },
     {
       title: "PICK: Hawks Draft Houston PG Kingston Flemings at No. 8, Their Guard of the Future and an A-Grade Swing",
@@ -557,17 +557,17 @@ export const NEWS_DIGEST = {
 // ─── Issue metadata (drives datelines, cover star, masthead) ───────────────
 // Update `date` daily; everything else flows from KEY_DATES + NEWS_DIGEST.
 export const ISSUE = {
-  date: "2026-07-06",                              // YYYY-MM-DD — single source of truth
+  date: "2026-07-07",                              // YYYY-MM-DD — single source of truth
   volume: 26,                                       // VOL XXVI
-  number: 20,                                       // Issue number (offseason cadence)
-  dateline: "ATLANTA · JULY 6, 2026",               // Pre-formatted for display
-  mastheadLine: "VOL XXVI · ISSUE NO. 20 · JULY 2026 · ATL · USA",
-  railLabel: "ISSUE 20 · JULY 6",
+  number: 21,                                       // Issue number (offseason cadence)
+  dateline: "ATLANTA · JULY 7, 2026",               // Pre-formatted for display
+  mastheadLine: "VOL XXVI · ISSUE NO. 21 · JULY 2026 · ATL · USA",
+  railLabel: "ISSUE 21 · JULY 7",
   coverStarId: 1,                                   // PLAYERS[id] for the cover portrait
-  coverRibbon: "GAME DAY: THUNDER 7PM ET · MORATORIUM LIFTS NOON · FOUR MOVES TURN OFFICIAL",
-  coverStatusKicker: "OFFSEASON · DAY 65",          // top-right corner of cover
-  coverStatusLine: "MORATORIUM {DAYS:moratorium} · VEGAS SL {DAYS:sl-vegas}", // {DAYS:id} resolves from KEY_DATES
-  backTagline: "Next issue: SLC finale vs Memphis, plus the first official signings land.",
+  coverRibbon: "EJIOFOR 19-15 · HAWKS ERASE 20 TO BEAT OKC 82-77 · TONIGHT: BOOZER'S GRIZZLIES 7PM ET",
+  coverStatusKicker: "OFFSEASON · DAY 66",          // top-right corner of cover
+  coverStatusLine: "SLC FINALE TONIGHT · VEGAS SL {DAYS:sl-vegas}", // {DAYS:id} resolves from KEY_DATES
+  backTagline: "Next issue: the SLC finale verdict, plus Vegas opens Thursday on ESPN2.",
 };
 
 // ─── Cover TOC (table of contents on the cover) ────────────────────────────
@@ -653,7 +653,7 @@ export const KEY_DATES = [
     hawksAngle: "Hawks vs Jazz, 5 PM ET, Huntsman Center · Flemings / Ejiofor / Veesaar debut · also Jul 6, 7" },
   { id: "moratorium",  date: "2026-07-06",
     label: "Moratorium ends",     short: "MORATORIUM",  kind: "EVENT",
-    hawksAngle: "Signings official · sign-and-trades can finalize (Kuminga watch) · cap holds release" },
+    hawksAngle: "DONE (Jul 6). McCollum, Landale, Wiggins, Carter all official · roster at 16, must trim to 15 · Kuminga S&T now executable" },
   { id: "sl-vegas",    date: "2026-07-09",
     label: "Las Vegas SL opener", short: "VEGAS SL",    kind: "EVENT",
     hawksAngle: "Hawks open Vegas on day one, ESPN2 · at least five games guaranteed" },
