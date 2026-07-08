@@ -385,14 +385,14 @@ export const TEAM_LOGOS = {
 // Season ended Apr 30 in Game 6 elimination by the Knicks. Next on the calendar:
 // 2026 NBA Draft Lottery on May 10 (ATL holds the more-favorable of NOP/MIL plus CLE No. 24).
 export const NEXT_GAME = {
-  opponent: "Summer League vs Memphis (Salt Lake City finale)",
-  shortName: "SLC SL",
+  opponent: "Summer League vs San Antonio (Las Vegas opener)",
+  shortName: "LV SL",
   home: false,
-  date: "2026-07-07T19:00:00-04:00",
+  date: "2026-07-09T16:30:00-04:00",
   competition: "OFFSEASON",
-  venue: "Jon M. Huntsman Center, Salt Lake City",
-  broadcast: "NBA League Pass",
-  seriesContext: "GAME DAY, TUESDAY JULY 7, 7 PM ET: Hawks-Grizzlies in the Salt Lake City finale at the Jon M. Huntsman Center, with both teams at 1-1 (Vegas opens Thursday July 9 for Atlanta, ESPN2). Memphis brings the summer's headliner: No. 3 overall pick Cameron Boozer, who opened with 15-4-4 in a 111-74 rout of the Thunder and followed with 18 points, 7 boards and 4 assists on 6-of-9 shooting (4-of-5 from three) in Monday's loss to the Jazz, plus All-Rookie First Teamer Cedric Coward. Atlanta rides the momentum of Monday's 82-77 comeback win over OKC, erasing a 20-point deficit behind Zuby Ejiofor's 19-point, 15-rebound eruption with back-to-back fourth-quarter threes; Asa Newell added 13-7-3 and Kingston Flemings had 12 points, 5 assists and 3 blocks. Watch for: Ejiofor vs Boozer in the frontcourt, and whether Flemings' jumper (4-of-10 Monday after a 4-of-16 opener) keeps trending. PAPERWORK DONE: the moratorium lifted Monday noon, making the McCollum extension (1yr, ~$21M), the Landale return (1yr, $14M), and the Wiggins (two future seconds to OKC) and Carter trades official; the roster now sits at 16 and must trim to 15. KUMINGA: still unsigned, sign-and-trades now executable; the Lakers are giving him 'significant consideration' per The Athletic. TRADE BOARD: Pelicans' Murphy III ask reportedly down to about three first-round picks from four; Hield's $9.66M expiring stays the matching salary.",
+  venue: "Thomas & Mack Center, Las Vegas",
+  broadcast: "ESPN2",
+  seriesContext: "NEXT UP, THURSDAY JULY 9, 4:30 PM ET on ESPN2: Atlanta opens Las Vegas Summer League against the Spurs at the Thomas & Mack Center, then plays Brooklyn (Jul 11), Boston (Jul 13) and one more before the July 18 semis and July 19 final. The Hawks arrive on a two-game winning streak after closing Salt Lake City 2-1: Tuesday's 96-82 win over Memphis saw Devon Higgs pour in 22 points (7-of-9 FG, 2-of-3 from three) with five rebounds and two blocks, and six Hawks reach double figures as Atlanta held Cameron Boozer's Grizzlies to 37% shooting. Watch for: whether No. 8 pick Kingston Flemings' jumper keeps trending up, Zuby Ejiofor building on his 19-15 comeback game, and Asa Newell pressing his case for a regular-season rotation spot. ROSTER: still 16 standard contracts after the moratorium lifted, one over the 15-man limit, so a trade or waiver is coming (Kispert most often flagged). TRADE BOARD: the Lakers remain the most engaged Kuminga suitor with sign-and-trades now executable; the Pelicans' Trey Murphy III ask has reportedly eased to about three first-round picks, with Hield's fully guaranteed $9.66M the matching salary in every framework.",
 };
 
 // ─── Game Results (2025-26 regular season · last 16 games) ─────────────────
@@ -441,20 +441,26 @@ export const EAST_STANDINGS = [
 
 // ─── AI News Digest (generated from live web search) ───────────────────────
 export const NEWS_DIGEST = {
-  generatedAt: "2026-07-07T08:30:00Z",
+  generatedAt: "2026-07-08T13:00:00Z",
   summary:
-    "As of Tuesday July 7, the Hawks are riding their first summer win. Atlanta erased a 20-point deficit to beat Oklahoma City 82-77 Monday night in Salt Lake City, powered by No. 23 pick ZUBY EJIOFOR's 19-point, 15-rebound eruption that included back-to-back fourth-quarter threes; Asa Newell added 13-7-3 and Kingston Flemings chipped in 12 points, 5 assists and 3 blocks (NBA.com / ESPN / Yahoo Sports). Tonight at 7 PM ET the Hawks close the SLC slate against Memphis and No. 3 overall pick Cameron Boozer, with both teams 1-1 before Vegas opens Thursday. Off the floor, Monday's noon moratorium lift made the offseason official: the McCollum extension, the Landale return, and the Wiggins and Carter trades are all executed, which puts the roster at 16 and forces at least one trim to reach 15. On the market, the Lakers are giving JONATHAN KUMINGA 'significant consideration' per The Athletic (sign-and-trades are now executable), and the Pelicans' asking price for Trey Murphy III has reportedly dropped to about three first-round picks, with Hield's $9.66M expiring still the obvious matching salary in every scenario.",
+    "As of Wednesday July 8, the Hawks closed Salt Lake City 2-1 and now shift to Las Vegas. Atlanta beat Memphis 96-82 on Tuesday behind DEVON HIGGS' 22 points (7-of-9 FG, 2-of-3 from three), with six Hawks in double figures as the defense held Cameron Boozer's Grizzlies to 37% shooting and 30% from deep (NBA.com / ESPN). That capped a two-game winning streak (after Monday's 20-point comeback over OKC) and sends Atlanta into the Vegas opener Thursday July 9 at 4:30 PM ET against San Antonio on ESPN2, first of at least five games before the July 18-19 finals. Off the floor, the picture is unchanged since the moratorium lifted Monday: the McCollum extension, Landale return, and Wiggins and Carter trades are official, leaving the roster at 16 and forcing at least one trim to 15, with Corey Kispert most often flagged as the odd man out. On the market, the Lakers remain the most engaged JONATHAN KUMINGA suitor with sign-and-trades now executable, and the Pelicans' asking price for Trey Murphy III has reportedly eased to about three first-round picks, with Hield's fully guaranteed $9.66M expiring the obvious matching salary in every scenario.",
   keyTopics: [
     {
-      title: "Ejiofor Erupts for 19 and 15 as Hawks Storm Back From 20 Down to Beat the Thunder 82-77 in SLC Game 2",
+      title: "Higgs Drops 22 as Six Hawks Reach Double Figures in a 96-82 SLC Finale Win Over Boozer's Grizzlies",
       detail:
-        "Monday night's 82-77 win over Oklahoma City was Atlanta's first of the summer, and it belonged to No. 23 pick Zuby Ejiofor: 19 points (5-13 FG, 3-8 from three, 4-5 FT), 15 rebounds, 3 assists and a block in 25 minutes, most of it after halftime, capped by back-to-back fourth-quarter threes that flipped the game (NBA.com / CBS Sports / NBC Sports, Jul 6). The Hawks trailed by 20 before outscoring OKC 50-32 across the second and third quarters, shooting 12-of-36 from deep while holding the Thunder to 5-of-15. Asa Newell added 13 points, 7 rebounds and 3 assists; Kingston Flemings finished with 12 points (4-10 FG), a game-high 5 assists and a team-best 3 blocks, the two-way lead-guard stamp Atlanta drafted at No. 8 (ESPN / SI onsi / Yahoo Sports, Jul 6). Payton Sandfort scored 25 off the OKC bench. Atlanta is 1-1 in Salt Lake City with the finale Tuesday.",
+        "Atlanta closed Salt Lake City 2-1 with a comfortable 96-82 win over Memphis on Tuesday, and the story was depth: six Hawks scored in double digits, led by guard Devon Higgs' 22 points (7-of-9 FG, 2-of-3 from three, 3-of-4 FT) with five rebounds and two blocks (NBA.com / ESPN, Jul 7). Atlanta jumped out early, outscoring the Grizzlies 28-15 in the opening 10 minutes behind a 13-0 run, weathered a Memphis push that trimmed the lead in the third, then opened the fourth on an 11-2 run and never looked back. The Hawks shot 46.5% from the floor and 46.9% from deep while holding Cameron Boozer's Grizzlies to 37.1% overall and 30% from three. The result caps a two-game winning streak after Monday's 20-point comeback over OKC and sends Atlanta to Las Vegas riding momentum.",
       category: "games",
     },
     {
-      title: "Game Day: SLC Finale vs Memphis at 7 PM ET, With No. 3 Pick Cameron Boozer the Marquee Matchup Before Vegas Opens Thursday",
+      title: "Next Up: Vegas Summer League Opens Thursday vs San Antonio at 4:30 PM ET on ESPN2, First of at Least Five Games",
       detail:
-        "Tonight at 7 PM ET the Hawks close the Salt Lake City slate against the Grizzlies at the Jon M. Huntsman Center, both teams 1-1 (NBA.com / Peachtree Hoops, Jul 6). Memphis brings the summer's headline rookie: No. 3 overall pick Cameron Boozer, who debuted with 15-4-4 in a 111-74 rout of the Thunder and followed with an efficient 18-7-4 (6-of-9 FG, 4-of-5 from three) in Monday's loss to Darryn Peterson's Jazz (Yahoo Sports / ClutchPoints / Yardbarker, Jul 6). All-Rookie First Teamer Cedric Coward is also on the Memphis roster. Atlanta's watch list: Ejiofor vs Boozer in the frontcourt after Monday's 19-15 breakout, and whether Flemings' jumper (4-of-10 Monday, up from 4-of-16 in the opener) keeps climbing. The Hawks then open Las Vegas Summer League Thursday July 9 on ESPN2. Broadcast tonight: NBA League Pass.",
+        "The Hawks open Las Vegas Summer League Thursday July 9 at 4:30 PM ET against the Spurs at the Thomas & Mack Center (ESPN2), then face Brooklyn on July 11 (8 PM, ESPN), Boston on July 13 (6 PM, Prime) and one more before the semifinals July 18 and championship July 19 (NBA.com / Peachtree Hoops / Yahoo Sports, Jul 6). Every team plays at least five games. Atlanta's watch list carries over from Salt Lake City: whether No. 8 pick Kingston Flemings' jumper keeps climbing (he shot 4-of-16 in the opener, then 4-of-10 in Game 2), whether Zuby Ejiofor can build on his 19-15 comeback eruption, and whether second-year forward Asa Newell (13-7-3 vs OKC, 15 vs Utah) presses a real case for a regular-season rotation spot.",
+      category: "games",
+    },
+    {
+      title: "Ejiofor Erupts for 19 and 15 as Hawks Storm Back From 20 Down to Beat the Thunder 82-77 in SLC Game 2",
+      detail:
+        "Monday night's 82-77 win over Oklahoma City was Atlanta's first of the summer, and it belonged to No. 23 pick Zuby Ejiofor: 19 points (5-13 FG, 3-8 from three, 4-5 FT), 15 rebounds, 3 assists and a block in 25 minutes, most of it after halftime, capped by back-to-back fourth-quarter threes that flipped the game (NBA.com / CBS Sports / NBC Sports, Jul 6). The Hawks trailed by 20 before outscoring OKC 50-32 across the second and third quarters, shooting 12-of-36 from deep while holding the Thunder to 5-of-15. Asa Newell added 13 points, 7 rebounds and 3 assists; Kingston Flemings finished with 12 points (4-10 FG), a game-high 5 assists and a team-best 3 blocks, the two-way lead-guard stamp Atlanta drafted at No. 8 (ESPN / SI onsi / Yahoo Sports, Jul 6). Atlanta finished the Salt Lake City slate 2-1.",
       category: "games",
     },
     {
@@ -557,7 +563,7 @@ export const NEWS_DIGEST = {
 // ─── Issue metadata (drives datelines, cover star, masthead) ───────────────
 // Update `date` daily; everything else flows from KEY_DATES + NEWS_DIGEST.
 export const ISSUE = {
-  date: "2026-07-07",                              // YYYY-MM-DD — single source of truth
+  date: "2026-07-08",                              // YYYY-MM-DD — single source of truth
   volume: 26,                                       // VOL XXVI
   number: 21,                                       // Issue number (offseason cadence)
   dateline: "ATLANTA · JULY 7, 2026",               // Pre-formatted for display
