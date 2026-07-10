@@ -385,14 +385,14 @@ export const TEAM_LOGOS = {
 // Season ended Apr 30 in Game 6 elimination by the Knicks. Next on the calendar:
 // 2026 NBA Draft Lottery on May 10 (ATL holds the more-favorable of NOP/MIL plus CLE No. 24).
 export const NEXT_GAME = {
-  opponent: "Summer League vs San Antonio (Las Vegas opener)",
+  opponent: "Summer League vs Brooklyn (Las Vegas)",
   shortName: "LV SL",
   home: false,
-  date: "2026-07-09T16:30:00-04:00",
+  date: "2026-07-11T20:00:00-04:00",
   competition: "OFFSEASON",
   venue: "Thomas & Mack Center, Las Vegas",
-  broadcast: "ESPN2",
-  seriesContext: "TODAY, THURSDAY JULY 9, 4:30 PM ET on ESPN2: Atlanta opens Las Vegas Summer League against the Spurs at the Thomas & Mack Center, then plays Brooklyn (Jul 11), Boston (Jul 13) and one more before the July 18 semis and July 19 final. The Hawks arrive on a two-game winning streak after closing Salt Lake City 2-1: Tuesday's 96-82 win over Memphis saw Devon Higgs pour in 22 points (7-of-9 FG, 2-of-3 from three) with five rebounds and two blocks, and six Hawks reach double figures as Atlanta held Cameron Boozer's Grizzlies to 37% shooting. Watch for: whether No. 8 pick Kingston Flemings' jumper keeps trending up, Zuby Ejiofor and Asa Newell (both rested for the SLC finale) back in the rotation, and Newell pressing his case for a regular-season spot. ROSTER: still 16 standard contracts after the moratorium lifted, one over the 15-man limit, so a trade or waiver is coming (Kispert most often flagged). TRADE BOARD: HoopsHype reported Wednesday the Hawks are open to a Kuminga sign-and-trade to the Lakers built around Jarred Vanderbilt and a future first-round swap; the Pelicans' Trey Murphy III ask has reportedly eased to about three first-round picks, with Hield's fully guaranteed $9.66M the matching salary in every framework.",
+  broadcast: "ESPN",
+  seriesContext: "SATURDAY JULY 11, 8:00 PM ET on ESPN: Atlanta plays its second Las Vegas game against Brooklyn at the Thomas & Mack Center, then faces Boston (Jul 13) and one more before the July 18 semis and July 19 final. The Hawks arrive on a three-game winning streak after cruising past San Antonio 93-66 in Thursday's Vegas opener, a wire-to-wire rout in which they led 27-15 after one quarter and never trailed. Asa Newell led the way with 15 points, five rebounds and two assists, No. 52 Henri Veesaar added 14 and six boards off the bench, and NBA.com counted seven Hawks in double figures. No. 8 pick Kingston Flemings ran the offense to a game-high eight assists on a quiet five points. Watch for: whether Flemings' jumper starts falling to match his playmaking, whether Newell keeps pressing a regular-season case, and Veesaar's frontcourt reps. ROSTER: still 16 standard contracts, one over the 15-man limit, so a trade or waiver is coming (Kispert most often flagged). TRADE BOARD: the Kuminga sign-and-trade to the Lakers has firmed to a framework of Jarred Vanderbilt and a 2032 first-round swap, though HoopsHype reports the sides remain far apart on Kuminga's salary; Buddy Hield's fully guaranteed $9.66M expiring stays the matching salary in the center hunt and any Trey Murphy III pursuit.",
 };
 
 // ─── Game Results (2025-26 regular season · last 16 games) ─────────────────
@@ -441,14 +441,20 @@ export const EAST_STANDINGS = [
 
 // ─── AI News Digest (generated from live web search) ───────────────────────
 export const NEWS_DIGEST = {
-  generatedAt: "2026-07-09T08:25:00Z",
+  generatedAt: "2026-07-10T12:20:00Z",
   summary:
-    "It is game day: Atlanta opens Las Vegas Summer League this afternoon, Thursday July 9 at 4:30 PM ET against San Antonio at the Thomas & Mack Center on ESPN2, the first of at least five games before the July 18-19 finals. The Hawks arrive on a two-game winning streak after closing Salt Lake City 2-1, capped by Tuesday's 96-82 win over Memphis behind DEVON HIGGS' 22 points (7-of-9 FG) and six Hawks in double figures (NBA.com / ESPN). Watch list for Vegas: whether No. 8 pick Kingston Flemings' jumper keeps climbing, whether Zuby Ejiofor builds on his 19-15 comeback game, and whether second-year forward Asa Newell presses a real rotation case (both were rested for the SLC back-to-back and should feature Thursday). Off the floor, the freshest thread is the JONATHAN KUMINGA market: HoopsHype reported Wednesday that Atlanta is open to a sign-and-trade sending him to the Lakers, with a framework built around Jarred Vanderbilt and a future Lakers first-round pick swap. The roster still sits at 16 standard contracts, one over the 15-man limit, so a trade or waiver is coming (Corey Kispert most often flagged), and the Pelicans' Trey Murphy III ask has reportedly eased to about three first-round picks, with Hield's fully guaranteed $9.66M expiring the obvious matching salary in every scenario.",
+    "Atlanta opened Las Vegas Summer League in style, routing San Antonio 93-66 on Thursday night at the Thomas & Mack Center in a game the Hawks led wire to wire (27-15 after one, never trailing). ASA NEWELL paced a balanced effort with 15 points, five rebounds and two assists, No. 52 Henri Veesaar chipped in 14 and six boards off the bench, and NBA.com counted seven Hawks in double figures (NBA.com / ESPN / AJC, Jul 9). No. 8 pick Kingston Flemings again ran the show, dishing a game-high eight assists on a quiet five points, extending the two-way, pass-first profile Atlanta drafted him for. The win lifts the Hawks to a three-game streak with Brooklyn up next Saturday July 11 (8 PM ET, ESPN). Off the floor, the JONATHAN KUMINGA sign-and-trade to the Lakers has firmed to a specific framework, Jarred Vanderbilt plus a 2032 first-round swap back to Atlanta, though HoopsHype reported Wednesday the sides remain far apart on Kuminga's salary (LA near $10M annually). The roster still sits at 16 standard contracts, one over the 15-man limit, so a trade or waiver is coming (Corey Kispert most often flagged), with Buddy Hield's fully guaranteed $9.66M expiring the obvious matching salary in the center hunt and any Trey Murphy III pursuit.",
   keyTopics: [
     {
-      title: "GAME DAY: Hawks Open Las Vegas Summer League This Afternoon vs San Antonio at 4:30 PM ET on ESPN2",
+      title: "Vegas Opener: Hawks Rout Spurs 93-66 as Newell Scores 15 and Seven Atlanta Players Reach Double Figures",
       detail:
-        "Atlanta tips its Las Vegas Summer League opener Thursday July 9 at 4:30 PM ET against the Spurs at the Thomas & Mack Center (ESPN2), then faces Brooklyn on July 11 (8 PM, ESPN), Boston on July 13 (6 PM, Prime) and one more before the semifinals July 18 and championship July 19 (NBA.com / Peachtree Hoops / ESPN, Jul 9). Every team plays at least five games. The Hawks arrive 2-1 from Salt Lake City on a two-game winning streak, and both Zuby Ejiofor and Asa Newell, rested for the SLC back-to-back finale, should be back in the rotation. Watch list: whether No. 8 pick Kingston Flemings' jumper keeps climbing (4-of-16 in the SLC opener, then 4-of-10 in Game 2 despite 9 and 5 assists), whether Ejiofor builds on his 19-15 comeback eruption, and whether second-year forward Newell (a summer standout at 15 and 13-7-3 in his two SLC games) presses a real case for a regular-season spot.",
+        "Atlanta opened Las Vegas Summer League with a comfortable 93-66 win over San Antonio on Thursday night, a wire-to-wire performance in which the Hawks led 27-15 after the first quarter and never surrendered the lead (NBA.com / ESPN / AJC, Jul 9). Asa Newell led the way with 15 points, five rebounds and two assists, and NBA.com noted he was one of seven Hawks in double figures. No. 52 Henri Veesaar added 14 points and six rebounds off the bench, while No. 8 pick Kingston Flemings ran the offense to a game-high eight assists despite a quiet five points on his jumper. Atlanta held the Spurs to 66 points; Tarris Reed Jr. led San Antonio with 14 and 10 rebounds. The win extends the Hawks to a three-game summer streak.",
+      category: "games",
+    },
+    {
+      title: "Up Next: Hawks Face Brooklyn on Saturday in Second Vegas Game (8 PM ET, ESPN)",
+      detail:
+        "Atlanta's Las Vegas slate continues Saturday July 11 at 8:00 PM ET against Brooklyn at the Thomas & Mack Center on ESPN, followed by Boston on July 13 and one more game before the July 18 semifinals and July 19 championship (NBA.com / Peachtree Hoops / ESPN, Jul 9). Every team plays at least five games. Watch list against the Nets: whether Kingston Flemings' shot starts to fall to match his playmaking, whether Newell keeps building a regular-season case, and continued frontcourt reps for Veesaar and Zuby Ejiofor.",
       category: "games",
     },
     {
@@ -470,15 +476,9 @@ export const NEWS_DIGEST = {
       category: "trades",
     },
     {
-      title: "SL Opener: Hawks Fall 103-102 in OT to Peterson's Jazz, but Flemings (14-9-4 Steals) and Ejiofor (11 Boards) Impress in Debuts",
+      title: "Kuminga Watch: Sign-and-Trade Framework Firms to Vanderbilt Plus a 2032 First-Round Swap, but Sides Reportedly Far Apart on Salary",
       detail:
-        "Saturday's Salt Lake City opener went to the hosts: Utah 103, Atlanta 102 in overtime, with Jazz No. 2 overall pick Darryn Peterson scoring a game-high 28 (11-of-21, 4-of-7 from three) and burying the go-ahead three in the extra frame (ESPN / NBA.com / Yahoo Sports, Jul 4). The Hawks trailed by 16 midway through the second quarter, then forced five turnovers during a late 9-0 run to erase an 8-point deficit in the final 3:30 of regulation before Max Abmas' free throws sent it to OT. No. 8 pick Kingston Flemings shot just 4-of-16 but finished with 14 points and game highs in assists (9) and steals (4) against one turnover, exactly the lead-guard connective tissue Atlanta drafted him for (Peachtree Hoops / NBC Sports / RotoBaller, Jul 4). No. 23 Zuby Ejiofor stuffed the sheet with 8 points, 11 rebounds and 3 steals in 28 minutes; Asa Newell and undrafted Utah product Gabe Madsen led Atlanta with 15 apiece; No. 52 Henri Veesaar had a quiet 5 points in 18 minutes.",
-      category: "games",
-    },
-    {
-      title: "Kuminga Watch: HoopsHype Reports Hawks Open to a Sign-and-Trade to the Lakers Built on Vanderbilt and a Future First-Round Swap",
-      detail:
-        "The Jonathan Kuminga picture sharpened Wednesday: HoopsHype reported Atlanta is open to a sign-and-trade sending the 23-year-old forward to the Lakers, with a framework built around Jarred Vanderbilt and a future Lakers first-round pick swap heading back to Atlanta (HoopsHype, Jul 8). LA had reportedly offered Kuminga a two-year, roughly $20M deal that was not enough on its own to close, so a sign-and-trade at a higher number becomes the mechanism. The wider market still runs several deep (Cavs, Bucks, Kings alongside LA have all been linked), and Atlanta holds Kuminga's Non-Bird rights after declining the $24.3M option June 29, so a reduced-salary re-sign is not fully off the table (HoopsHype / Silver Screen and Roll, Jul 2-8). With the roster officially at 16, a sign-and-trade that returns a rotation player and a pick stays the cleanest path.",
+        "The Jonathan Kuminga picture has sharpened into a specific framework: HoopsHype and Hoops Rumors reported Wednesday that Atlanta is open to a sign-and-trade sending the 23-year-old forward to the Lakers in exchange for Jarred Vanderbilt and a 2032 first-round pick swap with Los Angeles (HoopsHype / Hoops Rumors / Lakers Nation, Jul 8). The catch: the two sides are described as still far apart on Kuminga's number, with LA limited to roughly $10M in average annual salary after remaking its roster and earlier reporting citing a two-year, roughly $20M look. Vanderbilt, owed about $25M over two guaranteed years, is viewed as a negative asset, so Atlanta's interest is chiefly the pick swap. The wider market has also linked the Cavaliers to Kuminga, and Atlanta holds his Non-Bird rights after declining the $24.3M option June 29, so a reduced re-sign is not fully off the table.",
       category: "trades",
     },
     {
@@ -491,12 +491,6 @@ export const NEWS_DIGEST = {
       title: "Murphy Watch: Pelicans' Asking Price Reportedly Drops to About Three First-Round Picks, With Atlanta Still in a Crowded Field",
       detail:
         "Fresh movement on the Trey Murphy III front: league circles believe New Orleans' asking price has come down to the equivalent of roughly three first-round picks, from four, and people around the league are wondering if Murphy is the next notable trade candidate to move (Hoops Rumors, Jul 6). The field stays crowded (Celtics, Pistons, Warriors, Pacers, Blazers, Spurs and Lakers have all been connected at points, though some are believed out of the mix), and one insider framework floated a package of Zaccharie Risacher, Buddy Hield and multiple firsts (Yahoo Sports / Jake Weinbach, Jul 6). Atlanta and New Orleans discussed a Murphy deal built around the No. 8 pick before the draft; those talks died and the pick became Kingston Flemings, but the interest survived. Murphy, 26, averaged 21.5 points on roughly 38% from three last season, would slot next to Jalen Johnson as the two-way wing the roster lacks, and has an existing rapport with CJ McCollum from their Pelicans years. Hield's $9.66M expiring and the stockpiled picks remain the obvious framework pieces (Soaring Down South / Sam Amick, Jul 4-6).",
-      category: "trades",
-    },
-    {
-      title: "Landale Mechanics: Return Eats Nearly All of the $15M Non-Taxpayer Mid-Level, Official When the Moratorium Lifts July 6",
-      detail:
-        "New reporting fills in how the Jock Landale re-sign works: because Landale's Non-Bird rights are too low to reach $14M, Atlanta will use nearly all of its roughly $15M Non-Taxpayer Mid-Level Exception to complete the one-year deal (Hoops Rumors / Spotrac, Jul 1-2). That effectively closes the Hawks' main free-agent tool and confirms the rest of the offseason runs through the trade market. Landale, fully recovered from the Apr 1 right high-ankle sprain that cost him the Knicks series, slots back in as Onyeka Okongwu's veteran backup; the deal became official Monday July 6 when the moratorium lifted.",
       category: "trades",
     },
     {
@@ -554,6 +548,7 @@ export const NEWS_DIGEST = {
     "SLC Dunk",
     "Deseret News",
     "Silver Screen and Roll",
+    "Lakers Nation",
     "BlueManHoop",
     "Basketball-Reference",
     "Spotrac",
@@ -563,17 +558,17 @@ export const NEWS_DIGEST = {
 // ─── Issue metadata (drives datelines, cover star, masthead) ───────────────
 // Update `date` daily; everything else flows from KEY_DATES + NEWS_DIGEST.
 export const ISSUE = {
-  date: "2026-07-09",                              // YYYY-MM-DD — single source of truth
+  date: "2026-07-10",                              // YYYY-MM-DD — single source of truth
   volume: 26,                                       // VOL XXVI
-  number: 21,                                       // Issue number (offseason cadence)
-  dateline: "ATLANTA · JULY 9, 2026",               // Pre-formatted for display
-  mastheadLine: "VOL XXVI · ISSUE NO. 21 · JULY 2026 · ATL · USA",
-  railLabel: "ISSUE 21 · JULY 9",
+  number: 22,                                       // Issue number (offseason cadence)
+  dateline: "ATLANTA · JULY 10, 2026",              // Pre-formatted for display
+  mastheadLine: "VOL XXVI · ISSUE NO. 22 · JULY 2026 · ATL · USA",
+  railLabel: "ISSUE 22 · JULY 10",
   coverStarId: 1,                                   // PLAYERS[id] for the cover portrait
-  coverRibbon: "VEGAS SL OPENS TODAY · HAWKS (2-1) vs SPURS 4:30 PM ET ESPN2 · KUMINGA-LAKERS S&T TALKS HEAT UP",
-  coverStatusKicker: "OFFSEASON · DAY 67",          // top-right corner of cover
-  coverStatusLine: "VEGAS SL OPENER TODAY · vs SAN ANTONIO 4:30 ET", // {DAYS:id} resolves from KEY_DATES
-  backTagline: "Next issue: the Vegas opener verdict, plus the Kuminga sign-and-trade watch.",
+  coverRibbon: "VEGAS OPENER: HAWKS ROUT SPURS 93-66, NEWELL 15 · BROOKLYN NEXT SAT 8 ET · KUMINGA-LAKERS S&T FIRMS ON VANDERBILT + 2032 SWAP",
+  coverStatusKicker: "OFFSEASON · DAY 68",          // top-right corner of cover
+  coverStatusLine: "VEGAS SL: HAWKS 93, SPURS 66 · NETS NEXT SAT 8 ET", // {DAYS:id} resolves from KEY_DATES
+  backTagline: "Next issue: the Brooklyn verdict, plus the Kuminga sign-and-trade watch.",
 };
 
 // ─── Cover TOC (table of contents on the cover) ────────────────────────────
