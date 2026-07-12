@@ -57,7 +57,7 @@ export const PLAYERS = [
     fieldGoalPct: 47.1, threePointPct: 18.8, freeThrowPct: 76.2,
     trueShootingPct: 56.8, plusMinus: 4.3,
     form: 6.7, status: "active", injuryNote: null,
-    recentNotes: "WEDNESDAY JUNE 24 — With Houston PG Kingston Flemings drafted at No. 8 to add backcourt creation, Daniels' offseason boss is now PRESIDENT OF BASKETBALL OPS ONSI SALEH (promoted from GM + extended long-term Wed May 27 per ESPN / Washington Post / Yahoo / SI onsi / Hoops Rumors). NBA ALL-DEFENSIVE SECOND TEAM nod (announced Fri May 22; NBA.com / AJC / Atlanta News First / Roundtable) is his second straight year on an All-Defense team after making FIRST TEAM in 24-25. He drew 9 first-place and 32 second-place votes from the 100-member global media panel (50 points, 10th in overall voting) and tied for the NBA lead in steals per game at 2.0 with OKC's Cason Wallace; Atlanta posted a top-10 defensive rating for the first time in nearly a decade with Daniels as the primary point-of-attack defender. The Second-Team finish — down from First Team a year ago — tracks a hard offensive year: his three-point shooting cratered to 18.8% (22-of-117), and Daniels has spoken candidly about getting into a 'dark place' mentally, planning an LA summer to rebuild the jumper and 'get stronger.' Victor Wembanyama was the unanimous DPOY and lone unanimous All-Defense 1st-teamer; Daniels was not a 2026 DPOY finalist after finishing runner-up in 25. AROUND THE LEAGUE: THE KNICKS ARE 2026 CHAMPIONS, closing San Antonio 94-90 in Game 5 Sat Jun 13 to take the Finals 4-1 (NY's first title since 1973), Brunson 45 and Finals MVP; the same team that ended Atlanta's season in six finished the job. Regular-season line of 11.9/6.8/5.9 on 2.0 stl across 80 games (76 starts) is the locked baseline; four-year, $100M rookie extension (signed Oct 2025 per ESPN / NBA.com) kicks in next season; not trade-eligible until July 1, 2026.",
+    recentNotes: "SUNDAY JULY 12 (offseason): THE JUMPER LOOKS DIFFERENT. Video circulating this week shows Daniels with a visibly reworked, smoother shooting form after a summer of dedicated work on the shot, and the Atlanta fan reaction has been loud (ClutchPoints, Jul). Call it the highest-leverage development of the Hawks' offseason: an All-Defensive guard who tied for the NBA lead in steals (2.0) shot 18.8% from three last season (22-of-117), and even a league-average jumper would change the ceiling of the starting five. Encouraging, not conclusive, until it survives live defense. PRIOR (JUNE 24) — With Houston PG Kingston Flemings drafted at No. 8 to add backcourt creation, Daniels' offseason boss is now PRESIDENT OF BASKETBALL OPS ONSI SALEH (promoted from GM + extended long-term Wed May 27 per ESPN / Washington Post / Yahoo / SI onsi / Hoops Rumors). NBA ALL-DEFENSIVE SECOND TEAM nod (announced Fri May 22; NBA.com / AJC / Atlanta News First / Roundtable) is his second straight year on an All-Defense team after making FIRST TEAM in 24-25. He drew 9 first-place and 32 second-place votes from the 100-member global media panel (50 points, 10th in overall voting) and tied for the NBA lead in steals per game at 2.0 with OKC's Cason Wallace; Atlanta posted a top-10 defensive rating for the first time in nearly a decade with Daniels as the primary point-of-attack defender. The Second-Team finish — down from First Team a year ago — tracks a hard offensive year: his three-point shooting cratered to 18.8% (22-of-117), and Daniels has spoken candidly about getting into a 'dark place' mentally, planning an LA summer to rebuild the jumper and 'get stronger.' Victor Wembanyama was the unanimous DPOY and lone unanimous All-Defense 1st-teamer; Daniels was not a 2026 DPOY finalist after finishing runner-up in 25. AROUND THE LEAGUE: THE KNICKS ARE 2026 CHAMPIONS, closing San Antonio 94-90 in Game 5 Sat Jun 13 to take the Finals 4-1 (NY's first title since 1973), Brunson 45 and Finals MVP; the same team that ended Atlanta's season in six finished the job. Regular-season line of 11.9/6.8/5.9 on 2.0 stl across 80 games (76 starts) is the locked baseline; four-year, $100M rookie extension (signed Oct 2025 per ESPN / NBA.com) kicks in next season; not trade-eligible until July 1, 2026.",
     playoffStats: { gamesPlayed: 6, minutesPerGame: 27.4, pointsPerGame: 7.8, reboundsPerGame: 5.8, assistsPerGame: 4.7 },
     playoffSeries: null,
     minutesTrend: "down",
@@ -162,7 +162,7 @@ export const PLAYERS = [
     fieldGoalPct: 47.2, threePointPct: 33.6, freeThrowPct: 70.1,
     trueShootingPct: 55.1, plusMinus: 2.4,
     form: 6.4, status: "active", injuryNote: null,
-    recentNotes: "SATURDAY JULY 11 (offseason): THE LAKERS FRAMEWORK JUST STALLED. Reports Thursday and Friday say Atlanta has NOT considered taking Jarred Vanderbilt back in a sign-and-trade, and that the Hawks are seeking more than LA can currently offer (Heavy / Lakers Nation / SI onsi / Hoops Rumors, Jul 9-10). The blocker is cap math: Atlanta is about $11.4M under the first apron, and Vanderbilt's roughly $25M across two guaranteed years would eat that cushion. Los Angeles is now exploring multi-team constructions to route Vanderbilt to a third team, which has become step one toward landing Kuminga. The player-side gap is also wide: LA has climbed to roughly $10M average annual value; Kuminga is reportedly seeking near $25M. Atlanta holds his Non-Bird rights after declining the $24.3M option Jun 29, and the Cavs and Kings have circled at points. With the roster at 16, an S&T that returns an asset stays the cleanest path. Hawks line: 12.3 PPG / 5.3 RPG in 22.1 mpg across 16 games.",
+    recentNotes: "SUNDAY JULY 12 (offseason): THE LAKERS FRAMEWORK IS STILL STUCK. A weekend of reporting has not moved it: Atlanta has NOT considered taking Jarred Vanderbilt back in a sign-and-trade, and the Hawks are seeking more than LA can currently offer (Bleacher Report / Heavy / SI onsi / Hoops Rumors, Jul 9-11). The blocker is cap math: Atlanta is about $11.4M under the first apron, and Vanderbilt's roughly $25M across two guaranteed years would eat that cushion. Los Angeles is now exploring multi-team constructions to route Vanderbilt to a third team, which has become step one toward landing Kuminga. The player-side gap is also wide: LA has climbed to roughly $10M average annual value; Kuminga is reportedly seeking near $25M. Atlanta holds his Non-Bird rights after declining the $24.3M option Jun 29, and the Cavs and Kings have circled at points. With the roster at 16, an S&T that returns an asset stays the cleanest path. Hawks line: 12.3 PPG / 5.3 RPG in 22.1 mpg across 16 games.",
     playoffStats: { gamesPlayed: 6, minutesPerGame: 25.7, pointsPerGame: 13.4, reboundsPerGame: 3.6, assistsPerGame: 0.8 },
     playoffSeries: null,
     minutesTrend: "down",
@@ -283,7 +283,7 @@ export const PLAYERS = [
     fieldGoalPct: 53.8, threePointPct: 38.7, freeThrowPct: 55.2,
     trueShootingPct: 58.3, plusMinus: -0.4,
     form: 5.7, status: "active", injuryNote: null,
-    recentNotes: "SATURDAY JULY 11 (Summer League): ATLANTA'S MOST CONSISTENT SUMMER SCORER. Newell led the Vegas opener with 15 points, five rebounds and two assists in Thursday's 93-66 rout of San Antonio, after a 13-point, 7-rebound, 3-assist night in the OKC comeback and a team-high 15 in the SLC opener (NBA.com / ESPN / AJC, Jul 4-9). That is a steady, assertive summer, exactly what his second year needed: after a rookie season of 44 games, 5.2 PPG and 38.7% from three (best among rookies at min 10 attempts), he is building a real case for the third-big role with Kuminga off the books. Brooklyn tonight at 8 PM ET on ESPN.",
+    recentNotes: "SUNDAY JULY 12 (Summer League): ATLANTA'S MOST CONSISTENT SUMMER SCORER. Atlanta is 4-0 since the Salt Lake City opener after Saturday's 83-76 comeback win over Brooklyn, a game the bench decided (48-8 in bench points; Kobe Johnson 17, Flemings 9-7-5). Newell's summer body of work: 15 points, five rebounds and two assists in Thursday's 93-66 rout of San Antonio, a 13-point, 7-rebound, 3-assist night in the OKC comeback, and a team-high 15 in the SLC opener (NBA.com / ESPN / AJC, Jul 4-11). That is a steady, assertive summer, exactly what his second year needed: after a rookie season of 44 games, 5.2 PPG and 38.7% from three (best among rookies at min 10 attempts), he is building a real case for the third-big role with Kuminga off the books. Boston next, Monday July 13.",
     playoffStats: { gamesPlayed: 1, minutesPerGame: 5.0, pointsPerGame: 2.0, reboundsPerGame: 1.0, assistsPerGame: 0 },
     playoffSeries: null,
     minutesTrend: "up",
@@ -385,14 +385,14 @@ export const TEAM_LOGOS = {
 // Season ended Apr 30 in Game 6 elimination by the Knicks. Next on the calendar:
 // 2026 NBA Draft Lottery on May 10 (ATL holds the more-favorable of NOP/MIL plus CLE No. 24).
 export const NEXT_GAME = {
-  opponent: "Summer League vs Brooklyn (Las Vegas)",
+  opponent: "Summer League vs Boston (Las Vegas)",
   shortName: "LV SL",
   home: false,
-  date: "2026-07-11T20:00:00-04:00",
+  date: "2026-07-13T18:00:00-04:00",
   competition: "OFFSEASON",
   venue: "Thomas & Mack Center, Las Vegas",
-  broadcast: "ESPN",
-  seriesContext: "GAME DAY, SATURDAY JULY 11, 8:00 PM ET on ESPN: Atlanta plays its second Las Vegas game against Brooklyn at the Thomas & Mack Center, then faces Boston (Jul 13) and one more before the July 18 semis and July 19 final. The Hawks carry a three-game summer winning streak after routing San Antonio 93-66 in Thursday's Vegas opener, a wire-to-wire win in which they led 27-15 after one and never trailed (Newell 15, Veesaar 14, seven Hawks in double figures, Flemings a game-high 8 assists). Brooklyn counters with a summer roster full of recent first-rounders: Egor Demin, Ben Saraf, Drake Powell and Danny Wolf, plus guard Mikel Brown Jr. Watch for: whether Kingston Flemings' jumper starts falling to match his playmaking (30.8% from the field across his last two), whether Newell keeps pressing a regular-season case, and frontcourt reps for Veesaar and Ejiofor. ROSTER: still 16 standard contracts, one over the 15-man limit, so a trim is coming (Kispert most often flagged). TRADE BOARD: the Kuminga sign-and-trade has hit a snag, with reports that Atlanta has NOT considered taking Jarred Vanderbilt back and is seeking more than the Lakers can offer; LA is now exploring multi-team routes to send Vanderbilt elsewhere. The Pelicans still want to be blown away on Trey Murphy III, and the floated Atlanta packages now center on Alexander-Walker and Okongwu.",
+  broadcast: "Prime Video",
+  seriesContext: "NEXT UP, MONDAY JULY 13 vs BOSTON in Las Vegas (6:00 PM ET, Prime Video per the Celtics' released schedule; confirm listings). Atlanta arrives on a FOUR-GAME SUMMER WINNING STREAK after grinding out an 83-76 comeback win over Brooklyn on Saturday night, erasing a 13-point deficit behind a 48-8 bench-scoring edge. Kobe Johnson led the Hawks with 17 points, and No. 8 pick Kingston Flemings filled the sheet with 9 points, 7 rebounds and 5 assists while Atlanta closed the fourth quarter. Brooklyn got 20 and 10 from Chaney Johnson and 20 from Danny Wolf, but just eight points from its bench. Watch list against Boston: whether the Hawks' second unit keeps carrying the scoring, whether Flemings' jumper follows his playmaking, and continued frontcourt reps for Asa Newell, Henri Veesaar and Zuby Ejiofor. Memphis closes the group stage on July 16, ahead of the July 18 semis and the July 19 final. ROSTER: still 16 standard contracts, one over the 15-man limit, so a trim is coming (Kispert most often flagged). TRADE BOARD: the Kuminga sign-and-trade remains stuck, with Atlanta seeking more than the Lakers can offer and LA hunting a third team to absorb Jarred Vanderbilt. New Orleans has come down slightly on Trey Murphy III but still wants to be blown away, and the floated Atlanta packages now center on Alexander-Walker and Okongwu.",
 };
 
 // ─── Game Results (2025-26 regular season · last 16 games) ─────────────────
@@ -441,26 +441,44 @@ export const EAST_STANDINGS = [
 
 // ─── AI News Digest (generated from live web search) ───────────────────────
 export const NEWS_DIGEST = {
-  generatedAt: "2026-07-11T08:30:00Z",
+  generatedAt: "2026-07-12T09:00:00Z",
   summary:
-    "The Kuminga sign-and-trade got messier overnight, and the reversal is the story of the weekend. A day after the Lakers framework looked firm, multiple reports now say Atlanta has NOT considered taking Jarred Vanderbilt back in a deal for JONATHAN KUMINGA, and that the Hawks are seeking more than Los Angeles can currently offer (Heavy / Lakers Nation / SI onsi / Hoops Rumors, Jul 9-10). The math explains it: Atlanta sits roughly $11.4M below the first apron, and absorbing Vanderbilt's two guaranteed years (about $25M) without a corresponding move would eat that cushion and risk crossing the line. The Lakers are now exploring multi-team constructions that would route Vanderbilt somewhere other than Atlanta, which has become the first necessary step to getting Kuminga to LA. On the floor, it is game day: the Hawks (three-game summer winning streak) face Brooklyn tonight at 8:00 PM ET on ESPN at the Thomas & Mack Center, a matchup that pits No. 8 pick Kingston Flemings against a Nets summer roster stocked with recent first-rounders (Egor Demin, Ben Saraf, Drake Powell, Danny Wolf). Flemings is averaging a game-tilting assist-and-steal line while shooting 30.8% from the field, so the jumper is the watch item. Elsewhere: New Orleans still wants to be blown away on Trey Murphy III, most floated Atlanta packages now center on Nickeil Alexander-Walker and Onyeka Okongwu, and the roster remains at 16 standard contracts, one over the limit.",
+    "Atlanta's summer keeps winning, and the bench is the reason. The Hawks beat Brooklyn 83-76 on Saturday night at the Thomas & Mack Center, erasing a 13-point deficit in a game that saw eight lead changes, and they did it on a 48-8 advantage in bench points (NBA.com, Jul 11). Kobe Johnson led Atlanta with 17, and No. 8 pick KINGSTON FLEMINGS did a little of everything with 9 points, 7 rebounds and 5 assists as the Hawks closed the fourth quarter. That is four straight summer wins, and Boston is next on Monday, July 13. The offseason's other big thread has not moved: the JONATHAN KUMINGA sign-and-trade with the Lakers remains stuck, with Atlanta seeking more than Los Angeles can offer, no willingness to absorb Jarred Vanderbilt's roughly $25M, and LA now hunting a third team to take him. The Trey Murphy III market shifted slightly in Atlanta's favor, with New Orleans reportedly easing its asking price a touch as Boston, Detroit, Golden State and the Clippers circle alongside the Hawks. And in the feel-good file: video of DYSON DANIELS working a rebuilt, smoother jumper has Atlanta fans buzzing, which matters more than it sounds after an 18.8% three-point season. The roster still sits at 16 standard contracts, one over the limit.",
   keyTopics: [
     {
-      title: "REVERSAL: Hawks Have Not Considered Taking Jarred Vanderbilt Back in a Kuminga Sign-and-Trade, Lakers Now Hunting a Third Team",
+      title: "Bench Bullies Brooklyn: Hawks Rally From 13 Down to Beat the Nets 83-76 on a 48-8 Bench-Scoring Edge",
       detail:
-        "Thursday's clean framework fell apart by Friday. Atlanta has not considered absorbing Jarred Vanderbilt in the sign-and-trade that would send Jonathan Kuminga to Los Angeles, and the Hawks are described as seeking more than the Lakers can offer to this point (Heavy / Lakers Nation / SI onsi / Hoops Rumors, Jul 9-10). The reason is cap mechanics, not talent evaluation: Atlanta is roughly $11.4M below the first apron, and taking on Vanderbilt's salary (about $25M across two guaranteed years) without an offsetting move would consume that cushion and could push the Hawks over the line, costing them in-season roster flexibility. Los Angeles had hoped to package Vanderbilt with its lone tradeable first-round swap (2032) to land Kuminga, and is now said to be exploring multi-team constructions that would send Vanderbilt to a third team. Separately, the salary gap is still wide: LA has climbed to roughly $10M in average annual value while Kuminga is targeting a number closer to $25M.",
+        "Saturday night in Las Vegas belonged to Atlanta's second unit. The Hawks trailed by as many as 13 and traded eight lead changes with Brooklyn before pulling away late for an 83-76 win, powered by a 48-8 advantage in bench points (NBA.com / ESPN, Jul 11). Kobe Johnson led all Hawks scorers with 17. No. 8 pick Kingston Flemings filled the box score with 9 points, 7 rebounds and 5 assists and was on the floor for the closing stretch, the two-way lead-guard profile Atlanta drafted him for. Brooklyn's starters carried the Nets, with Chaney Johnson posting 20 points and 10 rebounds and Danny Wolf adding 20, but the Nets got just eight points from their bench and could not answer Atlanta's fourth quarter. It is the Hawks' fourth straight summer win, and their second in two Vegas outings.",
+      category: "games",
+    },
+    {
+      title: "Next Up: Boston on Monday, July 13, With Memphis Closing the Group Stage July 16",
+      detail:
+        "Atlanta's third Las Vegas game comes Monday, July 13 against the Celtics, listed at 6:00 PM ET on Prime Video in Boston's released schedule (SI onsi / NBA.com, Jul). Memphis follows on July 16 to close the group stage before the July 18 semifinals and the July 19 final. The watch items carry over from Saturday: whether the bench keeps scoring at the rate that beat Brooklyn, whether Kingston Flemings' jumper starts falling to match his playmaking, and whether Asa Newell, Henri Veesaar and Zuby Ejiofor build the frontcourt case that shapes camp. Atlanta went 2-1 in Salt Lake City and is 2-0 in Vegas.",
+      category: "games",
+    },
+    {
+      title: "Daniels' New Jumper: Offseason Video of a Rebuilt Shooting Form Has Atlanta Buzzing",
+      detail:
+        "The most consequential Hawks development of the weekend may not be a trade at all. Video circulating this week shows DYSON DANIELS with a visibly reworked, smoother shooting motion after a summer of dedicated work on the jumper, and Atlanta fans have responded loudly (ClutchPoints, Jul). The stakes are real: Daniels shot 18.8% from three last season (22-of-117), one of the worst high-volume perimeter seasons in recent memory, and he has spoken candidly about how far into a 'dark place' the slump took him. He is an All-Defensive Second Team guard who tied for the NBA lead in steals at 2.0. If even an average jumper arrives, the ceiling on Atlanta's starting five moves. Treat the video as encouraging, not conclusive, but it is the offseason storyline with the highest leverage on next season.",
+      category: "general",
+    },
+    {
+      title: "Kuminga Standoff Holds: Atlanta Wants More Than LA Can Offer, Won't Take Vanderbilt, Lakers Hunt a Third Team",
+      detail:
+        "Nothing has broken loose since Friday. Atlanta has not considered absorbing Jarred Vanderbilt in the sign-and-trade that would send Jonathan Kuminga to Los Angeles, and the Hawks are described as seeking more than the Lakers can offer to this point (Bleacher Report / Heavy / Hoops Rumors / SI onsi, Jul 9-11). The reason is cap mechanics, not talent evaluation: Atlanta is roughly $11.4M below the first apron, and taking on Vanderbilt's salary (about $25M across two guaranteed years) without an offsetting move would consume that cushion. Los Angeles had hoped to pair Vanderbilt with its lone tradeable first-round swap (2032) to land Kuminga, and is now exploring multi-team constructions that would route Vanderbilt to a third team. The player-side gap is also wide: LA's previous offer sat near $10M in average annual value while Kuminga is targeting a number closer to $25M.",
       category: "trades",
     },
     {
-      title: "GAME DAY: Hawks Face Brooklyn Tonight at 8 PM ET on ESPN, Flemings vs a Nets Summer Roster Full of First-Rounders",
+      title: "Murphy Market Softens: Pelicans Ease the Asking Price a Notch as Five Teams Circle",
       detail:
-        "Atlanta plays its second Las Vegas game tonight, Saturday July 11 at 8:00 PM ET on ESPN at the Thomas & Mack Center, carrying a three-game summer winning streak (NBA.com / Peachtree Hoops / SI onsi, Jul 9-10). Brooklyn brings a stacked young group: four 2025 first-rounders in Egor Demin, Ben Saraf, Drake Powell and Danny Wolf, plus guard Mikel Brown Jr. The headline matchup is Kingston Flemings against that Nets backcourt. Through three summer games Flemings has produced the two-way counting stats Atlanta drafted at No. 8 (a 9-assist, 4-steal debut, then 12 points and 3 blocks against OKC, then a game-high 8 assists against San Antonio) while shooting just 30.8% from the field over his last two outings. The jumper is the thing to watch. Also on the card: Asa Newell building a regular-season case, and frontcourt reps for Henri Veesaar and Zuby Ejiofor. Boston follows on July 13.",
-      category: "games",
+        "New Orleans has brought its Trey Murphy III asking price down slightly after the market failed to meet the original number, and interest has picked up again (HoopsHype / Yahoo Sports, Jul 9-11). The Celtics, Pistons, Warriors, Clippers and Hawks are all in the mix to varying degrees. Atlanta's fit case has not changed: Murphy, 26, averaged 21.5 points, 5.7 rebounds, 3.8 assists and 1.5 steals on 47.0/37.9 shooting and would give Jalen Johnson the two-way wing this roster lacks, with an existing rapport with CJ McCollum from their Pelicans years. The complication is the price. New Orleans has wanted roughly three first-round picks, Murphy carries a $27.0M cap hit for 2026-27, and Atlanta's $11.0M trade exception only absorbs part of it, which is why most floated frameworks now build the Hawks' package around Nickeil Alexander-Walker and Onyeka Okongwu rather than the earlier Risacher-and-Hield constructions.",
+      category: "trades",
     },
     {
       title: "Vegas Opener: Hawks Rout Spurs 93-66 as Newell Scores 15 and Seven Atlanta Players Reach Double Figures",
       detail:
-        "Atlanta opened Las Vegas Summer League with a comfortable 93-66 win over San Antonio on Thursday night, a wire-to-wire performance in which the Hawks led 27-15 after the first quarter and never surrendered the lead (NBA.com / ESPN / AJC, Jul 9). Asa Newell led the way with 15 points, five rebounds and two assists, and NBA.com noted he was one of seven Hawks in double figures. No. 52 Henri Veesaar added 14 points and six rebounds off the bench, while No. 8 pick Kingston Flemings ran the offense to a game-high eight assists despite a quiet five points on his jumper. Atlanta held the Spurs to 66 points; Tarris Reed Jr. led San Antonio with 14 and 10 rebounds. The win extends the Hawks to a three-game summer streak.",
+        "Atlanta opened Las Vegas Summer League with a comfortable 93-66 win over San Antonio on Thursday night, a wire-to-wire performance in which the Hawks led 27-15 after the first quarter and never surrendered the lead (NBA.com / ESPN / AJC, Jul 9). Asa Newell led the way with 15 points, five rebounds and two assists, and NBA.com noted he was one of seven Hawks in double figures. No. 52 Henri Veesaar added 14 points and six rebounds off the bench, while No. 8 pick Kingston Flemings ran the offense to a game-high eight assists (26 Atlanta assists on 33 made field goals) despite a quiet five points. Tarris Reed Jr. led San Antonio with 14 and 10 rebounds.",
       category: "games",
     },
     {
@@ -470,28 +488,10 @@ export const NEWS_DIGEST = {
       category: "trades",
     },
     {
-      title: "Murphy Watch: Pelicans Say They Must Be Blown Away, and the Floated Atlanta Packages Now Center on Alexander-Walker and Okongwu",
-      detail:
-        "The Trey Murphy III pursuit is alive but expensive. New Orleans is not actively shopping Murphy and has made clear it will only listen if it is blown away, with the asking price still in the neighborhood of three first-round picks (HoopsHype / Hoops Rumors, Jul 6-10). Atlanta is one of several suitors alongside Boston, Detroit, Golden State and the Clippers. The notable shift in the last 48 hours is the shape of the proposals: most insider frameworks now build an Atlanta package around Nickeil Alexander-Walker, the reigning Most Improved Player, and Onyeka Okongwu, rather than the earlier Risacher-and-Hield constructions (Fadeaway World / Yahoo Sports / SI onsi, Jul 9-10). That is a real cost, because it would gut the starting center spot in a summer Atlanta has spent hunting a center. Murphy, 26, averaged 21.5 points, 5.7 rebounds, 3.8 assists and 1.5 steals on 47.0/37.9 shooting last season and carries a roughly $27M cap hit for 2026-27. He would slot next to Jalen Johnson as the two-way wing this roster lacks, and he has an existing rapport with CJ McCollum from their Pelicans years.",
-      category: "trades",
-    },
-    {
       title: "Ejiofor Erupts for 19 and 15 as Hawks Storm Back From 20 Down to Beat the Thunder 82-77 in SLC Game 2",
       detail:
         "Monday night's 82-77 win over Oklahoma City was Atlanta's first of the summer, and it belonged to No. 23 pick Zuby Ejiofor: 19 points (5-13 FG, 3-8 from three, 4-5 FT), 15 rebounds, 3 assists and a block in 25 minutes, most of it after halftime, capped by back-to-back fourth-quarter threes that flipped the game (NBA.com / CBS Sports / NBC Sports, Jul 6). The Hawks trailed by 20 before outscoring OKC 50-32 across the second and third quarters, shooting 12-of-36 from deep while holding the Thunder to 5-of-15. Asa Newell added 13 points, 7 rebounds and 3 assists; Kingston Flemings finished with 12 points (4-10 FG), a game-high 5 assists and a team-best 3 blocks, the two-way lead-guard stamp Atlanta drafted at No. 8 (ESPN / SI onsi / Yahoo Sports, Jul 6). Atlanta finished the Salt Lake City slate 2-1.",
       category: "games",
-    },
-    {
-      title: "Moratorium Lifted Monday: McCollum, Landale, Wiggins and Carter Moves Now Official, and the 16-Man Roster Must Trim to 15",
-      detail:
-        "The offseason's paperwork logjam cleared Monday at 12:01 PM ET. Now official: the CJ McCollum extension (1yr, ~$21M with a trade kicker), the Jock Landale return (1yr, $14M via nearly all of the Non-Taxpayer MLE), and the trades for Aaron Wiggins (officially completed Monday, two future second-rounders to OKC per the Thunder's announcement) and Devin Carter (Kings salary dump that also sent Atlanta a 2033 second) (NBA.com / HoopsHype / News9, Jul 6). The consequence: Atlanta officially stands at 16 standard contracts after signing all three rookies, one over the regular-season limit of 15, and two over if Kuminga returns. A trade is the likeliest trim, with Corey Kispert the name most often flagged as the odd man out (SI onsi, Jul 6). With the ink dry, the larger machinery (Hield's expiring, the center hunt, any Kuminga sign-and-trade) can now execute rather than just talk.",
-      category: "trades",
-    },
-    {
-      title: "Kuminga Backdrop: Atlanta Holds His Non-Bird Rights, and the Salary Gap (LA at ~$10M, Kuminga at ~$25M) Is the Other Obstacle",
-      detail:
-        "How the Lakers talks got here, and why they stalled. Atlanta declined Kuminga's $24.3M option on June 29 and retained his Non-Bird rights, which is what makes a sign-and-trade the mechanism rather than a straight trade (HoopsHype / Hoops Rumors, Jul 8-9). Los Angeles has improved its offer to roughly $10M in average annual salary, while Kuminga is reportedly seeking a deal in the neighborhood of $25M per year, so the player-side gap remains wide even before the team-side pieces are sorted. Vanderbilt, owed about $25M over two guaranteed years, is widely read as a negative asset, which is why the 2032 first-round swap was the part Atlanta actually valued. The Cavaliers and Kings have been linked to Kuminga at points this summer, and a reduced re-sign in Atlanta has never been formally ruled out.",
-      category: "trades",
     },
     {
       title: "Fischer: Hawks Involved in Several Trade Scenarios Built on Buddy Hield's $9.66M Expiring Salary",
@@ -561,17 +561,17 @@ export const NEWS_DIGEST = {
 // ─── Issue metadata (drives datelines, cover star, masthead) ───────────────
 // Update `date` daily; everything else flows from KEY_DATES + NEWS_DIGEST.
 export const ISSUE = {
-  date: "2026-07-11",                              // YYYY-MM-DD — single source of truth
+  date: "2026-07-12",                              // YYYY-MM-DD — single source of truth
   volume: 26,                                       // VOL XXVI
-  number: 23,                                       // Issue number (offseason cadence)
-  dateline: "ATLANTA · JULY 11, 2026",              // Pre-formatted for display
-  mastheadLine: "VOL XXVI · ISSUE NO. 23 · JULY 2026 · ATL · USA",
-  railLabel: "ISSUE 23 · JULY 11",
-  coverStarId: 1,                                   // PLAYERS[id] for the cover portrait
-  coverRibbon: "KUMINGA S&T SNAGS: HAWKS WON'T TAKE VANDERBILT, LAKERS HUNT A THIRD TEAM · GAME DAY VS BROOKLYN 8 ET ON ESPN · MURPHY PRICE STILL 'BLOW US AWAY'",
-  coverStatusKicker: "OFFSEASON · DAY 69",          // top-right corner of cover
-  coverStatusLine: "VEGAS SL GAME DAY: HAWKS vs NETS, 8 PM ET · ESPN", // {DAYS:id} resolves from KEY_DATES
-  backTagline: "Next issue: the Brooklyn verdict, plus where the Kuminga sign-and-trade goes without Vanderbilt.",
+  number: 24,                                       // Issue number (offseason cadence)
+  dateline: "ATLANTA · JULY 12, 2026",              // Pre-formatted for display
+  mastheadLine: "VOL XXVI · ISSUE NO. 24 · JULY 2026 · ATL · USA",
+  railLabel: "ISSUE 24 · JULY 12",
+  coverStarId: 2,                                   // PLAYERS[id] for the cover portrait
+  coverRibbon: "BENCH BULLIES BROOKLYN: HAWKS RALLY FROM 13 DOWN, WIN 83-76 ON A 48-8 BENCH EDGE · DANIELS' NEW JUMPER SURFACES · KUMINGA S&T STILL STUCK",
+  coverStatusKicker: "OFFSEASON · DAY 70",          // top-right corner of cover
+  coverStatusLine: "VEGAS SL: 4 STRAIGHT WINS · BOSTON NEXT, MONDAY JULY 13", // {DAYS:id} resolves from KEY_DATES
+  backTagline: "Next issue: Boston in Vegas, and whether Dyson Daniels' rebuilt jumper is real.",
 };
 
 // ─── Cover TOC (table of contents on the cover) ────────────────────────────
