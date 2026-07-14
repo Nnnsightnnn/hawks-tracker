@@ -283,7 +283,7 @@ export const PLAYERS = [
     fieldGoalPct: 53.8, threePointPct: 38.7, freeThrowPct: 55.2,
     trueShootingPct: 58.3, plusMinus: -0.4,
     form: 5.7, status: "active", injuryNote: null,
-    recentNotes: "MONDAY JULY 13 (Summer League, GAME DAY vs BOSTON, 6 PM ET): ATLANTA'S MOST CONSISTENT SUMMER SCORER. Atlanta is 4-0 since the Salt Lake City opener after Saturday's 83-76 comeback win over Brooklyn, a game the bench decided (48-8 in bench points; Kobe Johnson 17, Flemings 9-7-5). Newell's summer body of work: 15 points, five rebounds and two assists in the 93-66 rout of San Antonio, a 13-point, 7-rebound, 3-assist night in the OKC comeback, and a team-high 15 in the SLC opener (NBA.com / ESPN / AJC, Jul 4-11). That is a steady, assertive summer, exactly what his second year needed: after a rookie season of 44 games, 5.2 PPG and 38.7% from three (best among rookies at min 10 attempts), he is building a real case for the third-big role with Kuminga off the books. The competition is real, though: Henri Veesaar (14 and 6 vs San Antonio) and Zuby Ejiofor (19 and 15 vs OKC) are chasing the same frontcourt minutes.",
+    recentNotes: "TUESDAY JULY 14 (Summer League): RESTED FOR THE BOSTON WIN. Newell and No. 8 pick Kingston Flemings both sat out Monday's 102-90 win over the Celtics, and Atlanta ran Boston off the floor anyway behind Kobe Johnson (30) and Henri Veesaar (20), moving to 3-0 in Vegas and 5-0 on the summer (NBA.com / ESPN, Jul 13). Expect him back for Thursday's group-stage finale against Memphis (8 PM ET). Newell's summer body of work before the rest day: 15 points, five rebounds and two assists in the 93-66 rout of San Antonio, a 13-point, 7-rebound, 3-assist night in the OKC comeback, and a team-high 15 in the SLC opener (NBA.com / ESPN / AJC, Jul 4-11). That is a steady, assertive summer, exactly what his second year needed: after a rookie season of 44 games, 5.2 PPG and 38.7% from three (best among rookies at min 10 attempts), he is building a real case for the third-big role with Kuminga off the books. The competition is real, though, and it grew Monday: Veesaar's 20 on 7-of-12 (4-of-6 from three) was the loudest frontcourt statement of the summer, and Zuby Ejiofor (19 and 15 vs OKC) is chasing the same minutes.",
     playoffStats: { gamesPlayed: 1, minutesPerGame: 5.0, pointsPerGame: 2.0, reboundsPerGame: 1.0, assistsPerGame: 0 },
     playoffSeries: null,
     minutesTrend: "up",
@@ -385,14 +385,14 @@ export const TEAM_LOGOS = {
 // Season ended Apr 30 in Game 6 elimination by the Knicks. Next on the calendar:
 // 2026 NBA Draft Lottery on May 10 (ATL holds the more-favorable of NOP/MIL plus CLE No. 24).
 export const NEXT_GAME = {
-  opponent: "Summer League vs Boston (Las Vegas)",
+  opponent: "Summer League vs Memphis (Las Vegas)",
   shortName: "LV SL",
   home: false,
-  date: "2026-07-13T18:00:00-04:00",
+  date: "2026-07-16T20:00:00-04:00",
   competition: "OFFSEASON",
   venue: "Thomas & Mack Center, Las Vegas",
   broadcast: "Prime Video",
-  seriesContext: "GAME DAY, MONDAY JULY 13 vs BOSTON in Las Vegas (6:00 PM ET, Prime Video). Atlanta was idle Sunday and arrives on a FOUR-GAME SUMMER WINNING STREAK, the last of them an 83-76 comeback over Brooklyn on Saturday night in which the Hawks erased a 13-point deficit behind a 48-8 bench-scoring edge. Kobe Johnson led with 17, and No. 8 pick Kingston Flemings put up 9 points, 7 rebounds and 5 assists while closing the fourth quarter. Flemings has now recorded at least five assists in every one of his four summer appearances (NBA.com). Watch list against Boston: whether the second unit keeps carrying the scoring, whether Flemings' jumper starts following his playmaking, and continued frontcourt reps for Asa Newell, Henri Veesaar and Zuby Ejiofor. Memphis closes the group stage on July 16, ahead of the July 18 semis and the July 19 final. ROSTER: still 16 standard contracts, one over the 15-man limit, and two over if Kuminga comes back, so a trim is coming (Hield and Kispert most often flagged). TRADE BOARD: the Kuminga sign-and-trade is still stuck, and the reporting now openly conflicts, with Khobi Price saying Atlanta would have interest in a Jarred Vanderbilt plus 2032 first-round swap return and Jake Fischer saying the Hawks have not considered taking Vanderbilt at all. New Orleans has eased its Trey Murphy III asking price a notch, and the newest floated Atlanta package is Risacher, Kispert and three first-round picks.",
+  seriesContext: "NEXT UP: THURSDAY JULY 16 vs MEMPHIS in Las Vegas (8:00 PM ET, Prime Video), the group-stage finale. Atlanta arrives 3-0 in Vegas and 5-0 overall this summer after Monday night's 102-90 win over Boston, the Celtics' first summer loss. KOBE JOHNSON went for 30 on 11-of-18 with 7 rebounds, 4 assists and 2 steals in 24 minutes, and second-rounder HENRI VEESAAR added 20 on 7-of-12 (4-of-6 from three) with 4 rebounds and 3 assists. The two combined for 50 of Atlanta's 102. The Hawks rested Kingston Flemings and Asa Newell and still ran Boston off the floor, shooting 50% from the field and 38.2% from three behind a 16-0 second-quarter run (NBA.com / ESPN / SI onsi, Jul 13). Watch list vs Memphis: whether Flemings and Newell return for the finale, whether Veesaar's pick-and-pop keeps travelling, and where Atlanta lands in the four-team playoff seeding (semifinals July 18, final July 19). ROSTER: still 16 standard contracts, one over the 15-man limit, and two over if Kuminga comes back, so a trim is coming (Hield and Kispert most often flagged). TRADE BOARD: the Kuminga sign-and-trade remains stuck with the reporting still split (Price says Atlanta would take Jarred Vanderbilt plus a 2032 first-round swap, Fischer says it never considered Vanderbilt at all), and New Orleans still says it must be blown away on Trey Murphy III.",
 };
 
 // ─── Game Results (2025-26 regular season · last 16 games) ─────────────────
@@ -441,20 +441,26 @@ export const EAST_STANDINGS = [
 
 // ─── AI News Digest (generated from live web search) ───────────────────────
 export const NEWS_DIGEST = {
-  generatedAt: "2026-07-13T09:00:00Z",
+  generatedAt: "2026-07-14T09:00:00Z",
   summary:
-    "GAME DAY. Atlanta plays Boston tonight in Las Vegas (6:00 PM ET, Prime Video), the Hawks' third Vegas outing and their first action since Saturday, and they carry a four-game summer winning streak into it. The last of those was the 83-76 comeback over Brooklyn, erased from a 13-point hole on a 48-8 bench-scoring edge, and No. 8 pick KINGSTON FLEMINGS has now handed out at least five assists in each of his four summer appearances (NBA.com). The trade board is where the real movement is, and this morning it points in two directions at once: reporting on the JONATHAN KUMINGA sign-and-trade with the Lakers now openly conflicts, with Khobi Price of The California Post saying Atlanta would have interest in a package built on Jarred Vanderbilt and the Lakers' 2032 first-round swap, while Jake Fischer of The Stein Line says the Hawks have not considered taking Vanderbilt back at all. Both cannot be true; treat the deal as unresolved. On the wing, New Orleans has eased its TREY MURPHY III asking price a notch, and the newest floated Atlanta package swings back to Risacher, Kispert and three first-round picks. The roster still sits at 16 standard contracts, one over the limit, and would be two over if Kuminga returns.",
+    "KOBE JOHNSON WENT FOR 30 AND ATLANTA HANDED BOSTON ITS FIRST SUMMER LOSS. The Hawks beat the Celtics 102-90 in Las Vegas on Monday night, moving to 3-0 in Vegas and 5-0 overall this summer, and they did it without Kingston Flemings or Asa Newell, both rested. Johnson shot 11-of-18 with 7 rebounds, 4 assists and 2 steals in 24 minutes; second-round pick HENRI VEESAAR added 20 on 7-of-12 (4-of-6 from three), and the two combined for half of Atlanta's points. A 16-0 run midway through the second quarter decided it, and the Hawks shot 50% from the field and 38.2% from deep (NBA.com / ESPN / SI onsi, Jul 13). Memphis closes the group stage Thursday at 8:00 PM ET, with the four-team playoff seeding on the line ahead of the July 18 semifinals. On the trade board, nothing broke overnight: the JONATHAN KUMINGA sign-and-trade with the Lakers is still stuck with the reporting still split (Khobi Price says Atlanta would take Jarred Vanderbilt plus the Lakers' 2032 first-round swap, Jake Fischer says it never considered Vanderbilt at all), and New Orleans continues to say it must be blown away on TREY MURPHY III. The roster still sits at 16 standard contracts, one over the limit, and would be two over if Kuminga returns.",
   keyTopics: [
     {
-      title: "Tonight: Hawks Face Boston in Las Vegas at 6:00 PM ET, Riding a Four-Game Summer Winning Streak",
+      title: "Kobe Johnson Erupts for 30 as Hawks Hand Boston Its First Summer Loss, 102-90, Without Flemings or Newell",
       detail:
-        "Atlanta's third Las Vegas game tips Monday, July 13 against the Celtics at 6:00 PM ET on Prime Video (Peachtree Hoops / NBA.com, Jul 13). The Hawks were idle Sunday and come in 2-0 in Vegas, 4-0 overall since the Salt Lake City opener. Watch items: whether the second unit keeps scoring at the rate that beat Brooklyn, whether Kingston Flemings' jumper starts falling to match his playmaking (he has at least five assists in each of his four summer games), and whether Asa Newell, Henri Veesaar and Zuby Ejiofor keep building the frontcourt case that will shape camp. Memphis closes the group stage on July 16, ahead of the July 18 semifinals and the July 19 final. Assistant Sanjay Lumpkin is Atlanta's Vegas head coach.",
+        "Monday night in Las Vegas was Atlanta's most complete summer performance yet: a 102-90 win over Boston that moved the Hawks to 3-0 in Vegas and 5-0 overall (NBA.com / ESPN / CelticsBlog, Jul 13). KOBE JOHNSON scored 30 on 11-of-18 shooting with 7 rebounds, 4 assists and 2 steals in 24 minutes, and second-rounder HENRI VEESAAR put up 20 on 7-of-12 (4-of-6 from three) with 4 rebounds and 3 assists, stretching the floor and scoring off the pick-and-roll in the way that explains why Atlanta moved up to draft him at No. 52. The two combined for 50 of the team's 102. Atlanta led 29-25 after one, ripped off a 16-0 run midway through the second, and outscored Boston 23-14 and 31-23 in the middle quarters. Team line: 50% from the field, 38.2% from three. Notable context: the Hawks rested KINGSTON FLEMINGS and ASA NEWELL, two of their most talented summer pieces, and still won by 12.",
+      category: "games",
+    },
+    {
+      title: "Group-Stage Finale Thursday: Memphis at 8:00 PM ET, With Vegas Playoff Seeding on the Line",
+      detail:
+        "Atlanta closes the Las Vegas group stage against Memphis on Thursday, July 16 at 8:00 PM ET on Prime Video (NBA.com / ESPN schedule, Jul 14). The first four games seed a four-team bracket, semifinals July 18 and the final July 19, so the Hawks are playing for a top-four spot at 3-0. Watch items: whether Flemings and Newell return after Monday's rest, whether Veesaar's shooting carries a second straight night, and whether Kobe Johnson's 30-point breakout was a one-off or a two-way-contract case. Assistant Sanjay Lumpkin is Atlanta's Vegas head coach.",
       category: "games",
     },
     {
       title: "Kuminga Reporting Now Openly Conflicts: Price Says Atlanta Would Take Vanderbilt and a 2032 Swap, Fischer Says It Never Considered It",
       detail:
-        "The Lakers sign-and-trade for Jonathan Kuminga has not moved, but the reporting around it has split. Khobi Price of The California Post reports Atlanta would have interest in a framework sending Kuminga to Los Angeles for Jarred Vanderbilt and the Lakers' 2032 first-round pick swap, which is the only first-round equity LA can trade this summer after sending two firsts and two swaps to Utah in the Walker Kessler sign-and-trade (Lakers Nation / Hoops Rumors / Yahoo Sports, Jul 10-12). Jake Fischer of The Stein Line, meanwhile, holds that the Hawks have been resistant to Vanderbilt and have 'not considered' taking him back, meaning any deal would need a third team to absorb his roughly $48M contract. The cap math explains the resistance: Atlanta sits about $11.4M below the first apron. The player-side gap is separate and still wide, with LA around $10M in average annual value and Kuminga seeking closer to $25M. Unresolved, and the two accounts cannot both be right.",
+        "As of Tuesday morning, July 14, the Lakers sign-and-trade for Jonathan Kuminga still has not moved, and the reporting around it remains split. Khobi Price of The California Post reports Atlanta would have interest in a framework sending Kuminga to Los Angeles for Jarred Vanderbilt and the Lakers' 2032 first-round pick swap, which is the only first-round equity LA can trade this summer after sending two firsts and two swaps to Utah in the Walker Kessler sign-and-trade (Lakers Nation / Hoops Rumors / Yahoo Sports, Jul 10-12). Jake Fischer of The Stein Line, meanwhile, holds that the Hawks have been resistant to Vanderbilt and have 'not considered' taking him back, meaning any deal would need a third team to absorb his roughly $48M contract. The cap math explains the resistance: Atlanta sits about $11.4M below the first apron. The player-side gap is separate and still wide, with LA around $10M in average annual value and Kuminga seeking closer to $25M. Unresolved, and the two accounts cannot both be right.",
       category: "trades",
     },
     {
@@ -486,12 +492,6 @@ export const NEWS_DIGEST = {
       detail:
         "The 15-man regular-season limit has not moved, and neither has Atlanta's roster. After signing all three rookies to standard deals, the Hawks stand at 16 standard contracts, one over the limit, and would need to move two players if Jonathan Kuminga returns (SI onsi / Hoops Rumors, Jul 6-12). Teams can carry 20 through the summer, so there is no hard deadline until camp, but a trade rather than a waiver remains the likeliest trim because Atlanta would prefer to convert the surplus into value. Buddy Hield and Corey Kispert are the two names reporting keeps returning to. Hield's single expiring year at $9.66M is the easier salary to move; Kispert has three years left, which makes him the harder sell despite the shooting.",
       category: "trades",
-    },
-    {
-      title: "Ejiofor Erupts for 19 and 15 as Hawks Storm Back From 20 Down to Beat the Thunder 82-77 in SLC Game 2",
-      detail:
-        "Monday night's 82-77 win over Oklahoma City was Atlanta's first of the summer, and it belonged to No. 23 pick Zuby Ejiofor: 19 points (5-13 FG, 3-8 from three, 4-5 FT), 15 rebounds, 3 assists and a block in 25 minutes, most of it after halftime, capped by back-to-back fourth-quarter threes that flipped the game (NBA.com / CBS Sports / NBC Sports, Jul 6). The Hawks trailed by 20 before outscoring OKC 50-32 across the second and third quarters, shooting 12-of-36 from deep while holding the Thunder to 5-of-15. Asa Newell added 13 points, 7 rebounds and 3 assists; Kingston Flemings finished with 12 points (4-10 FG), a game-high 5 assists and a team-best 3 blocks, the two-way lead-guard stamp Atlanta drafted at No. 8 (ESPN / SI onsi / Yahoo Sports, Jul 6). Atlanta finished the Salt Lake City slate 2-1.",
-      category: "games",
     },
     {
       title: "Fischer: Hawks Involved in Several Trade Scenarios Built on Buddy Hield's $9.66M Expiring Salary",
@@ -563,17 +563,17 @@ export const NEWS_DIGEST = {
 // ─── Issue metadata (drives datelines, cover star, masthead) ───────────────
 // Update `date` daily; everything else flows from KEY_DATES + NEWS_DIGEST.
 export const ISSUE = {
-  date: "2026-07-13",                              // YYYY-MM-DD — single source of truth
+  date: "2026-07-14",                              // YYYY-MM-DD — single source of truth
   volume: 26,                                       // VOL XXVI
-  number: 25,                                       // Issue number (offseason cadence)
-  dateline: "ATLANTA · JULY 13, 2026",              // Pre-formatted for display
-  mastheadLine: "VOL XXVI · ISSUE NO. 25 · JULY 2026 · ATL · USA",
-  railLabel: "ISSUE 25 · JULY 13",
-  coverStarId: 7,                                   // PLAYERS[id] for the cover portrait
-  coverRibbon: "KUMINGA REPORTING SPLITS: PRICE SAYS ATLANTA WOULD TAKE VANDERBILT AND A 2032 SWAP, FISCHER SAYS IT NEVER CONSIDERED IT · BOSTON TONIGHT, 6 ET · MURPHY PACKAGE SWINGS BACK TO RISACHER",
-  coverStatusKicker: "OFFSEASON · DAY 71",          // top-right corner of cover
-  coverStatusLine: "GAME DAY: BOSTON IN VEGAS, 6 PM ET · 4 STRAIGHT SUMMER WINS", // {DAYS:id} resolves from KEY_DATES
-  backTagline: "Next issue: what Boston revealed, and whether the Kuminga standoff finally breaks.",
+  number: 26,                                       // Issue number (offseason cadence)
+  dateline: "ATLANTA · JULY 14, 2026",              // Pre-formatted for display
+  mastheadLine: "VOL XXVI · ISSUE NO. 26 · JULY 2026 · ATL · USA",
+  railLabel: "ISSUE 26 · JULY 14",
+  coverStarId: 13,                                  // PLAYERS[id] for the cover portrait
+  coverRibbon: "HAWKS 102, CELTICS 90: KOBE JOHNSON 30, VEESAAR 20 AS ATLANTA HANDS BOSTON ITS FIRST SUMMER LOSS · 5-0 THIS SUMMER · MEMPHIS THURSDAY, 8 ET",
+  coverStatusKicker: "OFFSEASON · DAY 72",          // top-right corner of cover
+  coverStatusLine: "3-0 IN VEGAS · 5 STRAIGHT SUMMER WINS · MEMPHIS THURSDAY, 8 PM ET", // {DAYS:id} resolves from KEY_DATES
+  backTagline: "Next issue: the Memphis finale, Vegas seeding, and whether the Kuminga standoff finally breaks.",
 };
 
 // ─── Cover TOC (table of contents on the cover) ────────────────────────────
