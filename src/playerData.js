@@ -441,14 +441,14 @@ export const EAST_STANDINGS = [
 
 // ─── AI News Digest (generated from live web search) ───────────────────────
 export const NEWS_DIGEST = {
-  generatedAt: "2026-07-15T08:15:00Z",
+  generatedAt: "2026-07-16T08:15:00Z",
   summary:
-    "AS OF WEDNESDAY, JULY 15, ATLANTA IS 5-0 THIS SUMMER AND ONE GAME FROM CLOSING VEGAS PERFECT. The Hawks' group-stage finale against Memphis tips Thursday at 8:00 PM ET on Prime Video, with four-team playoff seeding on the line ahead of the July 18 semifinals. Nothing new happened on the court Tuesday, an off day, so the leftover storyline is Monday's 102-90 handling of Boston (the Celtics' first summer loss) behind Kobe Johnson's 30 and Henri Veesaar's 20. The watch items for Thursday: whether Kingston Flemings and Asa Newell return after being rested against Boston, and whether Veesaar's shooting travels a second time. Flemings has quietly been one of the tournament's best passers, averaging 10.0 points and 6.8 assists with a 42.2% assist rate that ranks third among all Summer League participants. On the trade board the picture is unchanged but the reporting sharpened: the JONATHAN KUMINGA sign-and-trade with the Lakers is still split, with one camp saying Atlanta would accept Jarred Vanderbilt plus the Lakers' 2032 swap and another saying it has rejected that framework outright, while New Orleans keeps insisting it must be blown away on TREY MURPHY III. The roster still sits at 16 standard contracts, one over the limit and two over if Kuminga returns, and SI now lists Hield, Kispert and Risacher as the likeliest to move before the end of July.",
+    "IT IS GAME DAY: ATLANTA CLOSES THE VEGAS GROUP STAGE AGAINST MEMPHIS TONIGHT, 5-0 THIS SUMMER AND 3-0 IN LAS VEGAS. The finale tips Thursday, July 16 at 8:00 PM ET on Prime Video, but the bracket math has hardened: with the top four teams (by record and point differential) advancing to the July 18 semifinals, a perfect Vegas run may still miss the cut because Atlanta sits outside the top four on differential, behind teams like Toronto and Oklahoma City. The freshest court result is Monday's 102-90 handling of Boston, the Celtics' first summer loss, behind Kobe Johnson's 30 and Henri Veesaar's 20. Watch items tonight: whether Kingston Flemings and Asa Newell return after being rested against Boston, and whether Veesaar's shooting travels a second time. Flemings has quietly been one of the tournament's best passers, averaging 10.0 points and 6.8 assists with an assist rate that ranks third among all Summer League participants, even as his shooting has slipped to 33.3% in Vegas. On the trade board the picture is unchanged: the JONATHAN KUMINGA sign-and-trade with the Lakers is still split, with one camp saying Atlanta would accept Jarred Vanderbilt plus the Lakers' 2032 swap and another saying it never considered that framework, while New Orleans keeps insisting it must be blown away on TREY MURPHY III. The roster still sits at 16 standard contracts, one over the limit and two over if Kuminga returns, and SI still lists Hield, Kispert and Risacher as the likeliest to move before the end of July.",
   keyTopics: [
     {
-      title: "Group-Stage Finale Thursday: Hawks Take a 5-0 Summer Into Memphis at 8:00 PM ET, With Vegas Seeding on the Line",
+      title: "Game Day: Hawks Take a 5-0 Summer Into the Memphis Finale Tonight, but the Bracket May Be Out of Reach on Differential",
       detail:
-        "Atlanta closes the Las Vegas group stage against Memphis on Thursday, July 16 at 8:00 PM ET on Prime Video, sitting 3-0 in Vegas and 5-0 overall this summer (NBA.com / ESPN schedule, Jul 15). The first four games seed a four-team bracket, semifinals July 18 and the final July 19, so the Hawks are playing for a top-four spot. Watch items after Tuesday's off day: whether Kingston Flemings and Asa Newell return following their rest against Boston, whether Henri Veesaar's shooting carries a second straight night, and whether Kobe Johnson's 30-point breakout was a one-off or a two-way-contract case. Assistant Sanjay Lumpkin is Atlanta's Vegas head coach.",
+        "Atlanta closes the Las Vegas group stage against Memphis tonight, Thursday, July 16 at 8:00 PM ET on Prime Video, sitting 3-0 in Vegas and 5-0 overall this summer (NBA.com / ESPN schedule, Jul 16). The first four games seed a four-team bracket, semifinals July 18 and the final July 19, but seeding runs on record then point differential, and projections have Atlanta on the outside looking in behind unbeaten Toronto and Oklahoma City even if it wins tonight. That makes this closer to an audition than an elimination game. Watch items after Tuesday's off day: whether Kingston Flemings and Asa Newell return following their rest against Boston, whether Henri Veesaar's shooting carries a second straight night, and whether Kobe Johnson's 30-point breakout was a one-off or a two-way-contract case. Assistant Sanjay Lumpkin is Atlanta's Vegas head coach.",
       category: "games",
     },
     {
@@ -569,15 +569,15 @@ export const NEWS_DIGEST = {
 // ─── Issue metadata (drives datelines, cover star, masthead) ───────────────
 // Update `date` daily; everything else flows from KEY_DATES + NEWS_DIGEST.
 export const ISSUE = {
-  date: "2026-07-14",                              // YYYY-MM-DD — single source of truth
+  date: "2026-07-16",                              // YYYY-MM-DD — single source of truth
   volume: 26,                                       // VOL XXVI
-  number: 26,                                       // Issue number (offseason cadence)
-  dateline: "ATLANTA · JULY 14, 2026",              // Pre-formatted for display
-  mastheadLine: "VOL XXVI · ISSUE NO. 26 · JULY 2026 · ATL · USA",
-  railLabel: "ISSUE 26 · JULY 14",
+  number: 27,                                       // Issue number (offseason cadence)
+  dateline: "ATLANTA · JULY 16, 2026",              // Pre-formatted for display
+  mastheadLine: "VOL XXVI · ISSUE NO. 27 · JULY 2026 · ATL · USA",
+  railLabel: "ISSUE 27 · JULY 16",
   coverStarId: 13,                                  // PLAYERS[id] for the cover portrait
-  coverRibbon: "HAWKS 102, CELTICS 90: KOBE JOHNSON 30, VEESAAR 20 AS ATLANTA HANDS BOSTON ITS FIRST SUMMER LOSS · 5-0 THIS SUMMER · MEMPHIS THURSDAY, 8 ET",
-  coverStatusKicker: "OFFSEASON · DAY 72",          // top-right corner of cover
+  coverRibbon: "GAME DAY: HAWKS TAKE A 5-0 SUMMER INTO THE MEMPHIS FINALE TONIGHT · 3-0 IN VEGAS · SEEDING ON THE LINE · 8 ET, PRIME VIDEO",
+  coverStatusKicker: "OFFSEASON · DAY 74",          // top-right corner of cover
   coverStatusLine: "3-0 IN VEGAS · 5 STRAIGHT SUMMER WINS · MEMPHIS THURSDAY, 8 PM ET", // {DAYS:id} resolves from KEY_DATES
   backTagline: "Next issue: the Memphis finale, Vegas seeding, and whether the Kuminga standoff finally breaks.",
 };
