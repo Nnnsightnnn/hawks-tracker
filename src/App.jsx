@@ -2,7 +2,7 @@
 // Peachtree '70s heritage system. See REDESIGN-BRIEF.md.
 import { useState, useEffect, useMemo, useRef } from "react";
 import {
-  PLAYERS, RESULTS, EAST_STANDINGS, NEWS_DIGEST,
+  PLAYERS, RESULTS, EAST_STANDINGS, NEWS_DIGEST, NEXT_GAME,
   ISSUE as RAW_ISSUE, NUMBERS_LEDGER, BETS as RAW_BETS, KEY_DATES,
   DRAFT_DATA,
 } from "./playerData.js";
@@ -103,55 +103,95 @@ const ADAPTED_BETS = RAW_BETS.map((b) => ({ take: b.take, conf: b.confidence }))
 // LEDGER rows: already triples in NUMBERS_LEDGER — pick the top 6 for the rail.
 const ADAPTED_LEDGER = NUMBERS_LEDGER.slice(0, 6).map((row) => [row[0], row[1], row[2]]);
 
+// ─── Live issue derivation ──────────────────────────────────────
+// Everything below is DERIVED from the daily-refreshed data (NEWS_DIGEST,
+// NEXT_GAME, standings), so the masthead + cover story update automatically
+// on every data push. Do not hardcode dates/headlines here again.
+const MONTHS = ["JANUARY","FEBRUARY","MARCH","APRIL","MAY","JUNE","JULY","AUGUST","SEPTEMBER","OCTOBER","NOVEMBER","DECEMBER"];
+const MON3   = ["JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC"];
+const CAT_LABEL = { trades: "Trade Wire", injuries: "Injury Report", games: "On the Floor", rotation: "Rotation", general: "Front Office" };
+function _titleCase(m) { return m.charAt(0) + m.slice(1).toLowerCase(); }
+function _issueDate() {
+  const raw = NEWS_DIGEST.generatedAt || (RAW_ISSUE.date ? RAW_ISSUE.date + "T12:00:00Z" : null);
+  const d = raw ? new Date(raw) : new Date();
+  return isNaN(d) ? new Date() : d;
+}
+function _fmtDateline(d) { return `ATLANTA · ${MONTHS[d.getUTCMonth()]} ${d.getUTCDate()}, ${d.getUTCFullYear()}`; }
+function _titleHead(t) { const m = String(t || "").split(/[:—–]/); return m[0].trim(); }
+function _titleRest(t) { const s = String(t || ""); const i = s.search(/[:—–]/); return i >= 0 ? s.slice(i + 1).trim() : ""; }
+
+const _issueD = _issueDate();
+const _digestDateline = _fmtDateline(_issueD);
+const _lead = NEWS_DIGEST.keyTopics[0] || { title: "Atlanta Hawks", detail: "", category: "general" };
+
 // Map NEWS_DIGEST.keyTopics → wire stories.
-const KICKER_BY_CATEGORY = { trades: "FREE AGENCY", games: "AROUND THE LEAGUE", general: "FRONT OFFICE" };
+const KICKER_BY_CATEGORY = { trades: "FREE AGENCY", games: "AROUND THE LEAGUE", injuries: "INJURY REPORT", rotation: "ROTATION", general: "FRONT OFFICE" };
 const WIRE = NEWS_DIGEST.keyTopics.slice(0, 6).map((t) => {
   const kicker = (t.title.match(/draft/i) ? "DRAFT"
     : t.title.match(/all-?nba|all-?defens|most improved|hardware/i) ? "HONORS"
+    : t.title.match(/injur|surgery|fracture|out \d|day-to-day/i) ? "INJURY REPORT"
     : t.title.match(/free agency|mccollum|grimes|harden|hartenstein/i) ? "FREE AGENCY"
     : t.title.match(/kuminga|hield|cap|option|trigger/i) ? "CAP CALENDAR"
-    : t.title.match(/snyder|saleh|president|coach/i) ? "FRONT OFFICE"
+    : t.title.match(/snyder|saleh|president|coach|broadcast|tv|gray media/i) ? "FRONT OFFICE"
     : t.title.match(/brown|trade|risacher|cameron johnson|kispert/i) ? "TRADE WIRE"
     : (KICKER_BY_CATEGORY[t.category] || "AROUND THE LEAGUE"));
   return {
     kicker,
-    dateline: "ATLANTA · MAY " + (24 + (WIRE_index_seed(t.title) % 6)),
+    dateline: `ATLANTA · ${MON3[_issueD.getUTCMonth()]} ${_issueD.getUTCDate()}`,
     headline: t.title.replace(/[—–:].*$/, "").trim().replace(/\s+/g, " "),
     body: firstSentence(t.detail, 520) + (t.detail.length > 520 ? "" : ""),
   };
 });
-function WIRE_index_seed(s) { let h = 0; for (let i = 0; i < s.length; i++) h = (h * 31 + s.charCodeAt(i)) | 0; return Math.abs(h); }
 
-// FEATURE: cover story = Jalen Johnson · All-NBA Third Team (the lead in NEWS_DIGEST).
+// FEATURE: cover story = the current lead in NEWS_DIGEST (keyTopics[0]).
 const FEATURE = {
   flag: "Cover Story",
-  section: "The Lead · Offseason",
+  section: "The Lead · " + (CAT_LABEL[_lead.category] || "Front Office"),
   starId: RAW_ISSUE.coverStarId || 1,
-  starRole: "Forward · No. 1",
-  headline: "A Team of His Own",
-  standfirst: "Jalen Johnson's All-NBA Third Team nod is the first for any Hawk since Trae Young — and the clearest sign yet that Atlanta's next era already has a face.",
-  dateline: "ATLANTA · MAY 24, 2026",
+  headline: _titleHead(_lead.title) || "Atlanta Hawks",
+  standfirst: _titleRest(_lead.title) || firstSentence(_lead.detail, 220),
+  dateline: _digestDateline,
   byline: "By the Editors",
   readMore: "Read the full wire",
-  body: "For the better part of two decades the franchise waited for a name to hang on the marquee, and found it in a forward it drafted twentieth. Johnson's selection to the All-NBA Third Team — the first such honor for any Hawk since Trae Young in 2022 — closed a year in which he became just the fifth player in league history to average 22 points, 10 rebounds and 7 assists across a full season. The company is absurd: Robertson, Chamberlain, Jokic, Westbrook. The timing is louder still. Atlanta's spring ended at eighty-nine — the worst night of a season that produced its loudest run in a decade — and the offseason that followed turned on a single question: who is this team built around? The answer was already on the floor.",
-  quote: { text: "The work doesn't end at 89.", who: "The Editors", when: "Offseason · May 2026" },
-  ribbon: "Cover Star · Jalen Johnson",
-  also: [
-    { kicker: "Front Office", headline: "Saleh Elevated to President of Basketball Ops", dateline: "May 27" },
-    { kicker: "Free Agency",  headline: "Hawks Confirm They Want McCollum Back",         dateline: "May 23" },
-  ],
+  body: NEWS_DIGEST.summary || firstSentence(_lead.detail, 600),
+  quote: { text: "Signal from noise.", who: "The Editors", when: `${_titleCase(MONTHS[_issueD.getUTCMonth()])} ${_issueD.getUTCFullYear()}` },
+  // Cover art is a dedicated slot: a generated image dropped into
+  // public/assets/cover/ and referenced by ISSUE.coverImage. When absent,
+  // the panel shows a branded placeholder — never an NBA headshot silhouette.
+  coverImage: RAW_ISSUE.coverImage || null,
+  coverKicker: CAT_LABEL[_lead.category] || "Cover Story",
+  ribbon: _titleHead(_lead.title) || "The Lead",
+  also: NEWS_DIGEST.keyTopics.slice(1, 4).map((t) => ({
+    kicker: CAT_LABEL[t.category] || "Front Office",
+    headline: _titleHead(t.title),
+    dateline: `${MON3[_issueD.getUTCMonth()]} ${_issueD.getUTCDate()}`,
+  })),
 };
 
-// ISSUE strip
+// ISSUE strip (masthead) — derived from standings + NEXT_GAME.
+const _atl = ADAPTED_STANDINGS.find((s) => /Atlanta|Hawks/i.test(s.team)) || { record: "—", seed: 6 };
+const _nextDate = NEXT_GAME && NEXT_GAME.date ? new Date(NEXT_GAME.date) : null;
+const _daysToNext = _nextDate && !isNaN(_nextDate) ? Math.round((_nextDate - _issueD) / 86400000) : null;
+function _nextLabel() {
+  if (!NEXT_GAME || !NEXT_GAME.opponent) return "TBD";
+  const s = _titleHead(NEXT_GAME.opponent).replace(/^Summer League\s*/i, "").replace(/^vs\s*/i, "");
+  return s.toUpperCase();
+}
+function _nextWhen() {
+  if (!_nextDate || isNaN(_nextDate)) return "TBD";
+  const ds = `${MON3[_nextDate.getUTCMonth()]} ${_nextDate.getUTCDate()}`;
+  if (_daysToNext > 1)  return `${ds} · in ${_daysToNext} days`;
+  if (_daysToNext === 1) return `${ds} · tomorrow`;
+  if (_daysToNext === 0) return `${ds} · today`;
+  return ds;
+}
 const ISSUE = {
-  ribbon: "ATLANTA · OFFSEASON · MAY 30",
-  record: "46–36",
-  seed:   "6 SEED · EAST",
-  nextLabel: "DRAFT NIGHT",
-  nextDate:  "JUNE 23",
-  daysToDraft: (KEY_DATES.find((k) => k.id === "draft")
-    ? Math.round((new Date("2026-06-23T12:00:00") - new Date(RAW_ISSUE.date + "T12:00:00")) / 86400000)
-    : 24),
+  ribbon: _digestDateline,
+  record: _atl.record,
+  seed:   `${_atl.seed} SEED · EAST`,
+  seedShort: `${_atl.seed} SEED`,
+  nextLabel: _nextLabel(),
+  nextWhen: _nextWhen(),
 };
 
 const HAWKS = {
@@ -410,10 +450,10 @@ function Cover({ tweaks }) {
         }}>
           <div style={{ fontFamily: FONT.body, fontWeight: 600, fontSize: 10, letterSpacing: 2, color: C.pine, textTransform: "uppercase" }}>Next on the calendar</div>
           <div style={{ fontFamily: FONT.disp, fontWeight: 700, fontSize: 28, color: C.ink, lineHeight: 1, margin: "8px 0 4px", whiteSpace: "nowrap" }}>{I.nextLabel}</div>
-          <div style={{ fontFamily: FONT.body, fontWeight: 600, fontSize: 13, color: C.red }}>{I.nextDate} · in {I.daysToDraft} days</div>
+          <div style={{ fontFamily: FONT.body, fontWeight: 600, fontSize: 13, color: C.red }}>{I.nextWhen}</div>
           <div style={{ height: 1, background: C.hair, margin: "13px 0" }}/>
           <div style={{ display: "flex", gap: 22 }}>
-            {[["RECORD", I.record], ["EAST", "6 SEED"]].map(([k, v]) => (
+            {[["RECORD", I.record], ["EAST", I.seedShort]].map(([k, v]) => (
               <div key={k}>
                 <div style={{ fontFamily: FONT.num, fontWeight: 700, fontSize: 18, color: C.ink, fontVariantNumeric: "tabular-nums", whiteSpace: "nowrap" }}>{v}</div>
                 <div style={{ fontFamily: FONT.body, fontWeight: 600, fontSize: 8.5, letterSpacing: 1.2, color: C.taupe, marginTop: 2 }}>{k}</div>
@@ -464,10 +504,12 @@ function PennantTab({ tab, active, onClick }) {
 // ─── Feature view ───────────────────────────────────────────────
 function CoverStarPanel({ tweaks }) {
   const F = HAWKS.FEATURE;
-  const star = HAWKS.PLAYERS.find((p) => p.id === F.starId) || HAWKS.PLAYERS[0];
   const frame = tweaks.cardBorder === "pine" ? C.pine : C.red;
   const ribBg = tweaks.ribbon === "red" ? C.red : C.gold;
   const ribFg = tweaks.ribbon === "red" ? C.cream : C.ink;
+  const [artFailed, setArtFailed] = useState(false);
+  const base = import.meta.env.BASE_URL || "/";
+  const art = F.coverImage && !artFailed ? base + String(F.coverImage).replace(/^\/+/, "") : null;
   return (
     <div style={{
       position: "relative", borderRadius: 16, overflow: "hidden",
@@ -475,28 +517,41 @@ function CoverStarPanel({ tweaks }) {
       background: `radial-gradient(120% 75% at 50% 12%, ${C.panel2} 0%, ${C.panel} 72%)`,
       aspectRatio: "0.82 / 1", minHeight: 360,
     }}>
-      <HawkMark color={frame} opacity={0.08} style={{
-        position: "absolute", width: "78%", height: "78%",
-        left: "50%", top: "46%", transform: "translate(-50%,-50%)", pointerEvents: "none",
+      <HawkMark color={frame} opacity={art ? 0 : 0.14} style={{
+        position: "absolute", width: "62%", height: "62%",
+        left: "50%", top: "42%", transform: "translate(-50%,-50%)", pointerEvents: "none",
       }}/>
-      <div style={{
-        position: "absolute", right: -8, bottom: -22, zIndex: 1,
-        fontFamily: FONT.disp, fontWeight: 700, fontSize: "min(220px,30vw)",
-        lineHeight: 0.78, color: frame, opacity: 0.10, pointerEvents: "none",
-      }}>{String(star.number).padStart(2, "0")}</div>
-      <img src={star.image} alt={star.name} style={{
-        position: "absolute", inset: 0, width: "100%", height: "100%",
-        objectFit: "cover", objectPosition: "center 14%", zIndex: 2,
-        filter: tweaks.bw ? "grayscale(1) contrast(1.05)" : "none",
-      }} onError={(e) => { e.currentTarget.style.opacity = 0.12; }}/>
+      {art ? (
+        <img src={art} alt={F.headline} style={{
+          position: "absolute", inset: 0, width: "100%", height: "100%",
+          objectFit: "cover", objectPosition: "center 18%", zIndex: 2,
+          filter: tweaks.bw ? "grayscale(1) contrast(1.05)" : "none",
+        }} onError={() => setArtFailed(true)}/>
+      ) : (
+        <div style={{
+          position: "absolute", inset: 0, zIndex: 2, display: "flex",
+          flexDirection: "column", alignItems: "center", justifyContent: "center",
+          textAlign: "center", padding: 26, pointerEvents: "none",
+        }}>
+          <div style={{
+            fontFamily: FONT.disp, fontWeight: 700, fontSize: "min(112px,19vw)",
+            lineHeight: 0.8, color: frame, opacity: 0.22, letterSpacing: 1,
+          }}>ATL/26</div>
+          <div style={{
+            fontFamily: FONT.body, fontWeight: 600, fontSize: 10.5, letterSpacing: 2,
+            color: C.taupe, textTransform: "uppercase", marginTop: 14,
+          }}>Cover art in production</div>
+        </div>
+      )}
       <div style={{ position: "absolute", left: 0, top: 16, zIndex: 3 }}>
-        <Pennant bg={C.gold} fg={C.ink} dir="right">{F.starRole}</Pennant>
+        <Pennant bg={C.gold} fg={C.ink} dir="right">{F.coverKicker}</Pennant>
       </div>
       <div style={{
         position: "absolute", left: "50%", bottom: 18, transform: "translateX(-50%)",
         zIndex: 4, background: ribBg, color: ribFg,
         border: `2px solid ${tweaks.ribbon === "red" ? C.gold : C.red}`,
-        borderRadius: 8, padding: "9px 20px", whiteSpace: "nowrap",
+        borderRadius: 8, padding: "9px 20px", whiteSpace: "nowrap", maxWidth: "88%",
+        overflow: "hidden", textOverflow: "ellipsis",
         fontFamily: FONT.body, fontWeight: 600, fontSize: 12.5, letterSpacing: 1.6,
         textTransform: "uppercase",
       }}>{F.ribbon}</div>

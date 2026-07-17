@@ -618,7 +618,11 @@ export const ISSUE = {
   dateline: "ATLANTA · JULY 16, 2026",              // Pre-formatted for display
   mastheadLine: "VOL XXVI · ISSUE NO. 27 · JULY 2026 · ATL · USA",
   railLabel: "ISSUE 27 · JULY 16",
-  coverStarId: 13,                                  // PLAYERS[id] for the cover portrait
+  coverStarId: 13,                                  // (legacy) PLAYERS[id]; cover no longer uses NBA headshots
+  // Cover art slot: relative path under public/ to a GENERATED cover image
+  // (e.g. "assets/cover/summer-over.jpg"). Produced by the AI image pipeline
+  // and dropped into public/assets/cover/. null → branded placeholder renders.
+  coverImage: null,
   coverRibbon: "GAME DAY: HAWKS TAKE A 5-0 SUMMER INTO THE MEMPHIS FINALE TONIGHT · 3-0 IN VEGAS · SEEDING ON THE LINE · 8 ET, PRIME VIDEO",
   coverStatusKicker: "OFFSEASON · DAY 74",          // top-right corner of cover
   coverStatusLine: "3-0 IN VEGAS · 5 STRAIGHT SUMMER WINS · MEMPHIS THURSDAY, 8 PM ET", // {DAYS:id} resolves from KEY_DATES
