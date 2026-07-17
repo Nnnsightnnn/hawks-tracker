@@ -244,8 +244,8 @@ export const PLAYERS = [
     stealsPerGame: 0.4, blocksPerGame: 0.7, turnoversPerGame: 0.6,
     fieldGoalPct: 52.1, threePointPct: 30.4, freeThrowPct: 68.2,
     trueShootingPct: 56.8, plusMinus: 0.2,
-    form: 5.8, status: "active", injuryNote: null,
-    recentNotes: "SATURDAY JUNE 27 (offseason) — OPTION PICKED UP: Atlanta exercised Gueye's $2.41M team option for 2026-27, Michael Scotto reported (SI onsi / Peachtree Hoops / Hoops Rumors, Jun 25), a cheap, low-risk hold on a switchable 6'10 depth big rather than risking him in restricted free agency. He still profiles as a third-string spell-big who must compete for minutes if Atlanta adds a veteran center. Got Game 6 garbage-time minutes once Round 1 was decided; Bradley took the bigger spell-big share through the series. Regular-season averages of 6.2/4.6 in 14.8 mpg held a real third-big role through 46 games.",
+    form: 5.8, status: "out", injuryNote: "Left foot fracture (surgery Tuesday Jul 14 at Emory, re-eval in 3-4 months, likely misses start of 2026-27 season — ESPN / Hoops Rumors, Jul 16)",
+    recentNotes: "THURSDAY JULY 16 (offseason) INJURY: Gueye fractured his left foot in a July 8 workout and had surgery Tuesday at the Emory Sports Medicine Complex; the Hawks will re-evaluate in three to four months, so he is set to miss training camp, the preseason and likely the start of the 2026-27 season (ESPN / Atlanta News First / Hoops Rumors, Jul 16). Atlanta had exercised his $2.41M team option June 27, a cheap hold on a switchable 6'10 depth big. The injury sharpens the roster-crunch math and adds to the case for adding frontcourt size behind Onyeka Okongwu.",
     playoffStats: { gamesPlayed: 6, minutesPerGame: 9.2, pointsPerGame: 1.4, reboundsPerGame: 1.7, assistsPerGame: 0.2 },
     playoffSeries: null,
     minutesTrend: "down",
@@ -385,14 +385,14 @@ export const TEAM_LOGOS = {
 // Season ended Apr 30 in Game 6 elimination by the Knicks. Next on the calendar:
 // 2026 NBA Draft Lottery on May 10 (ATL holds the more-favorable of NOP/MIL plus CLE No. 24).
 export const NEXT_GAME = {
-  opponent: "Summer League vs Memphis (Las Vegas)",
-  shortName: "LV SL",
-  home: false,
-  date: "2026-07-16T20:00:00-04:00",
+  opponent: "Offseason: Roster & Trade Board",
+  shortName: "OFFSZN",
+  home: true,
+  date: "2026-09-29T00:00:00-04:00",
   competition: "OFFSEASON",
-  venue: "Thomas & Mack Center, Las Vegas",
-  broadcast: "Prime Video",
-  seriesContext: "NEXT UP: THURSDAY JULY 16 vs MEMPHIS in Las Vegas (8:00 PM ET, Prime Video), the group-stage finale. Atlanta arrives 3-0 in Vegas and 5-0 overall this summer after Monday night's 102-90 win over Boston, the Celtics' first summer loss. KOBE JOHNSON went for 30 on 11-of-18 with 7 rebounds, 4 assists and 2 steals in 24 minutes, and second-rounder HENRI VEESAAR added 20 on 7-of-12 (4-of-6 from three) with 4 rebounds and 3 assists. The two combined for 50 of Atlanta's 102. The Hawks rested Kingston Flemings and Asa Newell and still ran Boston off the floor, shooting 50% from the field and 38.2% from three behind a 16-0 second-quarter run (NBA.com / ESPN / SI onsi, Jul 13). Watch list vs Memphis: whether Flemings and Newell return for the finale, whether Veesaar's pick-and-pop keeps travelling, and where Atlanta lands in the four-team playoff seeding (semifinals July 18, final July 19). ROSTER: still 16 standard contracts, one over the 15-man limit, and two over if Kuminga comes back, so a trim is coming (Hield and Kispert most often flagged). TRADE BOARD: the Kuminga sign-and-trade remains stuck with the reporting still split (Price says Atlanta would take Jarred Vanderbilt plus a 2032 first-round swap, Fischer says it never considered Vanderbilt at all), and New Orleans still says it must be blown away on Trey Murphy III.",
+  venue: "Training camp opens late September",
+  broadcast: "Games return on WANF / Peachtree Sports Network",
+  seriesContext: "SUMMER IS OVER FOR ATLANTA. The Hawks' Vegas run ended Thursday, July 16 with a 96-64 loss to Memphis in the group-stage finale, a game the Grizzlies broke open with a 21-0 opening burst and a 32-2 first quarter while Atlanta rested Kingston Flemings, Asa Newell, Zuby Ejiofor, Jacob Toppin, RayJ Dennis and Keshon Gilbert. That dropped Atlanta to 5-1 this summer (3-1 in Las Vegas) and just missed the four-team bracket on point differential; the Lakers, Rockets, Grizzlies and Warriors advanced to Saturday's semifinals, with the final Sunday, July 19. FOCUS NOW SHIFTS TO THE OFFSEASON. Injury: forward Mouhamed Gueye had surgery Tuesday on a fractured left foot suffered in a July 8 workout and will be re-evaluated in three to four months, putting training camp, the preseason and likely the start of the 2026-27 regular season in doubt. Business: Gray Media and the Hawks announced a Georgia-wide, free over-the-air broadcast deal Thursday, moving non-national games to WANF (Atlanta News First, Channel 46) and the Peachtree Sports Network. ROSTER: still 16 standard contracts, one over the 15-man limit, and two over if Kuminga returns, so a trim is coming (Hield and Kispert most often flagged). TRADE BOARD: the Jonathan Kuminga sign-and-trade with the Lakers (Jarred Vanderbilt plus a 2032 first-round swap) remains unresolved as LA's money falls short and Cleveland lurks, and New Orleans still says it must be blown away on Trey Murphy III.",
 };
 
 // ─── Game Results (2025-26 regular season · last 16 games) ─────────────────
@@ -441,32 +441,74 @@ export const EAST_STANDINGS = [
 
 // ─── AI News Digest (generated from live web search) ───────────────────────
 export const NEWS_DIGEST = {
-  generatedAt: "2026-07-16T08:15:00Z",
+  generatedAt: "2026-07-17T08:15:00Z",
   summary:
-    "IT IS GAME DAY: ATLANTA CLOSES THE VEGAS GROUP STAGE AGAINST MEMPHIS TONIGHT, 5-0 THIS SUMMER AND 3-0 IN LAS VEGAS. The finale tips Thursday, July 16 at 8:00 PM ET on Prime Video, but the bracket math has hardened: with the top four teams (by record and point differential) advancing to the July 18 semifinals, a perfect Vegas run may still miss the cut because Atlanta sits outside the top four on differential, behind teams like Toronto and Oklahoma City. The freshest court result is Monday's 102-90 handling of Boston, the Celtics' first summer loss, behind Kobe Johnson's 30 and Henri Veesaar's 20. Watch items tonight: whether Kingston Flemings and Asa Newell return after being rested against Boston, and whether Veesaar's shooting travels a second time. Flemings has quietly been one of the tournament's best passers, averaging 10.0 points and 6.8 assists with an assist rate that ranks third among all Summer League participants, even as his shooting has slipped to 33.3% in Vegas. On the trade board the picture is unchanged: the JONATHAN KUMINGA sign-and-trade with the Lakers is still split, with one camp saying Atlanta would accept Jarred Vanderbilt plus the Lakers' 2032 swap and another saying it never considered that framework, while New Orleans keeps insisting it must be blown away on TREY MURPHY III. The roster still sits at 16 standard contracts, one over the limit and two over if Kuminga returns, and SI still lists Hield, Kispert and Risacher as the likeliest to move before the end of July.",
+    "ATLANTA'S SUMMER ENDED WITH A THUD: MEMPHIS ROUTED THE HAWKS 96-64 IN THURSDAY'S VEGAS FINALE, A GAME THE GRIZZLIES BROKE OPEN WITH A 32-2 FIRST QUARTER. With a bracket spot on the line, Atlanta rested Kingston Flemings, Asa Newell, Zuby Ejiofor, Jacob Toppin, RayJ Dennis and Keshon Gilbert against a Memphis side still playing rotation NBA talent, and the mismatch showed in a 21-0 opening burst. The loss closed the summer at 5-1 (3-1 in Las Vegas) and left Atlanta just outside the four-team bracket on point differential; the Lakers, Rockets, Grizzlies and Warriors advanced to Saturday's semifinals ahead of Sunday's final. The bigger news broke off the floor: forward MOUHAMED GUEYE had surgery Tuesday on a fractured left foot suffered in a July 8 workout and will be re-evaluated in three to four months, casting doubt on training camp, the preseason and the start of the 2026-27 season. On the business side, Gray Media and the Hawks announced a Georgia-wide, free over-the-air broadcast deal Thursday that moves non-national games to WANF (Atlanta News First) and the Peachtree Sports Network. The trade board is unchanged: the JONATHAN KUMINGA sign-and-trade with the Lakers is still stuck as LA's money falls short and Cleveland lurks, the roster still sits at 16 standard contracts, and New Orleans keeps insisting it must be blown away on TREY MURPHY III.",
   keyTopics: [
     {
-      title: "Game Day: Hawks Take a 5-0 Summer Into the Memphis Finale Tonight, but the Bracket May Be Out of Reach on Differential",
+      title: "Summer Over: Memphis Ends Atlanta's Vegas Run With a 96-64 Rout and a 32-2 First Quarter",
       detail:
-        "Atlanta closes the Las Vegas group stage against Memphis tonight, Thursday, July 16 at 8:00 PM ET on Prime Video, sitting 3-0 in Vegas and 5-0 overall this summer (NBA.com / ESPN schedule, Jul 16). The first four games seed a four-team bracket, semifinals July 18 and the final July 19, but seeding runs on record then point differential, and projections have Atlanta on the outside looking in behind unbeaten Toronto and Oklahoma City even if it wins tonight. That makes this closer to an audition than an elimination game. Watch items after Tuesday's off day: whether Kingston Flemings and Asa Newell return following their rest against Boston, whether Henri Veesaar's shooting carries a second straight night, and whether Kobe Johnson's 30-point breakout was a one-off or a two-way-contract case. Assistant Sanjay Lumpkin is Atlanta's Vegas head coach.",
+        "The Hawks' undefeated Vegas run ended Thursday, July 16 in the ugliest way possible, a 96-64 loss to Memphis with a bracket berth on the line (Peachtree Hoops / Yahoo Sports / SI onsi, Jul 16). Memphis opened on a 21-0 run and led 32-2 after one quarter while Atlanta, shooting 0-of-6 with eight first-quarter turnovers, rested Kingston Flemings, Asa Newell, Zuby Ejiofor, Jacob Toppin, RayJ Dennis and Keshon Gilbert against a Grizzlies side still playing Cedric Coward, Cameron Boozer and other rotation talent. The result dropped Atlanta to 5-1 this summer (3-1 in Las Vegas) and left it just outside the four-team bracket on point differential. The Lakers, Rockets, Grizzlies and Warriors advanced to Saturday's semifinals, with the final Sunday, July 19.",
       category: "games",
     },
     {
-      title: "Flemings' Passing Is the Real Takeaway: No. 8 Pick Ranks Third in Summer League Assist Rate at 42.2%",
+      title: "Gueye Injury: Foot Surgery Tuesday, Out 3-4 Months and Likely to Miss the Start of the Season",
       detail:
-        "The shooting slip has drawn headlines, but the more durable summer signal is Kingston Flemings' playmaking. Through four Summer League games the No. 8 pick is averaging 10.0 points, 6.8 assists, 2.8 rebounds, 1.5 steals and 1.2 blocks, and his 42.2% assist rate ranks third among all Summer League participants (RotoBaller / Yahoo Sports / NBA.com, Jul 9-14). He set the tone in the opener with eight assists on Atlanta's 26-assist night against San Antonio, then filled the box score against Brooklyn (9 points, 7 rebounds, 5 assists) and pushed the OKC comeback in Salt Lake City (12 and 5 with 3 blocks). The two-way lead-guard profile Atlanta drafted to grow alongside Jalen Johnson and behind CJ McCollum is showing up exactly where it matters most.",
+        "The most consequential Hawks development of the week is an injury: forward Mouhamed Gueye fractured his left foot in a July 8 offseason workout and underwent surgery Tuesday at the Emory Sports Medicine Complex (ESPN / Hoops Rumors / Atlanta News First, Jul 16). The team says the 23-year-old will be re-evaluated in three to four months, which is the checkpoint, not the return date, so he is set to miss all of training camp and the preseason and likely the start of the 2026-27 regular season. Gueye had grown into a useful frontcourt piece behind Onyeka Okongwu and Jalen Johnson; his absence deepens the case for adding size and sharpens the roster-crunch math the front office is already navigating.",
+      category: "injuries",
+    },
+    {
+      title: "Hawks Go Free Over the Air: Gray Media Deal Puts Games on WANF and the Peachtree Sports Network",
+      detail:
+        "Gray Media and the Hawks announced a Georgia-wide broadcast partnership Thursday, July 16 that will carry all non-nationally televised regular-season games free over the air on WANF (Atlanta News First, Channel 46) and the Peachtree Sports Network for 2026-27 (Sports Video Group / AJC / Atlanta News First, Jul 16). WANF is also available on Xfinity, Spectrum, DirecTV, DISH, YouTube TV and Fubo, with Gray sister stations in Albany, Augusta, Columbus, Macon and Savannah carrying games locally and three preseason games included. The franchise framed it as its most accessible TV commitment ever; a 13-game WANF package last season averaged more than 1.5 times the ratings of the Hawks' other local broadcasts.",
       category: "general",
     },
     {
-      title: "Off-Day Leftover: Kobe Johnson's 30 and Veesaar's 20 Handed Boston Its First Summer Loss, 102-90",
+      title: "Kuminga Sign-and-Trade Still Stuck: Lakers' Money Falls Short as Cleveland Lurks and LeBron Exits",
       detail:
-        "Monday night in Las Vegas was Atlanta's most complete summer performance yet: a 102-90 win over Boston that moved the Hawks to 3-0 in Vegas and 5-0 overall (NBA.com / ESPN / CelticsBlog, Jul 13). KOBE JOHNSON scored 30 on 11-of-18 shooting with 7 rebounds, 4 assists and 2 steals in 24 minutes, and second-rounder HENRI VEESAAR put up 20 on 7-of-12 (4-of-6 from three) with 4 rebounds and 3 assists, the floor-stretching that explains why Atlanta moved up to draft him at No. 52. The two combined for 50 of the team's 102. Atlanta ripped off a 16-0 run midway through the second and shot 50% from the field and 38.2% from three, all with Flemings and Newell rested. Tuesday was an off day, so this stays the freshest game result until the Memphis finale.",
-      category: "games",
+        "The Jonathan Kuminga sign-and-trade with the Lakers remained unresolved into midweek, and the picture only got busier (Hoops Rumors / HoopsHype / Yahoo Sports, Jul 15-16). The framework on the table would send Kuminga to Los Angeles for Jarred Vanderbilt (about $12.4M this year) and the Lakers' 2032 first-round pick swap, but LA's outright money starts near $10M against Kuminga's roughly $25M ask, so a sign-and-trade is the only way to bridge it, and any deal would need at least a three-year contract with the first season guaranteed. Complicating things, LeBron James told the Lakers last week he will not return, and Cleveland, whose coach Kenny Atkinson coached Kuminga in Golden State, has emerged as a second suitor. Treat it as active but not close.",
+      category: "trades",
     },
     {
-      title: "Kuminga Reporting Still Contradicts Itself Midweek: One Camp Says Atlanta Would Accept Vanderbilt Plus a 2032 Swap, Another Says It Rejected the Framework",
+      title: "Kobe Johnson's Two-Way Case: Undrafted Guard's 30-Point Night vs Boston Was the Summer's Loudest Audition",
       detail:
-        "As of Wednesday, July 15, the Lakers sign-and-trade for Jonathan Kuminga still has not moved, and the reporting around it remains split down the middle. One thread has Atlanta willing to accept a framework sending Kuminga to Los Angeles for Jarred Vanderbilt (a $12.4M salary this year, roughly $48M total) plus the Lakers' 2032 first-round pick swap, the only first-round equity LA can trade this summer after the Walker Kessler deal with Utah (Bleacher Report / Yahoo Sports / Hoops Rumors, Jul 12-14). The other, led by Jake Fischer of The Stein Line, holds that the Hawks have rejected taking Vanderbilt back at all, meaning a deal would need a third team to absorb him. The cap math explains the resistance: Atlanta sits about $11.4M below the first apron. The player-side gap is separate and still wide, with LA around $10M in average annual value and Kuminga seeking closer to $25M. Both accounts cannot be true, so treat the framework as unresolved rather than close.",
+        "The clearest individual winner of Atlanta's summer was Kobe Johnson, the 22-year-old undrafted guard and former Exhibit 10 signee who forced a two-way-contract conversation (SI onsi / NBA.com, Jul 13-16). His signature line came Monday against Boston: 30 points on just 18 shots with seven rebounds, four assists and two steals in the Hawks' 102-90 win, the Celtics' first summer loss, alongside second-rounder Henri Veesaar's 20 on 4-of-6 from three. Johnson's on-ball defense and shot-making across the summer made him one of Atlanta's most reliable Vegas performers even as the more heralded rookies sat out the finale. With the roster already over the limit, whether the Hawks can find him a two-way slot is a real question.",
+      category: "general",
+    },
+    {
+      title: "Flemings' Passing Is the Real Takeaway: No. 8 Pick Ranked Third in Summer League Assist Rate",
+      detail:
+        "The shooting slip drew headlines, but the more durable summer signal was Kingston Flemings' playmaking. Across four Summer League games the No. 8 pick averaged 10.0 points, 6.8 assists, 2.8 rebounds, 1.5 steals and 1.2 blocks, and his assist rate ranked third among all Summer League participants even as his true shooting sat around 42% (RotoBaller / Yahoo Sports / NBA.com, Jul 9-14). He set the tone in the opener with eight assists on Atlanta's 26-assist night against San Antonio, then filled the box score against Brooklyn (9 points, 7 rebounds, 5 assists) and pushed the OKC comeback in Salt Lake City. Rested for the Memphis finale, the two-way lead-guard profile Atlanta drafted to grow behind CJ McCollum is exactly what showed up.",
+      category: "general",
+    },
+    {
+      title: "Roster Crunch: 16 Standard Contracts and Counting, With Hield and Kispert Most Often Flagged",
+      detail:
+        "The 15-man regular-season limit has not moved, and neither has Atlanta's overage. After signing all three rookies to standard deals, the Hawks stand at 16 standard contracts, one over the limit, and would need to move two if Jonathan Kuminga returns (SI onsi / Hoops Rumors, Jul 6-16). Buddy Hield and Corey Kispert are the names most often flagged. Atlanta fully guaranteed Hield's now-$9.66M expiring deal in late June specifically to keep it as movable matching salary, though he played just seven games last season; Kispert has three years left, which makes him the harder contract to move despite the shooting. Teams can carry 20 through the summer, so the hard deadline is camp, but a trade rather than a waiver remains the likeliest trim.",
+      category: "trades",
+    },
+    {
+      title: "Daniels' New Jumper: Offseason Video of a Rebuilt Shooting Form Has Atlanta Buzzing",
+      detail:
+        "The offseason storyline with the highest leverage on next season may not be a trade at all. Video circulating this month shows Dyson Daniels with a visibly reworked, smoother shooting motion after a summer of dedicated work on the jumper (ClutchPoints, Jul). The stakes are real: Daniels shot 18.8% from three last season (22-of-117), one of the worst high-volume perimeter seasons in recent memory, and he has spoken candidly about how far the slump took him. He is an All-Defensive guard who tied for the NBA lead in steals at 2.0, so even an average jumper would raise the ceiling on Atlanta's starting five. Treat the video as encouraging, not conclusive.",
+      category: "general",
+    },
+    {
+      title: "Murphy Board: Latest Floated Framework Sends Risacher, Kispert and Three Firsts to New Orleans",
+      detail:
+        "New Orleans has come down slightly on Trey Murphy III, and the frameworks moved with it. The latest floated Atlanta package sends Zaccharie Risacher, Corey Kispert and three first-round picks to the Pelicans for Murphy (Fadeaway World / Yahoo Sports, Jul 11-12). Michael Scotto has the Celtics, Pistons, Warriors, Clippers and Hawks all in the mix to varying degrees. Atlanta's fit case is unchanged: Murphy, 26, averaged 21.5 points, 5.7 rebounds and 3.8 assists on 47.0/37.9 shooting and would give Jalen Johnson the two-way wing this roster lacks, with existing rapport with CJ McCollum from New Orleans. No deal is close, and the Pelicans still say they must be blown away.",
+      category: "trades",
+    },
+    {
+      title: "Okongwu Extension-Eligible, and the Kuminga Exit Could Fund It",
+      detail:
+        "A quieter July development with long-term stakes: Onyeka Okongwu became eligible for a veteran extension on July 1, on top of the two years and roughly $33M left on his current deal (Soaring Down South / Spotrac, Jul 1-12). Okongwu is coming off a career-best 15.2/7.6/3.1 season on 48% shooting as the starting center, and with Kuminga's $24.3M potentially off the books Atlanta would have the flexibility to lock him in. Local projections put a new deal near four years and $80M against a rising cap. No talks have been reported; file it as the next contract conversation once the roster settles, noting the tension that some of the same insiders floating Okongwu into Murphy packages also call him a long-term keeper.",
+      category: "general",
+    },
+    {
+      title: "Center Board Check: Post-Giannis Milwaukee Is the Turner Variable; Missi, Bitadze and Gafford Remain the Fallbacks",
+      detail:
+        "The center hunt still has no resolution, but the Milwaukee angle keeps growing teeth. With Giannis Antetokounmpo now in Miami, the logic for the Bucks to move Myles Turner is stronger than it was: Turner is coming off a down year, has three years and roughly $83M left, and is not an elite rebounder, which is why he could come cheap (Behind the Buck Pass / SI onsi, Jul 1-10). Milwaukee has received interest but is not actively engaged in a sale. If Turner stays put, the fallbacks remain New Orleans' Yves Missi, Orlando's Goga Bitadze and Dallas' Daniel Gafford, with Rudy Gobert floated as an outside swing. Atlanta drafted two bigs (Ejiofor, Veesaar) but is not planning to lean on rookies behind Okongwu, and Buddy Hield's expiring salary stays the obvious matching piece, a need underlined by Gueye's foot surgery.",
       category: "trades",
     },
     {
@@ -548,6 +590,7 @@ export const NEWS_DIGEST = {
     "Peachtree Hoops",
     "Roundtable",
     "Atlanta News First",
+    "Sports Video Group",
     "Pro Football Network",
     "Hoops Wire",
     "FOX 5 Atlanta",
