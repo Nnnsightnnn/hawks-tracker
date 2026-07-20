@@ -1,4 +1,13 @@
-// ─── Atlanta Hawks Player Data (2025-26 Season · Updated Friday May 29, 2026 — OFFSEASON · FRESH: WCF GOING SEVEN — San Antonio routed OKC 118-91 in Game 6 (Thu May 28 · Wembanyama 28-10-3, SGA 15 on 6-18); winner-take-all GAME 7 Sat May 30 · 8:30 PM ET · NBC/Peacock · Paycom Center, OKC · HAWKS FRONT OFFICE: ONSI SALEH PROMOTED TO PRESIDENT OF BASKETBALL OPERATIONS + LONG-TERM EXTENSION (Wed May 27 · ESPN / Washington Post / Yahoo Sports / SI onsi / Hoops Rumors) — the 2026 Executive-of-the-Year runner-up locks in after Atlanta denied Philadelphia permission to interview him for the 76ers' job · NBA FINALS ARE SET FOR EAST: Knicks swept Cleveland 4-0 (Brunson ECF MVP), first Finals trip since 1999, open on the road Wed June 3 · Hawks ledger steady: Johnson All-NBA Third Team, NAW MIP, Daniels All-Def 2nd Team · Quin Snyder 'massive' eight-figure extension still expected before Draft Night · 25 days to Draft Night Jun 23, 5 days to NBA Finals Game 1) ─
+// ─── Atlanta Hawks Player Data (2025-26 Season · Updated Monday July 20, 2026 — OFFSEASON · FRESH: THREE-TEAM TRADE
+// (Sun Jul 19 · ESPN / NBA.com / Hoops Rumors) — ATLANTA RECEIVES LUGUENTZ DORT AND RYAN NEMBHARD FROM OKLAHOMA CITY;
+// ZACCHARIE RISACHER GOES TO DALLAS; OKC RECEIVES THREE SECOND-ROUND PICKS (CHI 2027 via DAL, ATL most favorable 2031
+// and 2032). Dort: 27, 2025 champion, All-Defensive First Team, $17.7M expiring. Roster now 17 standard contracts
+// against a 15-man limit, so two more moves are coming before camp. The added salary is widely read as closing the
+// Kuminga sign-and-trade with the Lakers. Cap: ~$4M under the tax, >$50M in expiring salary (Dort/McCollum/Landale)
+// to trade with in-season, >$40M in cap space next summer. PLAYERS[] updated: Risacher entry replaced by Dort (id 6);
+// Aaron Wiggins (id 16, acquired from OKC Jul 6) and Ryan Nembhard (id 17) added. NOTE: Atlanta jersey numbers for
+// Dort, Wiggins and Nembhard have not been announced, so `number` is null for those three and the UI renders an em dash.
+// PRIOR HEADER: WCF GOING SEVEN — San Antonio routed OKC 118-91 in Game 6 (Thu May 28 · Wembanyama 28-10-3, SGA 15 on 6-18); winner-take-all GAME 7 Sat May 30 · 8:30 PM ET · NBC/Peacock · Paycom Center, OKC · HAWKS FRONT OFFICE: ONSI SALEH PROMOTED TO PRESIDENT OF BASKETBALL OPERATIONS + LONG-TERM EXTENSION (Wed May 27 · ESPN / Washington Post / Yahoo Sports / SI onsi / Hoops Rumors) — the 2026 Executive-of-the-Year runner-up locks in after Atlanta denied Philadelphia permission to interview him for the 76ers' job · NBA FINALS ARE SET FOR EAST: Knicks swept Cleveland 4-0 (Brunson ECF MVP), first Finals trip since 1999, open on the road Wed June 3 · Hawks ledger steady: Johnson All-NBA Third Team, NAW MIP, Daniels All-Def 2nd Team · Quin Snyder 'massive' eight-figure extension still expected before Draft Night · 25 days to Draft Night Jun 23, 5 days to NBA Finals Game 1) ─
 // Single source of truth for roster, games, digest, and RSS feeds.
 // Season context: 46-36 regular season, Southeast Division champs, 6-seed in East.
 // Playoffs Round 1 vs NY Knicks: KNICKS WIN SERIES 4-2 after Thursday's HISTORIC 140-89 Game 6 blowout at State Farm Arena.
@@ -136,22 +145,23 @@ export const PLAYERS = [
 
   // ── Rotation / Bench ─────────────────────────────────────────────────────
   {
-    id: 6, name: "Zaccharie Risacher", number: 10, position: "SF", nationality: "🇫🇷 France", age: 21,
-    gamesPlayed: 66, gamesStarted: 45, minutesPerGame: 22.4,
-    pointsPerGame: 9.6, reboundsPerGame: 3.8, assistsPerGame: 1.1,
-    stealsPerGame: 0.9, blocksPerGame: 0.5, turnoversPerGame: 1.3,
-    fieldGoalPct: 44.6, threePointPct: 37.2, freeThrowPct: 74.8,
-    trueShootingPct: 55.9, plusMinus: 1.6,
-    form: 4.5, status: "active", injuryNote: null,
-    recentNotes: "SUNDAY JULY 19 (offseason): the option timeline is cleaner than it has been reported. Atlanta exercised the $13.83M third-year option for 2026-27 back in October 2025; the live decision is the fourth-year option, due by the end of this October. Rival teams keep calling, and he keeps appearing in Trey Murphy III frameworks. SATURDAY JULY 18 (offseason): THE PATH TO MINUTES KEEPS NARROWING. With Aaron Wiggins acquired and Kingston Flemings drafted at No. 8, analysts increasingly frame a Risacher trade as a matter of when, not if (Soaring Down South / Basketnews, Jul). Dallas and other teams have called; Michael Scotto reports Atlanta is not offering Risacher plus the Pelicans' 2026 first to Dallas for Anthony Davis, a signal the front office still prizes the 21-year-old's upside. The team-option decision is due by the end of October, and he is owed $13.7M next season. PRIOR: MONDAY JULY 13 (offseason): BACK IN THE MURPHY MATH, AND ON AN OCTOBER CLOCK. The newest floated framework for a Trey Murphy III trade sends Risacher, Corey Kispert and three first-round picks to New Orleans (Fadeaway World / Yahoo Sports, Jul 11-12), a swing back toward Risacher-centric construction after last week's Alexander-Walker-and-Okongwu chatter. Read that as an unsettled market, not a decision. Counterweight: reporting this week says Atlanta is NOT actively shopping him and would rather move Hield or Kispert to solve the roster crunch, and Atlanta faces a team-option decision on him by the end of October (Roundtable / SI onsi, Jul). He is on France's preliminary roster for this July's FIBA World Cup qualifying window (NewsCenter Maine / Hoops Rumors, early Jul), an offseason reps opportunity while his trade market simmers. The Risacher market is active without being decided. Rival teams, Dallas among them, have called to inquire, and a Risacher-plus-No. 23 swing for Sacramento's Domantas Sabonis has been floated to solve the center need in one move (Pro Football Network / Roundtable / SI onsi, Jun). Countering that, Michael Scotto reports Atlanta is NOT offering Risacher plus the Pelicans' 2026 first-rounder to Dallas for Anthony Davis, a signal the front office still prizes the 21-year-old's upside. Offseason trade-watch player No. 1, and now SALEH is the executive making the call. Risacher's future is the single biggest cap-and-rotation lever the new POBO holds. HOLLINGER (The Athletic via Hoops Wire 'Hawks could look to trade Zaccharie Risacher' / Lindys / Roundtable May 17-23): Atlanta moving Risacher 'can't be ruled out' after he lost his starting job post-All-Star and fell out of the rotation entirely in April. Risacher's uncertain future could let Atlanta 'package him alongside the No. 8 pick and additional draft compensation' to trade up the board on draft night. Wings/bigs on Atlanta's No. 8 board (Tre Johnson, Nate Ament, Koa Peat, Lendeborg, Mikel Brown Jr., Kingston Flemings, Aday Mara, Dailyn Swain per CBS / SI onsi / Last Word May 12-13) — exactly the names competing for the floor next year — wrapped their live-tape windows on May 14. Marc Stein reports the Hawks are 'open to trading Risacher if the right offer comes along' (Basketnews / Roundtable May 11). Hollinger's Athletic preview still tags Risacher (and Kispert) as the likeliest summer trade chip. Structural read: $13.7M next season then a $17.8M team option for 27-28. Sophomore line: 9.6/3.8/1.1 on 44.6% FG / 37.2% 3P across 66 games — regression from his 12.6 PPG rookie year as usage dropped from 21.6% to 17.7%. R1 floor time was just 2:30 across six games — one Game 1 cameo then five straight DNP-CDs.",
-    playoffStats: { gamesPlayed: 1, minutesPerGame: 1.0, pointsPerGame: 0.0, reboundsPerGame: 2.0, assistsPerGame: 0.0 },
+    id: 6, name: "Luguentz Dort", number: null, position: "SG", nationality: "🇨🇦 Canada", age: 27,
+    gamesPlayed: 69, gamesStarted: null, minutesPerGame: 26.8,
+    pointsPerGame: 8.3, reboundsPerGame: 3.6, assistsPerGame: 1.2,
+    stealsPerGame: 0.9, blocksPerGame: 0.4, turnoversPerGame: 1.0,
+    fieldGoalPct: 38.5, threePointPct: 34.4, freeThrowPct: null,
+    trueShootingPct: 52.4, plusMinus: null,
+    form: 6.0, status: "active", injuryNote: null,
+    recentNotes: "SUNDAY JULY 19 (offseason): NEW HAWK. Atlanta acquired Dort and Ryan Nembhard from Oklahoma City in a three-team deal that sent Zaccharie Risacher to Dallas and three second-round picks to the Thunder (ESPN / NBA.com / Hoops Rumors, Jul 19). OKC had picked up his $17.7M team option earlier in the offseason and moved him for picks as part of a $200M cost-cutting summer that also shipped out Isaiah Joe and Aaron Wiggins. What Atlanta bought: a 27-year-old All-Defensive First Team wing and 2025 NBA champion to pair with Dyson Daniels and Nickeil Alexander-Walker, giving Quin Snyder three point-of-attack defenders in one rotation. What it costs: the offense. Dort is coming off the worst shooting year of his career, 38.5% from the field and 34.4% from three on 8.3 points in 26.8 minutes across 69 games, down from 43.5/41.2 the year before, and his minutes were the lowest since his rookie season. Projections have him coming off the bench in Atlanta with heavy minutes rather than starting. His deal expires after 2026-27, which is the other half of the point: between Dort, CJ McCollum and Jock Landale the Hawks now hold more than $50M in expiring salary to trade with in-season, and over $40M in cap space next summer.",
+    playoffStats: null,
     playoffSeries: null,
     minutesTrend: "down",
-    image: "https://cdn.nba.com/headshots/nba/latest/1040x760/1642258.png",
-    physical: { height: 80, weight: 204 },
+    image: "https://cdn.nba.com/headshots/nba/latest/1040x760/1629652.png",
+    physical: { height: 76, weight: 220 },
     career: [
-      { years: "2024", team: "Drafted #1 overall by ATL", type: "draft" },
-      { years: "2024-", team: "Atlanta Hawks", type: "senior" },
+      { years: "2019", team: "Undrafted (Arizona State)", type: "draft" },
+      { years: "2019-2026", team: "Oklahoma City Thunder", type: "senior" },
+      { years: "2026-", team: "Atlanta Hawks (via OKC/DAL three-team trade, Jul 2026)", type: "senior" },
     ],
   },
   {
@@ -162,7 +172,7 @@ export const PLAYERS = [
     fieldGoalPct: 47.2, threePointPct: 33.6, freeThrowPct: 70.1,
     trueShootingPct: 55.1, plusMinus: 2.4,
     form: 6.4, status: "active", injuryNote: null,
-    recentNotes: "SUNDAY JULY 19 (offseason): still unresolved. The Lakers sign-and-trade sits between two contradictory reports, one saying Atlanta would accept Jarred Vanderbilt ($12.4M) plus LA's 2032 first-round swap, the other saying the Hawks never considered taking Vanderbilt's salary at all. Kuminga's camp is reportedly seeking near $25M annually; a sign-and-trade could get him north of $20M, an outright signing far less. Jake Fischer reads the talks as having lost momentum. SATURDAY JULY 18 (offseason): THE IMPASSE HARDENS, AND THE REPORTS STILL DISAGREE. A source told the New York Post the Hawks are willing to execute the sign-and-trade sending Kuminga to the Lakers for Jarred Vanderbilt (about $12.4M) plus LA's 2032 first-round swap (Yahoo Sports / Silver Screen and Roll / Lakers Nation, Jul 16-17), while Hoops Rumors and Heavy counter that Atlanta has never considered taking back Vanderbilt and is seeking more than the Lakers can offer. Jake Fischer says the talks have lost momentum, with a sign-and-trade now the only realistic path: LA can get north of $20M to Kuminga that way against his roughly $25M ask, versus starting near $10M outright. PRIOR: MONDAY JULY 13 (offseason): THE REPORTING NOW CONTRADICTS ITSELF. Khobi Price (The California Post) says Atlanta WOULD have interest in a sign-and-trade returning Jarred Vanderbilt plus the Lakers' 2032 first-round swap, the only first-round equity LA can move this summer after the Walker Kessler deal with Utah. Jake Fischer (The Stein Line) says the Hawks have been resistant and have NOT considered taking Vanderbilt back at all, meaning a third team would have to absorb him (Lakers Nation / Hoops Rumors / Yahoo Sports / Heavy, Jul 10-12). Both cannot be true, so treat the framework as unresolved rather than close. Cap math explains the resistance: Atlanta sits about $11.4M under the first apron and Vanderbilt is owed roughly $48M in total. The player-side gap is separate and still wide, with LA around $10M AAV and Kuminga seeking near $25M. Atlanta holds his Non-Bird rights after declining the $24.3M option Jun 29. With the roster at 16 (and needing to clear two spots if he returns), an S&T that returns an asset stays the cleanest path. Hawks line: 12.3 PPG / 5.3 RPG in 22.1 mpg across 16 games.",
+    recentNotes: "MONDAY JULY 20 (offseason): THE DORT TRADE MAY HAVE CLOSED THE DOOR. Sunday's three-team deal pushed Atlanta to 17 players and, per reporting on the aftermath, likely takes off the table the sign-and-trade construction in which the Lakers send back unwanted contracts plus a pick swap or a second: the Hawks no longer have the roster room and no longer want LA's back-end money (Yahoo Sports / Hoops Rumors / Heavy, Jul 19-20). Kuminga is an unrestricted free agent after Atlanta declined his $24.3M option Jun 29, and without a sign-and-trade his open-market number falls well short of the roughly $25M his camp has sought. PRIOR, SUNDAY JULY 19 (offseason): still unresolved. The Lakers sign-and-trade sits between two contradictory reports, one saying Atlanta would accept Jarred Vanderbilt ($12.4M) plus LA's 2032 first-round swap, the other saying the Hawks never considered taking Vanderbilt's salary at all. Kuminga's camp is reportedly seeking near $25M annually; a sign-and-trade could get him north of $20M, an outright signing far less. Jake Fischer reads the talks as having lost momentum. SATURDAY JULY 18 (offseason): THE IMPASSE HARDENS, AND THE REPORTS STILL DISAGREE. A source told the New York Post the Hawks are willing to execute the sign-and-trade sending Kuminga to the Lakers for Jarred Vanderbilt (about $12.4M) plus LA's 2032 first-round swap (Yahoo Sports / Silver Screen and Roll / Lakers Nation, Jul 16-17), while Hoops Rumors and Heavy counter that Atlanta has never considered taking back Vanderbilt and is seeking more than the Lakers can offer. Jake Fischer says the talks have lost momentum, with a sign-and-trade now the only realistic path: LA can get north of $20M to Kuminga that way against his roughly $25M ask, versus starting near $10M outright. PRIOR: MONDAY JULY 13 (offseason): THE REPORTING NOW CONTRADICTS ITSELF. Khobi Price (The California Post) says Atlanta WOULD have interest in a sign-and-trade returning Jarred Vanderbilt plus the Lakers' 2032 first-round swap, the only first-round equity LA can move this summer after the Walker Kessler deal with Utah. Jake Fischer (The Stein Line) says the Hawks have been resistant and have NOT considered taking Vanderbilt back at all, meaning a third team would have to absorb him (Lakers Nation / Hoops Rumors / Yahoo Sports / Heavy, Jul 10-12). Both cannot be true, so treat the framework as unresolved rather than close. Cap math explains the resistance: Atlanta sits about $11.4M under the first apron and Vanderbilt is owed roughly $48M in total. The player-side gap is separate and still wide, with LA around $10M AAV and Kuminga seeking near $25M. Atlanta holds his Non-Bird rights after declining the $24.3M option Jun 29. With the roster at 16 (and needing to clear two spots if he returns), an S&T that returns an asset stays the cleanest path. Hawks line: 12.3 PPG / 5.3 RPG in 22.1 mpg across 16 games.",
     playoffStats: { gamesPlayed: 6, minutesPerGame: 25.7, pointsPerGame: 13.4, reboundsPerGame: 3.6, assistsPerGame: 0.8 },
     playoffSeries: null,
     minutesTrend: "down",
@@ -338,6 +348,46 @@ export const PLAYERS = [
       { years: "2025-", team: "Atlanta Hawks", type: "senior" },
     ],
   },
+  {
+    id: 16, name: "Aaron Wiggins", number: null, position: "SG", nationality: "🇺🇸 USA", age: 27,
+    gamesPlayed: 65, gamesStarted: null, minutesPerGame: 21.8,
+    pointsPerGame: 9.4, reboundsPerGame: 3.1, assistsPerGame: 1.7,
+    stealsPerGame: 0.9, blocksPerGame: 0.3, turnoversPerGame: 1.0,
+    fieldGoalPct: 43.1, threePointPct: 35.6, freeThrowPct: 73.6,
+    trueShootingPct: null, plusMinus: null,
+    form: 5.5, status: "active", injuryNote: null,
+    recentNotes: "Acquired from Oklahoma City on July 6 for 2030 and 2032 second-round picks, a low-cost add for a 6-foot-5 wing with a 6-foot-10 wingspan who can guard up to the three (NBA.com / SI onsi / Yahoo Sports, Jul 6). He arrives off a down year: 9.4 points on 43.1% shooting and 35.6% from three across 65 games, both career lows after three seasons near 51% and 41%. The bet is that the shooting regresses back toward his OKC norm. Projected as a rotation regular on the wing.",
+    playoffStats: null,
+    playoffSeries: null,
+    minutesTrend: null,
+    image: "https://cdn.nba.com/headshots/nba/latest/1040x760/1630598.png",
+    physical: { height: 77, weight: 190 },
+    career: [
+      { years: "2021", team: "Drafted #55 overall by OKC", type: "draft" },
+      { years: "2021-2026", team: "Oklahoma City Thunder", type: "senior" },
+      { years: "2026-", team: "Atlanta Hawks (via trade, Jul 2026)", type: "senior" },
+    ],
+  },
+  {
+    id: 17, name: "Ryan Nembhard", number: null, position: "PG", nationality: "🇨🇦 Canada", age: 23,
+    gamesPlayed: 60, gamesStarted: 27, minutesPerGame: 19.5,
+    pointsPerGame: 6.6, reboundsPerGame: 2.2, assistsPerGame: 5.3,
+    stealsPerGame: null, blocksPerGame: null, turnoversPerGame: null,
+    fieldGoalPct: 41.5, threePointPct: 35.6, freeThrowPct: 80.6,
+    trueShootingPct: null, plusMinus: null,
+    form: 5.8, status: "active", injuryNote: null,
+    recentNotes: "Came over from Dallas in the Sunday three-team trade as the second piece alongside Lu Dort (ESPN / NBA.com, Jul 19). Undrafted out of Gonzaga in 2025, he signed a two-way with the Mavericks, played his way onto a standard multi-year deal on March 1 after Dallas waived Tyus Jones, and finished the rookie year at 6.6 points and 5.3 assists in 19.5 minutes across 60 games with 27 starts. His calling card is the regular-season finale against Chicago: 15 points, nine rebounds and 23 assists, breaking Jason Kidd's 1995 single-game rookie assist record. On an expiring deal, he adds a third lead-guard option behind CJ McCollum and Kingston Flemings, which also makes him part of the roster-crunch math.",
+    playoffStats: null,
+    playoffSeries: null,
+    minutesTrend: null,
+    image: "https://cdn.nba.com/headshots/nba/latest/1040x760/1642948.png",
+    physical: { height: 71, weight: 175 },
+    career: [
+      { years: "2025", team: "Undrafted (Gonzaga)", type: "draft" },
+      { years: "2025-2026", team: "Dallas Mavericks", type: "senior" },
+      { years: "2026-", team: "Atlanta Hawks (via OKC/DAL three-team trade, Jul 2026)", type: "senior" },
+    ],
+  },
 ];
 
 // ─── RSS Feed Sources ──────────────────────────────────────────────────────
@@ -383,6 +433,10 @@ export const TEAM_LOGOS = {
   "Washington":            "https://cdn.nba.com/logos/nba/1610612764/primary/L/logo.svg",
   "San Antonio Spurs":     "https://cdn.nba.com/logos/nba/1610612759/primary/L/logo.svg",
   "San Antonio":           "https://cdn.nba.com/logos/nba/1610612759/primary/L/logo.svg",
+  "Oklahoma City Thunder": "https://cdn.nba.com/logos/nba/1610612760/primary/L/logo.svg",
+  "Oklahoma City":         "https://cdn.nba.com/logos/nba/1610612760/primary/L/logo.svg",
+  "Los Angeles Lakers":    "https://cdn.nba.com/logos/nba/1610612747/primary/L/logo.svg",
+  "New Orleans Pelicans":  "https://cdn.nba.com/logos/nba/1610612740/primary/L/logo.svg",
 };
 
 // ─── Next Game ─────────────────────────────────────────────────────────────
@@ -396,7 +450,7 @@ export const NEXT_GAME = {
   competition: "PRESEASON",
   venue: "State Farm Arena, Atlanta",
   broadcast: "TBD",
-  seriesContext: "SUMMER IS OVER, THIS TIME FOR REAL. Washington beat Atlanta 91-83 at the Pavilion on Saturday night, closing the Hawks' Summer League at 5-2 overall (3-2 in Las Vegas). The Wizards led from a 24-15 first quarter and closed on a 22-17 run over the final seven minutes; Atlanta shot 42% from the floor and just 16% from three, and was out-assisted 22-18. Devon Higgs led the Hawks with 22 points and seven rebounds, Gabe Madsen added 13, Kobe Johnson had 13 in his closing two-way audition, and Isaiah Wong went for nine and nine. Kingston Flemings and Asa Newell did not play. The Vegas title game is Sunday night, Memphis against Golden State, with Atlanta long since out of the bracket. THE CALENDAR NOW JUMPS TO OCTOBER: the preseason opener is Oct 5 against Memphis at State Farm Arena, the first of five exhibitions that end at Dallas on Oct 16. OFF THE FLOOR: forward Mouhamed Gueye is three to four months from re-evaluation after surgery on a fractured left foot, so training camp, the preseason and likely the start of the regular season are in doubt. ROSTER: 16 standard contracts, one over the limit, two over if Jonathan Kuminga returns, with Buddy Hield the likeliest trim and Corey Kispert the harder contract to move. TRADE BOARD: the Kuminga sign-and-trade with the Lakers remains stuck between contradictory reports on whether Atlanta would take Jarred Vanderbilt's $12.4M, and Jake Fischer reads the talks as having lost momentum; New Orleans still says it must be blown away on Trey Murphy III. Business: the Gray Media deal puts non-national games free over the air on WANF and the Peachtree Sports Network.",
+  seriesContext: "THE OFFSEASON JUST GOT LOUD. Atlanta acquired LUGUENTZ DORT and RYAN NEMBHARD from Oklahoma City on Sunday in a three-team trade that sent 2024 No. 1 overall pick ZACCHARIE RISACHER to Dallas and three second-round picks to the Thunder (Chicago's 2027 via Dallas, plus Atlanta's most favorable 2031 and 2032). Dort is a 27-year-old 2025 champion and All-Defensive First Team wing on an expiring $17.7M contract; alongside Dyson Daniels and Nickeil Alexander-Walker he gives Quin Snyder three point-of-attack defenders, though he arrives off career lows of 38.5% from the field and 34.4% from three, and projects to come off the bench with heavy minutes. THE MATH: the roster is now at 17 standard contracts against a 15-man limit, so two more moves are coming before camp, with Buddy Hield the likeliest trim and Corey Kispert the harder contract to move. The added salary is also widely read as closing the door on the JONATHAN KUMINGA sign-and-trade with the Lakers. What Atlanta gets back is flexibility: about $4M under the tax, more than $50M in expiring salary between Dort, CJ McCollum and Jock Landale to trade with in-season, and north of $40M in cap space next summer. STILL ON THE BOARD: the center hunt (Myles Turner the name to watch in post-Giannis Milwaukee), and Onyeka Okongwu's extension eligibility. INJURY: MOUHAMED GUEYE is three to four months from re-evaluation after surgery on a fractured left foot, so camp, the preseason and likely the start of the regular season are in doubt. NEXT ON THE CALENDAR: the Oct 5 preseason opener against Memphis at State Farm Arena, first of five exhibitions that end at Dallas on Oct 16. PRIOR EDITION (Jul 19): SUMMER IS OVER, THIS TIME FOR REAL. Washington beat Atlanta 91-83 at the Pavilion on Saturday night, closing the Hawks' Summer League at 5-2 overall (3-2 in Las Vegas). The Wizards led from a 24-15 first quarter and closed on a 22-17 run over the final seven minutes; Atlanta shot 42% from the floor and just 16% from three, and was out-assisted 22-18. Devon Higgs led the Hawks with 22 points and seven rebounds, Gabe Madsen added 13, Kobe Johnson had 13 in his closing two-way audition, and Isaiah Wong went for nine and nine. Kingston Flemings and Asa Newell did not play. The Vegas title game is Sunday night, Memphis against Golden State, with Atlanta long since out of the bracket. THE CALENDAR NOW JUMPS TO OCTOBER: the preseason opener is Oct 5 against Memphis at State Farm Arena, the first of five exhibitions that end at Dallas on Oct 16. OFF THE FLOOR: forward Mouhamed Gueye is three to four months from re-evaluation after surgery on a fractured left foot, so training camp, the preseason and likely the start of the regular season are in doubt. ROSTER: 16 standard contracts, one over the limit, two over if Jonathan Kuminga returns, with Buddy Hield the likeliest trim and Corey Kispert the harder contract to move. TRADE BOARD: the Kuminga sign-and-trade with the Lakers remains stuck between contradictory reports on whether Atlanta would take Jarred Vanderbilt's $12.4M, and Jake Fischer reads the talks as having lost momentum; New Orleans still says it must be blown away on Trey Murphy III. Business: the Gray Media deal puts non-national games free over the air on WANF and the Peachtree Sports Network.",
 };
 
 // Prior edition (Jul 18): "CORRECTION TO THE LAST EDITION: ATLANTA'S SUMMER IS NOT OVER. The Hawks close Las Vegas Summer League tonight against Washington at the Pavilion, 7 PM ET, in a consolation finale for two teams that missed the four-team bracket. Atlanta enters 5-1 overall (3-1 in Vegas) looking to wash out Thursday's 96-64 loss to Memphis, a game the Grizzlies broke open with a 21-0 opening burst and a 32-2 first quarter while Atlanta rested Kingston Flemings, Asa Newell, Zuby Ejiofor, Jacob Toppin, RayJ Dennis and Keshon Gilbert. Washington arrives 2-2 after back-to-back losses, most recently 108-94 to the Clippers on Thursday. WATCH FOR: whether Flemings and Newell return to the floor, and whether undrafted guard Kobe Johnson (30 points on 18 shots against Boston on Monday) closes his two-way audition. The Lakers, Rockets, Grizzlies and Warriors play Saturday's semifinals, with the final Sunday, July 19. OFF THE FLOOR: forward Mouhamed Gueye had surgery Tuesday on a fractured left foot suffered in a July 8 workout and will be re-evaluated in three to four months, putting training camp, the preseason and likely the start of the 2026-27 regular season in doubt. Business: Gray Media and the Hawks announced a Georgia-wide, free over-the-air broadcast deal Thursday, moving non-national games to WANF (Atlanta News First, Channel 46) and the Peachtree Sports Network. The 2026-27 preseason schedule is out: five games, Oct 5 vs Memphis at State Farm Arena through Oct 16 at Dallas. ROSTER: still 16 standard contracts, one over the 15-man limit, and two over if Kuminga returns, so a trim is coming (Hield and Kispert most often flagged). TRADE BOARD: the Jonathan Kuminga sign-and-trade with the Lakers is at an impasse, with the New York Post reporting Atlanta willing on a Jarred Vanderbilt plus 2032 first-round swap framework and other reporting saying the Hawks have no interest in Vanderbilt's salary at all; New Orleans still says it must be blown away on Trey Murphy III.",
@@ -450,10 +504,34 @@ export const EAST_STANDINGS = [
 
 // ─── AI News Digest (generated from live web search) ───────────────────────
 export const NEWS_DIGEST = {
-  generatedAt: "2026-07-19T13:10:00Z",
+  generatedAt: "2026-07-20T13:05:00Z",
   summary:
-    "THE SUMMER IS OVER, AND IT ENDED QUIETLY. Washington beat Atlanta 91-83 at the Pavilion on Saturday night, closing the Hawks' Summer League at 5-2 overall and 3-2 in Las Vegas. The Wizards led from a 24-15 first quarter and pulled away with a 22-17 run over the last seven minutes; Atlanta shot 42% from the field, 16% from three, and lost the assist battle 22-18 with KINGSTON FLEMINGS and ASA NEWELL both held out. DEVON HIGGS led the Hawks with 22 points and seven rebounds, GABE MADSEN scored 13, and KOBE JOHNSON closed his two-way audition with 13. John Camden's 22 and Chris Livingston's 20 carried Washington. Memphis and Golden State play for the Vegas title Sunday night, without Atlanta. From here the calendar is empty until the Oct 5 preseason opener against Memphis at State Farm Arena, and the front office's summer math is unfinished on three fronts: the roster still sits at 16 standard contracts with BUDDY HIELD the likeliest trim, the JONATHAN KUMINGA sign-and-trade with the Lakers is stuck between contradictory reports on Jarred Vanderbilt's $12.4M and losing momentum, and New Orleans still says it must be blown away on TREY MURPHY III. MOUHAMED GUEYE remains three to four months from re-evaluation after left-foot surgery.",
+    "THE FIRST NO. 1 PICK ATLANTA EVER DRAFTED IS GONE, AND AN ALL-DEFENSIVE WING IS HERE. The Hawks acquired LUGUENTZ DORT and RYAN NEMBHARD from Oklahoma City on Sunday in a three-team trade that sent ZACCHARIE RISACHER to Dallas and three second-round picks to the Thunder (Chicago's 2027 via Dallas, plus Atlanta's most favorable 2031 and 2032). Onsi Saleh swapped a 21-year-old former No. 1 pick who had fallen out of the playoff rotation for a 27-year-old champion and All-Defensive First Team wing on an expiring $17.7M deal, giving Quin Snyder a perimeter of Dort, DYSON DANIELS and NICKEIL ALEXANDER-WALKER that may be the most disruptive in the league. The cost is offense: Dort shot 38.5% from the field and 34.4% from three last season, both career lows, and most projections have him coming off the bench with heavy minutes rather than starting. The trade also reshapes the rest of the summer. Atlanta is now at 17 standard contracts against a 15-man limit, which means two more moves are coming, and the added salary is widely read as having closed the door on the JONATHAN KUMINGA sign-and-trade with the Lakers. What Atlanta gains in exchange is flexibility: more than $50M in expiring salary between Dort, CJ McCOLLUM and JOCK LANDALE to trade with in-season, about $4M of room under the tax now, and north of $40M in cap space next summer. Everything else from the weekend is background: the Summer League ended Saturday at 5-2 with a 91-83 loss to Washington, and MOUHAMED GUEYE remains three to four months from re-evaluation after left-foot surgery. PRIOR EDITION: THE SUMMER IS OVER, AND IT ENDED QUIETLY. Washington beat Atlanta 91-83 at the Pavilion on Saturday night, closing the Hawks' Summer League at 5-2 overall and 3-2 in Las Vegas. The Wizards led from a 24-15 first quarter and pulled away with a 22-17 run over the last seven minutes; Atlanta shot 42% from the field, 16% from three, and lost the assist battle 22-18 with KINGSTON FLEMINGS and ASA NEWELL both held out. DEVON HIGGS led the Hawks with 22 points and seven rebounds, GABE MADSEN scored 13, and KOBE JOHNSON closed his two-way audition with 13. John Camden's 22 and Chris Livingston's 20 carried Washington. Memphis and Golden State play for the Vegas title Sunday night, without Atlanta. From here the calendar is empty until the Oct 5 preseason opener against Memphis at State Farm Arena, and the front office's summer math is unfinished on three fronts: the roster still sits at 16 standard contracts with BUDDY HIELD the likeliest trim, the JONATHAN KUMINGA sign-and-trade with the Lakers is stuck between contradictory reports on Jarred Vanderbilt's $12.4M and losing momentum, and New Orleans still says it must be blown away on TREY MURPHY III. MOUHAMED GUEYE remains three to four months from re-evaluation after left-foot surgery.",
   keyTopics: [
+    {
+      title: "Hawks Land Lu Dort and Ryan Nembhard; Zaccharie Risacher Goes to Dallas in a Three-Team Trade With OKC",
+      detail:
+        "Atlanta made the biggest move of its offseason Sunday, acquiring Luguentz Dort and Ryan Nembhard from Oklahoma City in a three-team deal that sends 2024 No. 1 overall pick Zaccharie Risacher to Dallas (ESPN / NBA.com / Hoops Rumors / Atlanta News First, Jul 19). The Thunder receive three second-round picks: Chicago's 2027 via Dallas, plus the most favorable of Atlanta's 2031 and 2032 seconds. Oklahoma City had already picked up Dort's $17.7M team option this offseason and chose to convert him into picks rather than decline it, part of a summer in which the champions have shed roughly $200M and seven second-rounders' worth of moves via Dort, Isaiah Joe and Aaron Wiggins to get under the second apron. For Atlanta the logic is defense and flexibility at once: Dort, 27, is a 2025 champion and All-Defensive First Team wing who joins Dyson Daniels and Nickeil Alexander-Walker, and his contract expires after 2026-27.",
+      category: "trades",
+    },
+    {
+      title: "What Atlanta Actually Bought: Elite Perimeter Defense and a Career-Worst Jumper",
+      detail:
+        "The Dort trade is not a value grab so much as a stylistic one, and the tradeoffs are visible in the numbers. Dort averaged 8.3 points, 3.6 rebounds and 1.2 assists in 26.8 minutes across 69 games last season on 38.5% shooting and 34.4% from three, all significant drops from the 43.5/41.2 line he posted the year before, and his minutes were his lowest since his 2019-20 rookie season (Basketball-Reference / ESPN, Jul). Local projections have him coming off the bench for Atlanta rather than starting, with Snyder able to close games with three point-of-attack defenders on the floor (FanSided / SI onsi, Jul 19-20). The Risacher side of the ledger is a genuine bet against upside: the former No. 1 pick averaged 9.6 points on 44.6% shooting last season, lost his starting job after the All-Star break, and played 2:30 total across the six-game Knicks series. Dallas pairs him with 2025 No. 1 pick Cooper Flagg.",
+      category: "trades",
+    },
+    {
+      title: "Roster Now at 17 Against a 15-Man Limit: Two More Moves Are Coming Before Camp",
+      detail:
+        "The trade solved a rotation question and worsened an arithmetic one. Atlanta entered Sunday at 16 standard contracts and now sits at 17, two over the regular-season limit of 15 (SI onsi / Hoops Rumors, Jul 19-20). Teams can carry up to 21 through the summer, so training camp in late September is the practical deadline, but the front office now has to subtract twice rather than once. Buddy Hield, whose $9.66M expiring deal Atlanta fully guaranteed in late June specifically to keep as matching salary, remains the likeliest trim; Corey Kispert has three years left, which makes him harder to move. The cap picture after the swap: about $4M of room under the luxury tax, with Dort, CJ McCollum, Jock Landale, Mouhamed Gueye and Nembhard all on expiring deals, giving Atlanta more than $50M in expiring salary to trade with during the season and north of $40M in cap space next summer.",
+      category: "trades",
+    },
+    {
+      title: "Kuminga Fallout: The Added Salary Is Read as Closing the Lakers Sign-and-Trade",
+      detail:
+        "One immediate casualty of Sunday's deal appears to be the Jonathan Kuminga sign-and-trade that has hung over Atlanta's July. Reporting on the aftermath holds that the Dort trade probably takes off the table the construction in which Los Angeles sends back unwanted contracts plus a pick swap or a second-rounder, because the Hawks now have too many players and no longer want LA's back-end money (Yahoo Sports / Hoops Rumors / Heavy, Jul 19-20). That framework was already contested, with the New York Post reporting Atlanta willing on a Jarred Vanderbilt plus 2032 swap package and Hoops Rumors and Heavy insisting the Hawks never considered taking Vanderbilt's salary at all, while Jake Fischer described the talks as having lost momentum. Kuminga became an unrestricted free agent when Atlanta declined his $24.3M option Jun 29; without a sign-and-trade, his open-market number starts far below the roughly $25M his camp has sought.",
+      category: "trades",
+    },
     {
       title: "Wizards 91, Hawks 83: Atlanta's Summer Ends at 5-2 in a Vegas Consolation Finale",
       detail:
@@ -509,10 +587,10 @@ export const NEWS_DIGEST = {
       category: "general",
     },
     {
-      title: "Roster Crunch: 16 Standard Contracts and Counting, With Hield and Kispert Most Often Flagged",
+      title: "Nembhard's Quiet Value: The Rookie Who Broke Jason Kidd's Assist Record Is Now a Hawk",
       detail:
-        "The 15-man regular-season limit has not moved, and neither has Atlanta's overage. After signing all three rookies to standard deals, trading for Aaron Wiggins and Devin Carter, and re-signing CJ McCollum and Jock Landale, the Hawks stand at 16 standard contracts, one over the limit, and would need to move two if Jonathan Kuminga returns (SI onsi / The Lead / Hoops Rumors, Jul 6-17). Buddy Hield and Corey Kispert are the names most often flagged, with Zaccharie Risacher a third. Atlanta fully guaranteed Hield's now-$9.66M expiring deal in late June specifically to keep it as movable matching salary, though he played just seven games last season; Kispert has three years left, which makes him the harder contract to move despite the shooting. Teams can carry 20 through the summer, so the hard deadline is camp, but a trade rather than a waiver remains the likeliest trim.",
-      category: "trades",
+        "Lost in the Dort headline is the second player Atlanta received. Ryan Nembhard went undrafted out of Gonzaga in 2025, signed a two-way with Dallas, and played his way onto a standard multi-year contract on March 1 after the Mavericks waived Tyus Jones (Basketball-Reference / Mavs Moneyball / Yahoo Sports, Jul 19-20). He finished the rookie year at 6.6 points, 5.3 assists and 2.2 rebounds in 19.5 minutes across 60 games with 27 starts, on 41.5/35.6/80.6 shooting. The signature night came in the regular-season finale against Chicago: 15 points, nine rebounds and a career-high 23 assists, breaking Jason Kidd's single-game rookie assist record of 17 that had stood since March 1995. At 5-foot-11 he is a specific kind of player rather than a complete one, but on an expiring deal he gives Atlanta a third lead-guard option behind CJ McCollum and Kingston Flemings, which cuts both ways given the roster count.",
+      category: "general",
     },
     {
       title: "Daniels' New Jumper: Offseason Video of a Rebuilt Shooting Form Has Atlanta Buzzing",
@@ -523,7 +601,7 @@ export const NEWS_DIGEST = {
     {
       title: "Murphy Board: New Orleans Still Wants to Be Blown Away as Atlanta's Frameworks Keep Shifting",
       detail:
-        "New Orleans has come down slightly on Trey Murphy III, and the frameworks moved with it. The latest floated Atlanta package sends Zaccharie Risacher, Corey Kispert and three first-round picks to the Pelicans for Murphy, a swing back toward Risacher-centric construction after earlier chatter built around Nickeil Alexander-Walker and Onyeka Okongwu (Fadeaway World / Yahoo Sports / HoopsHype, Jul 6-12). Michael Scotto has the Celtics, Pistons, Warriors, Clippers and Hawks all in the mix to varying degrees. Atlanta's fit case is unchanged: Murphy, 26, averaged 21.5 points, 5.7 rebounds and 3.8 assists on 47.0/37.9 shooting across 66 games and would give Jalen Johnson the two-way wing this roster lacks, with existing rapport with CJ McCollum from New Orleans. The Pelicans are content to keep him and are not actively shopping him.",
+        "New Orleans has come down slightly on Trey Murphy III, but Sunday's trade just deleted the centerpiece of the most-discussed Atlanta package. Frameworks floated through mid-July sent Zaccharie Risacher, Corey Kispert and three first-round picks to the Pelicans for Murphy, after earlier chatter built around Nickeil Alexander-Walker and Onyeka Okongwu (Fadeaway World / Yahoo Sports / HoopsHype, Jul 6-12). With Risacher in Dallas, any renewed pursuit has to be rebuilt around expiring salary and picks instead of young upside. Michael Scotto has the Celtics, Pistons, Warriors, Clippers and Hawks all in the mix to varying degrees. Atlanta's fit case is unchanged: Murphy, 26, averaged 21.5 points, 5.7 rebounds and 3.8 assists on 47.0/37.9 shooting across 66 games and would give Jalen Johnson the two-way wing this roster lacks, with existing rapport with CJ McCollum from New Orleans. The Pelicans are content to keep him and are not actively shopping him.",
       category: "trades",
     },
     {
@@ -533,9 +611,9 @@ export const NEWS_DIGEST = {
       category: "general",
     },
     {
-      title: "Risacher's October Clock: Fourth-Year Option Decision Looms as Rival Teams Call",
+      title: "The Risacher Era Ends After Two Seasons: How Atlanta Talked Itself Out of a No. 1 Pick",
       detail:
-        "The Zaccharie Risacher market is active without being decided, and a date is attached to it: Atlanta already exercised his $13.83M third-year option for 2026-27 back in October 2025, and must decide on the fourth-year option by the end of this October (Hoops Rumors / HoopsHype / Roundtable / SI onsi). Rival teams, Dallas among them, have called to inquire about the former No. 1 overall pick, and one analyst floated a Risacher-plus-picks swing at Sacramento's Domantas Sabonis to solve the center need in one move (Pro Football Network / Basketnews, Jun-Jul). Michael Scotto reports Atlanta is not offering Risacher plus the Pelicans' 2026 first-rounder to Dallas for Anthony Davis, a signal the front office still prizes the 21-year-old's upside. The value question is real: Risacher averaged 9.6 points on 45% shooting across 66 games after a 12.6-point rookie season, lost his starting job after the All-Star break, and was out of the playoff rotation. The Aaron Wiggins acquisition makes his path to minutes harder still. He is owed $13.7M next season.",
+        "Sunday closed a chapter that had been closing all summer. Atlanta exercised Zaccharie Risacher's $13.83M third-year option back in October 2025 and faced a fourth-year option decision by the end of this October, a deadline that framed every trade rumor attached to him (Hoops Rumors / HoopsHype / Roundtable / SI onsi, Jun-Jul). Marc Stein reported in May that the Hawks were open to moving him for the right offer; John Hollinger flagged him as the likeliest summer trade chip; the Aaron Wiggins trade on July 6 and the Kingston Flemings pick at No. 8 narrowed his path to minutes further. The on-court case for patience was thin by the end: 9.6 points on 44.6% shooting across 66 games after a 12.6-point rookie year, usage down from 21.6% to 17.7%, a starting job lost after the All-Star break, and 2:30 of floor time across the Knicks series. He is 21, and Dallas is betting the development curve is not finished.",
       category: "trades",
     },
     {
@@ -585,27 +663,30 @@ export const NEWS_DIGEST = {
     "NBA.com Stats",
     "The California Post",
     "Larry Brown Sports",
+    "Mavs Moneyball",
+    "FanSided",
+    "RealGM",
   ],
 };
 
 // ─── Issue metadata (drives datelines, cover star, masthead) ───────────────
 // Update `date` daily; everything else flows from KEY_DATES + NEWS_DIGEST.
 export const ISSUE = {
-  date: "2026-07-19",                              // YYYY-MM-DD — single source of truth
+  date: "2026-07-20",                              // YYYY-MM-DD — single source of truth
   volume: 26,                                       // VOL XXVI
-  number: 29,                                       // Issue number (offseason cadence)
-  dateline: "ATLANTA · JULY 19, 2026",              // Pre-formatted for display
-  mastheadLine: "VOL XXVI · ISSUE NO. 29 · JULY 2026 · ATL · USA",
-  railLabel: "ISSUE 29 · JULY 19",
-  coverStarId: 13,                                  // (legacy) PLAYERS[id]; cover no longer uses NBA headshots
+  number: 30,                                       // Issue number (offseason cadence)
+  dateline: "ATLANTA · JULY 20, 2026",              // Pre-formatted for display
+  mastheadLine: "VOL XXVI · ISSUE NO. 30 · JULY 2026 · ATL · USA",
+  railLabel: "ISSUE 30 · JULY 20",
+  coverStarId: 6,                                // (legacy) PLAYERS[id]; cover no longer uses NBA headshots
   // Cover art slot: relative path under public/ to a GENERATED cover image
   // (e.g. "assets/cover/summer-over.jpg"). Produced by the AI image pipeline
   // and dropped into public/assets/cover/. null → branded placeholder renders.
   coverImage: null,
-  coverRibbon: "WIZARDS 91, HAWKS 83: SUMMER ENDS AT 5-2 · NEXT GAME IS OCT 5 VS MEMPHIS · ROSTER STILL ONE OVER · KUMINGA TALKS STALLED",
-  coverStatusKicker: "OFFSEASON · DAY 77",          // top-right corner of cover
-  coverStatusLine: "SUMMER LEAGUE FINAL: 5-2 OVERALL · 3-2 IN VEGAS · NEXT: PRESEASON, OCT 5", // {DAYS:id} resolves from KEY_DATES
-  backTagline: "Next issue: the roster trim to 15, Kobe Johnson's two-way conversion, and whether the Kuminga standoff finally breaks.",
+  coverRibbon: "DORT TO ATLANTA, RISACHER TO DALLAS · THREE-TEAM TRADE WITH OKC · ROSTER NOW 17 AGAINST A 15-MAN LIMIT · KUMINGA SIGN-AND-TRADE LIKELY DEAD · NEXT GAME OCT 5 VS MEMPHIS",
+  coverStatusKicker: "OFFSEASON · DAY 78",          // top-right corner of cover
+  coverStatusLine: "TRADE DAY: DORT + NEMBHARD IN, RISACHER OUT · 17 CONTRACTS, LIMIT 15 · NEXT: PRESEASON, OCT 5", // {DAYS:id} resolves from KEY_DATES
+  backTagline: "Next issue: which two contracts go to get to 15, whether Kuminga has a market left, and where the center hunt turns now that Risacher is gone.",
 };
 
 // ─── Cover TOC (table of contents on the cover) ────────────────────────────
@@ -986,10 +1067,14 @@ export const TRADE_THREADS = [
     terms: "DEN cap-cutter candidate · ~$22M",
     source: "HoopsHype",                    updated: "2026-05-13",
     tip: "Denver tax math + ATL declining Kuminga option opens fit" },
-  { id: "risacher", name: "Zaccharie Risacher", direction: "OUT",    status: "HOT",
-    terms: "Package with #8 to trade up the board",
-    source: "Hollinger (The Athletic)",     updated: "2026-05-23",
-    tip: "Top 5-7 board falls Hawks' way · or Brown framework absorbs him" },
+  { id: "risacher", name: "Zaccharie Risacher", direction: "OUT",    status: "DONE",
+    terms: "TRADED to Dallas · 3-team deal with OKC",
+    source: "ESPN / NBA.com",               updated: "2026-07-19",
+    tip: "ATL receives Lu Dort + Ryan Nembhard · OKC receives three 2nd-round picks" },
+  { id: "dort",     name: "Luguentz Dort",      direction: "IN",     status: "DONE",
+    terms: "Acquired from OKC · $17.7M expiring",
+    source: "ESPN / NBA.com",               updated: "2026-07-19",
+    tip: "All-Defensive 1st Team wing · pairs with Daniels and NAW · expiring salary for in-season trades" },
   { id: "kispert",  name: "Corey Kispert",      direction: "OUT",    status: "WARM",
     terms: "$14.6M salary filler · likely summer chip",
     source: "Hollinger (The Athletic)",     updated: "2026-05-21",
@@ -1076,19 +1161,6 @@ export const GAME_LOGS = {
     { date: "2026-04-08", opp: "CLE", home: false, result: "L", min: 30, pts: 15, reb: 8, ast: 2, fgPct: 50.0, threePct: 0.0,  plusMinus: -5,  comp: "REG"  },
     { date: "2026-04-03", opp: "BKN", home: true,  result: "W", min: 28, pts: 14, reb: 9, ast: 3, fgPct: 55.6, threePct: 0.0,  plusMinus: 18,  comp: "REG"  },
     { date: "2026-04-01", opp: "ORL", home: true,  result: "W", min: 29, pts: 17, reb: 8, ast: 2, fgPct: 60.0, threePct: 50.0, plusMinus: 14,  comp: "REG"  },
-  ],
-  // Risacher (id 6) — fell out of rotation in R1
-  6: [
-    { date: "2026-04-18", opp: "NYK", home: false, result: "L", min: 3,  pts: 0,  reb: 2, ast: 0, fgPct: 0.0,  threePct: 0.0,  plusMinus: -2,  comp: "R1G1" },
-    { date: "2026-04-12", opp: "MIA", home: true,  result: "L", min: 12, pts: 4,  reb: 2, ast: 0, fgPct: 33.3, threePct: 25.0, plusMinus: -8,  comp: "REG"  },
-    { date: "2026-04-10", opp: "CLE", home: true,  result: "W", min: 14, pts: 6,  reb: 3, ast: 1, fgPct: 40.0, threePct: 33.3, plusMinus: 4,   comp: "REG"  },
-    { date: "2026-04-06", opp: "NYK", home: false, result: "L", min: 11, pts: 4,  reb: 2, ast: 0, fgPct: 33.3, threePct: 0.0,  plusMinus: -3,  comp: "REG"  },
-    { date: "2026-04-03", opp: "BKN", home: true,  result: "W", min: 18, pts: 11, reb: 4, ast: 1, fgPct: 50.0, threePct: 50.0, plusMinus: 12,  comp: "REG"  },
-    { date: "2026-04-01", opp: "ORL", home: true,  result: "W", min: 16, pts: 8,  reb: 3, ast: 1, fgPct: 44.4, threePct: 40.0, plusMinus: 9,   comp: "REG"  },
-    { date: "2026-03-30", opp: "BOS", home: true,  result: "W", min: 17, pts: 9,  reb: 4, ast: 1, fgPct: 50.0, threePct: 33.3, plusMinus: 6,   comp: "REG"  },
-    { date: "2026-03-28", opp: "SAC", home: false, result: "W", min: 19, pts: 12, reb: 5, ast: 1, fgPct: 50.0, threePct: 40.0, plusMinus: 4,   comp: "REG"  },
-    { date: "2026-03-23", opp: "MEM", home: true,  result: "W", min: 21, pts: 13, reb: 4, ast: 2, fgPct: 50.0, threePct: 42.9, plusMinus: 16,  comp: "REG"  },
-    { date: "2026-03-21", opp: "GSW", home: true,  result: "W", min: 22, pts: 14, reb: 5, ast: 2, fgPct: 50.0, threePct: 40.0, plusMinus: 11,  comp: "REG"  },
   ],
   // Kuminga (id 7)
   7: [

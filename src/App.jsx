@@ -75,7 +75,7 @@ function firstSentence(text, max = 220) {
 }
 
 const ADAPTED_PLAYERS = PLAYERS.map((p) => ({
-  id: p.id, name: p.name, number: p.number, pos: p.position,
+  id: p.id, name: p.name, number: p.number ?? "—", pos: p.position,
   country: nationalityCode(p.nationality),
   age: p.age, starter: !!p.playoffStarter,
   gp: p.gamesPlayed, mpg: p.minutesPerGame,
@@ -783,7 +783,7 @@ function PlayerCard({ p, tweaks }) {
               position: "absolute", right: -6, bottom: -20, zIndex: 1,
               fontFamily: FONT.disp, fontWeight: 700, fontSize: 150, lineHeight: 0.8,
               color: frame, opacity: 0.10, pointerEvents: "none",
-            }}>{String(p.number).padStart(2, "0")}</div>
+            }}>{typeof p.number === "number" ? String(p.number).padStart(2, "0") : ""}</div>
             <img src={p.image} alt={p.name} loading="lazy"
               style={{
                 position: "absolute", inset: 0, width: "100%", height: "100%",
@@ -844,9 +844,9 @@ function PlayerCard({ p, tweaks }) {
           }}>{p.pos} · {COUNTRY[p.country] || p.country} · AGE {p.age}</div>
 
           <div style={{ marginTop: 9, display: "grid", gridTemplateColumns: "1fr 1fr", gap: "4px 14px" }}>
-            {[["MIN", p.mpg], ["FG%", (p.fg ?? 0).toFixed(1)], ["3P%", (p.tp ?? 0).toFixed(1)],
-              ["FT%", (p.ft ?? 0).toFixed(1)], ["TS%", (p.ts ?? 0).toFixed(1)],
-              ["+/-", (p.pm > 0 ? "+" : "") + (p.pm ?? 0)]
+            {[["MIN", p.mpg ?? "—"], ["FG%", p.fg == null ? "—" : p.fg.toFixed(1)], ["3P%", p.tp == null ? "—" : p.tp.toFixed(1)],
+              ["FT%", p.ft == null ? "—" : p.ft.toFixed(1)], ["TS%", p.ts == null ? "—" : p.ts.toFixed(1)],
+              ["+/-", p.pm == null ? "—" : (p.pm > 0 ? "+" : "") + p.pm]
             ].map(([k, v]) => (
               <div key={k} style={{
                 display: "flex", justifyContent: "space-between", alignItems: "baseline",
