@@ -153,7 +153,11 @@ const FEATURE = {
   dateline: _digestDateline,
   byline: "By the Editors",
   readMore: "Read the full wire",
-  body: NEWS_DIGEST.summary || firstSentence(_lead.detail, 600),
+  // Cover prints only the CURRENT lead block. The summary keeps a rolling
+  // archive (older "Earlier (…)" beats) for the record, but the cover story
+  // shows just the latest so it stays a tight, sentence-case read; the full
+  // history lives in the News view. Split on the "Earlier (" day-marker.
+  body: (NEWS_DIGEST.summary || firstSentence(_lead.detail, 600)).split(/\s+earlier\s*\(/i)[0].trim(),
   quote: { text: "Signal from noise.", who: "The Editors", when: `${_titleCase(MONTHS[_issueD.getUTCMonth()])} ${_issueD.getUTCFullYear()}` },
   // Cover art is a dedicated slot: a generated image dropped into
   // public/assets/cover/ and referenced by ISSUE.coverImage. When absent,
