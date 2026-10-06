@@ -257,7 +257,7 @@ Rules:
 - `warning: unable to unlink ... tmp_obj` lines are EXPECTED and harmless on this mount.
 - It pushes by SHA, so the LOCAL branch ref stays put by design; Kenny reconciles his clone separately (his sync-tracker script). Do NOT try to move the local ref.
 - If `scripts/git-publish.sh` is missing, note it and fall back to `git push origin main`, flagging that the helper needs restoring.
-- Cloud runs: `scripts/git-publish.sh` is gitignored in this repo, so a fresh clone does not have it. Copy the identical helper from a sibling tracker checkout (e.g. `braves-tracker/scripts/git-publish.sh`, same file in falcons and liverpool) into `scripts/` before publishing. It stays untracked; do not commit it.
+- `scripts/git-publish.sh` is tracked in this repo (since 2026-10-06), so cloud runs get it from a fresh clone.
 
 ---
 
