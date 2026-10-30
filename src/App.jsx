@@ -54,6 +54,9 @@ const TEAM_ABBR = {
   "Detroit Pistons": "DET", "Miami Heat": "MIA", "Brooklyn Nets": "BKN",
   "Sacramento Kings": "SAC", "Golden State Warriors": "GSW",
   "Houston Rockets": "HOU", "Dallas Mavericks": "DAL", "Memphis Grizzlies": "MEM",
+  "Philadelphia 76ers": "PHI", "Toronto Raptors": "TOR", "Charlotte Hornets": "CHA",
+  "New Orleans Pelicans": "NOP", "Indiana Pacers": "IND", "Washington Wizards": "WAS",
+  "Oklahoma City Thunder": "OKC", "San Antonio Spurs": "SAS", "Chicago Bulls": "CHI",
 };
 function nationalityCode(s) {
   const stripped = (s || "").replace(/[^\x00-\x7F]+/g, "").trim();
