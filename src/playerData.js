@@ -55,6 +55,8 @@ export const PLAYERS = [
     seasonHighs: { points: 26, rebounds: 14, assists: 16, threes: 2 },
     image: "https://cdn.nba.com/headshots/nba/latest/1040x760/1630552.png",
     physical: { height: 80, weight: 219 },
+    bio: { espnId: "4701230", college: "Duke", hometown: "Milwaukee, WI", birthDate: "2001-12-18", draft: "2021 · No. 20 · ATL", nbaSeason: 6 },
+    combine: { year: 2021, heightNoShoes: 79.75, wingspan: 84.25, standingReach: 106, weight: 209.6, handLength: 9.75, handWidth: 10.5, standingVert: null, maxVert: null, laneAgility: null, sprint: null, note: "Measured but did not do the athletic testing.", source: "NBA Draft Combine via NBADraft.net / Tankathon" },
     career: [
       { years: "2021", team: "Drafted #20 overall by ATL", type: "draft" },
       { years: "2021-", team: "Atlanta Hawks", type: "senior" },
@@ -76,6 +78,8 @@ export const PLAYERS = [
     seasonHighs: { points: 20, rebounds: 9, assists: 7, threes: 1 },
     image: "https://cdn.nba.com/headshots/nba/latest/1040x760/1630700.png",
     physical: { height: 79, weight: 199 },
+    bio: { espnId: "4869342", college: null, preNBA: "G League Ignite", hometown: "Bendigo, VIC, Australia", birthDate: "2003-03-17", draft: "2022 · No. 8 · NOP", nbaSeason: 5 },
+    combine: { year: 2022, heightNoShoes: 78, wingspan: 82.5, standingReach: 105, weight: 195.2, handLength: 8.5, handWidth: 9.75, standingVert: null, maxVert: 34, laneAgility: 10.81, sprint: 3.22, note: "His 2.81s shuttle run was the best at the 2022 combine.", source: "NBA Draft Combine via NBADraft.net / Tankathon" },
     career: [
       { years: "2022", team: "Drafted #8 overall by NOP", type: "draft" },
       { years: "2022-2024", team: "New Orleans Pelicans", type: "senior" },
@@ -98,7 +102,9 @@ export const PLAYERS = [
     last5: { ppg: 18.0, rpg: 3.0, apg: 2.0, fgPct: 40.8, threePct: 31.9, minutes: 30.6 },
     seasonHighs: { points: 31, rebounds: 5, assists: 5, threes: 5 },
     image: "https://cdn.nba.com/headshots/nba/latest/1040x760/1629638.png",
-    physical: { height: 77, weight: 204 },
+    physical: { height: 77, weight: 205 },
+    bio: { espnId: "4278039", college: "Virginia Tech", hometown: "Toronto, ON, Canada", birthDate: "1998-09-02", draft: "2019 · No. 17 · BKN", nbaSeason: 8 },
+    combine: { year: 2019, heightNoShoes: 76.25, wingspan: 81.5, standingReach: 102, weight: 203.8, handLength: 8.5, handWidth: 8.75, standingVert: null, maxVert: null, laneAgility: null, sprint: null, note: "Measured but did not do the athletic testing.", source: "NBA Draft Combine via NBADraft.net / Tankathon" },
     career: [
       { years: "2019", team: "Drafted #17 overall by BKN", type: "draft" },
       { years: "2019-2022", team: "New Orleans Pelicans", type: "senior" },
@@ -124,6 +130,8 @@ export const PLAYERS = [
     seasonHighs: { points: 20, rebounds: 3, assists: 8, threes: 4 },
     image: "https://cdn.nba.com/headshots/nba/latest/1040x760/203468.png",
     physical: { height: 75, weight: 190 },
+    bio: { espnId: "2490149", college: "Lehigh", hometown: "Canton, OH", birthDate: "1991-09-19", draft: "2013 · No. 10 · POR", nbaSeason: 14 },
+    combine: { year: 2013, heightNoShoes: 74.25, wingspan: 78.25, standingReach: 96.5, weight: 197, handLength: 8.0, handWidth: 9.5, standingVert: 32, maxVert: 38.5, laneAgility: 11.02, sprint: 3.32, note: null, source: "NBA Draft Combine via NBADraft.net / Tankathon" },
     career: [
       { years: "2013", team: "Drafted #10 overall by POR", type: "draft" },
       { years: "2013-2022", team: "Portland Trail Blazers", type: "senior" },
@@ -146,7 +154,9 @@ export const PLAYERS = [
     last5: { ppg: 13.0, rpg: 8.2, apg: 2.0, fgPct: 45.6, threePct: 26.1, minutes: 29.4 },
     seasonHighs: { points: 29, rebounds: 12, assists: 7, threes: 4 },
     image: "https://cdn.nba.com/headshots/nba/latest/1040x760/1630168.png",
-    physical: { height: 81, weight: 240 },
+    physical: { height: 82, weight: 240 },
+    bio: { espnId: "4431680", college: "USC", hometown: "Chino, CA", birthDate: "2000-12-11", draft: "2020 · No. 6 · ATL", nbaSeason: 7 },
+    combine: { year: null, note: "Skipped the NBA's 2020 virtual combine, so no official measurements were ever published." },
     career: [
       { years: "2020", team: "Drafted #6 overall by ATL", type: "draft" },
       { years: "2020-", team: "Atlanta Hawks", type: "senior" },
@@ -170,6 +180,8 @@ export const PLAYERS = [
     seasonHighs: { points: 11, rebounds: 5, assists: 3, threes: 2 },
     image: "https://cdn.nba.com/headshots/nba/latest/1040x760/1629652.png",
     physical: { height: 76, weight: 220 },
+    bio: { espnId: "4397020", college: "Arizona State", hometown: "Montreal, QC, Canada", birthDate: "1999-04-19", draft: "Undrafted (2019)", nbaSeason: 8 },
+    combine: { year: 2019, heightNoShoes: 74.75, wingspan: 80.5, standingReach: 99.5, weight: 222.2, handLength: 8.5, handWidth: 9.0, standingVert: 32.5, maxVert: 38, laneAgility: 10.79, sprint: null, note: "Sprint left blank: republished tables disagree (3.22s vs 3.27s).", source: "NBA Draft Combine via NBADraft.net / Tankathon" },
     career: [
       { years: "2019", team: "Undrafted (Arizona State)", type: "draft" },
       { years: "2019-2026", team: "Oklahoma City Thunder", type: "senior" },
@@ -192,6 +204,8 @@ export const PLAYERS = [
     seasonHighs: { points: 11, rebounds: 1, assists: 1, threes: 3 },
     image: "https://cdn.nba.com/headshots/nba/latest/1040x760/1630557.png",
     physical: { height: 78, weight: 224 },
+    bio: { espnId: "4280151", college: "Gonzaga", hometown: "Edmonds, WA", birthDate: "1999-03-03", draft: "2021 · No. 15 · WAS", nbaSeason: 6 },
+    combine: { year: 2021, heightNoShoes: 78, wingspan: 79, standingReach: 102, weight: 223.8, handLength: 8.75, handWidth: 10, standingVert: null, maxVert: 37.5, laneAgility: 10.91, sprint: 3.12, note: null, source: "NBA Draft Combine via NBADraft.net / Tankathon" },
     career: [
       { years: "2021", team: "Drafted #15 overall by WAS", type: "draft" },
       { years: "2021-2026", team: "Washington Wizards", type: "senior" },
@@ -214,6 +228,8 @@ export const PLAYERS = [
     seasonHighs: null,
     image: "https://cdn.nba.com/headshots/nba/latest/1040x760/1641793.png",
     physical: { height: 83, weight: 210 },
+    bio: { espnId: "4712863", college: "Washington State", hometown: "Dakar, Senegal", birthDate: "2002-11-09", draft: "2023 · No. 39 · CHA", nbaSeason: 4 },
+    combine: { year: 2023, heightNoShoes: 82.25, wingspan: 87.25, standingReach: 110.5, weight: 212.6, handLength: 9, handWidth: 10, standingVert: null, maxVert: null, laneAgility: null, sprint: null, note: "Measured but did not do the athletic testing.", source: "NBA Draft Combine via NBADraft.net / Tankathon" },
     career: [
       { years: "2023", team: "Drafted #39 overall by ATL", type: "draft" },
       { years: "2023-", team: "Atlanta Hawks", type: "senior" },
@@ -234,7 +250,9 @@ export const PLAYERS = [
     last5: null,
     seasonHighs: { points: 13, rebounds: 4, assists: 1, threes: 1 },
     image: "https://cdn.nba.com/headshots/nba/latest/1040x760/1642854.png",
-    physical: { height: 82, weight: 220 },
+    physical: { height: 83, weight: 224 },
+    bio: { espnId: "4873201", college: "Georgia", hometown: "Destin, FL", birthDate: "2005-10-05", draft: "2025 · No. 23 · NOP", nbaSeason: 2 },
+    combine: { year: 2025, heightNoShoes: 81, wingspan: 83.25, standingReach: 107.5, weight: 223.8, handLength: 9.25, handWidth: 10, standingVert: 29.5, maxVert: 36.5, laneAgility: 10.95, sprint: 3.26, note: null, source: "NBA Draft Combine via NBADraft.net / Tankathon" },
     career: [
       { years: "2025", team: "Drafted #23 overall by ATL (from Georgia)", type: "draft" },
       { years: "2025-", team: "Atlanta Hawks", type: "senior" },
@@ -256,6 +274,8 @@ export const PLAYERS = [
     seasonHighs: { points: 10, rebounds: 10, assists: 4, threes: 2 },
     image: "https://cdn.nba.com/headshots/nba/latest/1040x760/1629111.png",
     physical: { height: 83, weight: 255 },
+    bio: { espnId: "3146557", college: "Saint Mary's", hometown: "East Malvern, VIC, Australia", birthDate: "1995-10-25", draft: "Undrafted (2018)", nbaSeason: 6 },
+    combine: { year: null, note: "Not invited to the 2018 combine before going undrafted out of Saint Mary's; no official measurements on record." },
     career: [
       { years: "2020", team: "Undrafted (Saint Mary's)", type: "draft" },
       { years: "2021-2022", team: "San Antonio Spurs", type: "senior" },
@@ -280,6 +300,8 @@ export const PLAYERS = [
     seasonHighs: { points: 20, rebounds: 7, assists: 3, threes: 4 },
     image: "https://cdn.nba.com/headshots/nba/latest/1040x760/1630598.png",
     physical: { height: 77, weight: 190 },
+    bio: { espnId: "4397183", college: "Maryland", hometown: "Greensboro, NC", birthDate: "1999-01-02", draft: "2021 · No. 55 · OKC", nbaSeason: 6 },
+    combine: { year: 2021, heightNoShoes: 76.5, wingspan: 81.75, standingReach: 103, weight: 190.0, handLength: 8.75, handWidth: 8.5, standingVert: null, maxVert: 36, laneAgility: 11.2, sprint: 3.04, note: "Earned his combine invite at the 2021 G League Elite Camp.", source: "NBA Draft Combine via NBADraft.net / Tankathon" },
     career: [
       { years: "2021", team: "Drafted #55 overall by OKC", type: "draft" },
       { years: "2021-2026", team: "Oklahoma City Thunder", type: "senior" },
@@ -302,6 +324,8 @@ export const PLAYERS = [
     seasonHighs: { points: 3, rebounds: 2, assists: 1, threes: 1 },
     image: "https://cdn.nba.com/headshots/nba/latest/1040x760/1627827.png",
     physical: { height: 79, weight: 220 },
+    bio: { espnId: "2578185", college: "Florida", hometown: "Portsmouth, VA", birthDate: "1993-05-04", draft: "Undrafted (2016)", nbaSeason: 11 },
+    combine: { year: 2016, heightNoShoes: 78.5, wingspan: 83.75, standingReach: null, weight: 212.6, handLength: 9.0, handWidth: 9.75, standingVert: 38.5, maxVert: 41.5, laneAgility: 11.01, sprint: 3.27, note: "His 38.5-inch standing vertical was the best at the 2016 combine.", source: "NBA Draft Combine via NBADraft.net / Tankathon" },
     career: [
       { years: "2016", team: "Undrafted (Florida)", type: "draft" },
       { years: "2016-2023", team: "Dallas Mavericks", type: "senior" },
@@ -327,6 +351,8 @@ export const PLAYERS = [
     seasonHighs: { points: 23, rebounds: 6, assists: 8, threes: 3 },
     image: "https://cdn.nba.com/headshots/nba/latest/1040x760/1643412.png",
     physical: { height: 75, weight: 183 },
+    bio: { espnId: "5149077", college: "Houston", hometown: "San Antonio, TX", birthDate: "2007-01-03", draft: "2026 · No. 8 · ATL", nbaSeason: 1 },
+    combine: { year: 2026, heightNoShoes: 74.5, wingspan: 75.5, standingReach: 98.5, weight: 183.4, handLength: 8.5, handWidth: 9.5, standingVert: 33.5, maxVert: 40.5, laneAgility: 10.61, sprint: 3.07, note: null, source: "NBA Draft Combine via NBADraft.net / Tankathon" },
     career: [
       { years: "2026", team: "Drafted #8 overall by ATL (from Houston)", type: "draft" },
       { years: "2026-", team: "Atlanta Hawks", type: "senior" },
@@ -347,7 +373,9 @@ export const PLAYERS = [
     last5: null,
     seasonHighs: { points: 3, rebounds: 2, assists: 0, threes: 1 },
     image: "https://cdn.nba.com/headshots/nba/latest/1040x760/1643544.png",
-    physical: { height: 81, weight: 240 },
+    physical: { height: 80, weight: 245 },
+    bio: { espnId: "5106262", college: "St. John's", hometown: "Garland, TX", birthDate: "2004-04-20", draft: "2026 · No. 23 · ATL", nbaSeason: 1 },
+    combine: { year: 2026, heightNoShoes: 79.5, wingspan: 86, standingReach: 107, weight: 245.2, handLength: 9.25, handWidth: 9.75, standingVert: 34, maxVert: 38, laneAgility: 11.05, sprint: 3.2, note: null, source: "NBA Draft Combine via NBADraft.net / Tankathon" },
     career: [
       { years: "2026", team: "Drafted #23 overall by ATL (from St. John's)", type: "draft" },
       { years: "2026-", team: "Atlanta Hawks", type: "senior" },
@@ -368,7 +396,9 @@ export const PLAYERS = [
     last5: null,
     seasonHighs: null,
     image: "https://a.espncdn.com/i/headshots/nba/players/full/5105571.png",
-    physical: { height: 84, weight: 225 },
+    physical: { height: 84, weight: 227 },
+    bio: { espnId: "5105571", college: "North Carolina", hometown: "Tallinn, Estonia", birthDate: "2004-03-28", draft: "2026 · No. 52 · LAC", nbaSeason: 1 },
+    combine: { year: 2026, heightNoShoes: 83.25, wingspan: 86, standingReach: 111, weight: 227.2, handLength: 8.75, handWidth: 9.5, standingVert: 28, maxVert: 32.5, laneAgility: 11.2, sprint: 3.42, note: null, source: "NBA Draft Combine via NBADraft.net / Tankathon" },
     career: [
       { years: "2026", team: "Drafted #52 overall by LAC, rights traded to ATL (from North Carolina)", type: "draft" },
       { years: "2026-", team: "Atlanta Hawks", type: "senior" },
@@ -378,6 +408,10 @@ export const PLAYERS = [
 
 // ─── RSS Feed Sources ──────────────────────────────────────────────────────
 // Validated via api.rss2json.com on Apr 18, 2026.
+// Players on ESPN's roster we deliberately do not card (two-way contracts).
+// scripts/roster-check.mjs skips these; move a name into PLAYERS if he converts.
+export const ROSTER_EXCLUDE = ["RayJ Dennis", "Keshon Gilbert", "Jalen Wilson"];
+
 export const RSS_FEEDS = [
   { name: "Peachtree Hoops", url: "https://www.peachtreehoops.com/rss/index.xml", category: "fan", color: "#E03A3E" },
   { name: "Hoops Rumors - Hawks", url: "https://www.hoopsrumors.com/atlanta-hawks/feed", category: "major", color: "#26282A" },
@@ -1390,14 +1424,25 @@ export const PULL_QUOTES = [
 ];
 
 // ─── Editor's bets (predictions strip at top of WIRE) ──────────────────────
-// confidence: 0-100; rendered as a horizontal volt bar.
+// confidence: 0-100 (the editors' own read, not a betting line).
+// status: "open" | "hit" | "miss". When a bet settles, flip status and keep it
+// up about two weeks, then replace it with a fresh take. `why` is one sourced
+// sentence (sentence case, no em dashes). `made` is the date the take was set.
+// Offseason book (set May-Jun, settled by Jul): 5 hits, 1 miss (Hield was
+// guaranteed Jun 28, not waived). Season book below set Nov 2, 2026.
 export const BETS = [
-  { take: "Snyder extension signs before Draft Night ✓ HIT (Jun 8)", confidence: 100 },
-  { take: "Saleh declines Kuminga's $24.3M option",              confidence: 65 },
-  { take: "McCollum re-signs at 2yr / ~$36M",                    confidence: 70 },
-  { take: "No Jaylen Brown trade — Hawks pass on $53.1M",       confidence: 75 },
-  { take: "Hawks pick a guard at #8 (Brown Jr. or Flemings) ✓ HIT (Flemings)", confidence: 100 },
-  { take: "Hield gets waived before the June 25 trigger",        confidence: 55 },
+  { take: "Hawks finish top six and skip the play-in", confidence: 55, status: "open", made: "2026-11-02",
+    why: "A 3-4 start with four losses in five, against ESPN's preseason projection of 47-35 and the 6 seed." },
+  { take: "Jalen Johnson makes his second straight All-Star team", confidence: 65, status: "open", made: "2026-11-02",
+    why: "18.3, 9.0 and 7.9 through seven games off an All-NBA Third Team year; the left ankle is the swing factor." },
+  { take: "Dyson Daniels leads the NBA in steals per game", confidence: 60, status: "open", made: "2026-11-02",
+    why: "3.0 a night through seven games, including seven at Charlotte, after tying for the league lead at 2.0 last season." },
+  { take: "Lu Dort is still a Hawk after the February trade deadline", confidence: 70, status: "open", made: "2026-11-02",
+    why: "His $17.2M deal expires this summer, but HoopsHype's Michael Scotto reported in July that Atlanta wants to keep him beyond it." },
+  { take: "Atlanta moves McCollum's or Landale's expiring before the deadline", confidence: 50, status: "open", made: "2026-11-02",
+    why: "Both contracts run out after the season, and the front office is already pointed at 40-plus million in cap space next summer." },
+  { take: "Kingston Flemings makes an All-Rookie team", confidence: 50, status: "open", made: "2026-11-02",
+    why: "7.1 points and 4.7 assists in 20 minutes with a 23-point night against Miami; he serves a one-game suspension at Indiana tonight." },
 ];
 
 // ─── Scenarios (PATH section · cap & roster paths) ─────────────────────────

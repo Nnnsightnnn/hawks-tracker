@@ -57,6 +57,9 @@ const TEAM_ABBR = {
   "Philadelphia 76ers": "PHI", "Toronto Raptors": "TOR", "Charlotte Hornets": "CHA",
   "New Orleans Pelicans": "NOP", "Indiana Pacers": "IND", "Washington Wizards": "WAS",
   "Oklahoma City Thunder": "OKC", "San Antonio Spurs": "SAS", "Chicago Bulls": "CHI",
+  "Utah Jazz": "UTA", "Minnesota Timberwolves": "MIN", "Portland Trail Blazers": "POR",
+  "Phoenix Suns": "PHX", "Los Angeles Lakers": "LAL", "LA Clippers": "LAC",
+  "Los Angeles Clippers": "LAC", "Denver Nuggets": "DEN",
 };
 function nationalityCode(s) {
   const stripped = (s || "").replace(/[^\x00-\x7F]+/g, "").trim();
@@ -77,10 +80,54 @@ function firstSentence(text, max = 220) {
   return out.trim();
 }
 
+// ─── Bio / combine formatting ──────────────────────────────────
+// Age is derived from bio.birthDate against the issue date, so it never goes stale.
+function ageOn(birthDate, onDate) {
+  const b = new Date(birthDate + "T12:00:00Z");
+  const d = onDate ? new Date(onDate + "T12:00:00Z") : new Date();
+  let a = d.getUTCFullYear() - b.getUTCFullYear();
+  const m = d.getUTCMonth() - b.getUTCMonth();
+  if (m < 0 || (m === 0 && d.getUTCDate() < b.getUTCDate())) a -= 1;
+  return a;
+}
+const FRAC = { 0.25: "¼", 0.5: "½", 0.75: "¾" };
+// 82.75 → 6'10¾"
+function fmtIn(inches) {
+  if (inches == null) return "—";
+  const ft = Math.floor(inches / 12);
+  const rest = Math.round((inches - ft * 12) * 4) / 4;
+  const whole = Math.floor(rest), frac = rest - whole;
+  return `${ft}'${whole}${FRAC[frac] || ""}"`;
+}
+// "2026-11-02" → "2026–27" (season flips in July)
+function seasonLabel(iso) {
+  const d = iso ? new Date(iso + "T12:00:00Z") : new Date();
+  const y = d.getUTCFullYear(), start = d.getUTCMonth() >= 6 ? y : y - 1;
+  return `${start}–${String(start + 1).slice(2)}`;
+}
+function ordinal(n) {
+  const v = n % 100;
+  if (v >= 11 && v <= 13) return n + "th";
+  return n + ({ 1: "st", 2: "nd", 3: "rd" }[n % 10] || "th");
+}
+function fmtBorn(iso) {
+  if (!iso) return "—";
+  const d = new Date(iso + "T12:00:00Z");
+  return d.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric", timeZone: "UTC" });
+}
+function careerPath(career) {
+  return (career || []).filter((c) => c.type === "senior")
+    .map((c) => teamAbbr(c.team.replace(/\s*\(.*\)\s*$/, "")))
+    .join(" → ");
+}
+
 const ADAPTED_PLAYERS = PLAYERS.map((p) => ({
   id: p.id, name: p.name, number: p.number ?? "—", pos: p.position,
   country: nationalityCode(p.nationality),
-  age: p.age, starter: !!p.playoffStarter,
+  age: p.bio?.birthDate ? ageOn(p.bio.birthDate, RAW_ISSUE?.date) : p.age,
+  starter: !!p.playoffStarter,
+  ht: p.physical?.height ?? null, wt: p.physical?.weight ?? null,
+  bio: p.bio || null, combine: p.combine || null, career: p.career || [],
   gp: p.gamesPlayed, mpg: p.minutesPerGame,
   ppg: p.pointsPerGame, rpg: p.reboundsPerGame, apg: p.assistsPerGame,
   spg: p.stealsPerGame, bpg: p.blocksPerGame,
@@ -101,7 +148,9 @@ const ADAPTED_STANDINGS = EAST_STANDINGS.map((s) => ({
   seed: s.seed, team: s.team, abbr: teamAbbr(s.team), record: s.record,
 }));
 
-const ADAPTED_BETS = RAW_BETS.map((b) => ({ take: b.take, conf: b.confidence }));
+const ADAPTED_BETS = RAW_BETS.map((b) => ({
+  take: b.take, conf: b.confidence, status: b.status || "open", why: b.why || null,
+}));
 
 // LEDGER rows: already triples in NUMBERS_LEDGER — pick the top 6 for the rail.
 const ADAPTED_LEDGER = NUMBERS_LEDGER.slice(0, 6).map((row) => [row[0], row[1], row[2]]);
@@ -723,9 +772,111 @@ function StatCell({ label, value, last }) {
   );
 }
 
+function KV({ k, v, wrap }) {
+  return (
+    <div style={{
+      display: "flex", justifyContent: "space-between", alignItems: "baseline", gap: 8,
+      borderBottom: `1px dotted ${C.hair}`, padding: "3px 0 2px",
+    }}>
+      <span style={{
+        fontFamily: FONT.body, fontWeight: 600, fontSize: 8.5, letterSpacing: 0.9,
+        color: C.taupe, flexShrink: 0, textTransform: "uppercase",
+      }}>{k}</span>
+      <span title={typeof v === "string" ? v : undefined} style={{
+        fontFamily: FONT.body, fontWeight: 700, fontSize: 10.5, lineHeight: 1.25,
+        color: C.ink, textAlign: "right", minWidth: 0,
+        ...(wrap ? {} : { whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }),
+      }}>{v ?? "—"}</span>
+    </div>
+  );
+}
+
+function Tile({ k, v }) {
+  return (
+    <div style={{
+      background: C.panel, border: `1px solid ${C.hair}`, borderRadius: 5,
+      padding: "4px 2px 3px", textAlign: "center", minWidth: 0,
+    }}>
+      <div style={{
+        fontFamily: FONT.num, fontWeight: 700, fontSize: 12, lineHeight: 1, color: C.ink,
+        fontVariantNumeric: "tabular-nums", whiteSpace: "nowrap",
+      }}>{v}</div>
+      <div style={{
+        fontFamily: FONT.body, fontWeight: 600, fontSize: 7.5, letterSpacing: 0.8,
+        color: C.taupe, marginTop: 2, textTransform: "uppercase", whiteSpace: "nowrap",
+      }}>{k}</div>
+    </div>
+  );
+}
+
+function BioPanel({ p }) {
+  const b = p.bio || {};
+  const season = b.nbaSeason == null ? null : b.nbaSeason <= 1 ? "Rookie" : `${ordinal(b.nbaSeason)} season`;
+  const path = careerPath(p.career);
+  return (
+    <div style={{ marginTop: 8, flex: 1, overflow: "hidden" }}>
+      <KV k={b.college ? "College" : "Pre-NBA"} v={b.college || b.preNBA}/>
+      <KV k="From" v={b.hometown}/>
+      <KV k="Born" v={b.birthDate ? fmtBorn(b.birthDate) : null}/>
+      <KV k="Draft" v={b.draft}/>
+      <KV k="NBA" v={season}/>
+      {path && <KV k="Path" v={path} wrap/>}
+      {b.fact && (
+        <div style={{
+          marginTop: 6, fontFamily: FONT.body, fontSize: 10.5, lineHeight: 1.4,
+          color: "#5C5346", fontStyle: "italic",
+        }}>{b.fact}</div>
+      )}
+    </div>
+  );
+}
+
+function CombinePanel({ p, frame }) {
+  const c = p.combine;
+  if (!c || c.year == null) {
+    return (
+      <div style={{
+        marginTop: 12, flex: 1, fontFamily: FONT.body, fontSize: 11.5, lineHeight: 1.5,
+        color: "#5C5346",
+      }}>{c?.note || "No official NBA Draft Combine measurements on record."}</div>
+    );
+  }
+  const ape = c.wingspan != null && c.heightNoShoes != null ? c.wingspan - c.heightNoShoes : null;
+  const tiles = [
+    ["Wingspan", c.wingspan, fmtIn], ["Reach", c.standingReach, fmtIn],
+    ["Barefoot", c.heightNoShoes, fmtIn], ["Weight", c.weight, (v) => `${v}`],
+    ["Hand", c.handLength, (v) => `${v}"`], ["Hand W", c.handWidth, (v) => `${v}"`],
+    ["Max vert", c.maxVert, (v) => `${v}"`], ["Std vert", c.standingVert, (v) => `${v}"`],
+    ["Agility", c.laneAgility, (v) => `${v.toFixed(2)}s`], ["Sprint", c.sprint, (v) => `${v.toFixed(2)}s`],
+  ].filter(([, v]) => v != null);
+  return (
+    <div style={{ marginTop: 8, flex: 1, overflow: "hidden" }}>
+      <div style={{
+        display: "flex", justifyContent: "space-between", alignItems: "baseline", gap: 6,
+        fontFamily: FONT.body, fontWeight: 600, fontSize: 8.5, letterSpacing: 1.1, color: C.taupe,
+        whiteSpace: "nowrap",
+      }}>
+        <span>{c.year} COMBINE</span>
+        {ape != null && (
+          <span title="Wingspan minus barefoot height" style={{ fontWeight: 700, color: frame }}>
+            SPAN {ape >= 0 ? "+" : "−"}{Math.round(Math.abs(ape) * 100) / 100}"
+          </span>
+        )}
+      </div>
+      <div style={{ marginTop: 4, display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 3 }}>
+        {tiles.map(([k, v, f]) => <Tile key={k} k={k} v={f(v)}/>)}
+      </div>
+      {c.note && (
+        <div style={{ marginTop: 4, fontFamily: FONT.body, fontSize: 9.5, lineHeight: 1.35, color: "#5C5346" }}>{c.note}</div>
+      )}
+    </div>
+  );
+}
+
 function PlayerCard({ p, tweaks }) {
   const [flip, setFlip] = useState(false);
   const [hover, setHover] = useState(false);
+  const [tab, setTab] = useState("stats");
   const ppg = useCountUp(p.ppg, 800, true);
   const rpg = useCountUp(p.rpg, 800, true);
   const apg = useCountUp(p.apg, 800, true);
@@ -814,7 +965,22 @@ function PlayerCard({ p, tweaks }) {
           </div>
 
           <div style={{
-            display: "flex", margin: "7px 7px 8px", background: C.bg,
+            display: "flex", justifyContent: "space-between", alignItems: "baseline", gap: 8,
+            margin: "7px 10px 0", whiteSpace: "nowrap",
+            fontFamily: FONT.body, fontWeight: 600, fontSize: 9.5, letterSpacing: 1.1,
+            color: C.taupe, textTransform: "uppercase",
+          }}>
+            <span style={{ overflow: "hidden", textOverflow: "ellipsis", minWidth: 0 }}>
+              {p.bio?.college || p.bio?.preNBA || COUNTRY[p.country] || p.country}
+            </span>
+            <span style={{
+              fontFamily: FONT.num, fontWeight: 700, letterSpacing: 0.3, color: C.ink,
+              flexShrink: 0, fontVariantNumeric: "tabular-nums",
+            }}>{fmtIn(p.ht)}{p.wt ? ` · ${p.wt}` : ""}</span>
+          </div>
+
+          <div style={{
+            display: "flex", margin: "6px 7px 8px", background: C.bg,
             border: `1px solid ${C.hair}`, borderRadius: 7, overflow: "hidden",
           }}>
             <StatCell label="PPG" value={ppg.toFixed(1)}/>
@@ -850,37 +1016,54 @@ function PlayerCard({ p, tweaks }) {
             color: C.taupe, marginTop: 6, textTransform: "uppercase",
           }}>{p.pos} · {COUNTRY[p.country] || p.country} · AGE {p.age}</div>
 
-          <div style={{ marginTop: 9, display: "grid", gridTemplateColumns: "1fr 1fr", gap: "4px 14px" }}>
-            {[["MIN", p.mpg ?? "—"], ["FG%", p.fg == null ? "—" : p.fg.toFixed(1)], ["3P%", p.tp == null ? "—" : p.tp.toFixed(1)],
-              ["FT%", p.ft == null ? "—" : p.ft.toFixed(1)], ["TS%", p.ts == null ? "—" : p.ts.toFixed(1)],
-              ["+/-", p.pm == null ? "—" : (p.pm > 0 ? "+" : "") + p.pm]
-            ].map(([k, v]) => (
-              <div key={k} style={{
-                display: "flex", justifyContent: "space-between", alignItems: "baseline",
-                borderBottom: `1px dotted ${C.hair}`, paddingBottom: 2,
-              }}>
-                <span style={{ fontFamily: FONT.body, fontWeight: 600, fontSize: 9.5, letterSpacing: 1, color: C.taupe }}>{k}</span>
-                <span style={{ fontFamily: FONT.num, fontWeight: 700, fontSize: 13, color: C.ink, fontVariantNumeric: "tabular-nums" }}>{v}</span>
-              </div>
+          <div style={{ display: "flex", gap: 4, marginTop: 8 }}>
+            {[["stats", "Stats"], ["bio", "Bio"], ["combine", "Combine"]].map(([k, l]) => (
+              <button key={k} onClick={(e) => { e.stopPropagation(); setTab(k); }} style={{
+                flex: 1, padding: "4px 0", borderRadius: 12, cursor: "pointer",
+                fontFamily: FONT.body, fontWeight: 700, fontSize: 8.5, letterSpacing: 0.6,
+                textTransform: "uppercase", whiteSpace: "nowrap",
+                border: `1.5px solid ${tab === k ? frame : C.hair}`,
+                background: tab === k ? frame : "transparent",
+                color: tab === k ? C.cream : C.taupe,
+              }}>{l}</button>
             ))}
           </div>
 
-          <div style={{
-            marginTop: 10, fontFamily: FONT.body, fontWeight: 400, fontSize: 11.5,
-            lineHeight: 1.5, color: "#5C5346", flex: 1, overflow: "hidden",
-          }}>
-            <span style={{
-              float: "left", fontFamily: FONT.disp, fontWeight: 700, fontSize: 30,
-              lineHeight: 0.8, color: frame, marginRight: 6, marginTop: 2,
-            }}>{(p.note || "—").charAt(0)}</span>
-            {(p.note || "—").slice(1)}
-          </div>
+          {tab === "stats" && (<>
+            <div style={{ marginTop: 9, display: "grid", gridTemplateColumns: "1fr 1fr", gap: "4px 14px" }}>
+              {[["MIN", p.mpg ?? "—"], ["FG%", p.fg == null ? "—" : p.fg.toFixed(1)], ["3P%", p.tp == null ? "—" : p.tp.toFixed(1)],
+                ["FT%", p.ft == null ? "—" : p.ft.toFixed(1)], ["TS%", p.ts == null ? "—" : p.ts.toFixed(1)],
+                ["+/-", p.pm == null ? "—" : (p.pm > 0 ? "+" : "") + p.pm]
+              ].map(([k, v]) => (
+                <div key={k} style={{
+                  display: "flex", justifyContent: "space-between", alignItems: "baseline",
+                  borderBottom: `1px dotted ${C.hair}`, paddingBottom: 2,
+                }}>
+                  <span style={{ fontFamily: FONT.body, fontWeight: 600, fontSize: 9.5, letterSpacing: 1, color: C.taupe }}>{k}</span>
+                  <span style={{ fontFamily: FONT.num, fontWeight: 700, fontSize: 13, color: C.ink, fontVariantNumeric: "tabular-nums" }}>{v}</span>
+                </div>
+              ))}
+            </div>
+
+            <div style={{
+              marginTop: 10, fontFamily: FONT.body, fontWeight: 400, fontSize: 11.5,
+              lineHeight: 1.5, color: "#5C5346", flex: 1, overflow: "hidden",
+            }}>
+              <span style={{
+                float: "left", fontFamily: FONT.disp, fontWeight: 700, fontSize: 30,
+                lineHeight: 0.8, color: frame, marginRight: 6, marginTop: 2,
+              }}>{(p.note || "—").charAt(0)}</span>
+              {(p.note || "—").slice(1)}
+            </div>
+          </>)}
+          {tab === "bio" && <BioPanel p={p}/>}
+          {tab === "combine" && <CombinePanel p={p} frame={frame}/>}
 
           <div style={{
-            marginTop: 6, paddingTop: 7, borderTop: `1px solid ${C.hair}`,
-            fontFamily: FONT.body, fontWeight: 600, fontSize: 8.5, letterSpacing: 1.4,
-            color: C.taupe, textAlign: "center",
-          }}>TAP TO FLIP BACK · HAWKS TRACKER</div>
+            marginTop: 5, paddingTop: 5, borderTop: `1px solid ${C.hair}`,
+            fontFamily: FONT.body, fontWeight: 600, fontSize: 8, letterSpacing: 1.4,
+            color: C.taupe, textAlign: "center", whiteSpace: "nowrap",
+          }}>TAP TO FLIP BACK</div>
         </div>
       </div>
     </div>
@@ -900,7 +1083,7 @@ function RosterView({ tweaks }) {
 
   return (
     <div style={{ maxWidth: 1180, margin: "0 auto", padding: `${pad + 8}px clamp(20px,5vw,64px) 80px` }}>
-      <Kicker color={C.pine}>Roster · 2025–26</Kicker>
+      <Kicker color={C.pine}>Roster · {seasonLabel(RAW_ISSUE?.date)}</Kicker>
       <div style={{
         display: "flex", alignItems: "flex-end", justifyContent: "space-between",
         gap: 20, flexWrap: "wrap", marginTop: 12,
@@ -928,7 +1111,7 @@ function RosterView({ tweaks }) {
       <div style={{
         marginTop: tweaks.density === "airy" ? 40 : 28,
         display: "grid",
-        gridTemplateColumns: "repeat(auto-fill, minmax(190px, 1fr))",
+        gridTemplateColumns: "repeat(auto-fill, minmax(205px, 1fr))",
         gap: tweaks.density === "airy" ? 28 : 18,
       }}>
         {list.map((p) => <PlayerCard key={p.id} p={p} tweaks={tweaks}/>)}
@@ -1285,14 +1468,31 @@ function NewsView({ tweaks }) {
                     fontFamily: FONT.body, fontWeight: 600, fontSize: 12.5, lineHeight: 1.4,
                     color: C.ink, marginBottom: 8,
                   }}>{b.take}</div>
+                  {b.why && (
+                    <div style={{
+                      fontFamily: FONT.body, fontWeight: 400, fontSize: 11.5, lineHeight: 1.45,
+                      color: "#5C5346", marginTop: -3, marginBottom: 8,
+                    }}>{b.why}</div>
+                  )}
                   <div style={{ display: "flex", alignItems: "center", gap: 9 }}>
                     <div style={{ flex: 1, height: 6, background: C.bg, borderRadius: 3, overflow: "hidden", border: `1px solid ${C.hair}` }}>
-                      <div style={{ width: `${b.conf}%`, height: "100%", background: C.pine }}/>
+                      <div style={{
+                        width: `${b.conf}%`, height: "100%",
+                        background: b.status === "miss" ? C.red : b.status === "hit" ? C.gold : C.pine,
+                      }}/>
                     </div>
-                    <span style={{
-                      fontFamily: FONT.num, fontWeight: 700, fontSize: 13, color: C.pine,
-                      fontVariantNumeric: "tabular-nums", width: 34, textAlign: "right",
-                    }}>{b.conf}%</span>
+                    {b.status === "open" ? (
+                      <span style={{
+                        fontFamily: FONT.num, fontWeight: 700, fontSize: 13, color: C.pine,
+                        fontVariantNumeric: "tabular-nums", width: 34, textAlign: "right",
+                      }}>{b.conf}%</span>
+                    ) : (
+                      <span style={{
+                        fontFamily: FONT.body, fontWeight: 700, fontSize: 9.5, letterSpacing: 1.3,
+                        padding: "3px 8px", borderRadius: 10,
+                        background: b.status === "hit" ? C.pine : C.red, color: C.cream,
+                      }}>{b.status === "hit" ? "HIT" : "MISS"}</span>
+                    )}
                   </div>
                 </div>
               ))}

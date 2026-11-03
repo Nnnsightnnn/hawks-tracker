@@ -36,6 +36,22 @@ Array of 15 player objects. Schema:
 | image | string | NBA CDN headshot URL |
 | physical | `{height: number, weight: number}` | Height in inches, weight in lbs |
 | career | Career[] | Reverse-chronological career entries |
+| bio | Bio | College, hometown, birth date, draft, NBA season (ESPN). UI derives age from `birthDate`. |
+| combine | Combine | NBA Draft Combine measurements, or `{ year: null, note }` if never measured |
+
+### Bio
+```js
+{ espnId: string, college: string|null, preNBA: string|null, hometown: string,
+  birthDate: "YYYY-MM-DD", draft: string, nbaSeason: number /* 1 = rookie */, fact: string|null }
+```
+
+### Combine
+```js
+{ year: number|null, heightNoShoes, wingspan, standingReach /* inches */, weight /* lbs */,
+  handLength, handWidth /* inches */, standingVert, maxVert /* inches */,
+  laneAgility, sprint /* seconds */, source: string, note: string|null }
+```
+Any test the player skipped is `null`. `scripts/roster-check.mjs` diffs PLAYERS against ESPN's roster (new arrivals, departures, ht/wt drift, missing bio/combine). `ROSTER_EXCLUDE` lists two-way players deliberately left off the cards.
 
 ### Status Taxonomy
 ```
@@ -66,6 +82,14 @@ C  → Center         (color: #e74c3c red)
 ```
 - `type: "draft"` — draft year entry (single year, includes pick info)
 - `type: "senior"` — team tenure (year range, trailing `-` means current)
+
+## BETS[]
+
+```js
+{ take: string, confidence: number /* 0-100 */, status: "open"|"hit"|"miss",
+  made: "YYYY-MM-DD", why: string /* one sourced sentence */ }
+```
+Settled bets show a HIT/MISS chip instead of the percentage. See the update procedure, Step 4.6.
 
 ## RSS_FEEDS[]
 

@@ -153,9 +153,69 @@ Never move `form` more than ±1.0 per run without a clear narrative reason (trad
 
 ### Preserve these fields verbatim — do NOT touch unless a real roster move occurred
 - `image` (NBA CDN headshot URL: `https://cdn.nba.com/headshots/nba/latest/1040x760/{playerId}.png`)
-- `physical` (`{ height, weight }` in inches/lbs)
 - `career` array (only touch on trade-in/out, draft, new signing)
-- `id`, `name`, `number`, `position`, `nationality`, `age`
+- `combine` (history; it never changes once filled, see Step 4.5)
+- `id`, `name`, `position`, `nationality`
+- `physical`, `bio`, `number` are owned by Step 4.5 (ESPN sync), not by hand.
+- `age` is legacy; the UI derives age from `bio.birthDate` against `ISSUE.date`, so never bump it by hand.
+
+---
+
+## STEP 4.5 · ROSTER SYNC: BIO, HEIGHT/WEIGHT, COMBINE (every run, 1 command)
+
+The Roster cards show college, hometown, birth date, draft slot, NBA season, height/weight, and a Combine tab. These must stay current whenever the roster changes. Run:
+
+```bash
+cd ~/hawks-tracker && node scripts/roster-check.mjs
+```
+
+Exit 0 = in sync, move on. Exit 1 prints what to fix; handle every line:
+
+- **`NOT IN PLAYERS`** (a new arrival: trade, signing, conversion from two-way). Add a full `PLAYERS[]` entry (next free `id`, stats from Step 4, `image` from the NBA.com player id, `career` with the acquiring move) AND fill `bio` + `combine` as below. If the player is on a two-way deal and should not get a card, add his name to `ROSTER_EXCLUDE` instead.
+- **`DEPARTED?`** (traded, waived). Confirm with a tier-1/2 source, then remove the entry and add the move to `NEWS_DIGEST`. Do not remove on ESPN's word alone.
+- **`HT/WT`, `SEASON`, `JERSEY`**: copy ESPN's value into `physical`, `bio.nbaSeason`, `number`. ESPN is the single source for these so the cards never disagree with each other.
+- **`NO BIO` / `NO COMBINE`**: fill them (below). New players only; existing ones are filled.
+
+`node scripts/roster-check.mjs --json` prints ESPN's bio for every player to copy from.
+
+### `bio` shape (all from ESPN, except `fact`)
+```js
+bio: {
+  espnId: "4701230",
+  college: "Duke",            // null for non-college players, then set preNBA
+  preNBA: null,               // e.g. "G League Ignite", "Mega Superbet (Serbia)"
+  hometown: "Milwaukee, WI",  // ESPN displayBirthPlace
+  birthDate: "2001-12-18",    // ISO; the UI computes age from it
+  draft: "2021 · No. 20 · ATL",  // or "Undrafted (2016)"; the team that made the pick, not the current one
+  nbaSeason: 6,               // 1 = rookie; bump every player by 1 on the first run of a new season
+  fact: "...",                // optional, <= 120 chars, one sourced bio nugget (sentence case, no em dashes)
+}
+```
+
+### `combine` shape (inches, lbs, seconds; null for any test he skipped)
+```js
+combine: {
+  year: 2021, heightNoShoes: 79.25, wingspan: 83.75, standingReach: 105.5, weight: 219.6,
+  handLength: 9.25, handWidth: 9.75, standingVert: 29.5, maxVert: 35.0,
+  laneAgility: 11.31, sprint: 3.21,
+  source: "NBA.com Draft Combine anthro + strength/agility", note: null,
+}
+// Never measured (undrafted, skipped the combine, international stash):
+combine: { year: null, note: "Undrafted out of Florida in 2016; no official combine measurements on record." }
+```
+Combine numbers come from the official NBA Draft Combine (nba.com/stats/draft/combine-anthro and combine-strength-agility) or a tier-2 outlet that republishes those exact figures (ESPN, The Ringer, Tankathon, NBADraft.net). Never estimate, never use a team's listed height as a combine number, and never use bot-check workarounds to reach a source. If you can't confirm a field, leave it `null`. Combine data never changes, so once a player's block is filled, leave it alone.
+
+---
+
+## STEP 4.6 · EDITOR'S BETS (`BETS` in `src/playerData.js`)
+
+The WIRE sidebar shows 5 to 6 season-long predictions. Keep them alive:
+
+- **Settle every run.** If a bet's outcome is now decided, set `status: "hit"` or `"miss"` and rewrite `why` as the one-line result with its source. Leave settled bets up about two weeks, then replace them.
+- **Refresh on Mondays, or whenever fewer than 4 are open.** Add new takes tied to the current storylines (standings race, awards, trade deadline, contract decisions, rookie development). Each take is a specific, checkable claim with a clear resolution point.
+- **`confidence`** is the editors' own read (0 to 100), not a betting line. Move an open bet more than ±10 in one run only for real news (injury, trade, a decisive stretch), and say why in `why`.
+- **`why`** is one sourced sentence with real numbers from this run's research (sentence case, no em dashes). `made` is the ISO date the take was set.
+- Never let the strip go stale: if every `made` date is older than 30 days, refresh it this run.
 
 ---
 
@@ -268,6 +328,8 @@ At the end, report in this exact shape:
 - **Searches run**: count + key queries
 - **Player refresh**: how many of 15 players had fields updated, which fields touched most (e.g., "season averages: 12/15, last5: 10/15, recentNotes: 8/15")
 - **Game/series state**: any new game added, series record now
+- **Roster sync**: `roster-check` result (in sync, or what was added/removed/updated)
+- **Bets**: settled (which, hit/miss), added, or unchanged
 - **Files changed**: one-line diff summary per file
 - **Build**: pass/fail
 - **Commit**: SHA + push status
@@ -284,5 +346,5 @@ At the end, report in this exact shape:
 - Lead with the biggest developing story in BOTH `summary` and the first `keyTopics` entries.
 - NBA status vocab is `active | day-to-day | questionable | doubtful | out | suspended`. NOT soccer vocab (`fit | injured | recovering`).
 - `RESULTS.score` is always `ATL-OPP` regardless of home/away — the UI handles visual swap.
-- New schema fields (`last5`, `usageRate`, `seasonHighs`, `minutesTrend`, `recentNotes`, `playoffSeries`) are optional and default to `null`. Their absence must not break the build or the UI.
+- New schema fields (`last5`, `usageRate`, `seasonHighs`, `minutesTrend`, `recentNotes`, `playoffSeries`, `bio`, `combine`) are optional and default to `null`. Their absence must not break the build or the UI, but every carded player should have `bio` and `combine` (Step 4.5).
 - If a stat source disagrees with another, prefer tier-1. If tier-1 disagrees internally, keep the prior value and note the ambiguity in the report rather than picking blindly.
