@@ -6,11 +6,11 @@ All data lives in `src/playerData.js` as named ES module exports. No API, no dat
 
 ## PLAYERS[]
 
-Array of 15 player objects. Schema:
+One player object per player on ESPN's roster, two-way players included (18 as of Nov 2026; no fixed count). Schema:
 
 | Field | Type | Description |
 |-------|------|-------------|
-| id | number | Unique player ID (1-15) |
+| id | number | Unique player ID (next free integer for a new arrival; ids are never reused) |
 | name | string | Full name |
 | number | number | Jersey number |
 | position | `"PG"\|"SG"\|"SF"\|"PF"\|"C"` | NBA position |
@@ -51,7 +51,7 @@ Array of 15 player objects. Schema:
   handLength, handWidth /* inches */, standingVert, maxVert /* inches */,
   laneAgility, sprint /* seconds */, source: string, note: string|null }
 ```
-Any test the player skipped is `null`. `scripts/roster-check.mjs` diffs PLAYERS against ESPN's roster (new arrivals, departures, ht/wt drift, missing bio/combine). `ROSTER_EXCLUDE` lists two-way players deliberately left off the cards.
+Any test the player skipped is `null`. `scripts/roster-check.mjs` diffs PLAYERS against ESPN's roster (new arrivals, departures, ht/wt drift, missing bio/combine). `ROSTER_EXCLUDE` is normally empty: two-way players get cards. It only holds a name ESPN still lists after a confirmed departure.
 
 ### Status Taxonomy
 ```

@@ -3,7 +3,7 @@ name: hawks-tracker-update
 description: Fetches the latest Atlanta Hawks news via web search, updates roster/injuries/games, regenerates the tracker with recency-biased news digests, and publishes to the live GitHub Pages site.
 ---
 
-You are updating the Atlanta Hawks 2025-26 season tracker app. Project lives at `~/hawks-tracker`. The single source of truth is:
+You are updating the Atlanta Hawks season tracker app (2026-27 season). Project lives at `~/hawks-tracker`. The single source of truth is:
 
 **`~/hawks-tracker/src/playerData.js`** — exports: `PLAYERS`, `RSS_FEEDS`, `TEAM_LOGOS`, `NEXT_GAME`, `RESULTS`, `PLAYOFF_SERIES`, `EAST_STANDINGS`, `NEWS_DIGEST`.
 
@@ -57,14 +57,15 @@ For each **starter** and **top 3 bench rotation** pieces, search at least ONE of
 - `"{Player Name} last game"` (post-game performance)
 - `"{Player Name} minutes"` (rotation shifts)
 
-Focus by priority:
+Focus by priority (check this list against the current `PLAYERS[]` each run; it goes stale after trades):
 1. Jalen Johnson (franchise focal point)
-2. Dyson Daniels (DPOY-tier storyline)
-3. Trae Young / CJ McCollum (PG situation post-trade)
+2. Dyson Daniels (steals-title storyline)
+3. Nickeil Alexander-Walker (leading scorer)
 4. Onyeka Okongwu (starting C)
-5. Zaccharie Risacher (2nd-year jump)
+5. Kingston Flemings / CJ McCollum (point guard room)
 6. Any player whose status was not "active" on the last run
-7. Any player mentioned in a headline from steps 1–5
+7. Any player who logged minutes in the last game, two-way players included
+8. Any player mentioned in a headline from steps 1–5
 
 ### Stats verification (at least ONE trusted tier-1 source per run)
 6. `"site:basketball-reference.com Atlanta Hawks 2025-26"` — season averages
@@ -108,7 +109,9 @@ Must feel like a briefing a fan would read THIS MORNING.
 
 **New policy: refresh season averages every run**, not only after games. Stats drift between runs; re-sync from tier-1 sources each time.
 
-### For each of the 15 `PLAYERS[]` entries, verify/refresh:
+### For every `PLAYERS[]` entry, verify/refresh:
+
+`PLAYERS[]` has one card per player on ESPN's roster, two-way players included (18 as of Nov 2026). There is no 15-player cap.
 
 Existing fields (refresh from basketball-reference or NBA.com):
 - `gamesPlayed`, `gamesStarted`, `minutesPerGame`
@@ -171,7 +174,9 @@ cd ~/hawks-tracker && node scripts/roster-check.mjs
 
 Exit 0 = in sync, move on. Exit 1 prints what to fix; handle every line:
 
-- **`NOT IN PLAYERS`** (a new arrival: trade, signing, conversion from two-way). Add a full `PLAYERS[]` entry (next free `id`, stats from Step 4, `image` from the NBA.com player id, `career` with the acquiring move) AND fill `bio` + `combine` as below. If the player is on a two-way deal and should not get a card, add his name to `ROSTER_EXCLUDE` instead.
+- **`NOT IN PLAYERS`** (a new arrival: trade, signing, two-way deal). Add a full `PLAYERS[]` entry (next free `id`, stats from Step 4, `image` from the NBA.com player id or, if he has none yet, the ESPN headshot `https://a.espncdn.com/i/headshots/nba/players/full/{espnId}.png`, `career` with the acquiring move) AND fill `bio` + `combine` as below. **Two-way players get a full card like everyone else**: they play real minutes when injuries hit, and a fan reading the box score expects to find them. Never add a two-way player to `ROSTER_EXCLUDE`.
+- **`ROSTER_EXCLUDE`** is only for a name ESPN keeps listing after a departure you have confirmed with a tier-1/2 source. Keep it empty otherwise.
+- **Box-score check (every run with a new game):** every Hawk who played in the game you just added to `RESULTS` must have a card. If one is missing, add him this run, whatever his contract type.
 - **`DEPARTED?`** (traded, waived). Confirm with a tier-1/2 source, then remove the entry and add the move to `NEWS_DIGEST`. Do not remove on ESPN's word alone.
 - **`HT/WT`, `SEASON`, `JERSEY`**: copy ESPN's value into `physical`, `bio.nbaSeason`, `number`. ESPN is the single source for these so the cards never disagree with each other.
 - **`NO BIO` / `NO COMBINE`**: fill them (below). New players only; existing ones are filled.
@@ -326,7 +331,7 @@ Rules:
 At the end, report in this exact shape:
 - **Lead story**: one line
 - **Searches run**: count + key queries
-- **Player refresh**: how many of 15 players had fields updated, which fields touched most (e.g., "season averages: 12/15, last5: 10/15, recentNotes: 8/15")
+- **Player refresh**: how many of the N carded players had fields updated, which fields touched most (e.g., "season averages: 12/15, last5: 10/15, recentNotes: 8/15")
 - **Game/series state**: any new game added, series record now
 - **Roster sync**: `roster-check` result (in sync, or what was added/removed/updated)
 - **Bets**: settled (which, hit/miss), added, or unchanged

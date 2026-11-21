@@ -74,7 +74,8 @@ function firstSentence(text, max = 220) {
   if (!text) return "";
   const cleaned = text.replace(/^[A-Z][A-Z0-9 ,·:—\-/()'.]+—\s*/g, "")
                       .replace(/^SATURDAY MAY 30[^—]*—\s*/i, "");
-  const m = cleaned.match(/^([^.!?]+[.!?])/);
+  // A sentence ends at . ! ? followed by a space or the end, so "2.8 a game" stays whole.
+  const m = cleaned.match(/^(.+?[.!?])(?=\s|$)/s);
   let out = m ? m[1] : cleaned.slice(0, max);
   if (out.length > max) out = out.slice(0, max - 1).replace(/\s+\S*$/, "") + "…";
   return out.trim();
