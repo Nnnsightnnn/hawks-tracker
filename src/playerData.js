@@ -404,13 +404,86 @@ export const PLAYERS = [
       { years: "2026-", team: "Atlanta Hawks", type: "senior" },
     ],
   },
+  {
+    id: 22, name: "RayJ Dennis", number: 10, position: "PG", nationality: "🇺🇸 USA", age: 25, playoffStarter: false,
+    gamesPlayed: 3, gamesStarted: 0, minutesPerGame: 9,
+    pointsPerGame: 4.3, reboundsPerGame: 2, assistsPerGame: 3.3,
+    stealsPerGame: 0.3, blocksPerGame: 0.3, turnoversPerGame: 0.3,
+    fieldGoalPct: 31.3, threePointPct: 28.6, freeThrowPct: 100,
+    trueShootingPct: 39.5, plusMinus: null,
+    form: 5.5, status: "active", injuryNote: null,
+    recentNotes: "Friday Nov 20: in the guard rotation for Charlotte with McCollum out and Flemings questionable; he has played three games this season (at Indiana, Milwaukee and Oklahoma City), averaging 4.3 points and 3.3 assists in 9.0 minutes (Land of Basketball; NBA injury report, Nov 19). Tuesday Nov 17: the AJC named him a possible starter after McCollum's calf strain (AJC, Nov 18). On a two-way contract with Atlanta since Dec 31, 2025 (Hawks.com).",
+    playoffStats: null,
+    playoffSeries: null,
+    minutesTrend: null,
+    last5: null,
+    seasonHighs: null,
+    image: "https://cdn.nba.com/headshots/nba/latest/1040x760/1642484.png",
+    physical: { height: 74, weight: 180 },
+    bio: { espnId: "4431941", college: "Baylor", preNBA: null, hometown: "Plainfield, IL", birthDate: "2001-03-30", draft: "Undrafted (2024)", nbaSeason: 3, fact: "Made the All-NBA G League Rookie Team in 2024-25 and the All-NBA G League Third Team in 2026." },
+    combine: { year: null, note: "Undrafted out of Baylor in 2024; no official combine measurements on record." },
+    career: [
+      { years: "2024", team: "Undrafted (Baylor)", type: "draft" },
+      { years: "2025", team: "Indiana Pacers (two-way)", type: "senior" },
+      { years: "2025", team: "Los Angeles Clippers (two-way)", type: "senior" },
+      { years: "2025-", team: "Atlanta Hawks (two-way, signed Dec 31, 2025)", type: "senior" },
+    ],
+  },
+  {
+    id: 23, name: "Jalen Wilson", number: 22, position: "SF", nationality: "🇺🇸 USA", age: 26, playoffStarter: false,
+    gamesPlayed: 0, gamesStarted: 0, minutesPerGame: null,
+    pointsPerGame: 0, reboundsPerGame: 0, assistsPerGame: 0,
+    stealsPerGame: 0, blocksPerGame: 0, turnoversPerGame: 0,
+    fieldGoalPct: null, threePointPct: null, freeThrowPct: null,
+    trueShootingPct: null, plusMinus: null,
+    form: 5, status: "active", injuryNote: null,
+    recentNotes: "Tuesday Nov 17: brought up from the G League College Park Skyhawks as the injuries piled up, though he has yet to play for Atlanta this season (AJC, Nov 18). Signed a two-way deal in July after three seasons in Brooklyn, where he averaged 7.4 points in 176 games (G League; Wikipedia).",
+    playoffStats: null,
+    playoffSeries: null,
+    minutesTrend: null,
+    last5: null,
+    seasonHighs: null,
+    image: "https://a.espncdn.com/i/headshots/nba/players/full/4431714.png",
+    physical: { height: 78, weight: 220 },
+    bio: { espnId: "4431714", college: "Kansas", preNBA: null, hometown: "Denton, TX", birthDate: "2000-11-04", draft: "2023 · No. 51 · BKN", nbaSeason: 4, fact: "Won the 2022 national title at Kansas and was the 2023 Big 12 Player of the Year." },
+    combine: { year: 2023, heightNoShoes: 77.5, wingspan: 80, standingReach: 99.5, weight: 230.2, handLength: 8.25, handWidth: 9, standingVert: null, maxVert: null, laneAgility: null, sprint: null, source: "NBA Draft Combine anthro via NBADraft.net", note: "Athletic testing left blank: no republished table with his results was found." },
+    career: [
+      { years: "2023", team: "Drafted #51 overall by BKN (from Kansas)", type: "draft" },
+      { years: "2023-2026", team: "Brooklyn Nets", type: "senior" },
+      { years: "2026-", team: "Atlanta Hawks (two-way, Jul 2026)", type: "senior" },
+    ],
+  },
+  {
+    id: 24, name: "Rafael Castro", number: null, position: "C", nationality: "🇺🇸 USA", age: 23, playoffStarter: false,
+    gamesPlayed: 0, gamesStarted: 0, minutesPerGame: null,
+    pointsPerGame: 0, reboundsPerGame: 0, assistsPerGame: 0,
+    stealsPerGame: 0, blocksPerGame: 0, turnoversPerGame: 0,
+    fieldGoalPct: null, threePointPct: null, freeThrowPct: null,
+    trueShootingPct: null, plusMinus: null,
+    form: 5, status: "active", injuryNote: null,
+    recentNotes: "Monday Nov 16: signed to a two-way contract after Keshon Gilbert was waived; he has not played an NBA game yet and averaged 11.8 points and 8.0 rebounds in five G League games for Mexico City (Hawks.com; Hoops Rumors, Nov 16).",
+    playoffStats: null,
+    playoffSeries: null,
+    minutesTrend: null,
+    last5: null,
+    seasonHighs: null,
+    image: "https://cdn.nba.com/headshots/nba/latest/1040x760/1643572.png",
+    physical: { height: 81, weight: 224 },
+    bio: { espnId: "4684443", college: "George Washington", preNBA: null, hometown: "Dover, NJ", birthDate: "2003-03-30", draft: "Undrafted (2026)", nbaSeason: 1, fact: "A two-time Atlantic 10 All-Defensive pick, he was a finalist for the 2025-26 Lefty Driesell defensive player award." },
+    combine: { year: null, note: "Undrafted out of George Washington in 2026; no official combine measurements on record." },
+    career: [
+      { years: "2026", team: "Undrafted (George Washington)", type: "draft" },
+      { years: "2026-", team: "Atlanta Hawks (two-way, signed Nov 16, 2026)", type: "senior" },
+    ],
+  },
 ];
 
 // ─── RSS Feed Sources ──────────────────────────────────────────────────────
 // Validated via api.rss2json.com on Apr 18, 2026.
-// Players on ESPN's roster we deliberately do not card (two-way contracts).
-// scripts/roster-check.mjs skips these; move a name into PLAYERS if he converts.
-export const ROSTER_EXCLUDE = ["RayJ Dennis", "Rafael Castro", "Jalen Wilson"];
+// Players on ESPN's roster we deliberately do not card. Two-way players DO get
+// cards (they play real minutes); this list is only for a name ESPN still shows
+// after a confirmed departure. scripts/roster-check.mjs skips these.
+export const ROSTER_EXCLUDE = [];
 
 export const RSS_FEEDS = [
   { name: "Peachtree Hoops", url: "https://www.peachtreehoops.com/rss/index.xml", category: "fan", color: "#E03A3E" },
